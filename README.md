@@ -14,8 +14,9 @@ Based on https://github.com/vinceliuice/WhiteSur-gtk-theme/tree/master/src/other
 
 ## Installation
 
+Download the latest [release](https://github.com/AdamXweb/WhiteSurFirefoxThemeMacOS/releases/), or clone the repo above.
 A script has been added to streamline the installation process.\
-Open terminal, and run `bash install.sh`\
+Open terminal in the directory of the repo, and run `bash install.sh`\
 Follow the prompts
 
 ### Manual installation
@@ -42,6 +43,13 @@ If for any reason the WhiteSur theme doesn't activate after using the script, fo
 The tab background colour is overwritten by themes installed.
 e.g. if you are using a dark theme in light mode, tab backgrounds that are inactive are affected.
 Fix: Change the installed theme to appropriate colour scheme to avoid issues.
+
+If you're looking to change the directory to run the script, you can always type `bash` then drag the file into terminal, otherwise type `cd` and then drag the folder in and press enter.\
+Alternatively, if you're running Catalina, the default teminal is zsh, meaning you can change folders by typing the name to enter the folder e.g. `WhiteSurFirefoxThemeMacOS`
+
+
+Q: "Why bother doing this, and not just use safari?"
+A: I've used safari for quite a few years, and was rather disappointed with the change in extensions, particularly with content blocking. This prompted me to use uBlock origin on Firefox, and to customise it to have the best aesthetics, and simplest transition.
 
 ### New bugs
 
