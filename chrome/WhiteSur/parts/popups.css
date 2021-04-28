@@ -8,30 +8,34 @@ menupopup {
 	-moz-appearance: none !important;
 	background: var(--gnome-menu-background) !important;
 	border: 1px solid var(--gnome-menu-border-color) !important;
-	border-radius: 5px;
+	border-radius: 8px !important;
 	padding: 4px 0 !important;
 	color: var(--gnome-toolbar-color) !important;
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.06) !important;
 }
+
 menupopup menupopup {
 	margin: -5px 0 0 -4px;
 }
 
-menubar > menu > menupopup {
+menubar>menu>menupopup {
 	border-top-left-radius: 0 !important;
 	border-top-right-radius: 0 !important;
 }
 
-menuitem, menupopup menu {
+menuitem,
+menupopup menu {
 	-moz-appearance: none !important;
 	padding: 4px 8px !important;
 }
 
-menuitem[type="checkbox"] image, menuitem[type="radio"] image {
+menuitem[type="checkbox"] image,
+menuitem[type="radio"] image {
 	visibility: visible !important;
 }
 
-menuitem[disabled="true"]:hover, menupopup menu[disabled="true"]:hover {
+menuitem[disabled="true"]:hover,
+menupopup menu[disabled="true"]:hover {
 	background: transparent !important;
 }
 
@@ -43,8 +47,11 @@ panel[type=arrow] {
 
 /* Style popovers */
 .panel-arrowcontent .panel-arrowcontent,
-.panel-header, .PanelUI-subView,
-.panel-subview-body, #widget-overflow-mainView, #protections-popup-footer,
+.panel-header,
+.PanelUI-subView,
+.panel-subview-body,
+#widget-overflow-mainView,
+#protections-popup-footer,
 panelview {
 	border: 0 !important;
 	background: transparent !important;
@@ -54,11 +61,12 @@ panelview {
 	background: var(--gnome-popover-background) !important;
 	border: 1px solid !important;
 	border-color: var(--gnome-popover-border-color) !important;
-	border-radius: 9px;
+	border-radius: 9px !important;
 	/* box-shadow: var(--gnome-popover-shadow) !important; */
 	padding: 12px !important;
 	color: var(--gnome-toolbar-color) !important;
 }
+
 .panel-arrow {
 	fill: var(--gnome-popover-background) !important;
 	stroke: var(--gnome-popover-border-color) !important;
@@ -71,12 +79,14 @@ panelview {
 .panel-header {
 	padding: 0 0 10px 0 !important;
 }
+
 .panel-footer {
 	background-color: transparent !important;
 	display: flex;
 	justify-content: flex-end;
 	padding-top: 0px !important;
 }
+
 .panel-footer toolbarseparator {
 	display: none !important;
 }
@@ -84,25 +94,29 @@ panelview {
 .panel-subview-body {
 	padding: 0 !important;
 }
+
 .panel-subview-footer {
 	margin-top: 10px !important;
 }
 
 /* Style popovers menu buttons */
 .subviewbutton:not(.subviewbutton-back),
-.toolbarbutton-1, .protections-popup-category,
+.toolbarbutton-1,
+.protections-popup-category,
 .identity-popup-content-blocking-category {
-	border-radius: 5px !important;
+	border-radius: 8px !important;
 	color: var(--gnome-toolbar-color) !important;
 	font: menu !important;
 }
+
 .subviewbutton:not(.subviewbutton-back),
 .protections-popup-category,
 .identity-popup-content-blocking-category {
 	padding: 5px !important;
 }
 
-.subviewbutton[disabled], .toolbarbutton-1[disabled],
+.subviewbutton[disabled],
+.toolbarbutton-1[disabled],
 .protections-popup-category[disabled],
 .identity-popup-content-blocking-category[disabled] {
 	opacity: 0.5 !important;
@@ -114,18 +128,23 @@ panelview {
 	opacity: 0.5 !important;
 }
 
-.subviewbutton:not([disabled]):hover, .toolbarbutton-1:not([disabled]):hover, .protections-popup-category:not([disabled]):hover,
+.subviewbutton:not([disabled]):hover,
+.toolbarbutton-1:not([disabled]):hover,
+.protections-popup-category:not([disabled]):hover,
 .identity-popup-content-blocking-category:not([disabled]):hover {
 	background: var(--gnome-popover-button-hover-background) !important;
 }
 
 /* Style popover separators */
-toolbarseparator, menuseparator {
+toolbarseparator,
+menuseparator {
 	border-color: var(--gnome-popover-separator-color) !important;
 }
+
 toolbarseparator:not([orient="vertical"]) {
 	margin: 8px 0 !important;
 }
+
 toolbarseparator[orient="vertical"] {
 	margin: 0 3px !important;
 }

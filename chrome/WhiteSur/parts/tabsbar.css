@@ -130,12 +130,10 @@ tab[selected]:-moz-window-inactive {
 
 /* Force tab favicon to the center */
 .tab-throbber,
-.tab-throbber-fallback {
-	margin-left: auto;
-}
-
-.tabbrowser-tab:not([busy]) .tab-icon-image {
-	margin-left: auto;
+.tab-throbber-fallback,
+.tabbrowser-tab:not([busy]) .tab-icon-image,
+.tabbrowser-tab:not([class*="identity-color-"]) .tab-icon-stack {
+	margin-left: auto !important;
 }
 
 /* If tab favicon is not present, force tab label to the center */
@@ -151,7 +149,8 @@ tab[selected]:-moz-window-inactive {
 #tabbrowser-tabs[closebuttons="activetab"] .tabbrowser-tab:not([selected="true"]) .tab-throbber,
 #tabbrowser-tabs[closebuttons="activetab"] .tabbrowser-tab:not([selected="true"]) .tab-throbber-fallback,
 #tabbrowser-tabs[closebuttons="activetab"] .tabbrowser-tab:not([selected="true"]):not([busy]) .tab-icon-image,
-#tabbrowser-tabs[closebuttons="activetab"] .tabbrowser-tab:not([selected="true"]):not([image]) .tab-label-container {
+#tabbrowser-tabs[closebuttons="activetab"] .tabbrowser-tab:not([selected="true"]):not([image]) .tab-label-container,
+#tabbrowser-tabs[closebuttons="activetab"] .tabbrowser-tab:not([selected="true"]) .tab-icon-stackr {
 	margin-left: 0 !important;
 }
 
@@ -163,6 +162,12 @@ tab[selected]:-moz-window-inactive {
 /* Close tab button */
 :root {
 	--gnome-fill-icon: red !important;
+}
+
+.close-icon {
+	height: 16px !important;
+	padding: 0 !important;
+	width: 16px !important;
 }
 
 .tab-close-button {
@@ -239,15 +244,12 @@ tab[selected]:-moz-window-inactive {
 	border-image: none !important;
 	margin-left: -1px !important;
 	margin-right: -1px !important;
-	box-shadow: 1px 0 var(--gnome-toolbar-border-color), -1px 0 var(--gnome-toolbar-border-color), inset 0 -1px var(--gnome-toolbar-border-color) !important;
+	box-shadow: 1px 0 var(--gnome-toolbar-border-color), 1px 0 3px rgba(0, 0, 0, 0.08),
+		-1px 0 var(--gnome-toolbar-border-color), -1px 0 3px rgba(0, 0, 0, 0.08),
+		inset 0 -1px var(--gnome-toolbar-border-color) !important;
 }
 
 .tab-background[selected=true]:-moz-window-inactive {
-	background-color: var(--gnome-inactive-tabbar-tab-active-background) !important;
-	border-image: none !important;
-}
-
-.tab-background:-moz-window-inactive {
 	background-color: var(--gnome-inactive-tabbar-tab-active-background) !important;
 	border-image: none !important;
 }
@@ -289,7 +291,7 @@ tab[selected]:-moz-window-inactive {
 /* Create new container tab indicator */
 .tabbrowser-tab[class*="identity-color-"] .tab-content::before {
 	content: "";
-	display: none;
+	display: block;
 	background-image: var(#userContext-icons:--identity-icon);
 	background: var(--identity-tab-color);
 	-moz-context-properties: fill;
