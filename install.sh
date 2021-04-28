@@ -8,6 +8,8 @@ echo -en "\n"
 echo -en "\n"
 echo -e "${bold}WhiteSur installer"
 echo -e "⚠ This is a script to add the theme into firefox, and enable it."
+echo -e "⚠ Continuing will quit Firefox. Make sure you save any tabs before proceeding."
+
 echo -en "\n"
 warn "=> ${bold}$COL_RED CTRL+C $COL_RESET now to abort ${normal} or ${bold} $COL_GREEN ENTER ${normal} $COL_RESET to continue."
 
@@ -25,16 +27,10 @@ read -n 1
     install_firefox_theme
     success "Done! WhiteSur Firefox theme has been installed."
 
-
-
-    actioninfo "Editing WhiteSur Firefox theme preferences..."
-    edit_firefox_theme_prefs
-    success "Done! Firefox theme preferences has been edited."
-
-
     echo
-    warn "Please now go to: about:config in Firefox"
-    warn "Search for `toolkit.legacyUserProfileCustomizations.stylesheets` and set it to `true`"
+    actioninfo "If you have any issues with the theme not activating, follow the two steps below to toggle a setting within Firefox."
+    warn "Please go to: ${bold}$COL_RED about:config ${normal} $COL_RESET in Firefox (type it into the URL bar)"
+    warn "Search for ${bold}$COL_RED toolkit.legacyUserProfileCustomizations.stylesheets  $COL_RESET and toggle it to `true`"
     actioninfo "That's it, restart Firefox and you're all set!"
 
 echo

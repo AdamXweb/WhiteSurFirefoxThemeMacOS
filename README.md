@@ -13,6 +13,7 @@ Based on https://github.com/vinceliuice/WhiteSur-gtk-theme/tree/master/src/other
 (This is a quick modification, and is not written from scratch.)
 
 ## Installation
+
 A script has been added to streamline the installation process.\
 Open terminal, and run `bash install.sh`\
 Follow the prompts
@@ -35,6 +36,20 @@ To find your Firefox Profile Directory you can:
 
 ## Known bugs
 
+If it is a fresh install of Firefox, the script's user profile should enable the theme automatically. As a backup, the `pref.js` toggles the setting to enable custom themes.
+If for any reason the WhiteSur theme doesn't activate after using the script, follow steps 4.1 and 4.2 to toggle the stylesheets from within the Firefox settings.
+
 The tab background colour is overwritten by themes installed.
 e.g. if you are using a dark theme in light mode, tab backgrounds that are inactive are affected.
 Fix: Change the installed theme to appropriate colour scheme to avoid issues.
+
+### New bugs
+
+If you've found a new bug, please report it as a new issue with the following:
+
+1. OS you're using
+2. Version of Firefox
+3. Screenshot of bug if possible
+4. Description
+
+Thanks!
