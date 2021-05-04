@@ -227,9 +227,15 @@ tab[selected]:-moz-window-inactive {
 	border-top: 3px solid var(--identity-tab-color) !important;
 }
 
-.tabbrowser-tab[usercontextid]>.tab-stack>.tab-background>.tab-bottom-line {
+/* Remove alt colours references for multi tabs*/
+.tabbrowser-tab[usercontextid]>.tab-stack>.tab-background>.tab-context-line {
 	display: none;
 }
+
+.tabbrowser-tab[class*="identity-color-"][pinned] {
+	display:none;
+}
+
 
 .tab-background {
 	background-color: transparent !important;
@@ -293,7 +299,7 @@ tab[selected]:-moz-window-inactive {
 	content: "";
 	display: block;
 	background-image: var(#userContext-icons:--identity-icon);
-	background: var(--identity-tab-color);
+	background: transparent !important;
 	-moz-context-properties: fill;
 	fill: var(--identity-icon-color);
 	background-size: contain;
