@@ -3,7 +3,7 @@
 <p align="center">A MacOS Firefox theme to look more like Big Sur Safari. (For Firefox 70+)</p>
 
 #### Preview
-![Preview](preview.png?raw=true)
+![Preview](whitesur.gif?raw=true)
 
 ## Description
 
@@ -68,3 +68,6 @@ If you've found a new bug, please report it as a new issue with the following:
 4. Description
 
 Thanks!
+
+## Screenshot
+![Preview](preview.png?raw=true)
