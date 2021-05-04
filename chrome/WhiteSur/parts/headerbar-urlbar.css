@@ -6,6 +6,24 @@
 	--urlbar-height: 32.00px;
 	--urlbar-toolbar-height: 32.00px !important;
 }
+/* Centre URL bar text input*/
+#urlbar-input {
+	transition: all .1s linear;
+	transform: translateX(50%);
+	top: 4px;
+	position: absolute;
+	width: 50%;
+	text-align: center !important;
+}
+/* Unless text input is selected like safari*/
+#urlbar[focused] #urlbar-input {
+	position: absolute;
+	transform: translateX(0);
+	transition: all .2s ease;
+	width: 100%;
+	text-align: left !important;
+	;
+}
 
 /* Center the URL bar */
 toolbarspring {
@@ -17,6 +35,15 @@ toolbarspring {
 	box-shadow: none !important;
 	background: var(--gnome-popover-background) !important;
 	border-radius: 8px !important;
+	opacity: 0.8 !important;
+	filter: saturate(0%) !important;
+	transition: opacity 0.4s !important;
+}
+#urlbar:hover,
+#urlbar[focused]{
+	opacity: 1 !important;
+	filter: saturate(100%) !important;
+
 }
 #urlbar-background {
 	box-shadow: none !important;
