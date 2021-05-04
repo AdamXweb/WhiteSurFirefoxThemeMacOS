@@ -150,6 +150,14 @@ menulist[open] .menulist-label-box,
 	border-color: var(--gnome-button-active-border-color) !important;
 }
 
+/* Fix HTML select colour */
+menulist>menupopup>menuitem,
+menulist>menupopup>menucaption,
+menulist>menupopup>menu {
+	max-width: none;
+	color: white !important;
+}
+
 /* Disabled buttons */
 #appMenu-popup .toolbaritem-combined-buttons toolbarbutton[disabled],
 #context-navigation menuitem[disabled] {
