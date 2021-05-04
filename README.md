@@ -34,6 +34,13 @@ To find your Firefox Profile Directory you can:
 5. Restart Firefox.
 6. Done!
 
+### Manual colour override:
+
+The theme obeys your system UI colour preferences. If you want to override it e.g. always have the dark theme, then you'll have to do the following.\
+The solution if you don't want to change your System UI colour is to do add the following to your `about:config`\
+Add: `ui.systemUsesDarkTheme` with the number value with 1 for dark, and 0 for light.\
+![Screen Shot 2021-05-04 at 7 10 19 pm](https://user-images.githubusercontent.com/6800453/116982626-60317980-ad0c-11eb-96aa-0879b05c98fc.png)
+
 
 ## Known bugs
 
