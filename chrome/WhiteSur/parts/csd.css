@@ -46,6 +46,9 @@ GNOME CSD styles for headerbar on Firefox [tabsintitlebar] @namespace xul url("h
 	top: 15px;
 	display: block !important;
 }
+:root[tabsintitlebar][inFullscreen] #window-controls {
+	top:10px;
+}
 
 
 
