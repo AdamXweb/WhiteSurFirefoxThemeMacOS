@@ -1,6 +1,6 @@
 ## Firefox WhiteSur theme
 
-<p align="center">A `MacOS` & `Windows` Firefox theme to look more like Big Sur Safari. (For Firefox 70+)</p>
+<p align="center">A <code>MacOS</code> & <code>Windows</code> Firefox theme to look more like Big Sur Safari. (For Firefox 70+)</p>
 
 #### Preview
 ![Preview](whitesur.gif?raw=true)
@@ -70,4 +70,11 @@ If you've found a new bug, please report it as a new issue with the following:
 Thanks!
 
 ## Screenshot
-![Preview](preview.png?raw=true)
+
+### Windows
+![Preview](whitesurwindows.gif?raw=true)
+
+
+### MacOS
+![Preview](whitesur.gif?raw=true)
+
