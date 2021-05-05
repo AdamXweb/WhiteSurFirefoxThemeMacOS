@@ -365,7 +365,7 @@ button.popup-notification-primary-button.popup-notification-button:active,
 }
 
 /* Windows specific */
-@media not all and (-moz-os-version: windows-win8) {
+@media screen and (-moz-os-version: windows-win10) {
 	.titlebar-button {
 		border: none;
 		margin: 0 !important;
@@ -392,6 +392,6 @@ button.popup-notification-primary-button.popup-notification-button:active,
 	}
 	#urlbar-input {
 		top: 5px !important;
-		
+
 	}
 }
