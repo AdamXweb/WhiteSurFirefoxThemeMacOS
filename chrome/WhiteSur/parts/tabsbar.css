@@ -334,9 +334,20 @@ tab[selected]:-moz-window-inactive {
 	margin-inline-end: -6px !important;
 }
 
-/* fix spacing on too many tabs & pip*/
+/* fix spacing on too many tabs */
+
 .tab-icon-overlay:not([pinned], [sharing]),
 [pictureinpicture] {
 	margin-inline-end: 4px !important;
 	margin-inline-start: 4px !important;
+}
+
+/* Fix too many tabs text align */
+.tab-close-button[pinned],
+#tabbrowser-tabs[closebuttons="activetab"]>#tabbrowser-arrowscrollbox>.tabbrowser-tab>.tab-stack>.tab-content>.tab-icon-stack:not([selected="true"]){
+	margin-left: 0 !important;
+}
+.tab-close-button[pinned],
+#tabbrowser-tabs[closebuttons="activetab"]>#tabbrowser-arrowscrollbox>.tabbrowser-tab>.tab-stack>.tab-content>.tab-icon-stack[selected="true"] {
+	margin-left: auto !important;
 }
