@@ -8,7 +8,7 @@
 }
 /* Centre URL bar text input*/
 #urlbar-input {
-	transition: all .1s linear;
+	transition: transform .1s linear;
 	transform: translateX(50%);
 	top: 4px;
 	position: absolute;
