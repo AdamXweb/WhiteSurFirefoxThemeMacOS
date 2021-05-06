@@ -135,6 +135,10 @@ tab[selected]:-moz-window-inactive {
 .tabbrowser-tab:not([class*="identity-color-"]) .tab-icon-stack {
 	margin-left: auto !important;
 }
+/* separate class for multi-tab alignment*/
+.tabbrowser-tab[class*="identity-color-"]>.tab-stack>.tab-content>.tab-icon-stack {
+	margin-left:auto !important;
+}
 
 /* If tab favicon is not present, force tab label to the center */
 .tabbrowser-tab .tab-label-container {
