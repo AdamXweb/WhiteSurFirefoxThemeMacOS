@@ -308,7 +308,7 @@ tab[selected]:-moz-window-inactive {
 	min-width: 10px;
 	height: 10px;
 	margin-right: 5px;
-	margin-left: auto !important;
+	margin-left: 0 !important;
 	border-radius: 100%;
 }
 
@@ -320,4 +320,23 @@ tab[selected]:-moz-window-inactive {
 	top: -8px;
 	position: relative;
 	margin-right: -10px;
+}
+
+/* fix pip on small displays */
+.tab-icon-overlay[pictureinpicture] {
+	top: 3px !important;
+	inset-inline-end: 13px !important;
+	z-index: 1 !important;
+	max-width: 10px;
+	max-height: 10px;
+}
+.tab-close-button {
+	margin-inline-end: -6px !important;
+}
+
+/* fix spacing on too many tabs & pip*/
+.tab-icon-overlay:not([pinned], [sharing]),
+[pictureinpicture] {
+	margin-inline-end: 4px !important;
+	margin-inline-start: 4px !important;
 }
