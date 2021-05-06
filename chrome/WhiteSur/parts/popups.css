@@ -148,3 +148,7 @@ toolbarseparator:not([orient="vertical"]) {
 toolbarseparator[orient="vertical"] {
 	margin: 0 3px !important;
 }
+#contentAreaContextMenu menuitem image,
+#contentAreaContextMenu menu image {
+	visibility: visible !important;
+}
