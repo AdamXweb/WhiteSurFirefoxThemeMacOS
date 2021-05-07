@@ -237,7 +237,7 @@ tab[selected]:-moz-window-inactive {
 }
 
 .tabbrowser-tab[class*="identity-color-"][pinned] {
-	display:none;
+	display:flex;
 }
 
 
