@@ -23,7 +23,7 @@
 }
 
 /* Headerbar buttons */
-#nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.subviewbutton) {
+#nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.subviewbutton):not(.toolbarbutton-1) {
 	border: none !important;
 	box-shadow: none !important;
 	background: none !important;

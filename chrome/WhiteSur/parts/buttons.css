@@ -363,35 +363,3 @@ button.popup-notification-primary-button.popup-notification-button:active,
 	padding: 0 !important;
 	width: 26px !important;
 }
-
-/* Windows specific */
-@media screen and (-moz-os-version: windows-win10) {
-	.titlebar-button {
-		border: none;
-		margin: 0 !important;
-		/*		padding: 3px 6px !important;
-*/
-		padding: 2px 4px !important;
-		-moz-content-properties: none !important;
-		stroke: none !important;
-	}
-
-	:root[tabsintitlebar][sizemode="maximized"] #titlebar {
-		appearance: none !important;
-	}
-
-	tab {
-		font-weight: normal !important;
-	}
-
-	:root[tabsintitlebar][sizemode="maximized"] #nav-bar-customization-target, [sizemode="maximized"] .titlebar-buttonbox-container, [sizemode="maximized"] #PanelUI-button {
-		padding-top: 10px !important;
-	}
-	.titlebar-buttonbox-container, #PanelUI-button {
-		padding-top: 0;
-	}
-	#urlbar-input {
-		top: 5px !important;
-
-	}
-}
