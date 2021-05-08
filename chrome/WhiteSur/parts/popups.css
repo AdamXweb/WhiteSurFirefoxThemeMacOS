@@ -152,3 +152,12 @@ toolbarseparator[orient="vertical"] {
 #contentAreaContextMenu menu image {
 	visibility: visible !important;
 }
+
+#webRTC-selectWindow-menulist{
+	color: var(--gnome-inactive-urlbar-color) !important;
+	background: var(--gnome-button-hover-background) !important;
+	border-radius: 5px;
+}
+#webRTC-shareDevices-notification>.popup-notification-button-container>.popup-notification-primary-button[disabled=true]{
+	background-color:var(--gnome-button-disabled-background) !important;
+}
