@@ -2,19 +2,18 @@
 
 <p align="center">A <code>MacOS</code> & <code>Windows</code> Firefox theme to look more like Big Sur Safari. (For Firefox 70+)</p>
 
-#### Preview
 ![Preview](whitesur.gif?raw=true)
 
 ## Description
 
-Aim is to make Firefox look more like MacOS Big Sur Safari.
-This is a CSS theme adapted to work on MacOS from the Linux GTK theme.
-Based on https://github.com/vinceliuice/WhiteSur-gtk-theme/tree/master/src/other/firefox
+Aim is to make Firefox look more like MacOS Big Sur Safari.\
+This is a CSS theme adapted to work on MacOS from the Linux GTK theme.\
+Based on https://github.com/vinceliuice/WhiteSur-gtk-theme/tree/master/src/other/firefox \
 (This is a quick modification, and is not written from scratch.)
 
 ## Installation (MacOS)
 
-Download the latest [release](https://github.com/AdamXweb/WhiteSurFirefoxThemeMacOS/releases/), or clone the repo above.
+Download the latest [release](https://github.com/AdamXweb/WhiteSurFirefoxThemeMacOS/releases/), or clone the repo above.\
 A script has been added to streamline the installation process.\
 Open terminal in the directory of the repo, and run `bash install.sh`\
 Follow the prompts
@@ -44,28 +43,23 @@ Add: `ui.systemUsesDarkTheme` with the number value with 1 for dark, and 0 for l
 
 ## Known bugs
 
-If it is a fresh install of Firefox, the script's user profile should enable the theme automatically. As a backup, the `pref.js` toggles the setting to enable custom themes.
+If it is a fresh install of Firefox, the script for MacOS should enable the settings automatically, however users who have toggled settings may need to do the `about:config` in step 4 above.\
 If for any reason the WhiteSur theme doesn't activate after using the script, follow steps 4.1 and 4.2 to toggle the stylesheets from within the Firefox settings.
 
-The tab background colour is overwritten by themes installed.
+The tab background colour can be overwritten by themes installed through firefox extentions.
 e.g. if you are using a dark theme in light mode, tab backgrounds that are inactive are affected.
 Fix: Change the installed theme to appropriate colour scheme to avoid issues.
 
-If you're looking to change the directory to run the script, you can always type `bash` then drag the file into terminal, otherwise type `cd` and then drag the folder in and press enter.\
+If you're looking to change the directory to run the script, you can always type `bash` then drag the file into terminal. You can also type `cd` and then drag the folder and press enter to navigate to the directory.\
 Alternatively, if you're running Catalina, the default teminal is zsh, meaning you can change folders by typing the name to enter the folder e.g. `WhiteSurFirefoxThemeMacOS`
 
 
-Q: "Why bother doing this, and not just use safari?"
+Q: "Why bother doing this, and not just use safari?" \
 A: I've used safari for quite a few years, and was rather disappointed with the change in extensions, particularly with content blocking. This prompted me to use uBlock origin on Firefox, and to customise it to have the best aesthetics, and simplest transition.
 
 ### New bugs
 
-If you've found a new bug, please report it as a new issue with the following:
-
-1. OS you're using
-2. Version of Firefox
-3. Screenshot of bug if possible
-4. Description
+If you've found a new bug, please report it as a new issue with the templates provided.
 
 Thanks!
 
