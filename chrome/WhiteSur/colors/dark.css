@@ -64,7 +64,6 @@
 		--gnome-button-suggested-action-background: linear-gradient(to top, #155099 2px, #15539e);
 		--gnome-button-suggested-action-border-color: #0f3b71;
 		--gnome-button-suggested-action-border-accent-color: #092444;
-		;
 		--gnome-button-suggested-action-box-shadow: inset 0 1px rgba(255, 255, 255, 0.08);
 		--gnome-button-suggested-action-hover-background: linear-gradient(to top, #155099, #1655a2 1px);
 		--gnome-button-suggested-action-active-background: #103e75;
@@ -78,7 +77,7 @@
 		--gnome-button-destructive-action-active-background: #8a1116;
 		--gnome-button-destructive-action-active-border-color: #851015;
 		--gnome-button-destructive-action-active-box-shadow: inset 0 1px rgba(255, 255, 255, 0);
-
+		--gnome-button-menulist-color:#fff;
 		--gnome-headerbar-button-hover-background: rgba(255, 255, 255, 0.1);
 		--gnome-headerbar-button-active-background: rgba(255, 255, 255, 0.15);
 

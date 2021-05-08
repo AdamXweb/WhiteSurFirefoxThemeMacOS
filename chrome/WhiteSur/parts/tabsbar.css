@@ -135,6 +135,10 @@ tab[selected]:-moz-window-inactive {
 .tabbrowser-tab:not([class*="identity-color-"]) .tab-icon-stack {
 	margin-left: auto !important;
 }
+/* separate class for multi-tab alignment*/
+.tabbrowser-tab[class*="identity-color-"]>.tab-stack>.tab-content>.tab-icon-stack {
+	margin-left:auto !important;
+}
 
 /* If tab favicon is not present, force tab label to the center */
 .tabbrowser-tab .tab-label-container {
@@ -233,7 +237,7 @@ tab[selected]:-moz-window-inactive {
 }
 
 .tabbrowser-tab[class*="identity-color-"][pinned] {
-	display:none;
+	display:flex;
 }
 
 
@@ -308,7 +312,7 @@ tab[selected]:-moz-window-inactive {
 	min-width: 10px;
 	height: 10px;
 	margin-right: 5px;
-	margin-left: auto !important;
+	margin-left: 0 !important;
 	border-radius: 100%;
 }
 
@@ -320,4 +324,34 @@ tab[selected]:-moz-window-inactive {
 	top: -8px;
 	position: relative;
 	margin-right: -10px;
+}
+
+/* fix pip on small displays */
+.tab-icon-overlay[pictureinpicture] {
+	top: 3px !important;
+	inset-inline-end: 13px !important;
+	z-index: 1 !important;
+	max-width: 10px;
+	max-height: 10px;
+}
+.tab-close-button {
+	margin-inline-end: -6px !important;
+}
+
+/* fix spacing on too many tabs */
+
+.tab-icon-overlay:not([pinned], [sharing]),
+[pictureinpicture] {
+	margin-inline-end: 4px !important;
+	margin-inline-start: 4px !important;
+}
+
+/* Fix too many tabs text align */
+.tab-close-button[pinned],
+#tabbrowser-tabs[closebuttons="activetab"]>#tabbrowser-arrowscrollbox>.tabbrowser-tab>.tab-stack>.tab-content>.tab-icon-stack:not([selected="true"]){
+	margin-left: 0 !important;
+}
+.tab-close-button[pinned],
+#tabbrowser-tabs[closebuttons="activetab"]>#tabbrowser-arrowscrollbox>.tabbrowser-tab>.tab-stack>.tab-content>.tab-icon-stack[selected="true"] {
+	margin-left: auto !important;
 }

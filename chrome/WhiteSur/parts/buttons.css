@@ -155,12 +155,13 @@ menulist>menupopup>menuitem,
 menulist>menupopup>menucaption,
 menulist>menupopup>menu {
 	max-width: none;
-	color: white !important;
+	color: var(--gnome-button-menulist-color) !important;
 }
 
 /* Disabled buttons */
 #appMenu-popup .toolbaritem-combined-buttons toolbarbutton[disabled],
-#context-navigation menuitem[disabled] {
+#context-navigation menuitem[disabled],
+#webRTC-shareDevices-notification>.popup-notification-button-container>.popup-notification-primary-button[disabled] {
 	background: var(--gnome-button-disabled-background) !important;
 	border-color: var(--gnome-button-disabled-border-color) !important;
 	box-shadow: var(--gnome-button-disabled-box-shadow) !important;

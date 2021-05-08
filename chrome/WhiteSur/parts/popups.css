@@ -148,3 +148,13 @@ toolbarseparator:not([orient="vertical"]) {
 toolbarseparator[orient="vertical"] {
 	margin: 0 3px !important;
 }
+#contentAreaContextMenu menuitem image,
+#contentAreaContextMenu menu image {
+	visibility: visible !important;
+}
+/* Webchat e.g. google meet share screen display select*/
+#webRTC-selectWindow-menulist{
+	color: var(--gnome-inactive-urlbar-color) !important;
+	background: var(--gnome-button-hover-background) !important;
+	border-radius: 5px;
+}

@@ -1,6 +1,6 @@
 ## Firefox WhiteSur theme
 
-<p align="center">A MacOS Firefox theme to look more like Big Sur Safari. (For Firefox 70+)</p>
+<p align="center">A <code>MacOS</code> & <code>Windows</code> Firefox theme to look more like Big Sur Safari. (For Firefox 70+)</p>
 
 #### Preview
 ![Preview](whitesur.gif?raw=true)
@@ -12,14 +12,14 @@ This is a CSS theme adapted to work on MacOS from the Linux GTK theme.
 Based on https://github.com/vinceliuice/WhiteSur-gtk-theme/tree/master/src/other/firefox
 (This is a quick modification, and is not written from scratch.)
 
-## Installation
+## Installation (MacOS)
 
 Download the latest [release](https://github.com/AdamXweb/WhiteSurFirefoxThemeMacOS/releases/), or clone the repo above.
 A script has been added to streamline the installation process.\
 Open terminal in the directory of the repo, and run `bash install.sh`\
 Follow the prompts
 
-### Manual installation
+### Manual installation (MacOS & Windows)
 
 Copy `chrome` and `configuration` folers into your Firefox Profile Directory
 
@@ -70,4 +70,11 @@ If you've found a new bug, please report it as a new issue with the following:
 Thanks!
 
 ## Screenshot
-![Preview](preview.png?raw=true)
+
+### Windows
+![Preview](whitesurwindows.gif?raw=true)
+
+
+### MacOS
+![Preview](whitesur.gif?raw=true)
+
