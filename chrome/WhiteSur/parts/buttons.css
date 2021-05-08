@@ -393,6 +393,11 @@ button.popup-notification-primary-button.popup-notification-button:active,
 	}
 	#urlbar-input {
 		top: 5px !important;
-
+	}
+	.titlebar-close {
+		-moz-box-ordinal-group: 0;
+	}
+	.titlebar-button {
+		background-color: transparent !important;
 	}
 }
