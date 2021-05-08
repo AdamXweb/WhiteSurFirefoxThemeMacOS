@@ -1,0 +1,54 @@
+/* Windows specific */
+@media screen and (-moz-os-version: windows-win10) {
+    .titlebar-button {
+        border: none;
+        margin: 0 !important;
+        /*		padding: 3px 6px !important;
+*/
+        padding: 1px 3px !important;
+        -moz-content-properties: none !important;
+        stroke: none !important;
+    }
+
+    :root[tabsintitlebar][sizemode="maximized"] #titlebar {
+        appearance: none !important;
+    }
+
+    :root[tabsintitlebar]:not([sizemode="maximized"]) #titlebar .titlebar-buttonbox-container {
+        top: 17px !important;
+        padding: 0 3px 0 15px !important;
+    }
+
+    tab {
+        font-weight: normal !important;
+    }
+
+    :root[tabsintitlebar][sizemode="maximized"] #nav-bar-customization-target, [sizemode="maximized"] .titlebar-buttonbox-container, [sizemode="maximized"] #PanelUI-button, [sizemode="maximized"] #nav-bar-overflow-button {
+        padding-top: 10px !important;
+    }
+
+    :root[tabsintitlebar][sizemode="maximized"] .titlebar-buttonbox {
+        top: 2px;
+        left: 6px;
+    }
+
+    .titlebar-buttonbox-container, #PanelUI-button {
+        padding-top: 0;
+    }
+
+    #urlbar-input {
+        top: 5px !important;
+    }
+
+    .titlebar-close {
+        -moz-box-ordinal-group: 0;
+    }
+
+    .titlebar-button {
+        background-color: transparent !important;
+    }
+
+    #nav-bar {
+        padding-left: 75px !important;
+    }
+}
