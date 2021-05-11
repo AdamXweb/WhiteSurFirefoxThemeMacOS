@@ -355,3 +355,19 @@ tab[selected]:-moz-window-inactive {
 #tabbrowser-tabs[closebuttons="activetab"]>#tabbrowser-arrowscrollbox>.tabbrowser-tab>.tab-stack>.tab-content>.tab-icon-stack[selected="true"] {
 	margin-left: auto !important;
 }
+
+@media (-moz-proton) {
+	/* Firefox v89 beta tab fix */
+	.tab-background {
+		border-radius: 0 !important;
+		margin-block: 0 !important;
+	}
+	/*Align personal bookmarks v89 */
+	#personal-bookmarks {
+		-moz-box-align: center !important;
+	}
+	/* fix misc spacing between tabs */
+	.tabbrowser-tab {
+		padding-inline: 0px !important;
+	}
+}
