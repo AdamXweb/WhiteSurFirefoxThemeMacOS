@@ -1,7 +1,16 @@
 #! /bin/bash
-
+LHSCLOSE=false
 readonly REPO_DIR="$(dirname "$(readlink "${0}")")"
 source "${REPO_DIR}/lib-install.sh"
+
+# Get options.
+while getopts 'f:l:c' flag; do
+	case "${flag}" in
+		f) FIREFOX_DIR_HOME="${OPTARG}" ;;
+        l) FIREFOX_DIR_HOME=~/.mozilla/firefox/ ;;
+		c) LHSCLOSE=true ;;
+	esac
+done
 
 echo -en "$COL_GREEN WhiteSur Firefox theme. $COL_RESET"
 echo -en "\n"
@@ -33,4 +42,4 @@ read -n 1
     warn "Search for ${bold}$COL_RED toolkit.legacyUserProfileCustomizations.stylesheets  $COL_RESET and toggle it to `true`"
     actioninfo "That's it, restart Firefox and you're all set!"
 
-echo
+echo "Done."

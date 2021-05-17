@@ -3,6 +3,7 @@ FIREFOX_DIR_HOME="/Users/${MY_USERNAME}/Library/Application Support/Firefox/Prof
 FIREFOX_O_HOME=/Users/${MY_USERNAME}/Library/'Application Support'/Firefox/Profiles/
 FIREFOX_THEME_HOME="/Users/${MY_USERNAME}/Library/Application\ Support/Firefox/Profiles"
 FIREFOX_SRC_DIR="${REPO_DIR}"
+LOC=""
 
 # Colors
 ESC_SEQ="\x1b["
