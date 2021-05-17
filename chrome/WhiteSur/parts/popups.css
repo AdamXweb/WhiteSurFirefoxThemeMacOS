@@ -158,3 +158,9 @@ toolbarseparator[orient="vertical"] {
 	background: var(--gnome-button-hover-background) !important;
 	border-radius: 5px;
 }
+/* Proton right click menu*/
+@media (-moz-proton) {
+	#context-navigation>.menuitem-iconic[_moz-menuactive="true"]:not([disabled="true"])>.menu-iconic-left>.menu-iconic-icon {
+		background-color: transparent !important;
+	}
+}
