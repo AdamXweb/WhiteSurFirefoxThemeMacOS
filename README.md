@@ -26,6 +26,8 @@ The script supports the following flags
 - `-l` Default location of most Linux installations
 - `-u` Remove the animation on URL bar to be clickable throughout
 
+e.g. To install with script, with close button left hand side: `bash install.sh -c`
+
 ### Manual installation (MacOS & Windows)
 
 Copy `chrome` and `configuration` folers into your Firefox Profile Directory
@@ -40,6 +42,12 @@ To find your Firefox Profile Directory you can:
 	2. Search for `toolkit.legacyUserProfileCustomizations.stylesheets` and set it to `true`.
 5. Restart Firefox.
 6. Done!
+
+#### Manual theme overrides:
+To manually add a custom override, copy the `*.css` from the `custom` folder of whichever option you are after. Place it in the `chrome/WhiteSur/parts` foder within the profile directory you opened above.\
+Next, import the `.css` file you just specified. To do this, open `chrome/WhiteSur/theme.css` in the same directory above and add the line\
+`@import "parts/NAMEOFOPTION.css";` above the line that says `@namespace xul...`\
+That's it, the theme should load your overriden settings
 
 ### Manual colour override:
 
