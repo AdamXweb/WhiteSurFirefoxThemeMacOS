@@ -26,7 +26,7 @@ If applicable, add screenshots to help explain your problem.
  - OS: [e.g. Windows, MacOS 11]
  - Firefox version [e.g. 88]
  - WhiteSur theme [e.g. v1.1.3]
-
+ - Any options added during installation [e.g. -c]
 
 **Additional context**
 Add any other context about the problem here.
