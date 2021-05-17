@@ -1,4 +1,5 @@
 /* Windows specific */
+@namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 @media screen and (-moz-os-version: windows-win10) {
     .titlebar-button {
         border: none;

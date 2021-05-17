@@ -1,0 +1,28 @@
+/* testing */
+@namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+
+.tab-content:not([pinned])::before,
+.tab-content:not([pinned])::after {
+    display: -moz-box;
+    content: "";
+    -moz-box-flex: 2
+}
+
+.tab-content:not([pinned])::after {
+    -moz-box-flex: 1;
+}
+/* Place close button on left side */
+.tab-content {
+    display: -moz-box !important;
+}
+
+.tab-close-button {
+    -moz-box-ordinal-group: 0
+}
+
+.tab-icon-stack{
+    padding-left: 1px !important;
+}
+.tabbrowser-tab[class*="identity-color-"][pinned] .tab-content{
+    display:flex !important;
+}

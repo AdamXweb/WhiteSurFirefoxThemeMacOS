@@ -18,6 +18,14 @@ A script has been added to streamline the installation process.\
 Open terminal in the directory of the repo, and run `bash install.sh`\
 Follow the prompts
 
+### Installation flags
+
+The script supports the following flags
+- `-c` To enable close button on the left hand side
+- `-f` To specify the default firefox folder (it will try to find the profile folder to place the theme within)
+- `-l` Default location of most Linux installations
+- `-u` Remove the animation on URL bar to be clickable throughout
+
 ### Manual installation (MacOS & Windows)
 
 Copy `chrome` and `configuration` folers into your Firefox Profile Directory
