@@ -1,14 +1,16 @@
 #! /bin/bash
 LHSCLOSE=false
+URLBAR=false
 readonly REPO_DIR="$(dirname "$(readlink "${0}")")"
 source "${REPO_DIR}/lib-install.sh"
 
 # Get options.
-while getopts 'f:l:c' flag; do
+while getopts 'f:l:c:u' flag; do
 	case "${flag}" in
 		f) FIREFOX_DIR_HOME="${OPTARG}" ;;
         l) FIREFOX_DIR_HOME=~/.mozilla/firefox/ ;;
 		c) LHSCLOSE=true ;;
+        u) URLBAR=true ;;
 	esac
 done
 

@@ -29,6 +29,15 @@ cd "${LOC}"
 /' chrome/WhiteSur/theme.css
   echo "LSH enabled"
 fi
+# if no animation on URL bar is desired
+if [ "$URLBAR" = true ] ; then
+	echo "Removing URL bar animation"
+      cp -rf "${REPO_DIR}/custom/standard-urlbar.css"                                                           "${FIREFOX_DIR_HOME}/"*"default-release/chrome/WhiteSur/parts"
+cd "${LOC}"
+        sed -i '.bak.css' '17s/^/@import "parts\/standard-urlbar.css";\
+/' chrome/WhiteSur/theme.css
+  echo "Standard URL bar configured"
+fi
 # Copy settings to enable stylesheets in firefox automatically.
   for d in "${FIREFOX_DIR_HOME}/"*"default-release"; do
     echo "user_pref(\"toolkit.legacyUserProfileCustomizations.stylesheets\", true);" >> "${d}/prefs.js"
