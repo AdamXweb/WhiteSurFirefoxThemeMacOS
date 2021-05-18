@@ -50,6 +50,10 @@ Next, import the `.css` file you just specified. To do this, open `chrome/WhiteS
 `@import "parts/NAMEOFOPTION.css";` above the line that says `@namespace xul...`\
 That's it, the theme should load your overriden settings
 
+#### Swap navbar close buttons on Windows:
+`windows-swapclose.css` contains the styles required to swap the close buttons, as well as to re-order the close button from MacOS styling to Windows.
+Follow the directions above for the manual theme override to activate.
+
 ### Manual colour override:
 
 The theme obeys your system UI colour preferences. If you want to override it e.g. always have the dark theme, then you'll have to do the following.\

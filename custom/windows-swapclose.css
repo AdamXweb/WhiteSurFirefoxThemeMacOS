@@ -1,0 +1,17 @@
+@namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+
+/* Place the close buttons on the right hand side*/
+:root[tabsintitlebar] #titlebar .titlebar-buttonbox-container, :root[tabsintitlebar] #titlebar-buttonbox-container, :root[tabsintitlebar][inFullscreen] #window-controls {
+    left:auto;
+    right: 8px;
+
+}
+/* Give padding to the close bar */
+#nav-bar {
+    padding-left: 10px !important;
+    padding-right: 75px !important;
+}
+/* If arrangement of close is to be Min Max Close*/
+.titlebar-close {
+    -moz-box-ordinal-group: 1 !important;
+}

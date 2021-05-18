@@ -1,4 +1,4 @@
-/* testing */
+/* Left hand side tab close */
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
 .tab-content:not([pinned])::before,
