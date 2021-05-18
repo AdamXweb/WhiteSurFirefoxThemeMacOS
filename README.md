@@ -25,6 +25,7 @@ The script supports the following flags
 - `-f` To specify the default firefox folder (it will try to find the profile folder to place the theme within)
 - `-l` Default location of most Linux installations
 - `-u` Remove the animation on URL bar to be clickable throughout
+- `-r` Remove the theme
 
 e.g. To install with script, with close button left hand side: `bash install.sh -c`
 

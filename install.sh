@@ -1,16 +1,19 @@
 #! /bin/bash
 LHSCLOSE=false
 URLBAR=false
-readonly REPO_DIR="$(dirname "$(readlink "${0}")")"
+REMOVE=false
+readonly REPO_DIR="$(pwd)"
+# readonly REPO_DIR="$(dirname "$(readlink "${0}")")"
 source "${REPO_DIR}/lib-install.sh"
 
 # Get options.
-while getopts 'c,f:l:u' flag; do
+while getopts 'c,f:l:u,r' flag; do
 	case "${flag}" in
         c ) LHSCLOSE=true;;
         f ) FIREFOX_DIR_HOME="${OPTARG}";;
         l ) FIREFOX_DIR_HOME=~/.mozilla/firefox/;;
         u ) URLBAR=true;;
+        r ) REMOVE=true;;
 	esac
 done
 
@@ -33,15 +36,14 @@ read -n 1
     success "Done!  Firefox theme has been removed."
 
 # Install Firefox
-
+if [ "$REMOVE" = false ] ; then
     actioninfo "Installing WhiteSur Firefox theme to your directory below"
     install_firefox_theme
     success "Done! WhiteSur Firefox theme has been installed."
 
-    echo
     actioninfo "If you have any issues with the theme not activating, follow the two steps below to toggle a setting within Firefox."
     warn "Please go to: ${bold}$COL_RED about:config ${normal} $COL_RESET in Firefox (type it into the URL bar)"
     warn "Search for ${bold}$COL_RED toolkit.legacyUserProfileCustomizations.stylesheets  $COL_RESET and toggle it to `true`"
     actioninfo "That's it, restart Firefox and you're all set!"
-
+fi
 echo "Done."
