@@ -13,7 +13,7 @@ Based on https://github.com/vinceliuice/WhiteSur-gtk-theme/tree/master/src/other
 
 ## Installation (MacOS)
 
-Download the [latest release](https://github.com/AdamXweb/WhiteSurFirefoxThemeMacOS/releases/latest), or clone the repo above.\
+Download the [latest release](https://github.com/AdamXweb/WhiteSurFirefoxThemeMacOS/releases/), or clone the repo above.\
 A script has been added to streamline the installation process.\
 Open terminal in the directory of the repo, and run `bash install.sh`\
 Follow the prompts
