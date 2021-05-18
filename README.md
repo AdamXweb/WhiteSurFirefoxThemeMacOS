@@ -17,6 +17,7 @@ Download the [latest release](https://github.com/AdamXweb/WhiteSurFirefoxThemeMa
 A script has been added to streamline the installation process.\
 Open terminal in the directory of the repo, and run `bash install.sh`\
 Follow the prompts
+<!-- To install on windows, you'll need to be able to support `bash`. The easiest way to do this is by downloading [git](https://git-scm.com/downloads) to be able to run .sh files in cmd -->
 
 ### Installation flags
 
@@ -26,6 +27,7 @@ The script supports the following flags
 - `-l` Default location of most Linux installations
 - `-u` Remove the animation on URL bar to be clickable throughout
 - `-r` Remove the theme
+<!-- - `-w` To install on Windows -->
 
 e.g. To install with script, with close button left hand side: `bash install.sh -c`
 
