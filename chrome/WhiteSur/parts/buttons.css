@@ -238,7 +238,7 @@ menulist>menupopup>menu {
 .close-icon:not(.tab-close-button):hover,
 #TabsToolbar .toolbarbutton-1:not(:active):not([open]):hover {
 	outline: 0 !important;
-	background: var(--gnome-button-hover-color) !important;
+
 }
 
 .close-icon:not(.tab-close-button):active,

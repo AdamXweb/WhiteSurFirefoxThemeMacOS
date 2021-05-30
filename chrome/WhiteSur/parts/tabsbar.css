@@ -240,12 +240,23 @@ tab[selected]:-moz-window-inactive {
 	display:flex;
 }
 
-
+/* change background of tabs based on mode to not rely on theme */
 .tab-background {
-	background-color: transparent !important;
+	background-color: var(--gnome-tabbar-tab-background) !important;
 	transition: all 200ms;
 }
-
+.tabbrowser-tab::after,
+.tabbrowser-tab::before {
+	border-color: var(--gnome-tabbar-tab-hover-background) !important;
+}
+#TabsToolbar .toolbarbutton-1 {
+	background: var(--gnome-tabbar-tab-background) !important;
+	background-color: var(--gnome-tabbar-tab-background) !important;
+}
+#TabsToolbar .toolbarbutton-1:hover {
+	background: var(--gnome-tabbar-tab-hover-background) !important;
+	background-color: var(--gnome-tabbar-tab-hover-background) !important;
+}
 /* Active tab */
 .tab-background[selected=true] {
 	background-color: var(--gnome-tabbar-tab-active-background) !important;
