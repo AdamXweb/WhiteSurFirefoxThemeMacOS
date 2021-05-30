@@ -355,6 +355,13 @@ tab[selected]:-moz-window-inactive {
 #tabbrowser-tabs[closebuttons="activetab"]>#tabbrowser-arrowscrollbox>.tabbrowser-tab>.tab-stack>.tab-content>.tab-icon-stack[selected="true"] {
 	margin-left: auto !important;
 }
+/* Fix website with no favicon centred text */
+.tabbrowser-tab:not([image]) .tab-icon-overlay:not([pinned], [sharing], [crashed]) .tab-icon-stack {
+	margin-left: 0 !important
+}
+.tabbrowser-tab:not([image]) .tab-icon-stack {
+	margin-left: 0 !important
+}
 
 @media (-moz-proton) {
 	/* Firefox v89 beta tab fix */
@@ -369,5 +376,14 @@ tab[selected]:-moz-window-inactive {
 	/* fix misc spacing between tabs */
 	.tabbrowser-tab {
 		padding-inline: 0px !important;
+	}
+	.tabbrowser-tab[selected="true"]>.tab-stack>.tab-background {
+		margin-left: 0px !important;
+		margin-right: 0px !important;
+	}
+	/* centre text when audio is playing */
+	.tabbrowser-tab:is([soundplaying]) .tab-label-container {
+		margin-left: 0 !important;
+		margin-right: auto !important
 	}
 }
