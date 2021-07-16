@@ -2,7 +2,7 @@
 
 <p align="center">A <code>MacOS</code> & <code>Windows</code> Firefox theme to look more like Big Sur Safari. (For Firefox 70+)</p>
 
-![Preview](whitesur.gif?raw=true)
+![Preview](githubpreview/whitesur.gif?raw=true)
 
 ## Description
 
@@ -87,9 +87,9 @@ Thanks!
 ## Screenshot
 
 ### Windows
-![Preview](whitesurwindows.gif?raw=true)
+![Preview](githubpreview/whitesurwindows.gif?raw=true)
 
 
 ### MacOS
-![Preview](whitesur.gif?raw=true)
+![Preview](githubpreview/whitesur.gif?raw=true)
 
