@@ -397,4 +397,8 @@ tab[selected]:-moz-window-inactive {
 		margin-left: 0 !important;
 		margin-right: auto !important
 	}
+	/* Centre text when tab is loading with the throbber*/
+	.tabbrowser-tab:is([busy]) .tab-icon-stack {
+		margin-left: auto !important;
+	}
 }
