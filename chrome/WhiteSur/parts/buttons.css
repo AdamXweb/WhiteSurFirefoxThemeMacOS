@@ -156,8 +156,13 @@ menulist>menupopup>menucaption,
 menulist>menupopup>menu {
 	max-width: none;
 	color: var(--gnome-button-menulist-color) !important;
+	background: var(--gnome-button-background) !important;
 }
-
+menulist>menupopup>menuitem:hover,
+menulist>menupopup>menucaption,
+menulist>menupopup>menu {
+	background: var(--gnome-button-hover-background) !important;
+}
 /* Disabled buttons */
 #appMenu-popup .toolbaritem-combined-buttons toolbarbutton[disabled],
 #context-navigation menuitem[disabled],
