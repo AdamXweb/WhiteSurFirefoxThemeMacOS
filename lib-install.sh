@@ -42,6 +42,18 @@ cd "${LOC}"
 /' chrome/WhiteSur/theme.css
   echo "Standard URL bar configured"
 fi
+# if no identity line icon is wanted
+if [ "$NOLINE" = true ] ; then
+	echo "Removing Facebook / Multi account Identity line"
+    cd "${REPO_DIR}"
+    echo `pwd`
+    echo "${REPO_DIR}"
+      cp -rf "${REPO_DIR}/custom/noidentity.css"              "${FIREFOX_DIR_HOME}/"*"default-release/chrome/WhiteSur/parts"
+cd "${LOC}"
+        sed -i '.bak.css' '17s/^/@import "parts\/noidentity.css";\
+/' chrome/WhiteSur/theme.css
+  echo "No identity lines configured"
+fi
 # Copy settings to enable stylesheets in firefox automatically.
   for d in "${FIREFOX_DIR_HOME}/"*"default-release"; do
     echo "user_pref(\"toolkit.legacyUserProfileCustomizations.stylesheets\", true);" >> "${d}/prefs.js"

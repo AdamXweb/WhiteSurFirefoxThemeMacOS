@@ -9,6 +9,13 @@
 	min-height: initial !important;
 }
 
+/* Fix pinned tabs height where tabs amount activates scrollbox*/
+.tabbrowser-tab {
+	min-height: var(--tab-min-height);
+	padding-inline: 2px !important;
+}
+
+
 tab>stack {
 	height: 32px !important;
 }
