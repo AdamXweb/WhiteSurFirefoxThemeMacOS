@@ -2,10 +2,14 @@
 
 /* Place the close buttons on the right hand side*/
 :root[tabsintitlebar] #titlebar .titlebar-buttonbox-container, :root[tabsintitlebar] #titlebar-buttonbox-container, :root[tabsintitlebar][inFullscreen] #window-controls {
-    left:auto;
+    left:auto !important;
     right: 8px;
 
 }
+
+ :root[tabsintitlebar][inFullscreen] #window-controls{
+     right: 15px !important;
+ }
 /* Give padding to the close bar */
 #nav-bar {
     padding-left: 10px !important;
