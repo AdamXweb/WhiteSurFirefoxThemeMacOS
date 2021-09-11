@@ -174,3 +174,7 @@ toolbarspring {
 	margin-inline: 4px !important;
 	padding: 8px 0 !important;
 }
+/* Fix for firefox v92 onwards that changed icon size on MacOS*/
+.urlbar-page-action {
+padding: inherit !important;
+}
