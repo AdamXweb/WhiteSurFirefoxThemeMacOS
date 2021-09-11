@@ -114,8 +114,7 @@ findbar {
 
 /* bookmark-item */
 toolbarbutton.bookmark-item {
-	padding: 0 4px;
-	 !important;
+	padding: 0 4px !important;
 	margin: 0 2px !important;
 	border-radius: 3px !important;
 	max-height: 20px !important;
