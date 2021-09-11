@@ -378,6 +378,12 @@ tab[selected]:-moz-window-inactive {
 #tabbrowser-tabs arrowscrollbox {
 	height: 36px !important;
 }
+/* Fix proton padding with moving tab (dragging) #45 */
+#tabbrowser-tabs[movingtab]{
+	padding-bottom:0 !important;
+	margin-bottom: 0 !important;
+}
+
 /* Fix website with no favicon centred text */
 .tabbrowser-tab:not([image]) .tab-icon-overlay:not([pinned], [sharing], [crashed]) .tab-icon-stack {
 	margin-left: 0 !important
