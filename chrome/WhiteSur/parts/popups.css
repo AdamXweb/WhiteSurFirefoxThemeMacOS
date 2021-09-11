@@ -39,10 +39,12 @@ menupopup menu[disabled="true"]:hover {
 	background: transparent !important;
 }
 
-/* Adjust popovers position */
+/* Adjust popovers position, includes background colour with transparency */
 panel[type=arrow] {
 	margin-top: 9px !important;
 	max-height: 80vh !important;
+	--panel-background: var(--gnome-popover-background) !important;
+	font:inherit !important;
 }
 
 /* Style popovers */
@@ -58,8 +60,8 @@ panelview {
 }
 
 .panel-arrowcontent {
-	background: var(--gnome-popover-background) !important;
-	border: 1px solid !important;
+	--panel-background: var(--gnome-popover-background) !important;
+	font:inherit !important;
 	border-color: var(--gnome-popover-border-color) !important;
 	border-radius: 9px !important;
 	/* box-shadow: var(--gnome-popover-shadow) !important; */
@@ -74,6 +76,7 @@ panelview {
 
 .PanelUI-subView toolbarseparator:not([orient="vertical"]) {
 	margin: 10px 2px !important;
+	/* min-width:30em; */
 }
 
 .panel-header {
@@ -103,10 +106,12 @@ panelview {
 .subviewbutton:not(.subviewbutton-back),
 .toolbarbutton-1,
 .protections-popup-category,
+.protections-popup-category[disabled],
 .identity-popup-content-blocking-category {
 	border-radius: 8px !important;
 	color: var(--gnome-toolbar-color) !important;
 	font: menu !important;
+	-moz-box-pack: inherit !important;
 }
 
 .subviewbutton:not(.subviewbutton-back),
@@ -117,7 +122,6 @@ panelview {
 
 .subviewbutton[disabled],
 .toolbarbutton-1[disabled],
-.protections-popup-category[disabled],
 .identity-popup-content-blocking-category[disabled] {
 	opacity: 0.5 !important;
 	color: var(--gnome-inactive-toolbar-color) !important;
@@ -163,4 +167,15 @@ toolbarseparator[orient="vertical"] {
 	#context-navigation>.menuitem-iconic[_moz-menuactive="true"]:not([disabled="true"])>.menu-iconic-left>.menu-iconic-icon {
 		background-color: transparent !important;
 	}
+}
+
+/* fix padding for menu items*/
+#appMenu-popup panelview,
+#PanelUI-fxa {
+	padding: 8px !important;
+}
+/* fix menu button padding and alignment*/
+#PanelUI-menu-button {
+	padding-inline-end: 0px !important;
+	padding-left: 0px !important;
 }

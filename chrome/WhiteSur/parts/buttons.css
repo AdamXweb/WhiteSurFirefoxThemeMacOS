@@ -29,7 +29,6 @@
 .menulist-label-box,
 .expander-down, .expander-up,
 .notification-button,
-.protections-popup-footer-button,
 .identity-popup-permission-remove-button,
 #identity-popup-security-expander,
 #PanelUI-panic-view-button,
@@ -60,12 +59,11 @@
 #tracking-protection-preferences-button:not(#hack),
 .findbar-container toolbarbutton.findbar-button,
 .notification-button,
-.protections-popup-footer-button,
 #PanelUI-panic-view-button,
 .tracking-protection-button,
 .dialog-button {
 	padding: 2px 10px !important;
-	text-align: center !important;
+	text-align: left !important;
 }
 
 .subviewbutton.panel-subview-footer label {
@@ -117,6 +115,7 @@ menulist:hover .menulist-label-box,
 .identity-popup-permission-remove-button:hover,
 #identity-popup-security-expander:hover,
 .tracking-protection-button:hover,
+#protections-popup-show-report-stack:hover>.protections-popup-footer-button,
 .dialog-button:hover {
 	outline: 0 !important;
 	background: var(--gnome-button-hover-background) !important;

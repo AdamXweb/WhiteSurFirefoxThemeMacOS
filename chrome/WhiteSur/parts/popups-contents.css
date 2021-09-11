@@ -108,7 +108,7 @@
 	margin-top: 10px;
 	z-index: 10;
 }
-#customization-panelWrapper > .panel-arrowbox {    
+#customization-panelWrapper > .panel-arrowbox {
 	margin-bottom: -5px !important;
 }
 
@@ -258,12 +258,12 @@
 #protections-popup-footer  {
 	padding: 0 !important;
 }
-
+/* Fix popup display*/
 #protections-popup-footer  {
-	display: flex;
+	display: inherit;
 	justify-content: flex-end;
 	flex-wrap: wrap;
-	margin-top: 3px;
+	margin: 4px;
 }
 #protections-popup-show-report-stack {
 	width: 100% !important;
