@@ -76,11 +76,10 @@ panelview {
 
 .PanelUI-subView toolbarseparator:not([orient="vertical"]) {
 	margin: 10px 2px !important;
-	/* min-width:30em; */
 }
 
 .panel-header {
-	padding: 0 0 10px 0 !important;
+	padding: 10px 0 10px 0 !important;
 }
 
 .panel-footer {
@@ -178,4 +177,9 @@ toolbarseparator[orient="vertical"] {
 #PanelUI-menu-button {
 	padding-inline-end: 0px !important;
 	padding-left: 0px !important;
+}
+/* Fix alignment of menu*/
+panel[type="arrow"][side="top"],
+panel[type="arrow"][side="bottom"] {
+	margin-inline: -20px !important;
 }
