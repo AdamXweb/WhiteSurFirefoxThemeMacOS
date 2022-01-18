@@ -392,7 +392,7 @@ tab[selected]:-moz-window-inactive {
 	margin-left: 0 !important
 }
 
-@media (-moz-proton) {
+/* @media (-moz-proton) { */
 	/* Firefox v89 beta tab fix */
 	.tab-background {
 		border-radius: 0 !important;
@@ -419,4 +419,4 @@ tab[selected]:-moz-window-inactive {
 	.tabbrowser-tab:is([busy]) .tab-icon-stack {
 		margin-left: auto !important;
 	}
-}
+/* } */
