@@ -1,14 +1,15 @@
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
 /* Place the close buttons on the right hand side*/
-:root[tabsintitlebar] #titlebar .titlebar-buttonbox-container, :root[tabsintitlebar] #titlebar-buttonbox-container, :root[tabsintitlebar][inFullscreen] #window-controls {
+:root[tabsintitlebar] #titlebar .titlebar-buttonbox-container, :root[tabsintitlebar] #titlebar-buttonbox-container {
     left:auto !important;
     right: 8px;
 
 }
 
  :root[tabsintitlebar][inFullscreen] #window-controls{
-     right: 15px !important;
+    right: 2px !important;
+    top: 18px !important;
  }
 /* Give padding to the close bar */
 #nav-bar {
@@ -19,3 +20,21 @@
 .titlebar-close {
     -moz-box-ordinal-group: 1 !important;
 }
+
+/* fix fullscreen issue on window TBCs*/
+:root[tabsintitlebar][inFullscreen] #window-controls .minimize-button, :root[tabsintitlebar][inFullscreen] #window-controls .close-button{
+    display:none !important;
+}
+
+/* adjust positioning of exit fullscreen button */
+:root[tabsintitlebar][inFullscreen] #window-controls {
+    right: 2px !important;
+    top: 18px !important;
+}
+:root[tabsintitlebar][inFullscreen] #nav-bar {
+    padding-right: 70px !important;
+  }
+
+  :root[tabsintitlebar][inFullscreen]  #titlebar .titlebar-buttonbox-container{
+    -moz-box-ordinal-group: 1000 !important;
+    }
