@@ -18,6 +18,12 @@
     :root[tabsintitlebar]:not([sizemode="maximized"]) #titlebar .titlebar-buttonbox-container {
         top: 17px !important;
         padding: 0 3px 0 15px !important;
+       
+    }
+    :root[tabsintitlebar][inFullscreen]  #titlebar .titlebar-buttonbox-container{
+    margin-top: -34px;
+    margin-bottom: 44px !important;
+    -moz-box-ordinal-group: 0 !important;
     }
 
     tab {
