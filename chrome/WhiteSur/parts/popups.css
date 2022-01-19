@@ -183,3 +183,47 @@ panel[type="arrow"][side="top"],
 panel[type="arrow"][side="bottom"] {
 	margin-inline: -20px !important;
 }
+
+/* Fix bookmarks v92 */
+menuseparator {
+	-moz-appearance: none !important;
+	padding-top: 0px !important;
+	padding-bottom: 0px !important;
+	margin-top: 3px !important;
+	margin-bottom: 2px !important;
+}
+menupopup>menuitem,
+menupopup>menu {
+	padding-block: 2px !important;
+	min-height: unset !important;
+}
+#PlacesToolbar menupopup,
+#PlacesToolbar menu:not([disabled], :active) {
+	--arrowpanel-background: transparent !important;
+	--arrowpanel-border-radius: 0px !important;
+}
+#PlacesToolbar menu:[_moz-menuactive],
+#PlacesToolbar menu:active,
+toolbarbutton.bookmark-item[open="true"] {
+	background-color: var(--gnome-button-active-background) !important;
+}
+.bookmark-item:hover {
+	background-color: var(--gnome-popover-button-hover-background) !important;
+
+}
+#PlacesToolbar menuitem:hover{
+	color: var(--gnome-button-menulist-color) !important;
+} 
+
+#PlacesToolbar menupopup[placespopup="true"] {
+    border: none !important;
+}
+#PlacesToolbar menupopup[placespopup="true"]::part(arrowscrollbox) {
+    background: transparent !important;
+}
+.menupopup-arrowscrollbox{
+	background: transparent !important;
+	border: 0 !important;
+}
+
+_moz-menuactive
