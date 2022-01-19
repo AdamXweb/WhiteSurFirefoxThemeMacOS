@@ -81,7 +81,7 @@ menu:not([disabled]):hover > .menu-right {
 #urlbar[pageproxystate="invalid"] > #identity-box > #identity-icon,
 .searchbar-search-icon,
 #search-box .textbox-search-sign {
-	list-style-image: url(../icons/edit-find-symbolic.svg) !important;
+	list-style-image: url("../icons/edit-find-symbolic.svg") !important;
 	opacity: 0.7 !important;
 }
 #search-box .textbox-search-sign {

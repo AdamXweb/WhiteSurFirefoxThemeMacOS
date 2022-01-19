@@ -8,11 +8,11 @@
 	content: "";
 	display: block;
 	position: absolute;
-	width: 32px;
-	height: 32px;
-	top: 8px;
+	width: 20px;
+	height: 20px;
+	top: 15px;
 	opacity: 0.3;
-	transform: translate(15px, 0);
+	transform: translate(5px, 0);
 }
 
 :root[privatebrowsingmode="temporary"] #nav-bar toolbarspring:first-of-type:-moz-lwtheme-brighttext:before {
