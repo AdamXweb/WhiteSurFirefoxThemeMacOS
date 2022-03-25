@@ -198,3 +198,10 @@ menulist {
 #identity-popup-security-expander .button-icon {
 	margin: 0 !important;
 }
+
+#tracking-protection-icon-container:hover:not([open="true"]), .identity-box-button:hover:not([open="true"]), .urlbar-page-action:not([disabled]):hover, #urlbar-go-button:hover, .search-go-button:hover, #identity-box[pageproxystate="valid"].extensionPage > .identity-box-button:hover:not([open]){
+	--urlbar-box-hover-bgcolor: var(--gnome-button-hover-color) !important;
+}
+#identity-box[pageproxystate="valid"].extensionPage > .identity-box-button{
+	background:var(--gnome-button-active-background) !important;
+}

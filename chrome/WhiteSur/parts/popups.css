@@ -226,4 +226,41 @@ toolbarbutton.bookmark-item[open="true"] {
 	border: 0 !important;
 }
 
-_moz-menuactive
+/* Update close button styling */
+:root[dialogroot], :host(dialog) {
+	--in-content-page-background: var(--gnome-menu-background) !important;
+  }
+  /* Cancel or secondary */
+  .dialog-button-box>button{
+	background-color: var(--gnome-button-active-background-alt) !important;
+	color: var(--gnome-button-menulist-color) !important;
+	border: 1px solid var(--gnome-button-active-background-alt-border);
+  }
+  xul|button:not([disabled="true"]):hover{
+  	background-color: var(--gnome-button-active-background-alt-hover) !important;
+	color: var(--gnome-button-menulist-color) !important;
+	border: 1px solid var(--gnome-button-active-background-alt-border);
+	border-color: var(--gnome-button-active-border-color) !important;
+  }
+  /* Quit or primary button */
+  xul|button[default]{
+	background-color: var(--gnome-button-suggested-action-background) !important;
+	color: var(--gnome-button-menulist-color) !important;
+	border-color: var(--gnome-button-suggested-action-border-color) !important;
+  }
+  xul|button[default]:not([disabled="true"]):hover{
+	background-color: var(--gnome-button-suggested-action-hover-background) !important;
+	color: var(--gnome-button-menulist-color) !important;
+	border-color: var(--gnome-button-suggested-action-border-color) !important;
+  }
+  button:focus-visible{
+	outline: 2px solid var(--theme-primary-color) !important;
+  }
+/*  checkbox */
+.checkbox-check[checked]{
+	background-color: var(--theme-primary-color) !important;
+	color: var(--theme-alt-color) !important;
+}
+  checkbox:not([disabled="true"]):hover > .checkbox-check[checked] {
+	background-color: var(--gnome-switch-active-background, color-mix(in srgb, currentColor 12.5%, var(--theme-primary-color))) !important;
+  }
