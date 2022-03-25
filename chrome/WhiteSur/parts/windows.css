@@ -58,4 +58,8 @@
     #nav-bar {
         padding-left: 75px !important;
     }
+    
+    .PanelUI-subView{
+        background: var(--gnome-menu-background) !important;
+    }
 }
