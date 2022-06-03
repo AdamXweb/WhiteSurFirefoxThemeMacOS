@@ -358,13 +358,12 @@ button.popup-notification-primary-button.popup-notification-button:active,
 
 /* User sync menu, bigger avatar */
 #fxa-toolbar-menu-button .toolbarbutton-badge-stack {
-	padding: 0 !important;
 	margin: 0 !important;
 }
 
 #fxa-avatar-image {
-	height: 26px !important;
+	height: 16px !important;
 	margin: 0 !important;
 	padding: 0 !important;
-	width: 26px !important;
+	width: 16px !important;
 }
