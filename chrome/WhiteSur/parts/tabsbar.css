@@ -122,12 +122,13 @@ tab[selected]:-moz-window-inactive {
 
 /* Put tab close button and icon sound to the right */
 .tab-icon-sound[soundplaying="true"],
-.tab-icon-sound[muted="true"],
 .tab-icon-sound[activemedia-blocked="true"] {
 	margin-left: auto !important;
 }
-
-.tabbrowser-tab:not([soundplaying]):not([muted]):not([activemedia-blocked]) .tab-close-button {
+/* In case firefox changes, muted icon fix can be changed here */
+.tabbrowser-tab:not([soundplaying]):not([muted]):not([activemedia-blocked]) .tab-close-button,
+.tabbrowser-tab[soundplaying-scheduledremoval="true"] .tab-icon-stack,
+.tabbrowser-tab .tab-icon-stack[muted="true"]:not([soundplaying-scheduledremoval="true"]) {
 	margin-left: auto !important;
 }
 
@@ -161,7 +162,8 @@ tab[selected]:-moz-window-inactive {
 #tabbrowser-tabs[closebuttons="activetab"] .tabbrowser-tab:not([selected="true"]) .tab-throbber-fallback,
 #tabbrowser-tabs[closebuttons="activetab"] .tabbrowser-tab:not([selected="true"]):not([busy]) .tab-icon-image,
 #tabbrowser-tabs[closebuttons="activetab"] .tabbrowser-tab:not([selected="true"]):not([image]) .tab-label-container,
-#tabbrowser-tabs[closebuttons="activetab"] .tabbrowser-tab:not([selected="true"]) .tab-icon-stack {
+#tabbrowser-tabs[closebuttons="activetab"] .tabbrowser-tab:not([selected="true"]) .tab-icon-stack
+{
 	margin-left: 0 !important;
 }
 
@@ -412,8 +414,9 @@ tab[selected]:-moz-window-inactive {
 		margin-left: 0px !important;
 		margin-right: 0px !important;
 	}
-	/* centre text when audio is playing */
-	.tabbrowser-tab:is([soundplaying]) .tab-label-container {
+	/* centre text when audio is playing & muted*/
+	.tabbrowser-tab:is([soundplaying]) .tab-label-container,
+	.tabbrowser-tab[muted="true"] .tab-label-container{
 		margin-left: 0 !important;
 		margin-right: auto !important
 	}
