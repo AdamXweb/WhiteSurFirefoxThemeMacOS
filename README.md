@@ -1,6 +1,8 @@
 ## Firefox WhiteSur theme
-![Preview](githubpreview/safarifirefox.png?raw=true)
-<p align="center">A <code>MacOS</code> & <code>Windows</code> Firefox theme to look more like Big Sur Safari. (For Firefox 70+)</p>
+<p align="center">
+<img width="120" src="https://github.com/AdamXweb/WhiteSurFirefoxThemeMacOS/raw/master/githubpreview/safarifirefox.png?raw=true">
+	<br>
+A <code>MacOS</code> & <code>Windows</code> Firefox theme to look more like Big Sur Safari. (For Firefox 70+)</p>
 
 ![Preview](githubpreview/whitesur.gif?raw=true)
 
