@@ -278,8 +278,27 @@ menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
 	animation: none !important;
 }
 
-#identity-icon {
+#identity-box[pageproxystate="valid"].verifiedDomain #identity-icon,
+#identity-box[pageproxystate="valid"].mixedActiveBlocked #identity-icon {
 	list-style-image: url("../icons/folder-locked-symbolic.svg") !important;
+}
+
+#identity-box[pageproxystate="valid"].weakCipher #identity-icon,
+#identity-box[pageproxystate="valid"].mixedDisplayContent #identity-icon,
+#identity-box[pageproxystate="valid"].mixedDisplayContentLoadedActiveBlocked #identity-icon,
+#identity-box[pageproxystate="valid"].certUserOverridden #identity-icon,
+#identity-box[pageproxystate="valid"].certErrorPage #identity-icon {
+	list-style-image: url("../icons/security-warning-symbolic.svg") !important;
+}
+
+#identity-box[pageproxystate="valid"].notSecure #identity-icon,
+#identity-box[pageproxystate="valid"].mixedActiveContent #identity-icon,
+#identity-box[pageproxystate="valid"].httpsOnlyErrorPage #identity-icon {
+	list-style-image: url("../icons/security-broken-symbolic.svg") !important;
+}
+
+#identity-box[pageproxystate="valid"].localResource #identity-icon {
+	list-style-image: url("../icons/page-symbolic.svg") !important;
 }
 
 #pageActionButton, .share-more-button {
