@@ -64,6 +64,7 @@ The solution if you don't want to change your System UI colour is to do add the 
 Add: `ui.systemUsesDarkTheme` with the number value with 1 for dark, and 0 for light.\
 ![Screen Shot 2021-05-04 at 7 10 19 pm](https://user-images.githubusercontent.com/6800453/116982626-60317980-ad0c-11eb-96aa-0879b05c98fc.png)
 
+Please note, you won't be able to change the System UI colour if you are using `privacy.resistFingerprinting`. This apparently is for both web pages and the System UI.
 
 ## Known bugs
 
