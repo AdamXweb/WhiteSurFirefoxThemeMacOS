@@ -34,7 +34,7 @@ e.g. To install with script, with close button left hand side: `bash install.sh 
 
 ### Manual installation (MacOS & Windows)
 
-Copy `chrome` and `configuration` folers into your Firefox Profile Directory
+Copy `chrome` and `configuration` folders into your Firefox Profile Directory
 
 To find your Firefox Profile Directory you can:
 
