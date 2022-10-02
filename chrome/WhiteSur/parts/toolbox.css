@@ -10,7 +10,7 @@
 /* Toolbox colors */
 #navigator-toolbox {
 	border: 0 !important;
-	background: none !important;
+	background: var(--lwt-accent-color) !important;
 }
 
 
