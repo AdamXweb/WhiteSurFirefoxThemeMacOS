@@ -2,6 +2,11 @@
 
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
+/*Buttons to the right*/
+#page-action-buttons {
+	filter: saturate(0%) !important;
+}
+
 #urlbar {
 	--urlbar-height: 32.00px;
 	--urlbar-toolbar-height: 32.00px !important;
@@ -36,7 +41,6 @@ toolbarspring {
 	background: var(--gnome-popover-background) !important;
 	border-radius: 8px !important;
 	opacity: 0.8 !important;
-	filter: saturate(0%) !important;
 	transition: opacity 0.4s !important;
 }
 #urlbar:hover,
