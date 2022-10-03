@@ -127,11 +127,11 @@ tab[selected]:-moz-window-inactive {
 }
 
 /* In case firefox changes, muted icon fix can be changed here */
-.tabbrowser-tab:not([soundplaying]):not([muted]):not([activemedia-blocked]) .tab-close-button,
+/* .tabbrowser-tab:not([soundplaying]):not([muted]):not([activemedia-blocked]) .tab-close-button,
 .tabbrowser-tab[soundplaying-scheduledremoval="true"] .tab-icon-stack,
 .tabbrowser-tab .tab-icon-stack[muted="true"]:not([soundplaying-scheduledremoval="true"]) {
 	margin-left: auto !important;
-}
+} */
 
 .tab-icon-sound {
 	margin-right: 6px;
@@ -153,6 +153,7 @@ tab[selected]:-moz-window-inactive {
 /* If tab favicon is not present, force tab label to the center */
 .tabbrowser-tab .tab-label-container {
 	margin-left: 0 !important;
+	margin-right: auto !important;
 }
 
 .tabbrowser-tab:not([image]):not([busy]):not([progress]) .tab-label-container {
@@ -185,6 +186,7 @@ tab[selected]:-moz-window-inactive {
 }
 
 .tab-close-button {
+	order: -1;
 	-moz-appearance: none !important;
 	border: none !important;
 	box-sizing: content-box;
