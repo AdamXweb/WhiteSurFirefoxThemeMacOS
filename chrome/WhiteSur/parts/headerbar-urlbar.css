@@ -3,14 +3,21 @@
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
 /*Buttons to the right*/
-#page-action-buttons {
+#urlbar #page-action-buttons {
 	filter: saturate(0%) !important;
+}
+
+#urlbar:hover #page-action-buttons,
+#urlbar[focused] #page-action-buttons{
+	opacity: 1 !important;
+	filter: saturate(100%) !important;
 }
 
 #urlbar {
 	--urlbar-height: 32.00px;
 	--urlbar-toolbar-height: 32.00px !important;
 }
+
 /* Centre URL bar text input*/
 #urlbar-input {
 	transition: transform .1s linear;
@@ -20,6 +27,7 @@
 	width: 50%;
 	text-align: center !important;
 }
+
 /* Unless text input is selected like safari*/
 #urlbar[focused] #urlbar-input {
 	position: absolute;
@@ -43,12 +51,13 @@ toolbarspring {
 	opacity: 0.8 !important;
 	transition: opacity 0.4s !important;
 }
+
 #urlbar:hover,
-#urlbar[focused]{
+#urlbar[focused] {
 	opacity: 1 !important;
 	filter: saturate(100%) !important;
-
 }
+
 #urlbar-background {
 	box-shadow: none !important;
 	border: 0 !important;
@@ -63,10 +72,12 @@ toolbarspring {
 	z-index: 5 !important;
 	padding: 0 !important;
 }
+
 #urlbar[breakout][breakout-extend][open] {
 	height: auto !important;
 	max-height: unset !important;
 }
+
 #urlbar[breakout][breakout-extend] #urlbar-input-container {
 	height: 32px !important;
 	max-height: 32px !important;
@@ -97,9 +108,11 @@ toolbarspring {
 	border: 0 !important;
 }
 
-.urlbarView-row-inner, .urlbarView-no-wrap  {
+.urlbarView-row-inner,
+.urlbarView-no-wrap {
 	align-items: center !important;
 }
+
 .urlbarView-row-inner {
 	padding-block: 5px !important;
 	border-radius: 5px !important;
@@ -129,15 +142,20 @@ toolbarspring {
 	min-width: 34px !important;
 	margin: 0 !important;
 }
-.searchbar-engine-one-off-item:hover, .searchbar-engine-one-off-item[selected] {
+
+.searchbar-engine-one-off-item:hover,
+.searchbar-engine-one-off-item[selected] {
 	background: var(--gnome-button-hover-background) !important;
 	color: unset !important;
 }
+
 .searchbar-engine-one-off-item:first-child {
 	border-radius: 5px 0 0 5px;
 	border-left-width: 1px !important;
 }
-.searchbar-engine-one-off-item.last-engine, .searchbar-engine-one-off-item:last-child {
+
+.searchbar-engine-one-off-item.last-engine,
+.searchbar-engine-one-off-item:last-child {
 	border-radius: 0 5px 5px 0;
 }
 
@@ -152,10 +170,12 @@ toolbarspring {
 #urlbar[focused] .urlbar-textbox-container {
 	margin: -1px !important;
 }
-#searchbar > .searchbar-textbox[focused] .searchbar-search-button {
+
+#searchbar>.searchbar-textbox[focused] .searchbar-search-button {
 	margin-left: -1px !important;
 }
-#searchbar > .searchbar-textbox[focused] .search-go-button {
+
+#searchbar>.searchbar-textbox[focused] .search-go-button {
 	margin-right: -1px !important;
 }
 
@@ -172,13 +192,15 @@ toolbarspring {
 	background-color: transparent !important;
 	fill-opacity: 1 !important;
 }
+
 .urlbar-icon {
 	height: 16px !important;
 	width: 16px !important;
 	margin-inline: 4px !important;
 	padding: 8px 0 !important;
 }
+
 /* Fix for firefox v92 onwards that changed icon size on MacOS*/
 .urlbar-page-action {
-padding: inherit !important;
+	padding: inherit !important;
 }

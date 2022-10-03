@@ -44,7 +44,7 @@ panel[type=arrow] {
 	margin-top: 9px !important;
 	max-height: 80vh !important;
 	--panel-background: var(--gnome-popover-background) !important;
-	font:inherit !important;
+	font: inherit !important;
 }
 
 /* Style popovers */
@@ -61,7 +61,7 @@ panelview {
 
 .panel-arrowcontent {
 	--panel-background: var(--gnome-popover-background) !important;
-	font:inherit !important;
+	font: inherit !important;
 	border-color: var(--gnome-popover-border-color) !important;
 	border-radius: 9px !important;
 	/* box-shadow: var(--gnome-popover-shadow) !important; */
@@ -151,16 +151,19 @@ toolbarseparator:not([orient="vertical"]) {
 toolbarseparator[orient="vertical"] {
 	margin: 0 3px !important;
 }
+
 #contentAreaContextMenu menuitem image,
 #contentAreaContextMenu menu image {
 	visibility: visible !important;
 }
+
 /* Webchat e.g. google meet share screen display select*/
-#webRTC-selectWindow-menulist{
+#webRTC-selectWindow-menulist {
 	color: var(--gnome-inactive-urlbar-color) !important;
 	background: var(--gnome-button-hover-background) !important;
 	border-radius: 5px;
 }
+
 /* Proton right click menu*/
 @media (-moz-proton) {
 	#context-navigation>.menuitem-iconic[_moz-menuactive="true"]:not([disabled="true"])>.menu-iconic-left>.menu-iconic-icon {
@@ -173,11 +176,13 @@ toolbarseparator[orient="vertical"] {
 #PanelUI-fxa {
 	padding: 8px !important;
 }
+
 /* fix menu button padding and alignment*/
 #PanelUI-menu-button {
 	padding-inline-end: 0px !important;
 	padding-left: 0px !important;
 }
+
 /* Fix alignment of menu*/
 panel[type="arrow"][side="top"],
 panel[type="arrow"][side="bottom"] {
@@ -192,75 +197,90 @@ menuseparator {
 	margin-top: 3px !important;
 	margin-bottom: 2px !important;
 }
+
 menupopup>menuitem,
 menupopup>menu {
 	padding-block: 2px !important;
 	min-height: unset !important;
 }
+
 #PlacesToolbar menupopup,
 #PlacesToolbar menu:not([disabled], :active) {
 	--arrowpanel-background: transparent !important;
 	--arrowpanel-border-radius: 0px !important;
 }
-#PlacesToolbar menu:[_moz-menuactive],
+
+#PlacesToolbar menu[_moz-menuactive],
 #PlacesToolbar menu:active,
 toolbarbutton.bookmark-item[open="true"] {
 	background-color: var(--gnome-button-active-background) !important;
 }
+
 .bookmark-item:hover {
 	background-color: var(--gnome-popover-button-hover-background) !important;
 
 }
-#PlacesToolbar menuitem:hover{
+
+#PlacesToolbar menuitem:hover {
 	color: var(--gnome-button-menulist-color) !important;
-} 
+}
 
 #PlacesToolbar menupopup[placespopup="true"] {
-    border: none !important;
+	border: none !important;
 }
+
 #PlacesToolbar menupopup[placespopup="true"]::part(arrowscrollbox) {
-    background: transparent !important;
+	background: transparent !important;
 }
-.menupopup-arrowscrollbox{
+
+.menupopup-arrowscrollbox {
 	background: transparent !important;
 	border: 0 !important;
 }
 
 /* Update close button styling */
-:root[dialogroot], :host(dialog) {
+:root[dialogroot],
+:host(dialog) {
 	--in-content-page-background: var(--gnome-menu-background) !important;
-  }
-  /* Cancel or secondary */
-  .dialog-button-box>button{
+}
+
+/* Cancel or secondary */
+.dialog-button-box>button {
 	background-color: var(--gnome-button-active-background-alt) !important;
 	color: var(--gnome-button-menulist-color) !important;
 	border: 1px solid var(--gnome-button-active-background-alt-border);
-  }
-  xul|button:not([disabled="true"]):hover{
-  	background-color: var(--gnome-button-active-background-alt-hover) !important;
+}
+
+xul|button:not([disabled="true"]):hover {
+	background-color: var(--gnome-button-active-background-alt-hover) !important;
 	color: var(--gnome-button-menulist-color) !important;
 	border: 1px solid var(--gnome-button-active-background-alt-border);
 	border-color: var(--gnome-button-active-border-color) !important;
-  }
-  /* Quit or primary button */
-  xul|button[default]{
+}
+
+/* Quit or primary button */
+xul|button[default] {
 	background-color: var(--gnome-button-suggested-action-background) !important;
 	color: var(--gnome-button-menulist-color) !important;
 	border-color: var(--gnome-button-suggested-action-border-color) !important;
-  }
-  xul|button[default]:not([disabled="true"]):hover{
+}
+
+xul|button[default]:not([disabled="true"]):hover {
 	background-color: var(--gnome-button-suggested-action-hover-background) !important;
 	color: var(--gnome-button-menulist-color) !important;
 	border-color: var(--gnome-button-suggested-action-border-color) !important;
-  }
-  button:focus-visible{
+}
+
+button:focus-visible {
 	outline: 2px solid var(--theme-primary-color) !important;
-  }
+}
+
 /*  checkbox */
-.checkbox-check[checked]{
+.checkbox-check[checked] {
 	background-color: var(--theme-primary-color) !important;
 	color: var(--theme-alt-color) !important;
 }
-  checkbox:not([disabled="true"]):hover > .checkbox-check[checked] {
+
+checkbox:not([disabled="true"]):hover>.checkbox-check[checked] {
 	background-color: var(--gnome-switch-active-background, color-mix(in srgb, currentColor 12.5%, var(--theme-primary-color))) !important;
-  }
+}
