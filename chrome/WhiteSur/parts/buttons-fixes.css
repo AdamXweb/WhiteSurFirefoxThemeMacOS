@@ -170,6 +170,10 @@ menulist {
 	margin-right: 0 !important;
 }
 
+#appMenu-protonMainView .toolbarbutton-text {
+	margin: 2px !important;
+}
+
 /* Bookmarks editor buttons */
 .expander-down image,
 .expander-up image {

@@ -403,7 +403,7 @@ menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
 
 /* Invert icons color in dark variant */
 @media (prefers-color-scheme: dark) {
-	.PanelUI-subView .subviewbutton-nav::after,
+	/* .PanelUI-subView .subviewbutton-nav::after,
 	.protections-popup-category::after,
 	.identity-popup-content-blocking-category::after,
 	#identity-popup-security-expander .button-icon,
@@ -484,8 +484,8 @@ menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
 	#star-button:not([starred]),
 	#plugins-notification-icon:not(.plugin-blocked)>.plugin-icon,
 	.bookmark-item[container] .toolbarbutton-icon {
-		/* filter: invert(60%) brightness(150%); */
-	}
+		filter: invert(60%) brightness(150%);
+	} */
 
 	#pocket-button,
 	#pageAction-panel-pocket {

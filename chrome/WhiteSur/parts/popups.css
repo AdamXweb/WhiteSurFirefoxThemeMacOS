@@ -131,7 +131,7 @@ panelview {
 	opacity: 0.5 !important;
 }
 
-.subviewbutton:not([disabled]):hover,
+.subviewbutton:not([disabled]):not(#appMenu-fxa-status2):hover,
 .toolbarbutton-1:not([disabled]):hover,
 .protections-popup-category:not([disabled]):hover,
 .identity-popup-content-blocking-category:not([disabled]):hover {
@@ -174,7 +174,11 @@ toolbarseparator[orient="vertical"] {
 /* fix padding for menu items*/
 #appMenu-popup panelview,
 #PanelUI-fxa {
-	padding: 8px !important;
+	padding: 0 0 8px 0 !important;
+}
+
+#widget-overflow panelview {
+	padding: 8px 0 0 0 !important;
 }
 
 /* fix menu button padding and alignment*/
