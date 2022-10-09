@@ -2,15 +2,73 @@
 
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
+/*Badge and buttons on the left*/
+#identity-box.chromeUI #identity-icon {
+	width: 12px !important;
+	height: 12px !important;
+}
+
+#identity-icon-label {
+	font-size: 0.75em !important;
+}
+
+#identity-box[pageproxystate="valid"].notSecureText,
+#identity-box[pageproxystate="valid"].chromeUI,
+#identity-box[pageproxystate="valid"].extensionPage,
+#urlbar-label-box {
+	margin-block: 6px !important;
+}
+
+.identity-box-button:not([open=true]),
+#tracking-protection-icon-container:not([open=true]) {
+	opacity: 0.7 !important;
+	background-color: transparent !important;
+}
+
+.identity-box-button:hover:not([open=true]),
+#tracking-protection-icon-container:hover:not([open=true]) {
+	opacity: 1 !important;
+	background-color: transparent !important;
+}
+
+.identity-box-button:hover:active,
+.identity-box-button[open=true],
+#tracking-protection-icon-container:hover:active,
+#tracking-protection-icon-container[open=true] {
+	opacity: 1 !important;
+	background-color: transparent !important;
+}
+
 /*Buttons to the right*/
 #urlbar #page-action-buttons {
-	filter: saturate(0%) !important;
+	filter: saturate(0%) brightness(120%) !important;
 }
 
 #urlbar:hover #page-action-buttons,
-#urlbar[focused] #page-action-buttons{
+#urlbar[focused] #page-action-buttons {
+	filter: saturate(100%) brightness(100%) !important;
+}
+
+.urlbar-page-action:not([disabled]),
+#urlbar-go-button,
+.search-go-button {
+	opacity: 0.7 !important;
+	background-color: transparent !important;
+}
+
+.urlbar-page-action:not([disabled]):hover,
+#urlbar-go-button:hover,
+.search-go-button:hover {
 	opacity: 1 !important;
-	filter: saturate(100%) !important;
+	background-color: transparent !important;
+}
+
+.urlbar-page-action:not([disabled])[open],
+.urlbar-page-action:not([disabled]):hover:active,
+#urlbar-go-button:hover:active,
+.search-go-button:hover:active {
+	opacity: 1 !important;
+	background-color: transparent !important;
 }
 
 #urlbar {
