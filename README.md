@@ -1,3 +1,32 @@
+## About This Fork
+
+This is an [Adaptive-Tab-Bar-Color](https://github.com/YS-Wong/Adaptive-Tab-Bar-Color)-compatible version of Firefox WhiteSur theme  
+Original `README.md` starts from [here](https://github.com/YS-Wong/WhiteSurFirefoxThemeMacOS/edit/master/README.md#firefox-whitesur-theme)
+
+<p align="center"><img width="40%" src="https://raw.githubusercontent.com/YS-Wong/WhiteSurFirefoxThemeMacOS/master/githubpreview/White_Sur_%26_ATBC_1.png"><img width="40%" src="https://raw.githubusercontent.com/YS-Wong/WhiteSurFirefoxThemeMacOS/master/githubpreview/White_Sur_%26_ATBC_2.png"></p>
+
+### Changes
+
+1. Colors are controled by browser theme, thus conroled by Adaptive Tab Bar Color
+2. Close tab buttons are on the left side
+3. Buttons inside URL field behave closer to Safari
+4. (Almost) fixed popover menus
+
+### Browser Configurations
+
+Go to `about:config`  
+- Set `toolkit.legacyUserProfileCustomizations.stylesheets` to `true`  
+- Set `svg.context-properties.content.enabled` to `true`  
+- Set `layout.css.backdrop-filter.force-enabled` to `true` (optional)
+
+### Note
+
+This CSS theme is still under construction. To be optimised are: buttons, dropdown menus, and icons.
+
+<br><br>
+Additional `README.md` ends here.
+<br><br>
+
 ## Firefox WhiteSur theme
 <p align="center">
 <img width="120" src="https://github.com/AdamXweb/WhiteSurFirefoxThemeMacOS/raw/master/githubpreview/safarifirefox.png?raw=true">
