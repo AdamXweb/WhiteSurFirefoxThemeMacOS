@@ -1,9 +1,9 @@
 ## About This Fork
 
 This is an [Adaptive-Tab-Bar-Color](https://github.com/YS-Wong/Adaptive-Tab-Bar-Color)-compatible version of Firefox WhiteSur theme  
-Original `README.md` starts from [here](#firefox-whitesur-theme)
+To skip to the original `README.md`, please click [here](#firefox-whitesur-theme)
 
-<p align="center"><img width="40%" src="https://raw.githubusercontent.com/YS-Wong/WhiteSurFirefoxThemeMacOS/master/githubpreview/White_Sur_%26_ATBC_1.png"><img width="40%" src="https://raw.githubusercontent.com/YS-Wong/WhiteSurFirefoxThemeMacOS/master/githubpreview/White_Sur_%26_ATBC_2.png"></p>
+<p align="center"><img width="45%" src="https://raw.githubusercontent.com/YS-Wong/WhiteSurFirefoxThemeMacOS/master/githubpreview/White_Sur_%26_ATBC_1.png"><img width="45%" src="https://raw.githubusercontent.com/YS-Wong/WhiteSurFirefoxThemeMacOS/master/githubpreview/White_Sur_%26_ATBC_2.png"></p>
 
 <br>
 
