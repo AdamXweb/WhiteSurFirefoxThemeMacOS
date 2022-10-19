@@ -30,7 +30,9 @@ To skip to the original `README.md`, please click [here](#firefox-whitesur-theme
 Go to `about:config`  
 - Set `toolkit.legacyUserProfileCustomizations.stylesheets` to `true`  
 - Set `svg.context-properties.content.enabled` to `true`  
-- Set `layout.css.backdrop-filter.force-enabled` to `true` (optional)
+- Set `layout.css.color-mix.enabled` to `true`  
+- Set `layout.css.backdrop-filter.force-enabled` to `true` (optional)  
+- Set `layout.css.color-mix.color-spaces.enabled` to `true` (optional)
 
 <br>
 
