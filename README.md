@@ -1,9 +1,9 @@
 ## About This Fork
 
 This is an [Adaptive-Tab-Bar-Color](https://github.com/YS-Wong/Adaptive-Tab-Bar-Color)-compatible version of Firefox WhiteSur theme  
-Original `README.md` starts from [here](#firefox-whitesur-theme)
+To skip to the original `README.md`, please click [here](#firefox-whitesur-theme)
 
-<p align="center"><img width="40%" src="https://raw.githubusercontent.com/YS-Wong/WhiteSurFirefoxThemeMacOS/master/githubpreview/White_Sur_%26_ATBC_1.png"><img width="40%" src="https://raw.githubusercontent.com/YS-Wong/WhiteSurFirefoxThemeMacOS/master/githubpreview/White_Sur_%26_ATBC_2.png"></p>
+<p align="center"><img width="45%" src="https://raw.githubusercontent.com/YS-Wong/WhiteSurFirefoxThemeMacOS/master/githubpreview/White_Sur_%26_ATBC_1.png"><img width="45%" src="https://raw.githubusercontent.com/YS-Wong/WhiteSurFirefoxThemeMacOS/master/githubpreview/White_Sur_%26_ATBC_2.png"></p>
 
 <br>
 
@@ -17,7 +17,7 @@ Original `README.md` starts from [here](#firefox-whitesur-theme)
 
 ### Changes
 
-1. Colors are controled by browser theme, thus conroled by Adaptive Tab Bar Color
+1. Colors are controled by browser theme, thus controled by Adaptive Tab Bar Color
 2. Close tab buttons are on the left side
 3. Buttons inside URL field behave closer to Safari
 4. Colors of button icons now follow the browser theme
@@ -30,7 +30,9 @@ Original `README.md` starts from [here](#firefox-whitesur-theme)
 Go to `about:config`  
 - Set `toolkit.legacyUserProfileCustomizations.stylesheets` to `true`  
 - Set `svg.context-properties.content.enabled` to `true`  
-- Set `layout.css.backdrop-filter.force-enabled` to `true` (optional)
+- Set `layout.css.color-mix.enabled` to `true`  
+- Set `layout.css.backdrop-filter.force-enabled` to `true` (optional)  
+- Set `layout.css.color-mix.color-spaces.enabled` to `true` (optional)
 
 <br>
 
