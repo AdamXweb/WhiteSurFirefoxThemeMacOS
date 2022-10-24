@@ -464,3 +464,9 @@ tab[selected]:-moz-window-inactive {
 	visibility: visible !important;
 	transition: all 150ms ease-in !important;
 }
+
+/*All tabs popover menu*/
+#allTabsMenu-allTabsView>.panel-subview-body {
+	margin-bottom: 8px !important;
+	margin-top: 8px !important;
+}

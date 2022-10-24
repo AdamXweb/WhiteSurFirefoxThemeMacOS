@@ -7,6 +7,35 @@
 
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
+
+/*By u/It_Was_The_Other_Guy*/
+
+#widget-overflow-list,
+#widget-overflow-fixed-list {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	justify-items: center;
+	padding-inline: 8px;
+}
+
+#widget-overflow-fixed-list>.toolbarbutton-1,
+#widget-overflow-list>.toolbarbutton-1 {
+	/* width: 60.6px !important; */
+	height: 60.6px;
+}
+
+.widget-overflow-list .subviewbutton-nav::after,
+#widget-overflow-list .toolbarbutton-text,
+#widget-overflow-fixed-list .toolbarbutton-text {
+	display: none !important;
+}
+
+widget-overflow-list .toolbarbutton-1 image,
+#widget-overflow-fixed-list .toolbarbutton-1 image {
+	height: 26px !important;
+	width: 26px !important;
+}
+
 /* Toolbox colors */
 #navigator-toolbox {
 	border: 0 !important;
