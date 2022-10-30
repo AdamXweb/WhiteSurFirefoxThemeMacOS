@@ -51,7 +51,7 @@
 
 /* All tabs popover */
 .all-tabs-item[selected] {
-	border-left: 3px solid var(--gnome-tabbar-tab-active-border-bottom-color);
+	text-decoration: underline;
 	box-shadow: none !important;
 }
 

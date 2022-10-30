@@ -465,8 +465,22 @@ tab[selected]:-moz-window-inactive {
 	transition: all 150ms ease-in !important;
 }
 
-/*All tabs popover menu*/
+/*All-tabs popover menu*/
 #allTabsMenu-allTabsView>.panel-subview-body {
+	margin-right: 8px !important;
 	margin-bottom: 8px !important;
 	margin-top: 8px !important;
+}
+
+.all-tabs-item:hover {
+	background-color: transparent !important;
+}
+
+.all-tabs-item:hover:active {
+	background-color: transparent !important;
+}
+
+/*Inactive tab title*/
+.tab-label-container:not([selected="true"], [multiselected]) {
+	opacity: .5 !important;
 }
