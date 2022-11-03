@@ -51,7 +51,7 @@
 
 /* All tabs popover */
 .all-tabs-item[selected] {
-	text-decoration: underline;
+	font-weight: 500;
 	box-shadow: none !important;
 }
 

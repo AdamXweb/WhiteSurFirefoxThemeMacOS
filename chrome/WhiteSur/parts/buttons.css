@@ -192,7 +192,7 @@ menulist>menupopup>menu {
 }
 
 /* Flat buttons */
-.subviewbutton-back:not(#hack),
+.subviewbutton-back:not(#hack):not(.subviewbutton-iconic),
 #TabsToolbar .toolbarbutton-1 {
 	background: transparent !important;
 	box-shadow: none !important;

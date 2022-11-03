@@ -466,18 +466,26 @@ tab[selected]:-moz-window-inactive {
 }
 
 /*All-tabs popover menu*/
-#allTabsMenu-allTabsView>.panel-subview-body {
+/* #allTabsMenu-allTabsView>.panel-subview-body {
 	margin-right: 8px !important;
 	margin-bottom: 8px !important;
 	margin-top: 8px !important;
-}
+} */
 
 .all-tabs-item:hover {
-	background-color: transparent !important;
+	background-color: var(--gnome-button-suggested-action-hover-background) !important;
+}
+
+.all-tabs-item:hover .toolbarbutton-text {
+	color: #fff !important;
 }
 
 .all-tabs-item:hover:active {
-	background-color: transparent !important;
+	background-color: var(--gnome-button-suggested-action-hover-background) !important;
+}
+
+.all-tabs-item:active .toolbarbutton-text {
+	color: #fff !important;
 }
 
 /*Inactive tab title*/

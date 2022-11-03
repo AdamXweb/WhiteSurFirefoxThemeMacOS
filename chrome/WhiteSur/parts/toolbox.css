@@ -15,7 +15,6 @@
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);
 	justify-items: center;
-	padding-inline: 8px;
 }
 
 #widget-overflow-fixed-list>.toolbarbutton-1,
