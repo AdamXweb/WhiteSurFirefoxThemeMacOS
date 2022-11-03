@@ -27,7 +27,8 @@
 #viewButton,
 .close-icon:not(.tab-close-button),
 .menulist-label-box,
-.expander-down, .expander-up,
+.expander-down,
+.expander-up,
 .notification-button,
 .identity-popup-permission-remove-button,
 #identity-popup-security-expander,
@@ -45,7 +46,7 @@
 	max-height: 28px !important;
 	min-height: 28px !important;
 	min-width: 28px !important;
-	color: var(--gnome-toolbar-color) !important;
+	color: inherit;
 	transition: all 200ms;
 }
 
@@ -76,20 +77,27 @@
 	padding: 2px 16px !important;
 	position: relative;
 }
+
 #sidebar-switcher-arrow,
-#viewButton .button-menu-dropmarker { /* Arrow position, type b */
+#viewButton .button-menu-dropmarker {
+	/* Arrow position, type b */
 	transform: translate(6px, 0)
 }
+
 .menulist-label-box {
 	padding: 2px 26px 2px 16px !important;
 	position: relative;
 }
-.menulist-label-box:after { /* Arrow position */
+
+.menulist-label-box:after {
+	/* Arrow position */
 	position: absolute !important;
 	right: 8px !important;
 	top: 8px !important;
 }
-.menulist-label-box:after { /* Create arrow if icon tag no exist */
+
+.menulist-label-box:after {
+	/* Create arrow if icon tag no exist */
 	content: "";
 }
 
@@ -109,7 +117,8 @@
 #sidebar-switcher-target:hover,
 #viewButton:hover,
 menulist:hover .menulist-label-box,
-.expander-down:hover, .expander-up:hover,
+.expander-down:hover,
+.expander-up:hover,
 .notification-button:hover,
 .protections-popup-footer-button:hover,
 .identity-popup-permission-remove-button:hover,
@@ -134,10 +143,12 @@ menulist:hover .menulist-label-box,
 .identity-popup-preferences-button:not(#hack):active,
 .findbar-container toolbarbutton[checked],
 .findbar-container toolbarbutton:active,
-#sidebar-switcher-target:active, #sidebar-switcher-target.active,
+#sidebar-switcher-target:active,
+#sidebar-switcher-target.active,
 #viewButton[open],
 menulist[open] .menulist-label-box,
-.expander-down:active, .expander-up:active,
+.expander-down:active,
+.expander-up:active,
 .notification-button:active,
 .protections-popup-footer-button:not(#hack):active,
 .identity-popup-permission-remove-button:active,
@@ -157,11 +168,13 @@ menulist>menupopup>menu {
 	color: var(--gnome-button-menulist-color) !important;
 	background: var(--gnome-button-background) !important;
 }
+
 menulist>menupopup>menuitem:hover,
 menulist>menupopup>menucaption,
 menulist>menupopup>menu {
 	background: var(--gnome-button-hover-background) !important;
 }
+
 /* Disabled buttons */
 #appMenu-popup .toolbaritem-combined-buttons toolbarbutton[disabled],
 #context-navigation menuitem[disabled],
@@ -246,7 +259,8 @@ menulist>menupopup>menu {
 }
 
 .close-icon:not(.tab-close-button):active,
-#TabsToolbar .toolbarbutton-1:active, #TabsToolbar .toolbarbutton-1[open] {
+#TabsToolbar .toolbarbutton-1:active,
+#TabsToolbar .toolbarbutton-1[open] {
 	outline: 0 !important;
 	background: var(--gnome-button-active-color) !important;
 }
@@ -347,11 +361,13 @@ button.popup-notification-primary-button.popup-notification-button:active,
 	box-shadow: var(--gnome-button-destructive-action-active-box-shadow) !important;
 }
 
-.identity-popup-permission-remove-button:not(#hack):hover { /* Is flat */
+.identity-popup-permission-remove-button:not(#hack):hover {
+	/* Is flat */
 	border-color: var(--gnome-button-destructive-action-border-color) !important;
 	border-bottom-color: var(--gnome-button-destructive-action-border-accent-color) !important;
 	box-shadow: var(--gnome-button-destructive-action-box-shadow) !important;
 }
+
 .identity-popup-permission-remove-button:not(#hack):hover .button-icon {
 	filter: invert(100%) brightness(200%);
 }

@@ -118,7 +118,7 @@ panelview {
 .protections-popup-category[disabled],
 .identity-popup-content-blocking-category {
 	border-radius: 4px !important;
-	color: var(--gnome-toolbar-color) !important;
+	color: inherit !important;
 	font: menu !important;
 	/* -moz-box-pack: inherit !important; */
 }
@@ -159,7 +159,7 @@ panelview {
 .toolbarbutton-1:not([disabled]):hover,
 .protections-popup-category:not([disabled]):hover,
 .identity-popup-content-blocking-category:not([disabled]):hover {
-	background: var(--gnome-popover-button-hover-background) !important;
+	background: var(--gnome-button-suggested-action-hover-background) !important;
 }
 
 /* Style popover separators */

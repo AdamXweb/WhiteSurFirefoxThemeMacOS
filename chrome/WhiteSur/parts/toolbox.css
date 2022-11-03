@@ -43,7 +43,7 @@ widget-overflow-list .toolbarbutton-1 image,
 
 
 .toolbarbutton-icon {
-	color: var(--gnome-toolbar-color);
+	color: inherit;
 	fill: var(--gnome-toolbar-color);
 }
 
