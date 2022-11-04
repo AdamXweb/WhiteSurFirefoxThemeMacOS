@@ -3,7 +3,7 @@
 This is an [Adaptive-Tab-Bar-Color](https://github.com/YS-Wong/Adaptive-Tab-Bar-Color)-compatible version of Firefox WhiteSur theme  
 To skip to the original `README.md`, please click [here](#firefox-whitesur-theme)
 
-<p align="center"><img width="45%" src="https://raw.githubusercontent.com/YS-Wong/WhiteSurFirefoxThemeMacOS/master/githubpreview/White_Sur_%26_ATBC_1.png"><img width="45%" src="https://raw.githubusercontent.com/YS-Wong/WhiteSurFirefoxThemeMacOS/master/githubpreview/White_Sur_%26_ATBC_2.png"></p>
+<p align="center"><img width="45%" src="https://raw.githubusercontent.com/YS-Wong/WhiteSurFirefoxThemeMacOS/master/githubpreview/White_Sur_%26_ATBC_3.png"><img width="45%" src="https://raw.githubusercontent.com/YS-Wong/WhiteSurFirefoxThemeMacOS/master/githubpreview/White_Sur_%26_ATBC_2.png"></p>
 
 <br>
 
@@ -22,8 +22,6 @@ To skip to the original `README.md`, please click [here](#firefox-whitesur-theme
 3. Buttons inside URL field behave closer to Safari
 4. Colors of button icons now follow the browser theme
 5. (Almost) fixed popover menus
-
-<p align="center"><img width="90%" src="https://raw.githubusercontent.com/YS-Wong/WhiteSurFirefoxThemeMacOS/master/githubpreview/White_Sur_%26_ATBC_3.png"></p>
 
 <br>
 
