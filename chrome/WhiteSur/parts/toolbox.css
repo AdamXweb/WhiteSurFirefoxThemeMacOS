@@ -44,35 +44,35 @@ widget-overflow-list .toolbarbutton-1 image,
 
 .toolbarbutton-icon {
 	color: inherit;
-	fill: var(--gnome-toolbar-color);
+	fill: var(--whitesur-toolbar-color);
 }
 
 #nav-bar,
 #PersonalToolbar,
 #toolbar-menubar {
 	border: 0 !important;
-	color: var(--gnome-toolbar-color);
-	background: var(--gnome-toolbar-background) !important;
+	color: var(--whitesur-toolbar-color);
+	background: var(--whitesur-toolbar-background) !important;
 	border-bottom: none !important;
 }
 
 #TabsToolbar {
 	border: 0 !important;
-	background: var(--gnome-tabstoolbar-background) !important;
-	border-bottom: 1px solid var(--gnome-toolbar-border-color) !important;
-	box-shadow: inset 0 1px var(--gnome-toolbar-border-color) !important;
+	background: var(--whitesur-tabstoolbar-background) !important;
+	border-bottom: 1px solid var(--whitesur-toolbar-border-color) !important;
+	box-shadow: inset 0 1px var(--whitesur-toolbar-border-color) !important;
 }
 
 findbar {
 	border: 0 !important;
-	background: var(--gnome-findbar-background) !important;
-	border-bottom: 1px solid var(--gnome-toolbar-border-color) !important;
+	background: var(--whitesur-findbar-background) !important;
+	border-bottom: 1px solid var(--whitesur-toolbar-border-color) !important;
 }
 
 #nav-bar:-moz-window-inactive,
 #PersonalToolbar:-moz-window-inactive,
 #toolbar-menubar:-moz-window-inactive {
-	background: var(--gnome-inactive-toolbar-background) !important;
+	background: var(--whitesur-inactive-toolbar-background) !important;
 }
 
 #navigator-toolbox:-moz-window-inactive label,

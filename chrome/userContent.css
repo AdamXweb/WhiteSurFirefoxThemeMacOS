@@ -82,7 +82,7 @@ url("about:newtab") {
 
     .context-menu>ul>li.separator {
         width: auto !important;
-        margin: 5px 10px !important;
+        margin: 5px 13px !important;
     }
 
     .context-menu>ul>li>a:hover,

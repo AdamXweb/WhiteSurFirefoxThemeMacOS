@@ -12,38 +12,38 @@
 :root[tabsintitlebar] #nav-bar {
 	border: none !important;
 	border-bottom: none !important;
-	box-shadow: var(--gnome-headerbar-box-shadow) !important;
+	box-shadow: var(--whitesur-headerbar-box-shadow) !important;
 }
 
 :root[tabsintitlebar] #nav-bar:-moz-window-inactive {
-	box-shadow: var(--gnome-inactive-headerbar-box-shadow) !important;
+	box-shadow: var(--whitesur-inactive-headerbar-box-shadow) !important;
 }
 
 /* Headerbar buttons */
 #nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.subviewbutton):not(.toolbarbutton-1) {
+	-moz-appearance: none !important;
 	border: none !important;
 	box-shadow: none !important;
 	background: none !important;
-	-moz-appearance: none !important;
-	border-radius: 8px !important;
+	border-radius: var(--macos-menu-border-radius) !important;
 	padding: 0 4px !important;
 	min-height: 28px !important;
 	min-width: 28px !important;
-	color: var(--gnome-toolbar-color) !important;
+	color: var(--whitesur-toolbar-color) !important;
 	transition: background 200ms;
 }
 
 /* Hover headerbar buttons */
 #nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.subviewbutton):not([open]):not([disabled]):not([checked]):hover {
 	outline: 0 !important;
-	background: var(--gnome-headerbar-button-hover-background) !important;
+	background: var(--whitesur-headerbar-button-hover-background) !important;
 }
 
 /* Active headerbar buttons */
 #nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.subviewbutton):not([disabled]):not(#hack):active,
 #nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.subviewbutton):not(.subviewbutton):not([disabled])[open],
 #nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.subviewbutton):not([disabled])[checked] {
-	background: var(--gnome-headerbar-button-active-background) !important;
+	background: var(--whitesur-headerbar-button-active-background) !important;
 }
 
 /* Disabled headerbar buttons */
@@ -76,11 +76,11 @@
 #nav-bar #searchbar,
 #urlbar #urlbar-input-container {
 	-moz-appearance: none !important;
-	background: var(--gnome-urlbar-background) !important;
+	background: var(--whitesur-urlbar-background) !important;
 	border: none !important;
 	box-shadow: none !important;
-	border-radius: 8px !important;
-	color: var(--gnome-urlbar-color) !important;
+	border-radius: var(--macos-menu-border-radius) !important;
+	color: var(--whitesur-urlbar-color) !important;
 	padding: 0 6px !important;
 	height: 32px !important;
 	max-height: 32px !important;
@@ -89,19 +89,18 @@
 
 #nav-bar #searchbar:hover,
 #urlbar #urlbar-input-container:hover {
-	box-shadow: inset 0 0 0 1px var(--gnome-hover-urlbar-border-color) !important;
+	box-shadow: inset 0 0 0 1px var(--whitesur-hover-urlbar-border-color) !important;
 	transition-duration: 100ms;
 }
 
 #urlbar[breakout][breakout-extend] #urlbar-input-container,
 #urlbar[breakout][breakout-extend] #urlbar-input-container:hover {
-	background: none !important;
 	box-shadow: none !important;
 	padding: 0 6px !important;
 }
 
 #nav-bar #searchbar:focus-within {
 	border: none !important;
-	background: var(--gnome-urlbar-background) !important;
-	box-shadow: inset 0 0 0 2px var(--gnome-focused-urlbar-highlight-color) !important;
+	background: var(--whitesur-urlbar-background) !important;
+	box-shadow: inset 0 0 0 2px var(--whitesur-focused-urlbar-highlight-color) !important;
 }

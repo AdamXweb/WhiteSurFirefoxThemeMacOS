@@ -43,8 +43,8 @@
 /* Glitch customizing: Reload and Cut / Copy / Paste buttons */
 :root:-moz-window-inactive[customizing] #nav-bar #stop-reload-button toolbarbutton,
 :root:-moz-window-inactive[customizing] #nav-bar #edit-controls toolbarbutton {
-	background-image: var(--gnome-inactive-button-background);
-	box-shadow: var(--gnome-inactive-button-box-shadow);
+	background-image: var(--whitesur-inactive-button-background);
+	box-shadow: var(--whitesur-inactive-button-box-shadow);
 
 }
 
@@ -146,8 +146,8 @@
 #bookmarks-view-children,
 #historyTree {
 	font-size: 0.9em !important;
-	background-color: var(--gnome-sidebar-background) !important;
-	color: var(--gnome-sidebar-color) !important;
+	background-color: var(--whitesur-sidebar-background) !important;
+	color: var(--whitesur-sidebar-color) !important;
 }
 
 /* Sidebar header button arrow opacity */
@@ -175,7 +175,7 @@ menulist {
 }
 
 #appMenu-popup .toolbaritem-combined-buttons toolbarbutton:not(#appMenu-fxa-label) {
-	color: var(--gnome-button-menulist-color) !important;
+	color: var(--whitesur-button-menulist-color) !important;
 }
 
 /* Bookmarks editor buttons */
@@ -213,5 +213,5 @@ menulist {
 #urlbar-go-button:hover,
 .search-go-button:hover,
 #identity-box[pageproxystate="valid"].extensionPage>.identity-box-button:hover:not([open]) {
-	--urlbar-box-hover-bgcolor: var(--gnome-button-hover-color) !important;
+	--urlbar-box-hover-bgcolor: var(--whitesur-button-hover-color) !important;
 }

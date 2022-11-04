@@ -93,7 +93,6 @@
 	transition: all .2s ease;
 	width: 100%;
 	text-align: left !important;
-	;
 }
 
 /* Center the URL bar */
@@ -104,8 +103,7 @@ toolbarspring {
 /* URL bar */
 #urlbar {
 	box-shadow: none !important;
-	background: var(--gnome-popover-background) !important;
-	border-radius: 8px !important;
+	border-radius: var(--macos-menu-border-radius) !important;
 	opacity: 0.8 !important;
 	transition: opacity 0.4s !important;
 }
@@ -120,7 +118,7 @@ toolbarspring {
 	box-shadow: none !important;
 	border: 0 !important;
 	background: transparent !important;
-	border-radius: 8px !important;
+	border-radius: var(--macos-menu-border-radius) !important;
 }
 
 #urlbar[breakout][breakout-extend] {
@@ -143,23 +141,114 @@ toolbarspring {
 }
 
 #urlbar[breakout][breakout-extend][open] #urlbar-background {
-	box-shadow: var(--gnome-urlbar-box-shadow) !important;
+	box-shadow: var(--whitesur-urlbar-box-shadow) !important;
+}
+
+#urlbar:not([focused])>#urlbar-input-container>.urlbar-input-box>#urlbar-input {
+	mask-image: linear-gradient(to left, transparent, black 3ch);
 }
 
 /* URL bar results */
 .urlbarView {
-	background: transparent !important;
-	color: var(--gnome-toolbar-color) !important;
-	margin: -2px 0 0 0 !important;
 	width: 100% !important;
+	padding: 4px !important;
+	margin: 10px 0 0 0 !important;
+	border-radius: var(--macos-menu-border-radius) !important;
+	color: var(--whitesur-toolbar-color) !important;
+	background: var(--whitesur-popover-background) !important;
+	border: var(--macos-menu-border) !important;
+	outline: var(--macos-menu-outline) !important;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.25) !important;
+	font-size: 12px !important;
+}
+
+.urlbarView-row-inner,
+.urlbarView-row,
+.urlbarView-row-inner {
+	min-height: 0 !important;
+}
+
+.urlbarView-row-inner,
+.urlbarView-row {
+	padding: 0 !important;
+}
+
+.urlbarView-row-inner {
+	padding-inline: 10px !important;
+	padding-block: 2px !important;
+}
+
+.urlbarView-favicon {
+	width: 12px !important;
+	height: 12px !important;
+}
+
+.urlbarView-url {
+	padding-inline: 0 !important;
+	color: inherit !important;
+	opacity: 0.6 !important;
+}
+
+.urlbarView-results {
+	padding-block: 0
+		/* 4px */
+		!important;
+}
+
+.urlbarView-results[wrap]>.urlbarView-row>.urlbarView-row-inner>.urlbarView-no-wrap {
+	flex-basis: 0 !important;
+}
+
+.urlbarView-row:not([type="tip"], [type="dynamic"])[selected]>.urlbarView-row-inner,
+.urlbarView-row-inner[selected] {
+	color: inherit !important;
 }
 
 .urlbarView-body-outer {
 	--item-padding-start: 0 !important;
 	--item-padding-end: 0 !important;
 	max-height: 40vh !important;
-	overflow-x: auto;
-	padding: 0 8px !important;
+	overflow-x: hidden;
+	padding: 0 !important;
+}
+
+.urlbarView-row[label] {
+	margin-block-start: 2.5em !important;
+}
+
+.urlbarView-row[label]::before {
+	top: -2.5em !important;
+	width: calc(100% - 20px) !important;
+	padding-block-start: 6px !important;
+	margin-inline-start: 10px !important;
+	color: var(--macos-menu-separator-color) !important;
+	font-weight: 700 !important;
+	border-top: 1px solid var(--macos-menu-separator-color) !important;
+}
+
+.urlbarView-row:not([type="tip"], [type="dynamic"])[selected]>.urlbarView-row-inner,
+.urlbarView-row-inner[selected] {
+	background-color: var(--autocomplete-popup-hover-background) !important;
+}
+
+.urlbarView-row:not([type="tip"], [type="dynamic"], [has-buttons]):hover>.urlbarView-row-inner,
+.urlbarView-row[dynamicType="onboardTabToSearch"]:hover>.urlbarView-row-inner,
+.urlbarView-row[has-buttons]>.urlbarView-row-inner:not([selected]):hover {
+	background-color: var(--macos-menu-hover) !important;
+	color: var(--macos-menu-hover-color) !important;
+}
+
+.urlbarView-title-separator::before {
+	opacity: 0.6 !important;
+	margin-inline-end: 0 !important;
+}
+
+.urlbarView-row[dynamicType="onboardTabToSearch"]>.urlbarView-row-inner {
+	width: auto !important;
+}
+
+.urlbarView-title strong {
+	font-weight: inherit !important;
 }
 
 .urlbarView-body-inner {
@@ -172,38 +261,79 @@ toolbarspring {
 }
 
 .urlbarView-row-inner {
-	padding-block: 5px !important;
-	border-radius: 5px !important;
+	border-radius: 4px !important;
+}
+
+.urlbarView-results[wrap]>.urlbarView-row>.urlbarView-row-inner {
+	flex-wrap: nowrap !important;
+}
+
+.urlbarView-type-icon {
+	display: none !important;
+}
+
+.urlbarView-action {
+	color: inherit !important;
+	opacity: 0.6 !important;
+}
+
+.urlbarView-row:is([type="switchtab"], [type="remotetab"])>.urlbarView-row-inner>.urlbarView-no-wrap>.urlbarView-action {
+	padding: 1px 8px !important;
+	margin-inline: 0.5em !important;
+	border-radius: 8px !important;
+	border: var(--macos-menu-border) !important;
+	background-color: transparent !important;
+}
+
+:root:not([uidensity="compact"]) .urlbarView-row:not([type="tip"], [type="dynamic"]) {
+	min-height: 0;
+}
+
+.urlbarView-title-separator,
+.urlbarView-url {
+	visibility: inherit !important;
+}
+
+.urlbarView-title-separator,
+.urlbarView-action {
+	display: inherit !important;
 }
 
 /* Search engines buttons */
 .search-one-offs {
-	margin-top: 6px !important;
-	margin-bottom: 2px !important;
-	padding: 8px !important;
-	background: var(--gnome-popover-background) !important;
-	border-top: 1px solid var(--gnome-entry-border-color) !important;
-	border-radius: 0 0 5px 5px !important;
+	display: none !important;
+	padding: 4px 0 0 0 !important;
+}
+
+.urlbarView:not([noresults])>.search-one-offs:not([hidden]) {
+	border-top-color: var(--macos-menu-separator-color);
+}
+
+#urlbar .search-one-offs:not([hidden]) {
+	align-items: center !important;
+}
+
+#urlbar .searchbar-engine-one-off-item {
+	min-width: 30px;
+	height: 20px;
 }
 
 .searchbar-engine-one-off-item {
+	-moz-appearance: none !important;
 	--toolbarbutton-active-background: transparent !important;
 	--toolbarbutton-hover-background: transparent !important;
-	-moz-appearance: none !important;
-	background: var(--gnome-button-background) !important;
-	box-shadow: var(--gnome-button-box-shadow) !important;
-	border: 1px solid var(--gnome-button-border-color) !important;
+	background: var(--whitesur-button-background) !important;
+	box-shadow: var(--whitesur-button-box-shadow) !important;
+	border: 1px solid var(--whitesur-button-border-color) !important;
 	border-left-width: 0 !important;
-	border-bottom-color: var(--gnome-button-border-accent-color) !important;
+	border-bottom-color: var(--whitesur-button-border-accent-color) !important;
 	padding: 0 2px !important;
-	min-height: 34px !important;
-	min-width: 34px !important;
 	margin: 0 !important;
 }
 
 .searchbar-engine-one-off-item:hover,
 .searchbar-engine-one-off-item[selected] {
-	background: var(--gnome-button-hover-background) !important;
+	background: var(--whitesur-button-hover-background) !important;
 	color: unset !important;
 }
 
@@ -219,7 +349,7 @@ toolbarspring {
 
 #urlbar-anon-search-settings-compact {
 	border-left-width: 1px !important;
-	border-bottom: 1px solid var(--gnome-button-border-accent-color) !important;
+	border-bottom: 1px solid var(--whitesur-button-border-accent-color) !important;
 	border-radius: 5px;
 	margin-left: 6px !important;
 }
