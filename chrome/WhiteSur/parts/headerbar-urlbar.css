@@ -159,7 +159,6 @@ toolbarspring {
 	border: var(--macos-menu-border) !important;
 	outline: var(--macos-menu-outline) !important;
 	box-shadow: 0 0 15px rgba(0, 0, 0, 0.25) !important;
-	font-size: 12px !important;
 }
 
 .urlbarView-row-inner,
@@ -190,9 +189,7 @@ toolbarspring {
 }
 
 .urlbarView-results {
-	padding-block: 0
-		/* 4px */
-		!important;
+	padding-block: 0 !important;
 }
 
 .urlbarView-results[wrap]>.urlbarView-row>.urlbarView-row-inner>.urlbarView-no-wrap {
@@ -202,6 +199,11 @@ toolbarspring {
 .urlbarView-row:not([type="tip"], [type="dynamic"])[selected]>.urlbarView-row-inner,
 .urlbarView-row-inner[selected] {
 	color: inherit !important;
+}
+
+.urlbarView-dynamic-onboardTabToSearch-title-separator,
+.urlbarView-dynamic-onboardTabToSearch-action {
+	flex-basis: 0 !important;
 }
 
 .urlbarView-body-outer {
