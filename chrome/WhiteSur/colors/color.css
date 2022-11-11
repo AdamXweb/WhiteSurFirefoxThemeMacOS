@@ -29,7 +29,7 @@
 	--whitesur-sidebar-color: var(--lwt-text-color);
 
 	/* Popups */
-	--whitesur-menu-background: var(--toolbar-field-background-color);
+	--whitesur-menu-background: color-mix(in srgb, #292929 70%, var(--toolbar-field-background-color));
 	--whitesur-menu-border-color: var(--chrome-content-separator-color);
 	--whitesur-popover-background: color-mix(in srgb, #292929 70%, var(--toolbar-field-background-color));
 	--whitesur-popover-border-color: var(--chrome-content-separator-color);
@@ -102,7 +102,7 @@
 	--whitesur-focused-urlbar-highlight-color: #006EA0;
 	--whitesur-private-urlbar-background: var(--toolbar-field-background-color);
 	/* --urlbar-box-bgcolor: var(--toolbarbutton-hover-background) !important; */
-	--urlbar-icon-border-radius: var(--toolbarbutton-border-radius) !important;
+	--urlbar-icon-border-radius: var(--macos-toolbar-border-radius) !important;
 
 	/* Tabs */
 	--whitesur-tabbar-tab-background: transparent;
@@ -166,7 +166,7 @@
 		--whitesur-sidebar-color: var(--lwt-text-color);
 
 		/* Popups */
-		--whitesur-menu-background: var(--toolbar-field-background-color);
+		--whitesur-menu-background: color-mix(in srgb, #e6e6e6 72%, var(--toolbar-field-background-color));
 		--whitesur-menu-border-color: var(--chrome-content-separator-color);
 		--whitesur-popover-background: color-mix(in srgb, #e6e6e6 72%, var(--toolbar-field-background-color));
 		--whitesur-popover-border-color: var(--chrome-content-separator-color);
@@ -237,7 +237,7 @@
 		--whitesur-focused-urlbar-border-color: #5683DA;
 		--whitesur-focused-urlbar-highlight-color: #6592E9;
 		--whitesur-private-urlbar-background: var(--toolbar-field-background-color);
-		--urlbar-icon-border-radius: var(--toolbarbutton-border-radius) !important;
+		--urlbar-icon-border-radius: var(--macos-toolbar-border-radius) !important;
 
 		/* Tabs */
 		--whitesur-tabbar-tab-background: transparent;
@@ -283,7 +283,10 @@
 	--macos-menu-hover-color: #fff;
 	--macos-menu-separator-color: #ffffff33;
 
-	--macos-menu-border-radius: 8px;
+	--macos-menu-item-border-radius: 4px;
+	--macos-menu-border-radius: 6px;
+	--macos-toolbar-border-radius: 8px;
+	--arrowpanel-border-radius: var(--macos-menu-border-radius) !important;
 }
 
 @media (prefers-color-scheme: light) {

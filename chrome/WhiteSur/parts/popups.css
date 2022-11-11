@@ -6,11 +6,12 @@
 /* Style menus */
 menupopup {
 	-moz-appearance: none !important;
-	background: var(--whitesur-menu-background) !important;
-	border: var(--macos-menu-border) !important;
+	padding: 4px !important;
 	border-radius: var(--macos-menu-border-radius) !important;
-	padding: 4px 0 !important;
+	border: var(--macos-menu-border) !important;
+	outline: var(--macos-menu-outline) !important;
 	color: var(--whitesur-toolbar-color) !important;
+	background-color: var(--whitesur-menu-background) !important;
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.06) !important;
 }
 
@@ -51,7 +52,7 @@ panel[type=arrow] {
 /* Panel border */
 @media (prefers-color-scheme: dark) {
 	:is(menupopup, panel)[type="arrow"]>panelmultiview {
-		border-radius: var(--panel-border-radius);
+		border-radius: var(--macos-menu-border-radius) !important;
 		border: 1px solid color-mix(in srgb, currentColor 20%, transparent) !important;
 	}
 }
@@ -77,7 +78,7 @@ panelview {
 	--panel-background: var(--whitesur-popover-background) !important;
 	font: inherit !important;
 	border-color: var(--whitesur-popover-border-color) !important;
-	border-radius: 9px !important;
+	border-radius: var(--macos-menu-border-radius) !important;
 	/* box-shadow: var(--whitesur-popover-shadow) !important; */
 	padding: 12px !important;
 	color: var(--whitesur-toolbar-color) !important;
@@ -111,13 +112,16 @@ panelview {
 	margin-top: 10px !important;
 }
 
+.toolbarbutton-1 {
+	border-radius: var(--macos-toolbar-border-radius) !important;
+}
+
 /* Style popovers menu buttons */
 .subviewbutton:not(.subviewbutton-back),
-.toolbarbutton-1,
 .protections-popup-category,
 .protections-popup-category[disabled],
 .identity-popup-content-blocking-category {
-	border-radius: 4px !important;
+	border-radius: var(--macos-menu-item-border-radius) !important;
 	color: inherit !important;
 	font: menu !important;
 	/* -moz-box-pack: inherit !important; */
@@ -198,9 +202,9 @@ toolbarseparator[orient="vertical"] {
 }
 
 /* fix padding for menu items*/
+#customizationui-widget-multiview panelview#allTabsMenu-allTabsView,
 #appMenu-popup panelview,
 #widget-overflow panelview,
-#customizationui-widget-multiview panelview,
 #PanelUI-fxa {
 	padding: 4px !important;
 }

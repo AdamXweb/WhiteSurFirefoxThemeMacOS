@@ -160,19 +160,25 @@ menulist[open] .menulist-label-box,
 	border-color: var(--whitesur-button-active-border-color) !important;
 }
 
+menulist > menupopup > menuitem:is([checked="true"], [selected="true"])::before {
+	margin-inline-start: auto !important;
+}
+
 /* Fix HTML select colour */
 menulist>menupopup>menuitem,
 menulist>menupopup>menucaption,
 menulist>menupopup>menu {
 	max-width: none;
+	border-radius: 4px !important;
+	font-size: 14px !important;
 	color: var(--whitesur-button-menulist-color) !important;
-	background: var(--whitesur-button-background) !important;
 }
 
 menulist>menupopup>menuitem:hover,
 menulist>menupopup>menucaption,
 menulist>menupopup>menu {
-	background: var(--whitesur-button-hover-background) !important;
+	color: var(--macos-menu-hover-color) !important;
+	background: var(--macos-menu-hover) !important;
 }
 
 /* Disabled buttons */

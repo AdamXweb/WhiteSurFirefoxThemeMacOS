@@ -3,7 +3,7 @@
 
 /* Overrides: Make the back button the same as other buttons */
 :root:not([uidensity=compact]) #back-button {
-	border-radius: var(--toolbarbutton-border-radius) !important;
+	border-radius: var(--macos-toolbar-border-radius) !important;
 }
 
 :root:not([uidensity=compact]) #back-button>.toolbarbutton-icon {
@@ -12,7 +12,7 @@
 	width: calc(2 * var(--toolbarbutton-inner-padding) + 16px) !important;
 	height: calc(2 * var(--toolbarbutton-inner-padding) + 16px) !important;
 	padding: var(--toolbarbutton-inner-padding) !important;
-	border-radius: var(--toolbarbutton-border-radius);
+	border-radius: var(--macos-toolbar-border-radius);
 	box-shadow: none !important;
 }
 

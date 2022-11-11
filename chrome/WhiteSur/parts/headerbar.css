@@ -79,7 +79,7 @@
 	background: var(--whitesur-urlbar-background) !important;
 	border: none !important;
 	box-shadow: none !important;
-	border-radius: var(--macos-menu-border-radius) !important;
+	border-radius: var(--macos-toolbar-border-radius) !important;
 	color: var(--whitesur-urlbar-color) !important;
 	padding: 0 6px !important;
 	height: 32px !important;

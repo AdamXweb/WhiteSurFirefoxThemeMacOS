@@ -103,7 +103,7 @@ toolbarspring {
 /* URL bar */
 #urlbar {
 	box-shadow: none !important;
-	border-radius: var(--macos-menu-border-radius) !important;
+	border-radius: var(--macos-toolbar-border-radius) !important;
 	opacity: 0.8 !important;
 	transition: opacity 0.4s !important;
 }
@@ -118,7 +118,7 @@ toolbarspring {
 	box-shadow: none !important;
 	border: 0 !important;
 	background: transparent !important;
-	border-radius: var(--macos-menu-border-radius) !important;
+	border-radius: var(--macos-toolbar-border-radius) !important;
 }
 
 #urlbar[breakout][breakout-extend] {
