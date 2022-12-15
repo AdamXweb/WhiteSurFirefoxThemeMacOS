@@ -9,12 +9,30 @@
 
 
 /*By u/It_Was_The_Other_Guy*/
+/* Start of textless addon menu CSS */
 
 #widget-overflow-list,
 #widget-overflow-fixed-list {
-	display: grid;
-	grid-template-columns: repeat(5, 1fr);
-	justify-items: center;
+	display: grid !important;
+	grid-template-columns: repeat(5, 1fr) !important;
+	justify-items: center !important;
+}
+
+#widget-overflow-fixed-list>toolbarpaletteitem:not([notransition])[place="panel"] {
+	border-block-width: 0 !important;
+	transition: padding var(--drag-drop-transition-duration) ease-in-out !important;
+}
+
+#widget-overflow-fixed-list>toolbarpaletteitem:not([notransition])[place="panel"][dragover="before"] {
+	padding-inline-start: 20px !important;
+}
+
+#widget-overflow-fixed-list>toolbarpaletteitem:not([notransition])[place="panel"][dragover="after"] {
+	padding-inline-end: 20px !important;
+}
+
+#customization-panelHolder>#widget-overflow-fixed-list::before {
+	display: none !important;
 }
 
 :is(panelview, #widget-overflow-fixed-list) .toolbaritem-combined-buttons {
@@ -53,6 +71,8 @@ widget-overflow-list .toolbarbutton-1 image,
 	height: 26px !important;
 	width: 26px !important;
 }
+
+/* End of textless addon menu CSS */
 
 /* Toolbox colors */
 #navigator-toolbox {
