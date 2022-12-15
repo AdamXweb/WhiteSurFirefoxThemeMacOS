@@ -17,10 +17,29 @@
 	justify-items: center;
 }
 
+:is(panelview, #widget-overflow-fixed-list) .toolbaritem-combined-buttons {
+	margin: 0 !important;
+}
+
 #widget-overflow-fixed-list>.toolbarbutton-1,
-#widget-overflow-list>.toolbarbutton-1 {
-	/* width: 60.6px !important; */
-	height: 60.6px;
+#widget-overflow-fixed-list>.toolbaritem-combined-buttons {
+	width: 60.6px !important;
+	height: 60.6px !important;
+}
+
+.widget-overflow-list .toolbarbutton-1 {
+	width: 100%;
+	height: 100%;
+	padding: 0 !important;
+	margin: 0 !important;
+}
+
+.widget-overflow-list .toolbarbutton-1>.toolbarbutton-badge-stack {
+	width: 100%;
+	height: 100%;
+	padding: 20%;
+	justify-content: center;
+	align-items: center;
 }
 
 .widget-overflow-list .subviewbutton-nav::after,

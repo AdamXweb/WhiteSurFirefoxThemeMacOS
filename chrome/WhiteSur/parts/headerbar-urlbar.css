@@ -44,14 +44,15 @@
 	filter: saturate(0%) brightness(120%) !important;
 }
 
-#urlbar:hover #page-action-buttons,
+/* #urlbar:hover #page-action-buttons,
 #urlbar[focused] #page-action-buttons {
 	filter: saturate(100%) brightness(100%) !important;
-}
+} */
 
 .urlbar-page-action:not([disabled]),
 #urlbar-go-button,
 .search-go-button {
+	padding: 0 !important;
 	opacity: 0.7 !important;
 	background-color: transparent !important;
 }
@@ -78,12 +79,12 @@
 
 /* Centre URL bar text input*/
 #urlbar-input {
-	transition: transform .1s linear;
-	transform: translateX(50%);
-	top: 4px;
 	position: absolute;
 	width: 50%;
+	height: 100%;
 	text-align: center !important;
+	transform: translateX(50%);
+	transition: transform 0.1s cubic-bezier(0, .5, .5, 1);
 }
 
 /* Unless text input is selected like safari*/
@@ -152,7 +153,7 @@ toolbarspring {
 .urlbarView {
 	width: 100% !important;
 	padding: 4px !important;
-	margin: 10px 0 0 0 !important;
+	margin: 0 !important;
 	border-radius: var(--macos-menu-border-radius) !important;
 	color: var(--whitesur-toolbar-color) !important;
 	background: var(--whitesur-popover-background) !important;
@@ -386,8 +387,7 @@ toolbarspring {
 .urlbar-icon {
 	height: 16px !important;
 	width: 16px !important;
-	margin-inline: 4px !important;
-	padding: 8px 0 !important;
+	margin: auto !important;
 }
 
 /* Fix for firefox v92 onwards that changed icon size on MacOS*/

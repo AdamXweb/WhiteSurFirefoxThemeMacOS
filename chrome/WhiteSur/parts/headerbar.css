@@ -34,34 +34,28 @@
 }
 
 /* Hover headerbar buttons */
-#nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.subviewbutton):not([open]):not([disabled]):not([checked]):hover {
+#nav-bar toolbarbutton:not(#urlbar-zoom-button):not([disabled]):not([checked]):hover {
 	outline: 0 !important;
 	background: var(--whitesur-headerbar-button-hover-background) !important;
 }
 
 /* Active headerbar buttons */
-#nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.subviewbutton):not([disabled]):not(#hack):active,
-#nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.subviewbutton):not(.subviewbutton):not([disabled])[open],
-#nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.subviewbutton):not([disabled])[checked] {
+#nav-bar toolbarbutton:not(#urlbar-zoom-button):not([disabled]):not(#hack):active,
+#nav-bar toolbarbutton:not(#urlbar-zoom-button):not([disabled])[open],
+#nav-bar toolbarbutton:not(#urlbar-zoom-button):not([disabled])[checked] {
 	background: var(--whitesur-headerbar-button-active-background) !important;
 }
 
-/* Disabled headerbar buttons */
-#nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.subviewbutton)[disabled] {}
-
-/* Inactive window buttons */
-#nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.subviewbutton):-moz-window-inactive {}
-
 /* Buttons with margins */
-#nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.subviewbutton) {
+#nav-bar toolbarbutton:not(#urlbar-zoom-button):not(#allTabsMenu-searchTabs) {
 	margin: 0 2px !important;
 }
 
 #nav-bar #back-button:not(#hack),
 #nav-bar #forward-button:not(#hack) {
 	padding: 0 4px !important;
-	width: 34px !important;
-	min-width: 34px !important;
+	width: 32px !important;
+	min-width: 32px !important;
 }
 
 #nav-bar #forward-button:not(#hack) {

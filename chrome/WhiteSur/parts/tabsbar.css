@@ -263,6 +263,10 @@ tab[selected]:-moz-window-inactive {
 	border-color: var(--whitesur-tabbar-tab-hover-background) !important;
 }
 
+toolbar .toolbarbutton-1 {
+	padding: 0 !important;
+}
+
 #TabsToolbar .toolbarbutton-1 {
 	background: var(--whitesur-tabbar-tab-background) !important;
 	background-color: var(--whitesur-tabbar-tab-background) !important;
@@ -472,23 +476,39 @@ tab[selected]:-moz-window-inactive {
 	margin-top: 8px !important;
 } */
 
-.all-tabs-item:hover {
+/* Tabs View dropdown menu */
+#allTabsMenu-searchTabs {
+	margin: 0 !important;
+	padding-inline: 12px !important;
+}
+
+.all-tabs-item:hover,
+.all-tabs-item:hover:active,
+#allTabsMenu-searchTabs:hover,
+#allTabsMenu-searchTabs:hover:active {
 	background-color: var(--whitesur-button-suggested-action-hover-background) !important;
 }
 
-.all-tabs-item:hover .toolbarbutton-text {
+.all-tabs-item:hover .toolbarbutton-text,
+.all-tabs-item:active .toolbarbutton-text,
+#allTabsMenu-searchTabs:hover .toolbarbutton-text,
+#allTabsMenu-searchTabs:active .toolbarbutton-text {
 	color: #fff !important;
 }
 
-.all-tabs-item:hover:active {
+.all-tabs-item:hover:active,
+#allTabsMenu-searchTabs:hover:active {
 	background-color: var(--whitesur-button-suggested-action-hover-background) !important;
-}
-
-.all-tabs-item:active .toolbarbutton-text {
-	color: #fff !important;
 }
 
 /*Inactive tab title*/
 .tab-label-container:not([selected="true"], [multiselected]) {
 	opacity: .5 !important;
+}
+
+:root:not([privatebrowsingmode="temporary"]) :is(toolbarbutton, toolbarpaletteitem)+#tabbrowser-tabs,
+:root[privatebrowsingmode="temporary"] :is(toolbarbutton:not(#firefox-view-button), toolbarpaletteitem:not(#wrapper-firefox-view-button))+#tabbrowser-tabs {
+	border-inline-start: none !important;
+	padding-inline-start: 0 !important;
+	margin-inline-start: 0 !important;
 }

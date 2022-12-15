@@ -49,6 +49,10 @@ panel[type=arrow] {
 	font: inherit !important;
 }
 
+#customizationui-widget-panel {
+	margin-top: 15px !important;
+}
+
 /* Panel border */
 @media (prefers-color-scheme: dark) {
 	:is(menupopup, panel)[type="arrow"]>panelmultiview {
@@ -112,7 +116,7 @@ panelview {
 	margin-top: 10px !important;
 }
 
-.toolbarbutton-1 {
+#nav-bar .toolbarbutton-1 {
 	border-radius: var(--macos-toolbar-border-radius) !important;
 }
 
@@ -127,7 +131,7 @@ panelview {
 	/* -moz-box-pack: inherit !important; */
 }
 
-.subviewbutton:not(.subviewbutton-back),
+.subviewbutton:not(.subviewbutton-back):not(.toolbarbutton-1),
 .protections-popup-category,
 .identity-popup-content-blocking-category {
 	padding-inline: 10px !important;
@@ -155,12 +159,12 @@ panelview {
 	opacity: 0.5 !important;
 }
 
-.subviewbutton:not([disabled]):not(#appMenu-fxa-label2):not(.subviewbutton-iconic):not(.panel-subview-footer-button):hover {
+.panel-subview-body .toolbarbutton-1:not(.subviewbutton):hover, 
+.subviewbutton:not(.nav-bar-overflow-button):not(#appMenu-fxa-label2):not(.subviewbutton-iconic):not(.panel-subview-footer-button):hover {
 	background: var(--whitesur-button-suggested-action-hover-background) !important;
 	color: #fff !important;
 }
 
-.toolbarbutton-1:not([disabled]):hover,
 .protections-popup-category:not([disabled]):hover,
 .identity-popup-content-blocking-category:not([disabled]):hover {
 	background: var(--whitesur-button-suggested-action-hover-background) !important;
@@ -173,7 +177,7 @@ menuseparator {
 }
 
 toolbarseparator:not([orient="vertical"]) {
-	margin: 6px 12px !important;
+	margin: 6px 0 !important;
 	border-top: 1px solid currentColor !important;
 	opacity: 0.2;
 }
@@ -207,6 +211,10 @@ toolbarseparator[orient="vertical"] {
 #widget-overflow panelview,
 #PanelUI-fxa {
 	padding: 4px !important;
+}
+
+.unified-extensions-item-open-menu.subviewbutton {
+	display: none !important;
 }
 
 /* fix menu button padding and alignment*/
