@@ -77,6 +77,11 @@
 	--urlbar-toolbar-height: 32.00px !important;
 }
 
+#urlbar-search-mode-indicator {
+	font-size: 75%;
+	margin-block: 5px;
+}
+
 /* Centre URL bar text input*/
 #urlbar-input {
 	position: absolute;

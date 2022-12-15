@@ -34,15 +34,15 @@
 }
 
 /* Hover headerbar buttons */
-#nav-bar toolbarbutton:not(#urlbar-zoom-button):not([disabled]):not([checked]):hover {
+#nav-bar toolbarbutton:not(#allTabsMenu-searchTabs):not(.all-tabs-button):not(.all-tabs-secondary-button):not([checked]):hover {
 	outline: 0 !important;
 	background: var(--whitesur-headerbar-button-hover-background) !important;
 }
 
 /* Active headerbar buttons */
-#nav-bar toolbarbutton:not(#urlbar-zoom-button):not([disabled]):not(#hack):active,
-#nav-bar toolbarbutton:not(#urlbar-zoom-button):not([disabled])[open],
-#nav-bar toolbarbutton:not(#urlbar-zoom-button):not([disabled])[checked] {
+#nav-bar toolbarbutton:not(#allTabsMenu-searchTabs):not(.all-tabs-button):not(.all-tabs-secondary-button):not(#urlbar-zoom-button):not([disabled]):not(#hack):active,
+#nav-bar toolbarbutton:not(#allTabsMenu-searchTabs):not(.all-tabs-button):not(.all-tabs-secondary-button):not(#urlbar-zoom-button):not([disabled])[open],
+#nav-bar toolbarbutton:not(#allTabsMenu-searchTabs):not(.all-tabs-button):not(.all-tabs-secondary-button):not(#urlbar-zoom-button):not([disabled])[checked] {
 	background: var(--whitesur-headerbar-button-active-background) !important;
 }
 
