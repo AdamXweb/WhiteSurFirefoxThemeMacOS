@@ -89,14 +89,13 @@
 	height: 100%;
 	text-align: center !important;
 	transform: translateX(50%);
-	transition: transform 0.1s cubic-bezier(0, .5, .5, 1);
+	transition: transform 0.3s cubic-bezier(0, .7, .3, 1);
 }
 
 /* Unless text input is selected like safari*/
 #urlbar[focused] #urlbar-input {
 	position: absolute;
 	transform: translateX(0);
-	transition: all .2s ease;
 	width: 100%;
 	text-align: left !important;
 }

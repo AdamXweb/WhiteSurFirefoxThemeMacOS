@@ -26,10 +26,22 @@
 #search-box[focused],
 .findbar-textbox[focused],
 .findbar-textbox:focus {
-	outline: 2px solid var(--whitesur-focused-urlbar-border-color) !important;
+	outline-color: var(--whitesur-focused-urlbar-border-color) !important;
+	outline-width: 3px !important;
+	transition: outline-color 0.3s cubic-bezier(0, .7, .3, 1),
+		outline-width 0.3s cubic-bezier(0, .7, .3, 1) !important;
+}
+
+/* Entries focused */
+#urlbar>#urlbar-input-container,
+#searchbar,
+#search-box,
+.findbar-textbox {
 	outline-offset: -2px;
 	-moz-outline-radius: 8px;
-	transition: all 100ms;
+	outline-style: solid;
+	outline-color: transparent !important;
+	outline-width: 12px !important;
 }
 
 /* Inactive window entries */
