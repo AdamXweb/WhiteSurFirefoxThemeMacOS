@@ -19,23 +19,35 @@
 	margin-block: 6px !important;
 }
 
+.notification-anchor-icon:not([open=true]),
 .identity-box-button:not([open=true]),
 #tracking-protection-icon-container:not([open=true]) {
 	opacity: 0.7 !important;
 	background-color: transparent !important;
 }
 
+.notification-anchor-icon:hover:not([open=true]),
 .identity-box-button:hover:not([open=true]),
 #tracking-protection-icon-container:hover:not([open=true]) {
 	opacity: 1 !important;
 	background-color: transparent !important;
 }
 
+.notification-anchor-icon:hover:active,
+.notification-anchor-icon[open=true],
 .identity-box-button:hover:active,
 .identity-box-button[open=true],
 #tracking-protection-icon-container:hover:active,
 #tracking-protection-icon-container[open=true] {
 	opacity: 1 !important;
+	background-color: transparent !important;
+}
+
+#notification-popup-box {
+	height: auto !important;
+}
+
+#notification-popup-box:hover {
 	background-color: transparent !important;
 }
 
