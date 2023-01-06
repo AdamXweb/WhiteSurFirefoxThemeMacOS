@@ -74,6 +74,8 @@ panelview {
 }
 
 .panel-subview-body>*,
+.panel-subview-footer-button>*,
+#identity-popup-more-info-footer>toolbarbutton,
 #widget-overflow-mainView>toolbarbutton {
 	margin: 0 !important;
 }
@@ -159,7 +161,8 @@ panelview {
 	opacity: 0.5 !important;
 }
 
-.panel-subview-body .toolbarbutton-1:not(.subviewbutton):hover, 
+.panel-subview-body .toolbarbutton-1:not(.subviewbutton):hover,
+.subviewbutton.identity-popup-security-connection:hover,
 .subviewbutton:not(.nav-bar-overflow-button):not(#appMenu-fxa-label2):not(.subviewbutton-iconic):not(.panel-subview-footer-button):hover {
 	background: var(--whitesur-button-suggested-action-hover-background) !important;
 	color: #fff !important;
@@ -209,6 +212,7 @@ toolbarseparator[orient="vertical"] {
 #customizationui-widget-multiview panelview#allTabsMenu-allTabsView,
 #appMenu-popup panelview,
 #widget-overflow panelview,
+#identity-popup-multiView panelview,
 #PanelUI-fxa {
 	padding: 4px !important;
 }
@@ -315,7 +319,7 @@ button:focus-visible {
 	outline: 2px solid var(--theme-primary-color) !important;
 }
 
-/*  checkbox */
+/* checkbox */
 .checkbox-check[checked] {
 	background-color: var(--theme-primary-color) !important;
 	color: var(--theme-alt-color) !important;
@@ -323,4 +327,15 @@ button:focus-visible {
 
 checkbox:not([disabled="true"]):hover>.checkbox-check[checked] {
 	background-color: var(--whitesur-switch-active-background, color-mix(in srgb, currentColor 12.5%, var(--theme-primary-color))) !important;
+}
+
+/* Bookmark editor */
+
+#editBookmarkPanelBottomButtons {
+	padding: 0 var(--arrowpanel-padding) calc(var(--arrowpanel-padding) / 2);
+}
+
+#editBookmarkPanelContent .panel-button image {
+	width: 16px;
+	height: 16px;
 }

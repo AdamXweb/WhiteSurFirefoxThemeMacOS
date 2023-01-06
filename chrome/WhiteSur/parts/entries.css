@@ -20,28 +20,32 @@
 	transition: all 100ms;
 }
 
+/* Entries not focused */
+#urlbar>#urlbar-input-container,
+#searchbar,
+#search-box,
+.findbar-textbox,
+#editBookmarkPanelRows [type="text"] {
+	outline-offset: -2px !important;
+	-moz-outline-radius: 8px;
+	outline-style: solid !important;
+	outline-color: transparent !important;
+	outline-width: 12px !important;
+	transition: outline-color 0s,
+		outline-width 0s !important;
+}
+
 /* Entries focused */
 #urlbar[focused]>#urlbar-input-container,
 #searchbar:focus-within,
 #search-box[focused],
 .findbar-textbox[focused],
-.findbar-textbox:focus {
+.findbar-textbox:focus,
+#editBookmarkPanelRows [type="text"]:focus-visible {
 	outline-color: var(--whitesur-focused-urlbar-border-color) !important;
 	outline-width: 3px !important;
 	transition: outline-color 0.3s cubic-bezier(0, .7, .3, 1),
 		outline-width 0.3s cubic-bezier(0, .7, .3, 1) !important;
-}
-
-/* Entries focused */
-#urlbar>#urlbar-input-container,
-#searchbar,
-#search-box,
-.findbar-textbox {
-	outline-offset: -2px;
-	-moz-outline-radius: 8px;
-	outline-style: solid;
-	outline-color: transparent !important;
-	outline-width: 12px !important;
 }
 
 /* Inactive window entries */

@@ -34,7 +34,7 @@
 }
 
 /* Hover headerbar buttons */
-#nav-bar toolbarbutton:not(#allTabsMenu-searchTabs):not(.all-tabs-button):not(.all-tabs-secondary-button):not([checked]):hover {
+#nav-bar toolbarbutton:not(#allTabsMenu-searchTabs):not(.all-tabs-button):not(.all-tabs-secondary-button):not([checked]):not([disabled]):hover {
 	outline: 0 !important;
 	background: var(--whitesur-headerbar-button-hover-background) !important;
 }

@@ -13,6 +13,7 @@
 
 /* Buttons  */
 .subviewbutton.panel-subview-footer,
+.subviewbutton.panel-subview-footer-button,
 .panel-footer button,
 #downloadsHistory,
 #downloadsPanel-mainView .download-state .downloadButton,
@@ -52,6 +53,7 @@
 
 /* Text buttons */
 .subviewbutton.panel-subview-footer,
+.subviewbutton.panel-subview-footer-button,
 .panel-footer button,
 #downloadsHistory,
 #overflowMenu-customize-button,
@@ -103,6 +105,7 @@
 
 /* Hover buttons */
 .subviewbutton.panel-subview-footer:hover,
+.subviewbutton.panel-subview-footer-button:hover,
 .panel-footer button:hover,
 #downloadsHistory:hover,
 #downloadsPanel-mainView .download-state .downloadButton:hover,
@@ -132,6 +135,7 @@ menulist:hover .menulist-label-box,
 
 /* Active buttons */
 .subviewbutton.panel-subview-footer:active,
+.subviewbutton.panel-subview-footer-button:active,
 .panel-footer button:active,
 #downloadsHistory:active,
 #downloadsPanel-mainView .download-state .downloadButton:active,
