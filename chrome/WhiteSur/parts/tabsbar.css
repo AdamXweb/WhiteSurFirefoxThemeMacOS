@@ -205,6 +205,10 @@ tab[selected]:-moz-window-inactive {
 	}
 }
 
+stack[soundplaying="true"]+.tab-label-container[textoverflow] {
+	mask-image: none !important;
+}
+
 :root:-moz-window-inactive .tab-close-button:not(#hack) {
 	opacity: .18 !important;
 }

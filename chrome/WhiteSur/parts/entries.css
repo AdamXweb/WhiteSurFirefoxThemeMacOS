@@ -35,6 +35,10 @@
 		outline-width 0s !important;
 }
 
+#urlbar:not([focused]) * {
+	cursor: default !important;
+}
+
 /* Entries focused */
 #urlbar[focused]>#urlbar-input-container,
 #searchbar:focus-within,
