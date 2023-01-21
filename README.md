@@ -19,9 +19,9 @@ To skip to the original `README.md`, please click [here](#firefox-whitesur-theme
 
 1. Colors are controled by browser theme, thus controled by Adaptive Tab Bar Color
 2. Close tab buttons are on the left side
-3. Buttons inside URL field behave closer to Safari
+3. Buttons and the outline of URL field behave closer to Safari
 4. Colors of button icons now follow the browser theme
-5. (Almost) fixed popover menus
+5. (Mostly) fixed popover menus
 
 <br>
 
