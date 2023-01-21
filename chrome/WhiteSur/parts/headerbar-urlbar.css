@@ -118,7 +118,8 @@ toolbarspring {
 }
 
 /* URL bar */
-#urlbar {
+#urlbar,
+#searchbar {
 	box-shadow: none !important;
 	border-radius: var(--macos-toolbar-border-radius) !important;
 	opacity: 0.8 !important;
@@ -126,7 +127,9 @@ toolbarspring {
 }
 
 #urlbar:hover,
-#urlbar[focused] {
+#urlbar[focused],
+#searchbar:hover,
+#searchbar:focus-within {
 	opacity: 1 !important;
 	filter: saturate(100%) !important;
 }

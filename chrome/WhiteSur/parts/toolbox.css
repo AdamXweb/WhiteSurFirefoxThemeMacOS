@@ -8,15 +8,22 @@
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
 
-/*By u/It_Was_The_Other_Guy*/
-/* Start of textless addon menu CSS */
+/* By u/It_Was_The_Other_Guy
+ * Start of textless addon menu & widget overflow menu CSS */
 
 #widget-overflow-list,
-#widget-overflow-fixed-list {
+#widget-overflow-fixed-list,
+#unified-extensions-panel .panel-subview-body>* {
 	display: grid !important;
 	grid-template-columns: repeat(5, 1fr) !important;
 	justify-items: center !important;
 }
+
+/* #unified-extensions-panel .panel-subview-body>* {
+	display: contents;
+} */
+
+/* Animation for widget overflow list re-arrangement */
 
 #widget-overflow-fixed-list>toolbarpaletteitem:not([notransition])[place="panel"] {
 	border-block-width: 0 !important;
@@ -40,39 +47,56 @@
 }
 
 #widget-overflow-fixed-list>.toolbarbutton-1,
-#widget-overflow-fixed-list>.toolbaritem-combined-buttons {
+#widget-overflow-fixed-list>.toolbaritem-combined-buttons,
+#unified-extensions-panel .unified-extensions-item {
 	width: 60.6px !important;
 	height: 60.6px !important;
-}
-
-.widget-overflow-list .toolbarbutton-1 {
-	width: 100%;
-	height: 100%;
+	max-width: none !important;
+	max-height: none !important;
 	padding: 0 !important;
 	margin: 0 !important;
 }
 
-.widget-overflow-list .toolbarbutton-1>.toolbarbutton-badge-stack {
-	width: 100%;
-	height: 100%;
-	padding: 20%;
+.widget-overflow-list .toolbarbutton-1,
+#unified-extensions-panel #unified-extensions-area .unified-extensions-item-action-button {
+	width: 100% !important;
+	height: 100% !important;
+	padding: 0 !important;
+	margin: 0 !important;
+}
+
+.widget-overflow-list .toolbarbutton-1>.toolbarbutton-badge-stack,
+#unified-extensions-panel #unified-extensions-area .unified-extensions-item-action-button>.toolbarbutton-badge-stack,
+#unified-extensions-panel .unified-extensions-list .unified-extensions-item-action-button {
+	display: grid !important;
+	width: 100% !important;
+	height: 100% !important;
+	padding: 20% !important;
 	justify-content: center;
 	align-items: center;
 }
 
 .widget-overflow-list .subviewbutton-nav::after,
 #widget-overflow-list .toolbarbutton-text,
-#widget-overflow-fixed-list .toolbarbutton-text {
+#widget-overflow-fixed-list .toolbarbutton-text,
+.unified-extensions-item-menu-button,
+.unified-extensions-item-contents {
 	display: none !important;
 }
 
-widget-overflow-list .toolbarbutton-1 image,
-#widget-overflow-fixed-list .toolbarbutton-1 image {
+.widget-overflow-list .toolbarbutton-1 image,
+#widget-overflow-fixed-list .toolbarbutton-1 image,
+#unified-extensions-panel .unified-extensions-item-action-button image {
 	height: 26px !important;
 	width: 26px !important;
+	margin: auto !important;
 }
 
-/* End of textless addon menu CSS */
+#unified-extensions-panel .subviewbutton {
+	margin: 0 !important;
+}
+
+/* End of textless addon menu & widget overflow menu CSS */
 
 /* Toolbox colors */
 #navigator-toolbox {

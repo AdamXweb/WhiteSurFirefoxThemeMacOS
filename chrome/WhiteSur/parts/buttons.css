@@ -127,7 +127,6 @@ menulist:hover .menulist-label-box,
 .identity-popup-permission-remove-button:hover,
 #identity-popup-security-expander:hover,
 .tracking-protection-button:hover,
-#protections-popup-show-report-stack:hover>.protections-popup-footer-button,
 .dialog-button:hover {
 	outline: 0 !important;
 	background: var(--whitesur-button-hover-background) !important;
@@ -223,8 +222,7 @@ menulist>menupopup>menu {
 	border-radius: 5px !important;
 }
 
-.subviewbutton-back:not(#hack):not(:active):hover,
-#protections-popup-show-report-button:not(:active):hover {
+.subviewbutton-back:not(#hack):not(:active):hover {
 	box-shadow: var(--whitesur-button-box-shadow) !important;
 	border-color: var(--whitesur-button-border-color) !important;
 	border-bottom-color: var(--whitesur-button-border-accent-color) !important;
