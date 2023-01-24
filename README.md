@@ -35,7 +35,7 @@ e.g. To install with script, with close button left hand side: `bash install.sh 
 
 ### Manual installation (MacOS & Windows)
 
-Copy `chrome` and `configuration` folers into your Firefox Profile Directory
+Copy `chrome` and `configuration` folders into your Firefox Profile Directory
 
 To find your Firefox Profile Directory you can:
 
@@ -49,14 +49,16 @@ To find your Firefox Profile Directory you can:
 6. Done!
 
 #### Manual theme overrides:
-To manually add a custom override, copy the `*.css` from the `custom` folder of whichever option you are after. Place it in the `chrome/WhiteSur/parts` foder within the profile directory you opened above.\
-Next, import the `.css` file you just specified. To do this, open `chrome/WhiteSur/theme.css` in the same directory above and add the line\
-`@import "parts/NAMEOFOPTION.css";` above the line that says `@namespace xul...`\
+To manually add a custom override, copy the `*.css` from the `custom` folder of whichever option you are after. Place it in the `chrome/WhiteSur/custom` foder within the profile directory you opened above.\
+
 That's it, the theme should load your overriden settings
 
 #### Swap navbar close buttons on Windows:
 `windows-swapclose.css` contains the styles required to swap the close buttons, as well as to re-order the close button from MacOS styling to Windows.
 Follow the directions above for the manual theme override to activate.
+Can be installed with the `-w` command on the install script
+#### Swap tab close button side
+`tabs-swapclose.css` contains styles to place the close button for the tab on the left hand side for consistency with Safari. Can be installed with the `-c` command on the install script
 
 ### Manual colour override:
 
@@ -89,7 +91,7 @@ If you've found a new bug, please report it as a new issue with the templates pr
 
 Thanks!
 
-## Screenshot
+## Screenshots
 
 ### Windows
 ![Preview](githubpreview/whitesurwindows.gif?raw=true)
