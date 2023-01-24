@@ -6,12 +6,15 @@
 	--urlbar-height: 32.00px;
 	--urlbar-toolbar-height: 32.00px !important;
 }
+#urlbar, #searchbar {
+	font-size: 1.2em;
+}
 /* Centre URL bar text input*/
 #urlbar-input {
 	transition: transform .1s linear;
 	transform: translateX(50%);
-	top: 4px;
 	position: absolute;
+	height:100%;
 	width: 50%;
 	text-align: center !important;
 }
@@ -178,3 +181,26 @@ toolbarspring {
 .urlbar-page-action {
 padding: inherit !important;
 }
+
+/* Extention mod to hide when text is selected.*/
+#identity-box.extensionPage {
+	height: 32px;
+	bottom: 2px;
+}
+.searchbar-search-button[open] #idenity-box.extensionPage #identity-permission-box,
+.searchbar-search-button:hover:active #idenity-box.extensionPage #identity-permission-box,
+#urlbar[focused] #identity-box.extensionPage #identity-permission-box,
+#urlbar[usertyping] #identity-box.extensionPage #identity-permission-box,
+#urlbar:is([focused="true"], [open])  #identity-box.extensionPage #identity-permission-box{
+	visibility: collapse;
+}
+#urlbar[focused="true"] #identity-box[pageproxystate="valid"].extensionPage > .identity-box-button{
+	background-color: transparent !important;
+}
+#urlbar[focused="true"] #identity-box[pageproxystate="valid"].extensionPage #identity-icon-box #identity-icon {
+	list-style-image: url(chrome://global/skin/icons/search-glass.svg) !important;
+}
+#urlbar[focused="true"] #identity-box[pageproxystate="valid"].extensionPage #identity-icon-box #identity-icon-label{
+	display:none !important;
+}
+/* extension mod end */
