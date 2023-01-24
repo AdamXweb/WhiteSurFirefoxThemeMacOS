@@ -5,8 +5,10 @@
 	background-color: var(--new-tab-background) !important;
 }
 
-@-moz-document url(about:session-restore), url-prefix(about:sessionrestore){ 
+@-moz-document url(about:session-restore), url-prefix(about:sessionrestore), url(about:addons), url(about:preferences){ 
 	body { 
 		background-color: var(--new-tab-background) !important;
 	} 
 }
+
+

@@ -92,7 +92,7 @@ toolbar .toolbarbutton-1{
 	transition: box-shadow 200ms;
 }
 #urlbar[breakout]{
-	top: 3px !important;
+	top: 3.5px !important;
 }
 #urlbar[breakout][breakout-extend]{
 	top: 2px !important;

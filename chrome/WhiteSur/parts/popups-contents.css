@@ -337,3 +337,6 @@
 #contextual-feature-recommendation-notification {
 	width: auto !important;
 }
+#PlacesToolbar menupopup[placespopup="true"] menuseparator:last-of-type { 
+	display: none !important;
+}

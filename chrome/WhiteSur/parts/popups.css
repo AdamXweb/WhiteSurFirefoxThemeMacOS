@@ -264,3 +264,7 @@ toolbarbutton.bookmark-item[open="true"] {
   checkbox:not([disabled="true"]):hover > .checkbox-check[checked] {
 	background-color: var(--gnome-switch-active-background, color-mix(in srgb, currentColor 12.5%, var(--theme-primary-color))) !important;
   }
+browser[primary="true"][tabDialogShowing="true"],
+#main-window[window-modal-open="true"] > body > #browser{
+  filter: blur(5px)
+}
