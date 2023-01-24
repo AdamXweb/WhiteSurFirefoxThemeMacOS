@@ -17,7 +17,7 @@
 
     :root[tabsintitlebar]:not([sizemode="maximized"]) #titlebar .titlebar-buttonbox-container {
         top: 17px !important;
-        padding: 0 !important;
+        padding: 2px 0 0 8px !important;
        
     }
     :root[tabsintitlebar][inFullscreen]  #titlebar .titlebar-buttonbox-container{
@@ -31,13 +31,12 @@
     }
 
     :root[tabsintitlebar][sizemode="maximized"] .titlebar-buttonbox {
-        top: 2px;
-        left: 6px;
+        top: 1px;
+        left: 10px;
     }
 
     .titlebar-buttonbox-container, #PanelUI-button {
-        padding-top:  3px !important;
-        padding-left: 8px !important;
+        padding-top: 0 !important;
     }
 
 
