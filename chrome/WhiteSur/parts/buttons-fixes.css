@@ -205,3 +205,16 @@ menulist {
 #identity-box[pageproxystate="valid"].extensionPage > .identity-box-button{
 	background:var(--gnome-button-active-background) !important;
 }
+#tracking-protection-icon-container[open="true"] .identity-box-button,
+.identity-box-button[open="true"],
+.identity-box-button:hover:active,
+#tracking-protection-icon-container:hover:active, #tracking-protection-icon-container[open="true"]{
+	background-color: var(--gnome-button-active-background) !important;
+}
+/* add safari warning color to security popup*/
+#identity-popup[connection^="secure"] .identity-popup-security-connection .toolbarbutton-icon{
+	fill: var(--safari-safe-color) !important;
+}
+#identity-popup[connection="secure-cert-user-overridden"] .identity-popup-security-connection .toolbarbutton-icon, #identity-popup[connection="cert-error-page"] .identity-popup-security-connection .toolbarbutton-icon{
+	fill: var(--safari-warning-security) !important;
+}

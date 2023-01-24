@@ -136,5 +136,14 @@
 		/* without invert: none */
 		--gnome-window-icons-hack-filter: invert(90%);
 		/* without invert: none */
+
+		/* colors to override with theme*/
+		--urlbar-box-bgcolor: var(--theme-primary-color) !important;
+		--in-content-primary-button-background-hover:var(--theme-primary-color-hover) !important;
+		--in-content-primary-button-background: var(--theme-primary-color) !important;
+		--in-content-danger-button-background-active: var(--theme-primary-color-hover) !important;
+		--safari-warning-security: rgb(202,49,66) !important;
+		--safari-safe-color: rgb(1,203,67) !important;
+		--new-tab-background: rgb(30,30,30) !important;
 	}
 }
