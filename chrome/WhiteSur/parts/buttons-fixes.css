@@ -218,3 +218,6 @@ menulist {
 #identity-popup[connection="secure-cert-user-overridden"] .identity-popup-security-connection .toolbarbutton-icon, #identity-popup[connection="cert-error-page"] .identity-popup-security-connection .toolbarbutton-icon{
 	fill: var(--safari-warning-security) !important;
 }
+#identity-box[pageproxystate="valid"].chromeUI{
+	padding: 2px 0 !important;
+}
