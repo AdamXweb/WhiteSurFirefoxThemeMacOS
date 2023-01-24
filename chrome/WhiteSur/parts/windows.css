@@ -4,7 +4,9 @@
     .titlebar-button {
         border: none;
         margin: 0 !important;
-        padding: 0 !important;
+        /*		padding: 3px 6px !important;
+*/
+        padding: 1px 3px !important;
         -moz-content-properties: none !important;
         stroke: none !important;
     }
@@ -15,6 +17,7 @@
 
     :root[tabsintitlebar]:not([sizemode="maximized"]) #titlebar .titlebar-buttonbox-container {
         top: 17px !important;
+        padding: 0 !important;
        
     }
     :root[tabsintitlebar][inFullscreen]  #titlebar .titlebar-buttonbox-container{
@@ -33,7 +36,8 @@
     }
 
     .titlebar-buttonbox-container, #PanelUI-button {
-        padding-top: 0;
+        padding-top:  3px !important;
+        padding-left: 8px !important;
     }
 
 
