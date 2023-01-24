@@ -41,8 +41,8 @@ GNOME CSD styles for headerbar on Firefox [tabsintitlebar] @namespace xul url("h
 	-moz-appearance: none !important;
 	padding: 0 3px 0 4px;
 	position: absolute !important;
-	left: 8px;
-	top: 15px;
+	left: 2px;
+	top: 18px;
 	display: block !important;
 }
 :root[tabsintitlebar][inFullscreen] #window-controls {
@@ -90,3 +90,4 @@ GNOME CSD styles for headerbar on Firefox [tabsintitlebar] @namespace xul url("h
 	:root[tabsintitlebar] #navigator-toolbox[movingtab] #TabsToolbar {
 		padding-bottom: 0 !important;
 	}
+	

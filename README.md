@@ -23,7 +23,8 @@ Follow the prompts
 ### Installation flags
 
 The script supports the following flags
-- `-c` To enable close button on the left hand side
+- `-c` Left hand side tab close button
+- `-w` Left hand side window close button
 - `-f` To specify the default firefox folder (it will try to find the profile folder to place the theme within)
 - `-l` Default location of most Linux installations
 - `-u` Remove the animation on URL bar to be clickable throughout

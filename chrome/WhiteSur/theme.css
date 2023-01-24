@@ -15,6 +15,11 @@
 @import "colors/light.css";
 @import "colors/dark.css";
 @import "parts/windows.css";
+/* Add Custom themes so user only needs to copy items*/
+@import "custom/lhsclose.css";
+@import "custom/noidentity.css";
+@import "custom/standard-urlbar.css";
+@import "custom/windows-swapclose.css";
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
 /* Set theme version text in customization panel */

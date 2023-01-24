@@ -222,12 +222,12 @@ menulist>menupopup>menu {
 #TabsToolbar .toolbarbutton-1 {
 	margin: 0 0 !important;
 	padding: 0 0 !important;
-	height: 28px !important;
-	width: 32px !important;
+	height: 36px !important;
+	width: 36px !important;
 	min-height: 28px !important;
 	min-width: 32px !important;
 	border-radius: 0 !important;
-	transition: all 200ms;
+	transition: all 100ms;
 }
 
 #TabsToolbar .toolbarbutton-1 image {
@@ -263,7 +263,6 @@ menulist>menupopup>menu {
 }
 
 /* Combined buttons */
-#nav-bar .toolbaritem-combined-buttons toolbarbutton:not(:last-of-type):not(#hack),
 .subviewbutton.panel-subview-footer:not(:only-of-type):not(:last-of-type),
 .panel-footer button:not(:only-of-type):not(:last-of-type),
 #appMenu-popup .toolbaritem-combined-buttons toolbarbutton:not(:last-of-type):not(#appMenu-zoomEnlarge-button),

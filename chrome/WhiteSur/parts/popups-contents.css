@@ -109,9 +109,15 @@
 	z-index: 10;
 }
 #customization-panelWrapper > .panel-arrowbox {
-	margin-bottom: -5px !important;
+	margin-bottom: 0px !important;
 }
-
+#customization-container{
+	background-color: var(--new-tab-background) !important;
+	background-image: none !important;
+}
+#customization-panelWrapper > .panel-arrowcontent{
+	background: var(--gnome-popover-background) !important;
+}
 /* Confirmation Hint */
 #confirmation-hint .panel-arrowcontent {
 	background: var(--gnome-button-suggested-action-background) !important;
@@ -330,4 +336,7 @@
 /* Feature recommendation notification, fix width */
 #contextual-feature-recommendation-notification {
 	width: auto !important;
+}
+#PlacesToolbar menupopup[placespopup="true"] menuseparator:last-of-type { 
+	display: none !important;
 }

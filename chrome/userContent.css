@@ -1,0 +1,14 @@
+@import "Whitesur/colors/light.css";
+@import "Whitesur/colors/dark.css";
+/* test to change the session restore page */
+#main-window[sessionrestored="true"] browser>#document>html{
+	background-color: var(--new-tab-background) !important;
+}
+
+@-moz-document url(about:session-restore), url-prefix(about:sessionrestore), url(about:addons), url(about:preferences){ 
+	body { 
+		background-color: var(--new-tab-background) !important;
+	} 
+}
+
+
