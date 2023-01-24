@@ -90,7 +90,7 @@
 
 		/* URL bar */
 		--gnome-urlbar-background: #464646;
-		--gnome-urlbar-border-color: #282828;
+		--gnome-urlbar-border-color: rgb(64,64,64);
 		--gnome-urlbar-box-shadow: inset 0 0 0 1px rgba(21, 83, 158, 0);
 		--gnome-urlbar-color: #ffffff;
 		--gnome-hover-urlbar-border-color: #585858;
@@ -145,5 +145,7 @@
 		--safari-warning-security: rgb(202,49,66) !important;
 		--safari-safe-color: rgb(1,203,67) !important;
 		--new-tab-background: rgb(30,30,30) !important;
+		--toolbar-field-focus-color: transparent !important;
+		--focus-outline-color: transparent !important;
 	}
 }

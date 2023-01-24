@@ -133,4 +133,15 @@
 	--gnome-convert-icon-to-symbolic-hack-filter: invert(100%) sepia(100%) grayscale(100%) brightness(200%) brightness(85%) invert(100%);
 	--gnome-icons-hack-filter: none;
 	--gnome-window-icons-hack-filter: invert(30%);
+
+	/* colors to override with theme*/
+	--urlbar-box-bgcolor: var(--theme-primary-color) !important;
+	--in-content-primary-button-background-hover:var(--theme-primary-color-hover) !important;
+	--in-content-primary-button-background: var(--theme-primary-color) !important;
+	--in-content-danger-button-background-active: var(--theme-primary-color-hover) !important;
+	--safari-warning-security: rgb(202,49,66) !important;
+	--safari-safe-color: rgb(1,203,67) !important;
+	--new-tab-background: rgb(233,233,233) !important;
+	--toolbar-field-focus-color: transparent !important;
+	--focus-outline-color: transparent !important;
 }

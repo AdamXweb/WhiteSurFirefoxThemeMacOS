@@ -3,11 +3,12 @@
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
 #urlbar {
-	--urlbar-height: 32.00px;
-	--urlbar-toolbar-height: 32.00px !important;
+	--urlbar-height: 30.00px !important;
+	--urlbar-toolbar-height: 30.00px !important;
 }
 #urlbar, #searchbar {
-	font-size: 1.2em;
+	font-size: 1.2em !important;
+	min-height: 28px !important;
 }
 /* Centre URL bar text input*/
 #urlbar-input {
@@ -25,7 +26,6 @@
 	transition: all .2s ease;
 	width: 100%;
 	text-align: left !important;
-	;
 }
 
 /* Center the URL bar */
@@ -80,7 +80,7 @@ toolbarspring {
 .urlbarView {
 	background: transparent !important;
 	color: var(--gnome-toolbar-color) !important;
-	margin: -2px 0 0 0 !important;
+	margin: 0 !important;
 	width: 100% !important;
 }
 
@@ -174,8 +174,7 @@ toolbarspring {
 .urlbar-icon {
 	height: 16px !important;
 	width: 16px !important;
-	margin-inline: 4px !important;
-	padding: 8px 0 !important;
+	margin:auto !important;
 }
 /* Fix for firefox v92 onwards that changed icon size on MacOS*/
 .urlbar-page-action {
@@ -189,7 +188,7 @@ padding: inherit !important;
 }
 .searchbar-search-button[open] #idenity-box.extensionPage #identity-permission-box,
 .searchbar-search-button:hover:active #idenity-box.extensionPage #identity-permission-box,
-#urlbar[focused] #identity-box.extensionPage #identity-permission-box,
+ #identity-box.extensionPage #identity-permission-box,
 #urlbar[usertyping] #identity-box.extensionPage #identity-permission-box,
 #urlbar:is([focused="true"], [open])  #identity-box.extensionPage #identity-permission-box{
 	visibility: collapse;
