@@ -4,9 +4,7 @@
     .titlebar-button {
         border: none;
         margin: 0 !important;
-        /*		padding: 3px 6px !important;
-*/
-        padding: 1px 3px !important;
+        padding: 0 !important;
         -moz-content-properties: none !important;
         stroke: none !important;
     }
@@ -17,7 +15,6 @@
 
     :root[tabsintitlebar]:not([sizemode="maximized"]) #titlebar .titlebar-buttonbox-container {
         top: 17px !important;
-        padding: 0 3px 0 15px !important;
        
     }
     :root[tabsintitlebar][inFullscreen]  #titlebar .titlebar-buttonbox-container{
@@ -30,10 +27,6 @@
         font-weight: normal !important;
     }
 
-    :root[tabsintitlebar][sizemode="maximized"] #nav-bar-customization-target, [sizemode="maximized"] .titlebar-buttonbox-container, [sizemode="maximized"] #PanelUI-button, [sizemode="maximized"] #nav-bar-overflow-button {
-        padding-top: 10px !important;
-    }
-
     :root[tabsintitlebar][sizemode="maximized"] .titlebar-buttonbox {
         top: 2px;
         left: 6px;
@@ -43,9 +36,6 @@
         padding-top: 0;
     }
 
-    #urlbar-input {
-        top: 5px !important;
-    }
 
     .titlebar-close {
         -moz-box-ordinal-group: 0;
