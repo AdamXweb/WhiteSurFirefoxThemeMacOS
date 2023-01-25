@@ -34,19 +34,10 @@ if [ "$WINDOWSWAP" = true ] ; then
       cp -rf "${REPO_DIR}/custom/windows-swapclose.css"                     "${FIREFOX_DIR_HOME}/"*"default-release/chrome/WhiteSur/custom"
   echo "Window CSD swapped"
 fi
-# If custom tab icons are wanted
-if [ "$TABICONS" = true ] ; then
-  cd "${REPO_DIR}"
-	echo "Enabling custom tab icons"
-      cp -rf "${REPO_DIR}/custom/tabicons.css"                     "${FIREFOX_DIR_HOME}/"*"default-release/chrome/WhiteSur/custom"
-  echo "Custom tab icons enabled"
-fi
 # if no animation on URL bar is desired
 if [ "$URLBAR" = true ] ; then
 	echo "Removing URL bar animation"
     cd "${REPO_DIR}"
-    echo `pwd`
-    echo "${REPO_DIR}"
       cp -rf "${REPO_DIR}/custom/standard-urlbar.css"              "${FIREFOX_DIR_HOME}/"*"default-release/chrome/WhiteSur/custom"
   echo "Standard URL bar configured"
 fi
@@ -54,11 +45,29 @@ fi
 if [ "$NOLINE" = true ] ; then
 	echo "Removing Facebook / Multi account Identity line"
     cd "${REPO_DIR}"
-    echo `pwd`
-    echo "${REPO_DIR}"
       cp -rf "${REPO_DIR}/custom/noidentity.css"              "${FIREFOX_DIR_HOME}/"*"default-release/chrome/WhiteSur/custom"
   echo "No identity lines configured"
 fi
+if [ "$TABVIEW" = true ] ; then
+  cd "${REPO_DIR}"
+	echo "Re-enabling tab view button"
+      cp -rf "${REPO_DIR}/custom/enabletabview.css"                     "${FIREFOX_DIR_HOME}/"*"default-release/chrome/WhiteSur/custom"
+  echo "Tab view button enabled"
+fi
+# If the extension panen is to be hidden
+if [ "$HIDEEXTENSION" = true ] ; then
+  cd "${REPO_DIR}"
+	echo "Enabling hidden extension button"
+      cp -rf "${REPO_DIR}/custom/hideextension.css"                     "${FIREFOX_DIR_HOME}/"*"default-release/chrome/WhiteSur/custom"
+  echo "Extension button hidden"
+fi
+if [ "$NOTABSINGLE" = true ] ; then
+  cd "${REPO_DIR}"
+	echo "Enabling single tab minimal view"
+      cp -rf "${REPO_DIR}/custom/singletabhidden.css"                     "${FIREFOX_DIR_HOME}/"*"default-release/chrome/WhiteSur/custom"
+  echo "Single tab minimal view enabled"
+fi
+
 # Copy settings to enable stylesheets in firefox automatically.
   for d in "${FIREFOX_DIR_HOME}/"*"default-release"; do
     echo "user_pref(\"toolkit.legacyUserProfileCustomizations.stylesheets\", true);" >> "${d}/prefs.js"

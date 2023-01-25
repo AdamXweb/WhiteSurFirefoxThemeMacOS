@@ -8,7 +8,7 @@ readonly REPO_DIR="$(pwd)"
 source "${REPO_DIR}/lib-install.sh"
 
 # Get options.
-while getopts 'c,w:f:l:u:n,r' flag; do
+while getopts 'c,w,u,n,v,e,s,r:f:l' flag; do
 	case "${flag}" in
         c ) TABSWAP=true;;
         w ) WINDOWSWAP=true;;
@@ -16,6 +16,9 @@ while getopts 'c,w:f:l:u:n,r' flag; do
         l ) FIREFOX_DIR_HOME=~/.mozilla/firefox/;;
         u ) URLBAR=true;;
         n) NOLINE=true;;
+        v) TABVIEW=true;;
+        e) HIDEEXTENSION=true;;
+        s) NOTABSINGLE=true;;
         r ) REMOVE=true;;
 	esac
 done

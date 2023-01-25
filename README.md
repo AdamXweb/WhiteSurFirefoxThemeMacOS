@@ -29,9 +29,21 @@ The script supports the following flags
 - `-l` Default location of most Linux installations
 - `-u` Remove the animation on URL bar to be clickable throughout
 - `-n` Removes the identity colour from tabs
+- `-v` Re-enables the tabview button
+- `-e` Hides the extension button
+- `-s` Single tab view (Tabs hidden when only one tab)
 - `-r` Remove the theme
 
-e.g. To install with script, with close button left hand side: `bash install.sh -c`
+e.g. To install with script, with the tab close button left hand side: `bash install.sh -c` 
+
+#### Optimal experience:
+Make sure to right click and Customize Toolbar. From here, drag the new tab button up to the toolbar out of the tab section.
+
+Install with the following modifications for Safari-like experience
+` bash ./install.sh -c -n -s -e`
+
+This will give you a look like this:
+![Preview](https://user-images.githubusercontent.com/6800453/214499429-36413e29-0167-400c-969f-46d2d7082559.png)
 
 ### Manual installation (MacOS & Windows)
 

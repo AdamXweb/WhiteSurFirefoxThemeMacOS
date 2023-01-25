@@ -16,7 +16,10 @@
 @import "colors/dark.css";
 @import "parts/windows.css";
 /* Add Custom themes so user only needs to copy items*/
-@import "custom/lhsclose.css";
+@import "custom/tabs-swapclose.css";
+@import "custom/singletabhidden.css";
+@import "custom/hideextension.css";
+@import "custom/enabletabview.css";
 @import "custom/noidentity.css";
 @import "custom/standard-urlbar.css";
 @import "custom/windows-swapclose.css";

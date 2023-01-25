@@ -447,3 +447,7 @@ transition: all 150ms ease-in !important;
 }
 
 
+/* hide tab view section*/
+#alltabs-button.toolbarbutton-1 {
+    visibility: collapse !important;
+}

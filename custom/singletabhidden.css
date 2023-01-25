@@ -1,0 +1,15 @@
+/* From user @luan https://github.com/AdamXweb/WhiteSurFirefoxThemeMacOS/issues/52#issuecomment-1120470140 */
+
+#tabbrowser-tabs, #tabbrowser-tabs arrowscrollbox {
+    height: auto !important;
+    padding: 0 !important;
+  }
+  
+  #TabsToolbar {
+    min-height: 0 !important;
+  }
+  
+  #tabbrowser-tabs tab[first-visible-tab="true"][last-visible-tab="true"]:not([pinned]),
+  #tabbrowser-tabs tab[first-visible-tab="true"][last-visible-tab="true"]:not([pinned]) ~ #titlebar {
+    display: none;
+  }
