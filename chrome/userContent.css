@@ -1,5 +1,5 @@
-@import "Whitesur/colors/light.css";
-@import "Whitesur/colors/dark.css";
+@import "Whitesur/colors/color.css";
+
 /* test to change the session restore page */
 #main-window[sessionrestored="true"] browser>#document>html{
 	background-color: var(--new-tab-background) !important;
@@ -11,4 +11,128 @@
 	} 
 }
 
+@-moz-document url("about:home"),
+url("about:blank"),
+url("about:newtab") {
+
+    * {
+        cursor: auto !important;
+    }
+
+    .non-collapsible-section {
+        display: none !important;
+    }
+
+    .top-sites-list::before {
+        content: "Favorites";
+        display: block;
+        padding: 20px 10px;
+        font-size: 22px;
+        font-weight: 900;
+    }
+
+    .top-sites-list .hide-for-narrow {
+        display: inline-block !important;
+    }
+
+    .top-site-outer {
+        width: 80px !important;
+        vertical-align: top !important;
+        padding: 0 !important;
+    }
+
+    .top-site-outer:is(.active, :focus, :hover) {
+        background: transparent !important;
+    }
+
+    .top-site-outer .tile {
+        width: 60px !important;
+        height: 60px !important;
+        border-radius: 10px !important;
+        overflow: hidden !important;
+        background-color: #b3b3b353 !important;
+        backdrop-filter: blur(25px);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.25) !important;
+    }
+
+    .top-site-outer .tile .icon-wrapper {
+        width: 100% !important;
+        height: 100% !important;
+        border-radius: 0px !important;
+    }
+
+    .top-site-outer .top-site-icon {
+        background-color: transparent !important;
+    }
+
+    .top-site-outer .title span {
+        padding-inline: 6px !important;
+        overflow: visible !important;
+        white-space: normal !important;
+        user-select: none !important;
+        font-size: 12px !important;
+        font-weight: 500 !important;
+        overflow-wrap: break-word !important;
+    }
+
+    .icon.icon-pin-small {
+        display: none !important;
+    }
+
+    .context-menu {
+        padding: 4px !important;
+        border-radius: 6px !important;
+        border: var(--context-menu-border);
+        outline: var(--context-menu-outline);
+        font-size: 14px !important;
+        background-color: var(--context-menu-background) !important;
+        backdrop-filter: blur(25px) !important;
+    }
+
+    .context-menu>ul {
+        padding: 0 !important;
+    }
+
+    .context-menu>ul>li.separator {
+        width: auto !important;
+        margin: 5px 13px !important;
+    }
+
+    .context-menu>ul>li>a:hover,
+    .context-menu>ul>li>button:hover {
+        background-color: var(--context-menu-hover) !important;
+    }
+
+    button,
+    input {
+        font-weight: 500 !important;
+        border-radius: 4px !important;
+    }
+}
+
+:root {
+    --context-menu-border: 1px solid #ffffff33;
+    --context-menu-outline: 0.5px solid #101010;
+    --context-menu-background: #292929b3;
+    --context-menu-hover: #2073d8;
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --context-menu-border: none;
+        --context-menu-outline: 0.5px solid #c8c8c8;
+        --context-menu-background: #e6e6e6ca;
+        --context-menu-hover: #3584e4;
+    }
+
+    .context-menu>ul>li>a:hover,
+    .context-menu>ul>li>button:hover {
+        color: white !important;
+    }
+
+    button,
+    input {
+        font-weight: 400 !important;
+    }
+}
 

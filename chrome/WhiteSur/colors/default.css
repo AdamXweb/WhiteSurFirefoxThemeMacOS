@@ -1,0 +1,38 @@
+@namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+/* Variables that start with --gnome- are added by me and are assigned
+ * to elements somewhere in this code. The rest of the variables are
+ * built-in in Firefox, so you need to add an !important if you wanna
+ * override them. */
+
+:root {
+	--chrome-content-separator-color: #070707 !important;
+	--lwt-accent-color: #1e1e1e  !important;
+	--lwt-accent-secondary-color:#333333  !important;
+	--lwt-accent-color-2: #3b3b3b  !important;
+	--lwt-accent-color-3: #3f3f3f  !important;
+	--lwt-text-color: #ffffff !important;
+	--lwt-tab-text: rgb(141, 144, 145) !important;
+	--toolbar-color: #ffffff  !important;
+	--toolbar-bgcolor: #373737  !important;
+	--toolbar-inactive-bgcolor: #313131  !important;
+	--toolbar-field-background-color: #464646  !important;
+	--toolbarbutton-hover-background: rgba(255, 255, 255, 0.1)  !important;
+	--toolbarbutton-active-background: rgba(255, 255, 255, 0.15)  !important;
+}
+@media (prefers-color-scheme: light) {
+	:root {
+		--chrome-content-separator-color: #cdc7c2 !important;
+		--lwt-accent-color: #E5E5E5  !important;
+		--lwt-accent-secondary-color:#f5f5f5  !important;
+		--lwt-accent-color-2: var(----lwt-accent-secondary-color)  !important;
+		--lwt-accent-color-3: #f9f9f8  !important;
+		--lwt-text-color: rgb(46, 52, 54) !important;
+		--lwt-tab-text: rgb(141, 144, 145) !important;
+		--toolbar-color: #020202  !important;
+		--toolbar-bgcolor: #ffffff  !important;
+		--toolbar-inactive-bgcolor: rgb(46, 52, 54)  !important;
+		--toolbar-field-background-color: #cfcfcf  !important;
+		--toolbarbutton-hover-background: rgba(0, 0, 0, 0.1)  !important;
+		--toolbarbutton-active-background: rgba(0, 0, 0, 0.15)  !important;
+	}
+}

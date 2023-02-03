@@ -1,0 +1,51 @@
+
+     :root {
+        --uc-identity-colour-blue:      #8AADF4;
+        --uc-identity-colour-turquoise: #8BD5CA;
+        --uc-identity-colour-green:     #A6DA95;
+        --uc-identity-colour-yellow:    #EED49F;
+        --uc-identity-colour-orange:    #F5A97F;
+        --uc-identity-colour-red:       #ED8796;
+        --uc-identity-colour-pink:      #F5BDE6;
+        --uc-identity-colour-purple:    #C6A0F6;
+      
+        /*  Cascades main Colour Scheme */
+        --uc-base-colour:               #24273A;
+        --uc-highlight-colour:          #1E2030;
+        --uc-inverted-colour:           #CAD3F5;
+        --uc-muted-colour:              #6E738D;
+        --uc-accent-colour:             var(--uc-identity-colour-purple);
+
+
+        --chrome-content-separator-color: var(--uc-highlight-colour) !important;
+        --lwt-accent-color: var(--uc-accent-colour)  !important;
+        --lwt-accent-secondary-color:var(--uc-highlight-colour)  !important;
+        --lwt-accent-color-2: var(--uc-base-colour)  !important;
+        --lwt-accent-color-3: #3f3f3f  !important;
+        --lwt-text-color: var(--uc-inverted-colour) !important;
+        --lwt-tab-text: rgb(141, 144, 145) !important;
+        --toolbar-color: #ffffff  !important;
+        --toolbar-bgcolor: var(--uc-base-colour)  !important;
+        --toolbar-inactive-bgcolor: var(--uc-muted-colour)  !important;
+        --toolbar-field-background-color: var(--uc-muted-colour)  !important;
+        --toolbarbutton-hover-background: rgba(255, 255, 255, 0.1)  !important;
+        --toolbarbutton-active-background: rgba(255, 255, 255, 0.15)  !important;
+    }
+    @media (prefers-color-scheme: light) {
+        :root {
+            --chrome-content-separator-color: #cdc7c2 !important;
+            --lwt-accent-color: #E5E5E5  !important;
+            --lwt-accent-secondary-color:#f5f5f5  !important;
+            --lwt-accent-color-2: var(----lwt-accent-secondary-color)  !important;
+            --lwt-accent-color-3: #f9f9f8  !important;
+            --lwt-text-color: rgb(46, 52, 54) !important;
+            --lwt-tab-text: rgb(141, 144, 145) !important;
+            --toolbar-color: #020202  !important;
+            --toolbar-bgcolor: #ffffff  !important;
+            --toolbar-inactive-bgcolor: rgb(46, 52, 54)  !important;
+            --toolbar-field-background-color: #cfcfcf  !important;
+            --toolbarbutton-hover-background: rgba(0, 0, 0, 0.1)  !important;
+            --toolbarbutton-active-background: rgba(0, 0, 0, 0.15)  !important;
+        }
+    }
+    

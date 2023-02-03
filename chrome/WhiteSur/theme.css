@@ -12,8 +12,8 @@
 @import "parts/remove-white-flash.css";
 @import "parts/custom-icons.css";
 @import "parts/icons.css";
-@import "colors/light.css";
-@import "colors/dark.css";
+@import "colors/color.css";
+@import "colors/default.css";
 @import "parts/windows.css";
 /* Add Custom themes so user only needs to copy items*/
 @import "custom/tabs-swapclose.css";
@@ -23,6 +23,10 @@
 @import "custom/noidentity.css";
 @import "custom/standard-urlbar.css";
 @import "custom/windows-swapclose.css";
+
+/* Add the theme here*/
+/* @import "colors/catppuccin.css"; */
+
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
 /* Set theme version text in customization panel */

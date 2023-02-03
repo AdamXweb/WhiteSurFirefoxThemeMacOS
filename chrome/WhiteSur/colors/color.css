@@ -1,0 +1,320 @@
+@namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+/* Variables that start with --whitesur- are added by me and are assigned
+ * to elements somewhere in this code. The rest of the variables are
+ * built-in in Firefox, so you need to add an !important if you wanna
+ * override them. */
+
+:root {
+	/* Browser area before a page starts loading */
+	--whitesur-browser-before-load-background: #1e1e1e;
+	--theme-primary-color: #315bef !important;
+	--theme-primary-color-hover: #3863ff;
+	--theme-alt-color: #fff;
+	--in-content-link-color: var(--theme-primary-color) !important;
+	--in-content-link-color-hover: var(--theme-primary-color-hover) !important;
+
+	/* Toolbars */
+	--whitesur-toolbar-background: var(--toolbar-bgcolor);
+	--whitesur-tabstoolbar-background: var(--lwt-accent-color);
+	--whitesur-findbar-background: var(--lwt-accent-secondary-color);
+	--whitesur-toolbar-color: var(--toolbar-color);
+	--whitesur-toolbar-border-color: var(--chrome-content-separator-color);
+	--whitesur-inactive-toolbar-background: var(--toolbar-inactive-bgcolor);
+	--whitesur-inactive-toolbar-border-color: #121212;
+
+	/* Sidebar */
+	--whitesur-sidebar-background: var(--lwt-accent-color-2);
+	--whitesur-inactive-sidebar-background: var(--lwt-accent-color-3);
+	--whitesur-sidebar-color: var(--lwt-text-color);
+
+	/* Popups */
+	--whitesur-menu-background: #292929;
+	--whitesur-menu-border-color: var(--chrome-content-separator-color);
+	--whitesur-popover-background: #292929;
+	--whitesur-popover-border-color: var(--chrome-content-separator-color);
+	--whitesur-popover-shadow: 0 5px 8px rgba(0, 0, 0, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+	--whitesur-popover-button-hover-background: var(--toolbarbutton-hover-background);
+	--whitesur-popover-button-active-background: var(--toolbarbutton-active-background);
+	--whitesur-popover-separator-color: rgba(0, 0, 0, 0.1);
+
+	/* Header bar */
+	--whitesur-headerbar-background: var(--toolbar-bgcolor);
+	--whitesur-headerbar-border-color: var(--chrome-content-separator-color);
+	--whitesur-headerbar-box-shadow: inset 0 1px rgba(255, 255, 255, 0.15);
+	--whitesur-inactive-headerbar-background: var(--toolbar-bgcolor);
+	--whitesur-inactive-headerbar-border-color: #202020;
+	--whitesur-inactive-headerbar-box-shadow: inset 0 1px rgba(255, 255, 255, 0.08);
+
+	/* Buttons */
+	--whitesur-button-background: linear-gradient(to top, #636363 0%, #696969 100%);
+	--whitesur-button-border-color: #282828;
+	--whitesur-button-border-accent-color: #282828;
+	--whitesur-button-box-shadow: inset 0 1px rgba(255, 255, 255, 0.1);
+	--whitesur-button-hover-color: rgba(255, 255, 255, 0.1);
+	--whitesur-button-active-color: rgba(255, 255, 255, 0.2);
+	--whitesur-button-hover-background: linear-gradient(to top, #707070 0%, #737373 100%);
+	--whitesur-button-active-background-alt: #707070 !important;
+	--whitesur-button-active-background-alt-border: #737373 !important;
+	--whitesur-button-active-background-alt-hover: #9b9b9b !important;
+	--whitesur-button-active-background: #464646;
+	--whitesur-button-active-border-color: #1b1b1b;
+	--whitesur-button-active-border-accent-color: #1b1b1b;
+	--whitesur-button-active-box-shadow: inset 0 1px rgba(255, 255, 255, 0.1);
+	--whitesur-button-disabled-background: #505050;
+	--whitesur-button-disabled-border-color: #323232;
+	--whitesur-button-disabled-box-shadow: inset 0 1px rgba(255, 255, 255, 0.03);
+	--whitesur-inactive-button-background: linear-gradient(#383838, #383838);
+	--whitesur-inactive-button-border-color: #323232;
+	--whitesur-inactive-button-box-shadow: inset 0 1px rgba(255, 255, 255, 0.0);
+	--whitesur-button-suggested-action-background: #15539e;
+	--whitesur-button-suggested-action-border-color: #0f3b71;
+	--whitesur-button-suggested-action-border-accent-color: #092444;
+	--whitesur-button-suggested-action-box-shadow: inset 0 1px rgba(255, 255, 255, 0.08);
+	--whitesur-button-suggested-action-hover-background: #2073d8;
+	--whitesur-button-suggested-action-active-background: #103e75;
+	--whitesur-button-suggested-action-active-border-color: #0f3b71;
+	--whitesur-button-suggested-action-active-box-shadow: inset 0 1px rgba(255, 255, 255, 0.05);
+	--whitesur-button-destructive-action-background: linear-gradient(to top, #ae151c 2px, #b2161d);
+	--whitesur-button-destructive-action-border-color: #851015;
+	--whitesur-button-destructive-action-border-accent-color: #570b0e;
+	--whitesur-button-destructive-action-box-shadow: inset 0 1px rgba(255, 255, 255, 0.02), 0 1px 2px rgba(0, 0, 0, 0.07);
+	--whitesur-button-destructive-action-hover-background: linear-gradient(to top, #ae151c, #b7161d 1px);
+	--whitesur-button-destructive-action-active-background: #8a1116;
+	--whitesur-button-destructive-action-active-border-color: #851015;
+	--whitesur-button-destructive-action-active-box-shadow: inset 0 1px rgba(255, 255, 255, 0);
+	--whitesur-button-menulist-color: #fff;
+	--whitesur-headerbar-button-hover-background: var(--toolbarbutton-hover-background);
+	--whitesur-headerbar-button-active-background: var(--toolbarbutton-active-background);
+
+	/* URL bar */
+	--whitesur-urlbar-background: var(--toolbar-field-background-color);
+	--whitesur-urlbar-border-color: rgb(64,64,64);
+	--whitesur-urlbar-box-shadow: inset 0 0 0 1px rgba(21, 83, 158, 0);
+	--whitesur-urlbar-color: var(--toolbar-field-color);
+	--whitesur-hover-urlbar-border-color: #585858;
+	--whitesur-inactive-urlbar-background: var(--toolbar-field-background-color);
+	--whitesur-inactive-urlbar-border-color: #282828;
+	--whitesur-inactive-urlbar-box-shadow: none;
+	--whitesur-inactive-urlbar-color: var(--toolbar-field-color);
+	--whitesur-focused-urlbar-border-color: #338cbe;
+	--whitesur-focused-urlbar-highlight-color: #006EA0;
+	--whitesur-private-urlbar-background: var(--toolbar-field-background-color);
+	/* --urlbar-box-bgcolor: var(--toolbarbutton-hover-background) !important; */
+	--urlbar-icon-border-radius: var(--macos-toolbar-border-radius) !important;
+
+	/* Tabs */
+	--whitesur-tabbar-tab-background: #262626;
+	--whitesur-tabbar-tab-color: var(--lwt-tab-text, var(--toolbar-color));
+	--whitesur-tabbar-tab-hover-background: color-mix(in srgb, var(--toolbar-bgcolor) 50%, transparent);
+	--whitesur-tabbar-tab-hover-border-bottom-color: #1b1b1b;
+	--whitesur-tabbar-tab-hover-color: var(--lwt-tab-text, var(--toolbar-color));
+	--whitesur-tabbar-tab-active-background: var(--toolbar-bgcolor);
+	--whitesur-tabbar-tab-active-border-bottom-color: #15539e;
+	--whitesur-tabbar-tab-active-color: var(--lwt-tab-text, var(--toolbar-color));
+	--whitesur-tabbar-tab-active-hover-background: color-mix(in srgb, var(--toolbar-bgcolor) 50%, transparent);
+	--whitesur-inactive-tabbar-tab-color: var(--lwt-tab-text, var(--toolbar-color));
+	--whitesur-inactive-tabbar-tab-active-background: var(--toolbar-bgcolor);
+	--whitesur-inactive-tabbar-tab-active-border-bottom-color: #15539e;
+	--whitesur-inactive-tabbar-tab-active-color: var(--lwt-tab-text, var(--toolbar-color));
+
+	/* Switch */
+	--whitesur-switch-background: #282828;
+	--whitesur-switch-border-color: #1b1b1b;
+	--whitesur-switch-slider-background: linear-gradient(to bottom, #3c3c3c 20%, #353535 90%);
+	--whitesur-switch-slider-border-color: #111111;
+	--whitesur-switch-slider-box-shadow: inset 0 1px rgba(255, 255, 255, 0.02), 0 1px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.07);
+	--whitesur-switch-active-background: #15539e;
+	--whitesur-switch-active-border-color: #030c17;
+	--whitesur-switch-active-slider-border-color: #030c17;
+
+	/* Dirty hacks for replaced symbolic icons, they load from
+	 * /usr/share/icons/<theme>/ and on some systems they need to be
+	 * inverted, on others they don't, adjusts the filters below to your
+	 * needs (you may also adjust icon brightness here). */
+	/* --whitesur-convert-icon-to-symbolic-hack-filter: invert(100%) sepia(100%) grayscale(100%) brightness(200%) brightness(85%);
+	--whitesur-icons-hack-filter: invert(100%) sepia(100%) grayscale(100%) brightness(200%) brightness(200%); */
+	/* without invert: none */
+	/* --whitesur-window-icons-hack-filter: invert(90%); */
+	/* without invert: none */
+		/* colors to override with theme*/
+	--new-tab-background: rgb(30,30,30) !important;
+	--urlbar-box-bgcolor: var(--theme-primary-color) !important;
+	--in-content-primary-button-background-hover:var(--theme-primary-color-hover) !important;
+	--in-content-page-background:(var(--new-tab-background)) !important;
+	--in-content-primary-button-background: var(--theme-primary-color) !important;
+	--in-content-danger-button-background-active: var(--theme-primary-color-hover) !important;
+	--safari-warning-security: rgb(202,49,66) !important;
+	--safari-safe-color: rgb(1,203,67) !important;
+	--toolbar-field-focus-color: transparent !important;
+	--focus-outline-color: transparent !important;
+}
+
+@media (prefers-color-scheme: light) {
+	:root {
+		/* Browser area before a page starts loading */
+		--whitesur-browser-before-load-background: #f5f5f5;
+		--theme-primary-color: #315bef;
+		--theme-primary-color-hover: #3863ff;
+		--theme-alt-color: #fff;
+		--in-content-link-color: var(--theme-primary-color) !important;
+		--in-content-link-color-hover: var(--theme-primary-color-hover) !important;
+
+		/* Toolbars */
+		--whitesur-toolbar-background: var(--toolbar-bgcolor);
+		--whitesur-tabstoolbar-background: var(--lwt-accent-color);
+		--whitesur-findbar-background: var(--lwt-accent-color);
+		--whitesur-toolbar-color: var(--toolbar-color);
+		--whitesur-toolbar-border-color: var(--chrome-content-separator-color);
+		--whitesur-inactive-toolbar-color: rgba(46, 52, 54, 0.35);
+		--whitesur-inactive-toolbar-background: var(--toolbar-bgcolor);
+		--whitesur-inactive-toolbar-border-color: #dadada;
+
+		/* Sidebar */
+		--whitesur-sidebar-background: var(--lwt-accent-color);
+		--whitesur-inactive-sidebar-background: var(--lwt-accent-color);
+		--whitesur-sidebar-color: var(--lwt-text-color);
+
+		/* Popups */
+		--whitesur-menu-background: #e6e6e6 ;
+		--whitesur-menu-border-color: var(--chrome-content-separator-color);
+		--whitesur-popover-background: #e6e6e6 ;
+		--whitesur-popover-border-color: var(--chrome-content-separator-color);
+		--whitesur-popover-shadow: 0 5px 8px rgba(0, 0, 0, 0.3);
+		--whitesur-popover-button-hover-background: rgba(0, 0, 0, 0.1);
+		--whitesur-popover-button-active-background: rgba(0, 0, 0, 0.2);
+		--whitesur-popover-separator-color: rgba(0, 0, 0, 0.1);
+
+		/* Header bar */
+		--whitesur-headerbar-background: var(--toolbar-bgcolor);
+		--whitesur-headerbar-border-color: var(--chrome-content-separator-color);
+		--whitesur-headerbar-box-shadow: 0 1px rgba(255, 255, 255, 0.65) inset;
+		--whitesur-inactive-headerbar-background: var(--toolbar-bgcolor);
+		--whitesur-inactive-headerbar-border-color: #dadada;
+		--whitesur-inactive-headerbar-box-shadow: 0 1px #fff inset;
+
+		/* Buttons */
+		--whitesur-button-background: linear-gradient(to top, #f1f1f1 0%, #fdfdfd 95%, #fefefe 100%);
+		--whitesur-button-border-color: #cdc7c2;
+		--whitesur-button-border-accent-color: #b2b2b1;
+		--whitesur-button-box-shadow: inset 0 1px white, 0 1px 2px rgba(0, 0, 0, 0.03);
+		--whitesur-button-hover-color: rgba(0, 0, 0, 0.1);
+		--whitesur-button-active-color: rgba(0, 0, 0, 0.2);
+		--whitesur-button-hover-background: linear-gradient(to top, #fdfdfd 0%, #ffffff 100%);
+		--whitesur-button-active-background-alt: #f0f0f4 !important;
+		--whitesur-button-active-background-alt-border: #f0f0f4 !important;
+		--whitesur-button-active-background-alt-hover: #ffffff !important;
+		--whitesur-button-active-background: #cfcfcf;
+		--whitesur-button-active-border-color: #b2b2b1;
+		--whitesur-button-active-border-accent-color: #b2b2b1;
+		--whitesur-button-active-box-shadow: 0 1px rgba(255, 255, 255, 0) inset;
+		--whitesur-button-disabled-background: #faf9f8;
+		--whitesur-button-disabled-border-color: #cdc7c2;
+		--whitesur-button-disabled-box-shadow: inset 0 1px rgba(255, 255, 255, 0);
+		--whitesur-inactive-button-background: #f6f5f4;
+		--whitesur-inactive-button-border-color: #dadada;
+		--whitesur-inactive-button-box-shadow: 0 1px rgba(255, 255, 255, 0) inset, 0 1px rgba(255, 255, 255, 0);
+		--whitesur-button-suggested-action-background: #2379e2;
+		--whitesur-button-suggested-action-border-color: #1b6acb;
+		--whitesur-button-suggested-action-border-accent-color: #15539e;
+		--whitesur-button-suggested-action-box-shadow: inset 0 1px rgba(255, 255, 255, 0.1), 0 1px 2px rgba(0, 0, 0, 0.07);
+		--whitesur-button-suggested-action-hover-background: #3584e4;
+		--whitesur-button-suggested-action-active-background: #1961b9;
+		--whitesur-button-suggested-action-active-border-color: #1b6acb;
+		--whitesur-button-suggested-action-active-box-shadow: inset 0 1px rgba(255, 255, 255, 0);
+		--whitesur-button-destructive-action-background: linear-gradient(to top, #ce1921 2px, #e01b24);
+		--whitesur-button-destructive-action-border-color: #b2161d;
+		--whitesur-button-destructive-action-border-accent-color: #851015;
+		--whitesur-button-destructive-action-box-shadow: inset 0 1px rgba(255, 255, 255, 0.1), 0 1px 2px rgba(0, 0, 0, 0.07);
+		--whitesur-button-destructive-action-hover-background: linear-gradient(to top, #e01b24, #e41c26 1px);
+		--whitesur-button-destructive-action-active-background: #a0131a;
+		--whitesur-button-destructive-action-active-border-color: #b2161d;
+		--whitesur-button-destructive-action-active-box-shadow: inset 0 1px rgba(255, 255, 255, 0);
+		--whitesur-button-menulist-color: #020202;
+		--whitesur-headerbar-button-hover-background: var(--toolbarbutton-hover-background);
+		--whitesur-headerbar-button-active-background: var(--toolbarbutton-active-background);
+
+		/* URL bar */
+		--whitesur-urlbar-background: var(--toolbar-field-background-color);
+		--whitesur-urlbar-border-color: var(--chrome-content-separator-color);
+		--whitesur-urlbar-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.08), 0 5px 8px rgba(0, 0, 0, 0.05), 0 8px 16px rgba(0, 0, 0, 0.03);
+		--whitesur-urlbar-color: var(--toolbar-field-color);
+		--whitesur-hover-urlbar-border-color: var(--chrome-content-separator-color);
+		--whitesur-inactive-urlbar-background: var(--toolbar-field-background-color);
+		--whitesur-inactive-urlbar-border-color: var(--chrome-content-separator-color);
+		--whitesur-inactive-urlbar-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.05);
+		--whitesur-inactive-urlbar-color: var(--toolbar-field-color);
+		--whitesur-focused-urlbar-border-color: #5683DA;
+		--whitesur-focused-urlbar-highlight-color: #6592E9;
+		--whitesur-private-urlbar-background: var(--toolbar-field-background-color);
+		--urlbar-icon-border-radius: var(--macos-toolbar-border-radius) !important;
+
+		/* Tabs */
+		--whitesur-tabbar-tab-background: transparent;
+		--whitesur-tabbar-tab-color: var(--lwt-tab-text, var(--toolbar-color));
+		--whitesur-tabbar-tab-hover-background: color-mix(in srgb, var(--toolbar-bgcolor) 50%, transparent);
+		--whitesur-tabbar-tab-hover-border-bottom-color: #b6b6b3;
+		--whitesur-tabbar-tab-hover-color: var(--lwt-tab-text, var(--toolbar-color));
+		--whitesur-tabbar-tab-active-background: var(--toolbar-bgcolor);
+		--whitesur-tabbar-tab-active-border-bottom-color: #4a90d9;
+		--whitesur-tabbar-tab-active-color: var(--lwt-tab-text, var(--toolbar-color));
+		--whitesur-tabbar-tab-active-hover-background: color-mix(in srgb, var(--toolbar-bgcolor) 50%, transparent);
+		--whitesur-inactive-tabbar-tab-color: var(--lwt-tab-text, var(--toolbar-color));
+		--whitesur-inactive-tabbar-tab-active-background: var(--toolbar-bgcolor);
+		--whitesur-inactive-tabbar-tab-active-border-bottom-color: #4a90d9;
+		--whitesur-inactive-tabbar-tab-active-color: var(--lwt-tab-text, var(--toolbar-color));
+
+		/* Switch */
+		--whitesur-switch-background: #e1dedb;
+		--whitesur-switch-border-color: #cdc7c2;
+		--whitesur-switch-slider-background: linear-gradient(to bottom, white 10%, white 90%);
+		--whitesur-switch-slider-border-color: #bfb8b1;
+		--whitesur-switch-slider-box-shadow: inset 0 1px white, 0 1px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.07);
+		--whitesur-switch-active-background: #3584e4;
+		--whitesur-switch-active-border-color: #185fb4;
+		--whitesur-switch-active-slider-border-color: #185fb4;
+
+		/* Dirty hacks for replaced symbolic icons, they load from
+		 * /usr/share/icons/<theme>/ and on some systems they need to be
+		 * inverted, on others they don't, adjusts the filters below to your
+		 * needs (you may also adjust icon brightness here). */
+		/* --whitesur-convert-icon-to-symbolic-hack-filter: invert(100%) sepia(100%) grayscale(100%) brightness(200%) brightness(85%) invert(100%);
+		--whitesur-icons-hack-filter: none;
+		--whitesur-window-icons-hack-filter: invert(30%); */
+			/* colors to override with theme*/
+		--urlbar-box-bgcolor: var(--theme-primary-color) !important;
+		--in-content-primary-button-background-hover:var(--theme-primary-color-hover) !important;
+		--in-content-primary-button-background: var(--theme-primary-color) !important;
+		--in-content-danger-button-background-active: var(--theme-primary-color-hover) !important;
+		--safari-warning-security: rgb(202,49,66) !important;
+		--safari-safe-color: rgb(1,203,67) !important;
+		--new-tab-background: rgb(233,233,233) !important;
+		--toolbar-field-focus-color: transparent !important;
+		--focus-outline-color: transparent !important;
+	}
+}
+
+/* macOS native popover menu*/
+:root {
+	--macos-menu-border: 1px solid #ffffff33;
+	--macos-menu-outline: 0.5px solid #101010;
+	--macos-menu-background: #292929b3;
+	--macos-menu-hover: #2073d8;
+	--macos-menu-hover-color: #fff;
+	--macos-menu-separator-color: #ffffff33;
+
+	--macos-menu-item-border-radius: 4px;
+	--macos-menu-border-radius: 9px;
+	--macos-toolbar-border-radius: 8px;
+	--arrowpanel-border-radius: var(--macos-menu-border-radius) !important;
+}
+
+@media (prefers-color-scheme: light) {
+	:root {
+		--macos-menu-border: none;
+		--macos-menu-outline: 0.5px solid #c8c8c8;
+		--macos-menu-background: #e6e6e6ca;
+		--macos-menu-hover: #3584e4;
+		--macos-menu-hover-color: #fff;
+		--macos-menu-separator-color: #00000033;
+	}
+}

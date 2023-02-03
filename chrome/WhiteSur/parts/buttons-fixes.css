@@ -3,7 +3,7 @@
 
 /* Overrides: Make the back button the same as other buttons */
 :root:not([uidensity=compact]) #back-button {
-	border-radius: var(--toolbarbutton-border-radius) !important;
+	border-radius: var(--macos-toolbar-border-radius) !important;
 }
 
 :root:not([uidensity=compact]) #back-button>.toolbarbutton-icon {
@@ -12,7 +12,7 @@
 	width: calc(2 * var(--toolbarbutton-inner-padding) + 16px) !important;
 	height: calc(2 * var(--toolbarbutton-inner-padding) + 16px) !important;
 	padding: var(--toolbarbutton-inner-padding) !important;
-	border-radius: var(--toolbarbutton-border-radius);
+	border-radius: var(--macos-toolbar-border-radius);
 	box-shadow: none !important;
 }
 
@@ -43,8 +43,8 @@
 /* Glitch customizing: Reload and Cut / Copy / Paste buttons */
 :root:-moz-window-inactive[customizing] #nav-bar #stop-reload-button toolbarbutton,
 :root:-moz-window-inactive[customizing] #nav-bar #edit-controls toolbarbutton {
-	background-image: var(--gnome-inactive-button-background);
-	box-shadow: var(--gnome-inactive-button-box-shadow);
+	background-image: var(--whitesur-inactive-button-background);
+	box-shadow: var(--whitesur-inactive-button-box-shadow);
 
 }
 
@@ -146,8 +146,8 @@
 #bookmarks-view-children,
 #historyTree {
 	font-size: 0.9em !important;
-	background-color: var(--gnome-sidebar-background) !important;
-	color: var(--gnome-sidebar-color) !important;
+	background-color: var(--whitesur-sidebar-background) !important;
+	color: var(--whitesur-sidebar-color) !important;
 }
 
 /* Sidebar header button arrow opacity */
@@ -168,6 +168,14 @@ menulist {
 
 #identity-popup-popup-menulist {
 	margin-right: 0 !important;
+}
+
+#appMenu-protonMainView .toolbarbutton-text {
+	margin: 2px !important;
+}
+
+#appMenu-popup .toolbaritem-combined-buttons toolbarbutton:not(#appMenu-fxa-label) {
+	color: var(--whitesur-button-menulist-color) !important;
 }
 
 /* Bookmarks editor buttons */
@@ -199,17 +207,22 @@ menulist {
 	margin: 0 !important;
 }
 
-#tracking-protection-icon-container:hover:not([open="true"]), .identity-box-button:hover:not([open="true"]), .urlbar-page-action:not([disabled]):hover, #urlbar-go-button:hover, .search-go-button:hover, #identity-box[pageproxystate="valid"].extensionPage > .identity-box-button:hover:not([open]){
-	--urlbar-box-hover-bgcolor: var(--gnome-button-hover-color) !important;
+#tracking-protection-icon-container:hover:not([open="true"]),
+.identity-box-button:hover:not([open="true"]),
+.urlbar-page-action:not([disabled]):hover,
+#urlbar-go-button:hover,
+.search-go-button:hover,
+#identity-box[pageproxystate="valid"].extensionPage>.identity-box-button:hover:not([open]) {
+	--urlbar-box-hover-bgcolor: var(--whitesur-button-hover-color) !important;
 }
 #identity-box[pageproxystate="valid"].extensionPage > .identity-box-button{
-	background:var(--gnome-button-active-background) !important;
+	background:var(--whitesur-button-active-background) !important;
 }
 #tracking-protection-icon-container[open="true"] .identity-box-button,
 .identity-box-button[open="true"],
 .identity-box-button:hover:active,
 #tracking-protection-icon-container:hover:active, #tracking-protection-icon-container[open="true"]{
-	background-color: var(--gnome-button-active-background) !important;
+	background-color: var(--whitesur-button-active-background) !important;
 }
 /* add safari warning color to security popup*/
 #identity-popup[connection^="secure"] .identity-popup-security-connection .toolbarbutton-icon{

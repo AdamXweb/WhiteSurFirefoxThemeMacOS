@@ -5,23 +5,23 @@
 
 	/* Colours - can't be read from chrome CSS. Setting on :root doesn't work. */
 	:not(select):not(hbox) > scrollbar {
-		--gnome-scrollbars-hover-bgcolor: rgba(192, 192, 192, 0.75);
-		--gnome-scrollbars-hover-border-color: rgba(192, 192, 192, 0.75);
-		--gnome-scrollbars-thumb-bgcolor: rgba(0, 0, 0, 0.32);
-		--gnome-scrollbars-thumb-blend-mode: multiply;
-		--gnome-scrollbars-thumb-outline: 1px solid rgba(255, 255, 255, 0.4);
-		--gnome-scrollbars-thumb-hover-bgcolor: #75797a;
-		--gnome-scrollbars-thumb-active-bgcolor: #4a90d9;
+		--whitesur-scrollbars-hover-bgcolor: rgba(192, 192, 192, 0.75);
+		--whitesur-scrollbars-hover-border-color: rgba(192, 192, 192, 0.75);
+		--whitesur-scrollbars-thumb-bgcolor: rgba(0, 0, 0, 0.32);
+		--whitesur-scrollbars-thumb-blend-mode: multiply;
+		--whitesur-scrollbars-thumb-outline: 1px solid rgba(255, 255, 255, 0.4);
+		--whitesur-scrollbars-thumb-hover-bgcolor: #75797a;
+		--whitesur-scrollbars-thumb-active-bgcolor: #4a90d9;
 	}
 	@media (prefers-color-scheme: dark) {
 		:not(select):not(hbox) > scrollbar {
-			--gnome-scrollbars-hover-bgcolor: rgba(29, 30, 31, 0.75);
-			--gnome-scrollbars-hover-border-color: rgba(13, 17, 18, 0.75);
-			--gnome-scrollbars-thumb-bgcolor: rgba(252, 254, 251, 0.58);
-			--gnome-scrollbars-thumb-blend-mode: screen;
-			--gnome-scrollbars-thumb-outline: 1px solid rgba(0, 0, 0, 0.4);
-			--gnome-scrollbars-thumb-hover-bgcolor: #d4d5d4;
-			--gnome-scrollbars-thumb-active-bgcolor: #15539e;
+			--whitesur-scrollbars-hover-bgcolor: rgba(29, 30, 31, 0.75);
+			--whitesur-scrollbars-hover-border-color: rgba(13, 17, 18, 0.75);
+			--whitesur-scrollbars-thumb-bgcolor: rgba(252, 254, 251, 0.58);
+			--whitesur-scrollbars-thumb-blend-mode: screen;
+			--whitesur-scrollbars-thumb-outline: 1px solid rgba(0, 0, 0, 0.4);
+			--whitesur-scrollbars-thumb-hover-bgcolor: #d4d5d4;
+			--whitesur-scrollbars-thumb-active-bgcolor: #15539e;
 		}
 	}
 
@@ -56,7 +56,7 @@
 	}
 	:not(select):not(hbox) > scrollbar thumb {
 		-moz-appearance: none !important;
-		mix-blend-mode: var(--gnome-scrollbars-thumb-blend-mode);
+		mix-blend-mode: var(--whitesur-scrollbars-thumb-blend-mode);
 		/* Make handle edge-grabbable */
 		border: 3px solid transparent;
 		background-clip: padding-box;
@@ -84,15 +84,15 @@
 		height: 16px !important;
 	}
 	:not(select):not(hbox) > scrollbar thumb {
-		background-color: var(--gnome-scrollbars-thumb-bgcolor);
-		outline: var(--gnome-scrollbars-thumb-outline);
+		background-color: var(--whitesur-scrollbars-thumb-bgcolor);
+		outline: var(--whitesur-scrollbars-thumb-outline);
 		outline-offset: -3px;
 		-moz-outline-radius: 3px;
 	}
 	/* Hovered scrollbar */
 	:not(select):not(hbox) > scrollbar:hover {
-		background-color: var(--gnome-scrollbars-hover-bgcolor);
-		border-color: var(--gnome-scrollbars-hover-border-color);
+		background-color: var(--whitesur-scrollbars-hover-bgcolor);
+		border-color: var(--whitesur-scrollbars-hover-border-color);
 	}
 	:not(select):not(hbox) > scrollbar:hover thumb {
 		outline-width: 0;
@@ -109,11 +109,11 @@
 	}
 	/* Hovered thumb */
 	:not(select):not(hbox) > scrollbar:hover thumb:hover {
-		background-color: var(--gnome-scrollbars-thumb-hover-bgcolor);
+		background-color: var(--whitesur-scrollbars-thumb-hover-bgcolor);
 	}
 	/* Grabbed thumb */
 	:not(select):not(hbox) > scrollbar:hover thumb:active {
-		background-color: var(--gnome-scrollbars-thumb-active-bgcolor);
+		background-color: var(--whitesur-scrollbars-thumb-active-bgcolor);
 		mix-blend-mode: normal;
 	}
 	`;

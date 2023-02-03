@@ -74,26 +74,26 @@ tab>stack {
 
 /* Tab labels */
 tab {
-	color: var(--gnome-tabbar-tab-color) !important;
+	color: var(--whitesur-tabbar-tab-color) !important;
 	font-family: Cantarell, inherit;
 	font-weight: bold;
 	font-size: 1em;
 }
 
 tab:hover {
-	color: var(--gnome-tabbar-tab-hover-color) !important;
+	color: var(--whitesur-tabbar-tab-hover-color) !important;
 }
 
 tab[selected] {
-	color: var(--gnome-tabbar-tab-active-color) !important;
+	color: var(--whitesur-tabbar-tab-active-color) !important;
 }
 
 tab:-moz-window-inactive {
-	color: var(--gnome-inactive-tabbar-tab-color) !important;
+	color: var(--whitesur-inactive-tabbar-tab-color) !important;
 }
 
 tab[selected]:-moz-window-inactive {
-	color: var(--gnome-inactive-tabbar-tab-active-color) !important;
+	color: var(--whitesur-inactive-tabbar-tab-active-color) !important;
 }
 
 /* Center all inside tab */
@@ -174,7 +174,7 @@ tab[selected]:-moz-window-inactive {
 
 /* Close tab button */
 :root {
-	--gnome-fill-icon: red !important;
+	--whitesur-fill-icon: red !important;
 }
 
 .close-icon {
@@ -202,18 +202,22 @@ tab[selected]:-moz-window-inactive {
 	}
 }
 
+stack[soundplaying="true"]+.tab-label-container[textoverflow] {
+	mask-image: none !important;
+}
+
 :root:-moz-window-inactive .tab-close-button:not(#hack) {
 	opacity: .18 !important;
 }
 
 :root:not(:-moz-window-inactive) .tab-close-button:hover {
-	background-color: var(--gnome-button-hover-color) !important;
+	background-color: var(--whitesur-button-hover-color) !important;
 	border: none !important;
 	opacity: 1;
 }
 
 :root:not(:-moz-window-inactive) .tab-close-button:active {
-	background-color: var(--gnome-button-active-color) !important;
+	background-color: var(--whitesur-button-active-color) !important;
 }
 
 .tab-close-button:active:not(:hover) {
@@ -246,55 +250,55 @@ tab[selected]:-moz-window-inactive {
 }
 
 .tabbrowser-tab[class*="identity-color-"][pinned] {
-	display:flex;
+	display: flex;
 }
 
 /* change background of tabs based on mode to not rely on theme */
 .tab-background {
-	background-color: var(--gnome-tabbar-tab-background) !important;
+	background-color: var(--whitesur-tabbar-tab-background) !important;
 	transition: all 200ms;
 }
 .tabbrowser-tab::after,
 .tabbrowser-tab::before {
-	border-color: var(--gnome-tabbar-tab-hover-background) !important;
+	border-color: var(--whitesur-tabbar-tab-hover-background) !important;
 }
 #TabsToolbar .toolbarbutton-1 {
-	background: var(--gnome-tabbar-tab-background) !important;
-	background-color: var(--gnome-tabbar-tab-background) !important;
+	background: var(--whitesur-tabbar-tab-background) !important;
+	background-color: var(--whitesur-tabbar-tab-background) !important;
 }
 #TabsToolbar .toolbarbutton-1:hover {
-	background: var(--gnome-tabbar-tab-hover-background) !important;
-	background-color: var(--gnome-tabbar-tab-hover-background) !important;
+	background: var(--whitesur-tabbar-tab-hover-background) !important;
+	background-color: var(--whitesur-tabbar-tab-hover-background) !important;
 }
 /* Active tab */
 .tab-background[selected=true] {
-	background-color: var(--gnome-tabbar-tab-active-background) !important;
+	background-color: var(--whitesur-tabbar-tab-active-background) !important;
 	background-image: none !important;
 	border: none !important;
 	border-image: none !important;
 	margin-left: -1px !important;
 	margin-right: -1px !important;
-	box-shadow: 1px 0 var(--gnome-toolbar-border-color), 1px 0 3px rgba(0, 0, 0, 0.08),
-		-1px 0 var(--gnome-toolbar-border-color), -1px 0 3px rgba(0, 0, 0, 0.08),
-		inset 0 -1px var(--gnome-toolbar-border-color) !important;
+	box-shadow: 1px 0 var(--whitesur-toolbar-border-color), 1px 0 3px rgba(0, 0, 0, 0.08),
+		-1px 0 var(--whitesur-toolbar-border-color), -1px 0 3px rgba(0, 0, 0, 0.08),
+		inset 0 -1px var(--whitesur-toolbar-border-color) !important;
 }
 
 .tab-background[selected=true]:-moz-window-inactive {
-	background-color: var(--gnome-inactive-tabbar-tab-active-background) !important;
+	background-color: var(--whitesur-inactive-tabbar-tab-active-background) !important;
 	border-image: none !important;
 }
 
 /* Tab hover */
 #TabsToolbar .tabbrowser-tab:hover>.tab-stack>.tab-background:not([selected=true]) {
-	background-color: var(--gnome-tabbar-tab-active-hover-background) !important;
+	background-color: var(--whitesur-tabbar-tab-active-hover-background) !important;
 	border-image: none !important;
-	box-shadow: inset 0 1px var(--gnome-toolbar-border-color), inset 0 -1px var(--gnome-toolbar-border-color) !important;
+	box-shadow: inset 0 1px var(--whitesur-toolbar-border-color), inset 0 -1px var(--whitesur-toolbar-border-color) !important;
 }
 
 /* Tabs scroll buttons hover */
 #TabsToolbar .scrollbutton-up:not([disabled]):hover,
 #TabsToolbar .scrollbutton-down:not([disabled]):hover {
-	background-color: var(--gnome-tabbar-tab-active-hover-background) !important;
+	background-color: var(--whitesur-tabbar-tab-active-hover-background) !important;
 }
 
 /* Full width tabs */
@@ -399,7 +403,7 @@ tab[selected]:-moz-window-inactive {
 	.tab-background {
 		border-radius: 0 !important;
 		margin-block: 0 !important;
-		box-shadow: inset 0 1px var(--gnome-toolbar-border-color), inset 0 -1px var(--gnome-toolbar-border-color) !important;
+		box-shadow: inset 0 1px var(--whitesur-toolbar-border-color), inset 0 -1px var(--whitesur-toolbar-border-color) !important;
 	}
 	/*Align personal bookmarks v89 */
 	#personal-bookmarks {
@@ -450,4 +454,40 @@ transition: all 150ms ease-in !important;
 /* hide tab view section*/
 #alltabs-button.toolbarbutton-1 {
     visibility: collapse !important;
+}
+/* Tabs View dropdown menu */
+#allTabsMenu-searchTabs {
+	margin: 0 !important;
+	padding-inline: 12px !important;
+}
+
+.all-tabs-item:hover,
+.all-tabs-item:hover:active,
+#allTabsMenu-searchTabs:hover,
+#allTabsMenu-searchTabs:hover:active {
+	background-color: var(--whitesur-button-suggested-action-hover-background) !important;
+}
+
+.all-tabs-item:hover .toolbarbutton-text,
+.all-tabs-item:active .toolbarbutton-text,
+#allTabsMenu-searchTabs:hover .toolbarbutton-text,
+#allTabsMenu-searchTabs:active .toolbarbutton-text {
+	color: #fff !important;
+}
+
+.all-tabs-item:hover:active,
+#allTabsMenu-searchTabs:hover:active {
+	background-color: var(--whitesur-button-suggested-action-hover-background) !important;
+}
+
+/*Inactive tab title*/
+.tab-label-container:not([selected="true"], [multiselected]) {
+	opacity: .5 !important;
+}
+
+:root:not([privatebrowsingmode="temporary"]) :is(toolbarbutton, toolbarpaletteitem)+#tabbrowser-tabs,
+:root[privatebrowsingmode="temporary"] :is(toolbarbutton:not(#firefox-view-button), toolbarpaletteitem:not(#wrapper-firefox-view-button))+#tabbrowser-tabs {
+	border-inline-start: none !important;
+	padding-inline-start: 0 !important;
+	margin-inline-start: 0 !important;
 }

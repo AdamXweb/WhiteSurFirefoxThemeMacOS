@@ -53,6 +53,6 @@
     }
     
     .PanelUI-subView{
-        background: var(--gnome-menu-background) !important;
+        background: var(--whitesur-menu-background) !important;
     }
 }
