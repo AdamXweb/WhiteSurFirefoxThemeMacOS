@@ -65,8 +65,10 @@ panelview {
 }
 
 .panel-subview-body>*,
+.panel-subview-footer-button,
 .panel-subview-footer-button>*,
-#identity-popup-more-info-footer>toolbarbutton,
+#appmenu-developer-tools-view>*,
+#panelMenu_bookmarksMenu>* #appMenu_historyMenu>* #identity-popup-more-info-footer>toolbarbutton,
 #widget-overflow-mainView>toolbarbutton {
 	margin: 0 !important;
 }
@@ -129,6 +131,7 @@ panelview {
 .identity-popup-content-blocking-category {
 	padding-inline: 10px !important;
 	padding-block: 2px !important;
+	margin: 0 !important;
 }
 
 .subviewbutton#appMenu-fxa-label2 {
@@ -152,8 +155,10 @@ panelview {
 	opacity: 0.5 !important;
 }
 
+.bookmark-item:hover,
 .panel-subview-body .toolbarbutton-1:not(.subviewbutton):hover,
 .subviewbutton.identity-popup-security-connection:hover,
+.subviewbutton.sendToDevice-device:hover,
 #protections-popup-not-blocking-section-why:hover,
 #protections-popup-show-report-stack:hover>.protections-popup-footer-button,
 .subviewbutton:not(.nav-bar-overflow-button):not(#appMenu-fxa-label2):not(.subviewbutton-iconic):not(.panel-subview-footer-button):hover {
@@ -202,8 +207,7 @@ toolbarseparator[orient="vertical"] {
 }
 
 /* fix padding for menu items*/
-panelview,
-#PanelUI-fxa {
+panelview:not([extension]) {
 	padding: 4px !important;
 }
 
@@ -248,11 +252,6 @@ menupopup>menu {
 #PlacesToolbar menu:active,
 toolbarbutton.bookmark-item[open="true"] {
 	background-color: var(--whitesur-button-active-background) !important;
-}
-
-.bookmark-item:hover {
-	background-color: var(--whitesur-popover-button-hover-background) !important;
-
 }
 
 #PlacesToolbar menuitem:hover {

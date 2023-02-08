@@ -25,7 +25,7 @@
 #searchbar,
 #search-box,
 .findbar-textbox,
-#editBookmarkPanelRows [type="text"] {
+[type="text"] {
 	outline-offset: -2px !important;
 	-moz-outline-radius: 8px;
 	outline-style: solid !important;
@@ -50,7 +50,7 @@
 #search-box[focused],
 .findbar-textbox[focused],
 .findbar-textbox:focus,
-#editBookmarkPanelRows [type="text"]:focus-visible {
+[type="text"]:focus-visible {
 	outline-color: var(--whitesur-focused-urlbar-border-color) !important;
 	outline-width: 3px !important;
 	transition: outline-color 0.3s cubic-bezier(0, .7, .3, 1),
