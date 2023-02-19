@@ -122,3 +122,26 @@ url("about:newtab") {
         font-weight: 400 !important;
     }
 }
+
+@font-face {
+    font-family: 'noto sans sc';
+    src: local('noto sans hk') !important;
+}
+
+@font-face {
+    font-family: 'noto serif sc';
+    src: local('noto serif hk') !important;
+}
+
+/* Fix for Add-on: TWP - Translate Web Pages */
+
+#eDivResult {
+    backdrop-filter: blur(25px) !important;
+    background-color: var(--context-menu-background) !important;
+    border: var(--context-menu-border) !important;
+    outline: var(--context-menu-outline) !important;
+}
+
+#eSelTextTrans {
+    color: var(--context-menu-hover) !important;
+}

@@ -205,6 +205,7 @@ tab[selected]:-moz-window-inactive {
 	}
 }
 
+stack[muted="true"]+.tab-label-container[textoverflow],
 stack[soundplaying="true"]+.tab-label-container[textoverflow] {
 	mask-image: none !important;
 }

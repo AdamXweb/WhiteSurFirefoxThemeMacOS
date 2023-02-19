@@ -111,7 +111,6 @@
 	--whitesur-tabbar-tab-hover-border-bottom-color: #1b1b1b;
 	--whitesur-tabbar-tab-hover-color: var(--lwt-tab-text, var(--toolbar-color));
 	--whitesur-tabbar-tab-active-background: var(--toolbar-bgcolor);
-	--whitesur-tabbar-tab-active-border-bottom-color: #15539e;
 	--whitesur-tabbar-tab-active-color: var(--lwt-tab-text, var(--toolbar-color));
 	--whitesur-tabbar-tab-active-hover-background: color-mix(in srgb, var(--toolbar-bgcolor) 50%, transparent);
 	--whitesur-inactive-tabbar-tab-color: var(--lwt-tab-text, var(--toolbar-color));
@@ -236,7 +235,6 @@
 		--whitesur-tabbar-tab-hover-border-bottom-color: #b6b6b3;
 		--whitesur-tabbar-tab-hover-color: var(--lwt-tab-text, var(--toolbar-color));
 		--whitesur-tabbar-tab-active-background: var(--toolbar-bgcolor);
-		--whitesur-tabbar-tab-active-border-bottom-color: #4a90d9;
 		--whitesur-tabbar-tab-active-color: var(--lwt-tab-text, var(--toolbar-color));
 		--whitesur-tabbar-tab-active-hover-background: color-mix(in srgb, var(--toolbar-bgcolor) 50%, transparent);
 		--whitesur-inactive-tabbar-tab-color: var(--lwt-tab-text, var(--toolbar-color));

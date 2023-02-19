@@ -163,7 +163,7 @@ menulist[open] .menulist-label-box,
 	border-color: var(--whitesur-button-active-border-color) !important;
 }
 
-menulist > menupopup > menuitem:is([checked="true"], [selected="true"])::before {
+menulist>menupopup>menuitem:is([checked="true"], [selected="true"])::before {
 	margin-inline-start: auto !important;
 }
 
@@ -182,6 +182,11 @@ menulist>menupopup>menucaption,
 menulist>menupopup>menu {
 	color: var(--macos-menu-hover-color) !important;
 	background: var(--macos-menu-hover) !important;
+}
+
+menu[_moz-menuactive="true"],
+menuitem[_moz-menuactive="true"] {
+	background-color: transparent !important;
 }
 
 /* Disabled buttons */
