@@ -177,8 +177,9 @@ menuseparator {
 	border-color: var(--whitesur-popover-separator-color) !important;
 }
 
-toolbarseparator:not([orient="vertical"]) {
-	margin: 6px 0 !important;
+toolbarseparator:not([orient="vertical"]),
+menuseparator {
+	margin: 6px 8px !important;
 	border-top: 1px solid currentColor !important;
 	opacity: 0.2;
 }
@@ -232,8 +233,6 @@ menuseparator {
 	-moz-appearance: none !important;
 	padding-top: 0px !important;
 	padding-bottom: 0px !important;
-	margin-top: 3px !important;
-	margin-bottom: 2px !important;
 }
 
 menupopup>menuitem,
