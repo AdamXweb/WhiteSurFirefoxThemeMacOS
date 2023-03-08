@@ -5,12 +5,11 @@
 :root[tabsintitlebar] #nav-bar *,
 :root[tabsintitlebar] #titlebar .titlebar-button,
 :root[tabsintitlebar][inFullscreen] #window-controls toolbarbutton {
-	-moz-window-dragging: drag;
+  -moz-window-dragging: drag;
 }
 
 /* Avoid window dragging from urlbar */
-:root[tabsintitlebar] #nav-bar .urlbar-input-box, 
+:root[tabsintitlebar] #nav-bar .urlbar-input-box,
 :root[tabsintitlebar] #nav-bar .urlbar-input-box * {
-	-moz-window-dragging: no-drag !important;
+  -moz-window-dragging: no-drag !important;
 }
-

@@ -10,7 +10,7 @@ To skip to the original `README.md`, please click [here](#firefox-whitesur-theme
 ### Quick Link
 
 [Installation](#installation-macos)
-1. [The Geeky Way](#installation-flags)
+~~1. [The Geeky Way](#installation-flags)~~
 2. [The Simple Way (MacOS & Windows)](#manual-installation-macos--windows)
 
 <br>

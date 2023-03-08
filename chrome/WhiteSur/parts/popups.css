@@ -5,51 +5,51 @@
 
 /* Style menus */
 menupopup {
-	-moz-appearance: none !important;
-	padding: 0px 4px !important;
-	border-radius: var(--macos-menu-border-radius) !important;
-	border: var(--macos-menu-border) !important;
-	outline: var(--macos-menu-outline) !important;
-	color: var(--whitesur-toolbar-color) !important;
-	background-color: var(--whitesur-menu-background) !important;
+  -moz-appearance: none !important;
+  padding: 0px 4px !important;
+  border-radius: var(--macos-menu-border-radius) !important;
+  border: var(--macos-menu-border) !important;
+  outline: var(--macos-menu-outline) !important;
+  color: var(--whitesur-toolbar-color) !important;
+  background-color: var(--whitesur-menu-background) !important;
 }
 
 menupopup menupopup {
-	margin: -5px 0 0 -4px;
+  margin: -5px 0 0 -4px;
 }
 
-menubar>menu>menupopup {
-	border-top-left-radius: 0 !important;
-	border-top-right-radius: 0 !important;
+menubar > menu > menupopup {
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
 }
 
 menuitem,
 menupopup menu {
-	-moz-appearance: none !important;
-	padding: 4px 8px !important;
+  -moz-appearance: none !important;
+  padding: 4px 8px !important;
 }
 
 menuitem[type="checkbox"] image,
 menuitem[type="radio"] image {
-	visibility: visible !important;
+  visibility: visible !important;
 }
 
 menuitem[disabled="true"]:hover,
 menupopup menu[disabled="true"]:hover {
-	background: transparent !important;
+  background: transparent !important;
 }
 
 /* Adjust popovers position, includes background colour with transparency */
-panel[type=arrow] {
-	margin-top: 9px !important;
-	max-height: 80vh !important;
-	--panel-background: var(--whitesur-popover-background) !important;
-	--panel-color: var(--whitesur-button-menulist-color) !important;
-	font: inherit !important;
+panel[type="arrow"] {
+  margin-top: 9px !important;
+  max-height: 80vh !important;
+  --panel-background: var(--whitesur-popover-background) !important;
+  --panel-color: var(--whitesur-button-menulist-color) !important;
+  font: inherit !important;
 }
 
 #customizationui-widget-panel {
-	margin-top: 15px !important;
+  margin-top: 15px !important;
 }
 
 /* Style popovers */
@@ -60,59 +60,64 @@ panel[type=arrow] {
 #widget-overflow-mainView,
 #protections-popup-footer,
 panelview {
-	border: 0 !important;
-	background: transparent !important;
+  border: 0 !important;
+  background: transparent !important;
 }
 
-.panel-subview-body>*,
+.panel-subview-body > *,
 .panel-subview-footer-button,
-.panel-subview-footer-button>*,
-#appmenu-developer-tools-view>*,
-#panelMenu_bookmarksMenu>* #appMenu_historyMenu>* #identity-popup-more-info-footer>toolbarbutton,
-#widget-overflow-mainView>toolbarbutton {
-	margin: 0 !important;
+.panel-subview-footer-button > *,
+#appmenu-developer-tools-view > *,
+#panelMenu_bookmarksMenu
+  > *
+  #appMenu_historyMenu
+  > *
+  #identity-popup-more-info-footer
+  > toolbarbutton,
+#widget-overflow-mainView > toolbarbutton {
+  margin: 0 !important;
 }
 
 .panel-arrowcontent {
-	--panel-background: var(--whitesur-popover-background) !important;
-	font: inherit !important;
-	border-color: var(--whitesur-popover-border-color) !important;
-	border-radius: var(--macos-menu-border-radius) !important;
-	/* box-shadow: var(--whitesur-popover-shadow) !important; */
-	padding: 12px !important;
-	color: var(--whitesur-toolbar-color) !important;
+  --panel-background: var(--whitesur-popover-background) !important;
+  font: inherit !important;
+  border-color: var(--whitesur-popover-border-color) !important;
+  border-radius: var(--macos-menu-border-radius) !important;
+  /* box-shadow: var(--whitesur-popover-shadow) !important; */
+  padding: 12px !important;
+  color: var(--whitesur-toolbar-color) !important;
 }
 
 .panel-arrow {
-	fill: var(--whitesur-popover-background) !important;
-	stroke: var(--whitesur-popover-border-color) !important;
+  fill: var(--whitesur-popover-background) !important;
+  stroke: var(--whitesur-popover-border-color) !important;
 }
 
 .panel-header {
-	padding: 10px 0 10px 0 !important;
+  padding: 10px 0 10px 0 !important;
 }
 
 .panel-footer {
-	background-color: transparent !important;
-	display: flex;
-	justify-content: flex-end;
-	padding-top: 0px !important;
+  background-color: transparent !important;
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 0px !important;
 }
 
 .panel-footer toolbarseparator {
-	display: none !important;
+  display: none !important;
 }
 
 .panel-subview-body {
-	padding: 0 !important;
+  padding: 0 !important;
 }
 
 .panel-subview-footer {
-	margin-top: 10px !important;
+  margin-top: 10px !important;
 }
 
 #nav-bar .toolbarbutton-1 {
-	border-radius: var(--macos-toolbar-border-radius) !important;
+  border-radius: var(--macos-toolbar-border-radius) !important;
 }
 
 /* Style popovers menu buttons */
@@ -120,39 +125,39 @@ panelview {
 .protections-popup-category,
 .protections-popup-category[disabled],
 .identity-popup-content-blocking-category {
-	border-radius: var(--macos-menu-item-border-radius) !important;
-	color: inherit !important;
-	font: menu !important;
-	/* -moz-box-pack: inherit !important; */
+  border-radius: var(--macos-menu-item-border-radius) !important;
+  color: inherit !important;
+  font: menu !important;
+  /* -moz-box-pack: inherit !important; */
 }
 
 .subviewbutton:not(.subviewbutton-back):not(.toolbarbutton-1),
 .protections-popup-category,
 .identity-popup-content-blocking-category {
-	padding-inline: 10px !important;
-	padding-block: 2px !important;
-	margin: 0 !important;
+  padding-inline: 10px !important;
+  padding-block: 2px !important;
+  margin: 0 !important;
 }
 
 .subviewbutton#appMenu-fxa-label2 {
-	padding: 0 !important;
+  padding: 0 !important;
 }
 
 .subviewbutton#appMenu-fxa-label2:hover {
-	background: transparent !important;
-	color: #fff !important;
+  background: transparent !important;
+  color: #fff !important;
 }
 
 .subviewbutton[disabled],
 .toolbarbutton-1[disabled],
 .identity-popup-content-blocking-category[disabled] {
-	opacity: 0.5 !important;
-	color: var(--whitesur-inactive-toolbar-color) !important;
-	background: none !important;
+  opacity: 0.5 !important;
+  color: var(--whitesur-inactive-toolbar-color) !important;
+  background: none !important;
 }
 
 .subviewbutton[shortcut]:after {
-	opacity: 0.5 !important;
+  opacity: 0.5 !important;
 }
 
 .bookmark-item:hover,
@@ -160,170 +165,188 @@ panelview {
 .subviewbutton.identity-popup-security-connection:hover,
 .subviewbutton.sendToDevice-device:hover,
 #protections-popup-not-blocking-section-why:hover,
-#protections-popup-show-report-stack:hover>.protections-popup-footer-button,
-.subviewbutton:not(.nav-bar-overflow-button):not(#appMenu-fxa-label2):not(.subviewbutton-iconic):not(.panel-subview-footer-button):hover {
-	background: var(--whitesur-button-suggested-action-hover-background) !important;
-	color: #fff !important;
+#protections-popup-show-report-stack:hover > .protections-popup-footer-button,
+.subviewbutton:not(.nav-bar-overflow-button):not(#appMenu-fxa-label2):not(
+    .subviewbutton-iconic
+  ):not(.panel-subview-footer-button):hover {
+  background: var(
+    --whitesur-button-suggested-action-hover-background
+  ) !important;
+  color: #fff !important;
 }
 
 .protections-popup-category:not([disabled]):hover,
 .identity-popup-content-blocking-category:not([disabled]):hover {
-	background: var(--whitesur-button-suggested-action-hover-background) !important;
+  background: var(
+    --whitesur-button-suggested-action-hover-background
+  ) !important;
 }
 
 /* Style popover separators */
 toolbarseparator,
 menuseparator {
-	border-color: var(--whitesur-popover-separator-color) !important;
+  border-color: var(--whitesur-popover-separator-color) !important;
 }
 
 toolbarseparator:not([orient="vertical"]),
 menuseparator {
-	margin: 6px 8px !important;
-	border-top: 1px solid currentColor !important;
-	opacity: 0.2;
+  margin: 6px 8px !important;
+  border-top: 1px solid currentColor !important;
+  opacity: 0.2;
 }
 
 toolbarseparator[orient="vertical"] {
-	margin: 0 3px !important;
+  margin: 0 3px !important;
 }
 
 #contentAreaContextMenu menuitem image,
 #contentAreaContextMenu menu image {
-	visibility: visible !important;
+  visibility: visible !important;
 }
 
 /* Webchat e.g. google meet share screen display select*/
 #webRTC-selectWindow-menulist {
-	color: var(--whitesur-inactive-urlbar-color) !important;
-	background: var(--whitesur-button-hover-background) !important;
-	border-radius: 5px;
+  color: var(--whitesur-inactive-urlbar-color) !important;
+  background: var(--whitesur-button-hover-background) !important;
+  border-radius: 5px;
 }
 
 /* Proton right click menu*/
 @media (-moz-proton) {
-	#context-navigation>.menuitem-iconic[_moz-menuactive="true"]:not([disabled="true"])>.menu-iconic-left>.menu-iconic-icon {
-		background-color: transparent !important;
-	}
+  #context-navigation
+    > .menuitem-iconic[_moz-menuactive="true"]:not([disabled="true"])
+    > .menu-iconic-left
+    > .menu-iconic-icon {
+    background-color: transparent !important;
+  }
 }
 
 /* fix padding for menu items*/
 panelview:not([extension]) {
-	padding: 4px !important;
+  padding: 4px !important;
 }
 
 .unified-extensions-item-open-menu.subviewbutton {
-	display: none !important;
+  display: none !important;
 }
 
 /* fix menu button padding and alignment*/
 #PanelUI-menu-button {
-	padding-inline-end: 0px !important;
-	padding-left: 0px !important;
+  padding-inline-end: 0px !important;
+  padding-left: 0px !important;
 }
 
 /* Fix alignment of menu*/
 panel[type="arrow"][side="top"],
 panel[type="arrow"][side="bottom"] {
-	margin-inline: -20px !important;
+  margin-inline: -20px !important;
 }
 
 /* Fix bookmarks v92 */
 menuseparator {
-	-moz-appearance: none !important;
-	padding-top: 0px !important;
-	padding-bottom: 0px !important;
+  -moz-appearance: none !important;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
 }
 
-menupopup>menuitem,
-menupopup>menu {
-	padding-block: 2px !important;
-	min-height: unset !important;
+menupopup > menuitem,
+menupopup > menu {
+  padding-block: 2px !important;
+  min-height: unset !important;
 }
 
 #PlacesToolbar menupopup,
 #PlacesToolbar menu:not([disabled], :active) {
-	--arrowpanel-background: transparent !important;
-	--arrowpanel-border-radius: 0px !important;
+  --arrowpanel-background: transparent !important;
+  --arrowpanel-border-radius: 0px !important;
 }
 
 #PlacesToolbar menu[_moz-menuactive],
 #PlacesToolbar menu:active,
 toolbarbutton.bookmark-item[open="true"] {
-	background-color: var(--whitesur-button-active-background) !important;
+  background-color: var(--whitesur-button-active-background) !important;
 }
 
 #PlacesToolbar menuitem:hover {
-	color: var(--whitesur-button-menulist-color) !important;
+  color: var(--whitesur-button-menulist-color) !important;
 }
 
 #PlacesToolbar menupopup[placespopup="true"] {
-	border: none !important;
+  border: none !important;
 }
 
 #PlacesToolbar menupopup[placespopup="true"]::part(arrowscrollbox) {
-	background: transparent !important;
+  background: transparent !important;
 }
 
 .menupopup-arrowscrollbox {
-	background: transparent !important;
-	border: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
 }
 
 /* Update close button styling */
 :root[dialogroot],
 :host(dialog) {
-	--in-content-page-background: var(--whitesur-menu-background) !important;
+  --in-content-page-background: var(--whitesur-menu-background) !important;
 }
 
 /* Cancel or secondary */
-.dialog-button-box>button {
-	background-color: var(--whitesur-button-active-background-alt) !important;
-	color: var(--whitesur-button-menulist-color) !important;
-	border: 1px solid var(--whitesur-button-active-background-alt-border);
+.dialog-button-box > button {
+  background-color: var(--whitesur-button-active-background-alt) !important;
+  color: var(--whitesur-button-menulist-color) !important;
+  border: 1px solid var(--whitesur-button-active-background-alt-border);
 }
 
 xul|button:not([disabled="true"]):hover {
-	background-color: var(--whitesur-button-active-background-alt-hover) !important;
-	color: var(--whitesur-button-menulist-color) !important;
-	border: 1px solid var(--whitesur-button-active-background-alt-border);
-	border-color: var(--whitesur-button-active-border-color) !important;
+  background-color: var(
+    --whitesur-button-active-background-alt-hover
+  ) !important;
+  color: var(--whitesur-button-menulist-color) !important;
+  border: 1px solid var(--whitesur-button-active-background-alt-border);
+  border-color: var(--whitesur-button-active-border-color) !important;
 }
 
 /* Quit or primary button */
 xul|button[default] {
-	background-color: var(--whitesur-button-suggested-action-background) !important;
-	color: var(--whitesur-button-menulist-color) !important;
-	border-color: var(--whitesur-button-suggested-action-border-color) !important;
+  background-color: var(
+    --whitesur-button-suggested-action-background
+  ) !important;
+  color: var(--whitesur-button-menulist-color) !important;
+  border-color: var(--whitesur-button-suggested-action-border-color) !important;
 }
 
 xul|button[default]:not([disabled="true"]):hover {
-	background-color: var(--whitesur-button-suggested-action-hover-background) !important;
-	color: var(--whitesur-button-menulist-color) !important;
-	border-color: var(--whitesur-button-suggested-action-border-color) !important;
+  background-color: var(
+    --whitesur-button-suggested-action-hover-background
+  ) !important;
+  color: var(--whitesur-button-menulist-color) !important;
+  border-color: var(--whitesur-button-suggested-action-border-color) !important;
 }
 
 button:focus-visible {
-	outline: 2px solid var(--theme-primary-color) !important;
+  outline: 2px solid var(--theme-primary-color) !important;
 }
 
 /* checkbox */
 .checkbox-check[checked] {
-	background-color: var(--theme-primary-color) !important;
-	color: var(--theme-alt-color) !important;
+  background-color: var(--theme-primary-color) !important;
+  color: var(--theme-alt-color) !important;
 }
 
-checkbox:not([disabled="true"]):hover>.checkbox-check[checked] {
-	background-color: var(--whitesur-switch-active-background, color-mix(in srgb, currentColor 12.5%, var(--theme-primary-color))) !important;
+checkbox:not([disabled="true"]):hover > .checkbox-check[checked] {
+  background-color: var(
+    --whitesur-switch-active-background,
+    color-mix(in srgb, currentColor 12.5%, var(--theme-primary-color))
+  ) !important;
 }
 
 /* Bookmark editor */
 
 #editBookmarkPanelBottomButtons {
-	padding: 0 var(--arrowpanel-padding) calc(var(--arrowpanel-padding) / 2);
+  padding: 0 var(--arrowpanel-padding) calc(var(--arrowpanel-padding) / 2);
 }
 
 #editBookmarkPanelContent .panel-button image {
-	width: 16px;
-	height: 16px;
+  width: 16px;
+  height: 16px;
 }

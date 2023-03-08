@@ -1,5 +1,5 @@
 (function () {
-	var css = `
+  var css = `
 	@namespace url(http: //www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
 	@namespace html url("http://www.w3.org/1999/xhtml");
 
@@ -117,9 +117,10 @@
 		mix-blend-mode: normal;
 	}
 	`;
-	
-	var sss = Cc['@mozilla.org/content/style-sheet-service;1'].getService(Ci.nsIStyleSheetService);
-	var uri = makeURI('data:text/css;charset=UTF=8,' + encodeURIComponent(css));    
-	sss.loadAndRegisterSheet(uri, sss.AGENT_SHEET)
-})();
 
+  var sss = Cc["@mozilla.org/content/style-sheet-service;1"].getService(
+    Ci.nsIStyleSheetService
+  );
+  var uri = makeURI("data:text/css;charset=UTF=8," + encodeURIComponent(css));
+  sss.loadAndRegisterSheet(uri, sss.AGENT_SHEET);
+})();

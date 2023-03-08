@@ -14,10 +14,15 @@
 @import "parts/icons.css";
 @import "colors/color.css";
 @import "parts/windows.css";
+
+/* @import "customs/hide-tabview.css";
+@import "customs/hide-single-tab.css"; */
+
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
 /* Set theme version text in customization panel */
+
 #customization-footer::before {
-	content: "Firefox WhiteSur theme";
-	padding: 9px;
+  content: "Firefox WhiteSur theme (ATBC-compatible)";
+  padding: 9px;
 }

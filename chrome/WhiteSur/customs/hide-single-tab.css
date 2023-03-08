@@ -1,0 +1,17 @@
+@namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+/* From user @luan https://github.com/AdamXweb/WhiteSurFirefoxThemeMacOS/issues/52#issuecomment-1120470140 */
+
+#tabbrowser-tabs,
+#tabbrowser-tabs arrowscrollbox {
+  height: auto !important;
+  padding: 0 !important;
+}
+
+#TabsToolbar {
+  min-height: 0 !important;
+}
+
+#tabbrowser-tabs tab:only-of-type {
+  display: none !important;
+}

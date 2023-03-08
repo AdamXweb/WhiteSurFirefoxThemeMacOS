@@ -96,20 +96,7 @@ url("about:newtab") {
         border-radius: 4px !important;
     }
 
-    :root {
-        --context-menu-border: 1px solid #ffffff33;
-        --context-menu-outline: 0.5px solid #101010;
-        --context-menu-background: #292929b3;
-        --context-menu-hover: #2073d8;
-    }
-
     @media (prefers-color-scheme: light) {
-        :root {
-            --context-menu-border: none;
-            --context-menu-outline: 0.5px solid #c8c8c8;
-            --context-menu-background: #e6e6e6ca;
-            --context-menu-hover: #3584e4;
-        }
 
         .context-menu>ul>li>a:hover,
         .context-menu>ul>li>button:hover {
@@ -121,4 +108,97 @@ url("about:newtab") {
             font-weight: 400 !important;
         }
     }
+}
+
+:root {
+    --context-menu-border: 1px solid #ffffff33;
+    --context-menu-outline: 0.5px solid #101010;
+    --context-menu-background: #292929b3;
+    --context-menu-hover: #2073d8;
+}
+
+@media (prefers-color-scheme: light) {
+
+    :root {
+        --context-menu-border: none;
+        --context-menu-outline: 0.5px solid #c8c8c8;
+        --context-menu-background: #e6e6e6ca;
+        --context-menu-hover: #3584e4;
+    }
+
+    .context-menu>ul>li>a:hover,
+    .context-menu>ul>li>button:hover {
+        color: white !important;
+    }
+
+    button,
+    input {
+        font-weight: 400 !important;
+    }
+}
+
+/* Fix for popup of Add-on: TWP - Translate Web Pages */
+
+:root {
+    --context-menu-border: 1px solid #ffffff33;
+    --context-menu-outline: 0.5px solid #101010;
+    --context-menu-background: #292929b3;
+    --context-menu-hover: #2073d8;
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --context-menu-border: none;
+        --context-menu-outline: 0.5px solid #c8c8c8;
+        --context-menu-background: #e6e6e6ca;
+        --context-menu-hover: #3584e4;
+    }
+}
+
+#eDivResult {
+    backdrop-filter: blur(25px) !important;
+    background-color: var(--context-menu-background) !important;
+    border: var(--context-menu-border) !important;
+    outline: var(--context-menu-outline) !important;
+}
+
+#eSelTextTrans {
+    color: var(--context-menu-hover) !important;
+}
+
+/* Replaces Simplified Chinese fonts */
+
+@font-face {
+    font-family: 'noto serif sc';
+    src: local('LiSong Pro');
+}
+
+@font-face {
+    font-family: 'SongTi SC';
+    src: local('LiSong Pro');
+}
+
+@font-face {
+    font-family: 'noto sans sc';
+    src: local('PingFang HK');
+}
+
+@font-face {
+    font-family: 'PingFang SC';
+    src: local('PingFang HK');
+}
+
+@font-face {
+    font-family: 'Hiragino Sans GB';
+    src: local('PingFang HK');
+}
+
+@font-face {
+    font-family: 'Microsoft YaHei UI';
+    src: local('PingFang HK');
+}
+
+@font-face {
+    font-family: 'Microsoft YaHei';
+    src: local('PingFang HK');
 }

@@ -1,4 +1,0 @@
-/* Disable milti tab / facebook identity lines */
-.tabbrowser-tab[usercontextid]>.tab-stack>.tab-background {
-    border-top: 0px !important;
-}
