@@ -13,9 +13,9 @@
 #widget-overflow-list,
 #widget-overflow-fixed-list,
 #unified-extensions-panel .panel-subview-body > * {
-  display: grid !important;
-  grid-template-columns: repeat(5, 1fr) !important;
-  justify-items: center !important;
+    display: grid !important;
+    grid-template-columns: repeat(5, 1fr) !important;
+    justify-items: center !important;
 }
 
 /* #unified-extensions-panel .panel-subview-body>* {
@@ -25,64 +25,64 @@
 /* Animation for widget overflow list re-arrangement */
 
 #widget-overflow-fixed-list
-  > toolbarpaletteitem:not([notransition])[place="panel"] {
-  border-block-width: 0 !important;
-  transition: padding var(--drag-drop-transition-duration) ease-in-out !important;
+    > toolbarpaletteitem:not([notransition])[place="panel"] {
+    border-block-width: 0 !important;
+    transition: padding var(--drag-drop-transition-duration) ease-in-out !important;
 }
 
 #widget-overflow-fixed-list
-  > toolbarpaletteitem:not([notransition])[place="panel"][dragover="before"] {
-  padding-inline-start: 20px !important;
+    > toolbarpaletteitem:not([notransition])[place="panel"][dragover="before"] {
+    padding-inline-start: 20px !important;
 }
 
 #widget-overflow-fixed-list
-  > toolbarpaletteitem:not([notransition])[place="panel"][dragover="after"] {
-  padding-inline-end: 20px !important;
+    > toolbarpaletteitem:not([notransition])[place="panel"][dragover="after"] {
+    padding-inline-end: 20px !important;
 }
 
 #customization-panelHolder > #widget-overflow-fixed-list::before {
-  display: none !important;
+    display: none !important;
 }
 
 :is(panelview, #widget-overflow-fixed-list) .toolbaritem-combined-buttons {
-  margin: 0 !important;
+    margin: 0 !important;
 }
 
 #widget-overflow-fixed-list > .toolbarbutton-1,
 #widget-overflow-fixed-list > .toolbaritem-combined-buttons,
 #unified-extensions-panel .unified-extensions-item {
-  width: 60.6px !important;
-  height: 60.6px !important;
-  max-width: none !important;
-  max-height: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
+    width: 60.6px !important;
+    height: 60.6px !important;
+    max-width: none !important;
+    max-height: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
 .widget-overflow-list .toolbarbutton-1,
 #unified-extensions-panel
-  #unified-extensions-area
-  .unified-extensions-item-action-button {
-  width: 100% !important;
-  height: 100% !important;
-  padding: 0 !important;
-  margin: 0 !important;
+    #unified-extensions-area
+    .unified-extensions-item-action-button {
+    width: 100% !important;
+    height: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
 .widget-overflow-list .toolbarbutton-1 > .toolbarbutton-badge-stack,
 #unified-extensions-panel
-  #unified-extensions-area
-  .unified-extensions-item-action-button
-  > .toolbarbutton-badge-stack,
+    #unified-extensions-area
+    .unified-extensions-item-action-button
+    > .toolbarbutton-badge-stack,
 #unified-extensions-panel
-  .unified-extensions-list
-  .unified-extensions-item-action-button {
-  display: grid !important;
-  width: 100% !important;
-  height: 100% !important;
-  padding: 20% !important;
-  justify-content: center;
-  align-items: center;
+    .unified-extensions-list
+    .unified-extensions-item-action-button {
+    display: grid !important;
+    width: 100% !important;
+    height: 100% !important;
+    padding: 20% !important;
+    justify-content: center;
+    align-items: center;
 }
 
 .widget-overflow-list .subviewbutton-nav::after,
@@ -90,60 +90,60 @@
 #widget-overflow-fixed-list .toolbarbutton-text,
 .unified-extensions-item-menu-button,
 .unified-extensions-item-contents {
-  display: none !important;
+    display: none !important;
 }
 
 .widget-overflow-list .toolbarbutton-1 image,
 #widget-overflow-fixed-list .toolbarbutton-1 image,
 #unified-extensions-panel .unified-extensions-item-action-button image {
-  height: 26px !important;
-  width: 26px !important;
-  margin: auto !important;
+    height: 26px !important;
+    width: 26px !important;
+    margin: auto !important;
 }
 
 #unified-extensions-panel .subviewbutton {
-  margin: 0 !important;
+    margin: 0 !important;
 }
 
 /* End of textless addon menu & widget overflow menu CSS */
 
 /* Toolbox colors */
 #navigator-toolbox {
-  border: 0 !important;
-  background: var(--lwt-accent-color) !important;
+    border: 0 !important;
+    background: var(--lwt-accent-color) !important;
 }
 
 .toolbarbutton-icon {
-  color: inherit;
-  fill: var(--whitesur-toolbar-color);
+    color: inherit;
+    fill: var(--whitesur-toolbar-color);
 }
 
 #nav-bar,
 #PersonalToolbar,
 #toolbar-menubar {
-  border: 0 !important;
-  color: var(--whitesur-toolbar-color);
-  background: var(--whitesur-toolbar-background) !important;
-  border-bottom: none !important;
+    border: 0 !important;
+    color: var(--whitesur-toolbar-color);
+    background: var(--whitesur-toolbar-background) !important;
+    border-bottom: none !important;
 }
 
 #TabsToolbar {
-  border: 0 !important;
-  background: var(--whitesur-tabstoolbar-background) !important;
-  border-bottom: 1px solid var(--whitesur-toolbar-border-color) !important;
-  box-shadow: inset 0 1px var(--whitesur-toolbar-border-color) !important;
+    border: 0 !important;
+    background: var(--whitesur-tabstoolbar-background) !important;
+    border-bottom: 1px solid var(--whitesur-toolbar-border-color) !important;
+    box-shadow: inset 0 1px var(--whitesur-toolbar-border-color) !important;
 }
 
 findbar {
-  border: 0 !important;
-  background: var(--whitesur-findbar-background) !important;
-  border-bottom: 1px solid var(--whitesur-toolbar-border-color) !important;
+    border: 0 !important;
+    background: var(--whitesur-findbar-background) !important;
+    border-bottom: 1px solid var(--whitesur-toolbar-border-color) !important;
 }
 
 #nav-bar:-moz-window-inactive,
 #PersonalToolbar:-moz-window-inactive,
 #toolbar-menubar:-moz-window-inactive {
-  background: var(--whitesur-inactive-toolbar-background) !important;
+    background: var(--whitesur-inactive-toolbar-background) !important;
 }
 
 #navigator-toolbox:-moz-window-inactive label,
@@ -152,71 +152,71 @@ findbar {
 findbar:-moz-window-inactive image:not(#hack),
 findbar:-moz-window-inactive label,
 #viewButton:-moz-window-inactive dropmarker {
-  opacity: 0.7 !important;
+    opacity: 0.7 !important;
 }
 
 #toolbar-menubar:not([inactive="true"]) {
-  margin-bottom: 0 !important;
+    margin-bottom: 0 !important;
 }
 
 #PersonalToolbar {
-  padding: 2px 4px 0 4px !important;
-  height: 32px !important;
+    padding: 2px 4px 0 4px !important;
+    height: 32px !important;
 }
 
 /* Overrides: Remove border below the menu bar / above the header bar */
 #TabsToolbar:not([collapsed="true"]) + #nav-bar {
-  border-top-width: 0 !important;
+    border-top-width: 0 !important;
 }
 
 #navigator-toolbox::after {
-  border-bottom-width: 0 !important;
+    border-bottom-width: 0 !important;
 }
 
 /* Reorder toolbars */
 #navigator-toolbox #nav-bar,
 findbar {
-  -moz-box-ordinal-group: 0;
+    -moz-box-ordinal-group: 0;
 }
 
 #navigator-toolbox #PersonalToolbar {
-  -moz-box-ordinal-group: 1;
+    -moz-box-ordinal-group: 1;
 }
 
 #navigator-toolbox #titlebar {
-  -moz-box-ordinal-group: 2;
+    -moz-box-ordinal-group: 2;
 }
 
 #navigator-toolbox toolbar {
-  -moz-box-ordinal-group: 10;
+    -moz-box-ordinal-group: 10;
 }
 
 #navigator-toolbox #TabsToolbar {
-  -moz-box-ordinal-group: 100;
+    -moz-box-ordinal-group: 100;
 }
 
 /* Overrides: Don't shift other toolbars on tab drag and drop */
 #TabsToolbar[movingtab] {
-  padding-bottom: 0 !important;
+    padding-bottom: 0 !important;
 }
 
 #TabsToolbar[movingtab] > .tabbrowser-tabs {
-  padding-bottom: 0 !important;
-  margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
 }
 
 #TabsToolbar[movingtab] + #nav-bar {
-  margin-top: 0 !important;
+    margin-top: 0 !important;
 }
 
 /* bookmark-item */
 toolbarbutton.bookmark-item {
-  max-height: 20px !important;
+    max-height: 20px !important;
 }
 
 /* Fix reload button animation overlap with icon */
 #reload-button:not([displaystop])
-  > .toolbarbutton-animatable-box
-  > .toolbarbutton-animatable-image {
-  animation-duration: 0s !important;
+    > .toolbarbutton-animatable-box
+    > .toolbarbutton-animatable-image {
+    animation-duration: 0s !important;
 }

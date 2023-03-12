@@ -3,28 +3,28 @@
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
 toolbarbutton#alltabs-button {
-  -moz-binding: url("scrollbars.xml#js");
+    -moz-binding: url("scrollbars.xml#js");
 }
 
 #alltabs-button:not(#hack) {
-  list-style-image: none !important;
-  position: relative;
+    list-style-image: none !important;
+    position: relative;
 }
 
 #alltabs-button:not(#hack) .toolbarbutton-icon {
-  display: none !important;
+    display: none !important;
 }
 
 #alltabs-button:not(#hack) .toolbarbutton-badge-stack {
-  position: absolute;
+    position: absolute;
 }
 
 #alltabs-button::before {
-  position: relative;
-  top: 2px;
-  content: url(chrome://global/skin/icons/arrow-down.svg);
+    position: relative;
+    top: 2px;
+    content: url(chrome://global/skin/icons/arrow-down.svg);
 }
 
 #alltabs-button:-moz-window-inactive::before {
-  opacity: 0.7 !important;
+    opacity: 0.7 !important;
 }

@@ -23,6 +23,6 @@
 /* Set theme version text in customization panel */
 
 #customization-footer::before {
-  content: "Firefox WhiteSur theme (ATBC-compatible)";
-  padding: 9px;
+    content: "Firefox WhiteSur theme (ATBC-compatible)";
+    padding: 9px;
 }
