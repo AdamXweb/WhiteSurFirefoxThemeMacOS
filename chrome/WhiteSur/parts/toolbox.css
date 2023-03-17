@@ -48,6 +48,7 @@
     margin: 0 !important;
 }
 
+#widget-overflow-list > .toolbarbutton-1,
 #widget-overflow-fixed-list > .toolbarbutton-1,
 #widget-overflow-fixed-list > .toolbaritem-combined-buttons,
 #unified-extensions-panel .unified-extensions-item {
@@ -62,6 +63,9 @@
 .widget-overflow-list .toolbarbutton-1,
 #unified-extensions-panel
     #unified-extensions-area
+    .unified-extensions-item-action-button,
+#unified-extensions-panel
+    #overflowed-extensions-list
     .unified-extensions-item-action-button {
     width: 100% !important;
     height: 100% !important;
@@ -72,6 +76,10 @@
 .widget-overflow-list .toolbarbutton-1 > .toolbarbutton-badge-stack,
 #unified-extensions-panel
     #unified-extensions-area
+    .unified-extensions-item-action-button
+    > .toolbarbutton-badge-stack,
+#unified-extensions-panel
+    #overflowed-extensions-list
     .unified-extensions-item-action-button
     > .toolbarbutton-badge-stack,
 #unified-extensions-panel

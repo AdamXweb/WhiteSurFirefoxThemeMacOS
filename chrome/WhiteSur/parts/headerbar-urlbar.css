@@ -118,21 +118,21 @@ toolbarspring {
 }
 
 /* URL bar */
-#urlbar,
-#searchbar {
-    box-shadow: none !important;
-    border-radius: var(--macos-toolbar-border-radius) !important;
-    opacity: 0.8 !important;
-    transition: opacity 0.4s !important;
+
+/* Hover effect */
+
+/* #urlbar #urlbar-input-container > *,
+#searchbar > * {
+    opacity: 0.5 !important;
+    transition: opacity 0.2s !important;
 }
 
-#urlbar:hover,
-#urlbar[focused],
-#searchbar:hover,
-#searchbar:focus-within {
+#urlbar:hover #urlbar-input-container > *,
+#urlbar[focused] #urlbar-input-container > *,
+#searchbar:hover > *,
+#searchbar:focus-within > * {
     opacity: 1 !important;
-    filter: saturate(100%) !important;
-}
+} */
 
 #urlbar-background {
     box-shadow: none !important;
