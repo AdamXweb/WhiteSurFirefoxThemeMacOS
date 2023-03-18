@@ -15,6 +15,24 @@
     --whitesur-inactive-tabbar-tab-active-background: var(
         --whitesur-tabbar-tab-active-background
     ) !important;
+    --whitesur-hover-urlbar-border-color: var(
+        --whitesur-tabbar-tab-active-background
+    ) !important;
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --whitesur-tabbar-tab-active-background: color-mix(
+            in srgb,
+            var(--whitesur-tabstoolbar-background) 90%,
+            black
+        ) !important;
+        --whitesur-tabbar-tab-active-hover-background: color-mix(
+            in srgb,
+            var(--whitesur-tabstoolbar-background) 95%,
+            black
+        ) !important;
+    }
 }
 
 #tabbrowser-tabs arrowscrollbox {
@@ -42,10 +60,6 @@ tab > stack {
     height: 28px !important;
 }
 
-#TabsToolbar .toolbar-items {
-    margin-bottom: 0 !important;
-}
-
 .tab-content {
     margin-top: 0 !important;
 }
@@ -59,6 +73,7 @@ tab > stack {
 .tab-sharing-icon-overlay,
 .tab-icon-overlay {
     width: 12px !important;
+    min-width: 12px !important;
     height: 12px !important;
     image-rendering: optimizequality !important;
 }
@@ -77,11 +92,10 @@ tab > stack {
     display: none !important;
 }
 
-.close-icon {
+.tab-close-button.close-icon {
     width: 12px !important;
     min-width: 12px !important;
     height: 12px !important;
-    padding: 0 !important;
     display: none !important;
 }
 
@@ -132,7 +146,6 @@ tab > stack {
     border-radius: 6px !important;
     margin-block: 4px !important;
     margin-inline: 2px !important;
-    box-shadow: none !important;
 }
 
 .tab-background,
@@ -145,6 +158,7 @@ tab > stack {
 }
 
 .tabbrowser-tab > .tab-stack > .tab-background:not([selected="true"]) {
+    border: 0 !important;
     transition: none !important;
 }
 
@@ -155,7 +169,7 @@ tab > stack {
 .tabbrowser-tab:not([pinned]) {
     width: auto !important;
     max-width: 200px !important;
-    min-width: 100px !important;
+    min-width: 50px !important;
     -moz-box-flex: 0 !important;
 }
 
@@ -171,6 +185,20 @@ tab > stack {
     transition: none !important;
 }
 
+#nav-bar #searchbar,
+#nav-bar #urlbar #urlbar-input-container {
+    box-shadow: inset 0 0 0 1px var(--whitesur-hover-urlbar-border-color) !important;
+}
+
 #TabsToolbar {
-    border: none !important;
+    border-top: 1px solid var(--whitesur-toolbar-border-color) !important;
+}
+
+stack[muted="true"] + .tab-label-container[textoverflow],
+stack[soundplaying="true"] + .tab-label-container[textoverflow] {
+    mask-image: linear-gradient(
+        to left,
+        transparent,
+        black var(--tab-label-mask-size)
+    ) !important;
 }

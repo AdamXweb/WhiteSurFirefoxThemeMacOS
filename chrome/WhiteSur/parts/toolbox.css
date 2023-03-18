@@ -137,8 +137,8 @@
 
 #TabsToolbar {
     background: var(--whitesur-tabstoolbar-background) !important;
-    border-inline: 0 !important;
-    border-block: 1px solid var(--whitesur-toolbar-border-color) !important;
+    border: 0 !important;
+    border-bottom: 1px solid var(--whitesur-toolbar-border-color) !important;
 }
 
 findbar {
