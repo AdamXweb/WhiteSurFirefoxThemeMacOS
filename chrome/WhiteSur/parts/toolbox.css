@@ -118,7 +118,7 @@
 /* Toolbox colors */
 #navigator-toolbox {
     border: 0 !important;
-    background: var(--lwt-accent-color) !important;
+    background: var(--whitesur-tabstoolbar-background) !important;
 }
 
 .toolbarbutton-icon {
@@ -136,10 +136,9 @@
 }
 
 #TabsToolbar {
-    border: 0 !important;
     background: var(--whitesur-tabstoolbar-background) !important;
-    border-bottom: 1px solid var(--whitesur-toolbar-border-color) !important;
-    box-shadow: inset 0 1px var(--whitesur-toolbar-border-color) !important;
+    border-inline: 0 !important;
+    border-block: 1px solid var(--whitesur-toolbar-border-color) !important;
 }
 
 findbar {

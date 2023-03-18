@@ -6,6 +6,7 @@
 /* Headerbar */
 #nav-bar {
     padding: 8px 16px 8px 86px !important;
+    transition: none !important;
 }
 
 /* Headerbar CSD colors */

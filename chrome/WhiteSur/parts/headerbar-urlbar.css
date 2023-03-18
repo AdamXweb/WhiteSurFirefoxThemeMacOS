@@ -106,7 +106,6 @@
 
 /* Unless text input is selected like safari*/
 #urlbar[focused] #urlbar-input {
-    position: absolute;
     transform: translateX(0);
     width: 100%;
     text-align: left !important;
