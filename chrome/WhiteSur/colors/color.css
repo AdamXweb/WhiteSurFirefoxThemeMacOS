@@ -41,24 +41,22 @@
         var(--toolbar-field-background-color)
     );
     --whitesur-popover-border-color: var(--chrome-content-separator-color);
-    --whitesur-popover-shadow: 0 5px 8px rgba(0, 0, 0, 0.3),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+    --whitesur-popover-shadow: 0 5px 8px #0000004d, inset 0 0 0 1px #ffffff0f;
     --whitesur-popover-button-hover-background: var(
         --toolbarbutton-hover-background
     );
     --whitesur-popover-button-active-background: var(
         --toolbarbutton-active-background
     );
-    --whitesur-popover-separator-color: rgba(0, 0, 0, 0.1);
+    --whitesur-popover-separator-color: #0000001a;
 
     /* Header bar */
     --whitesur-headerbar-background: var(--toolbar-bgcolor);
     --whitesur-headerbar-border-color: var(--chrome-content-separator-color);
-    --whitesur-headerbar-box-shadow: inset 0 1px rgba(255, 255, 255, 0.15);
+    --whitesur-headerbar-box-shadow: inset 0 1px #ffffff26;
     --whitesur-inactive-headerbar-background: var(--toolbar-bgcolor);
-    --whitesur-inactive-headerbar-border-color: #202020;
-    --whitesur-inactive-headerbar-box-shadow: inset 0 1px
-        rgba(255, 255, 255, 0.08);
+    --whitesur-inactive-headerbar-border-color: #212121;
+    --whitesur-inactive-headerbar-box-shadow: inset 0 1px #ffffff14;
 
     /* Buttons */
     --whitesur-button-background: linear-gradient(
@@ -68,9 +66,9 @@
     );
     --whitesur-button-border-color: #282828;
     --whitesur-button-border-accent-color: #282828;
-    --whitesur-button-box-shadow: inset 0 1px rgba(255, 255, 255, 0.1);
-    --whitesur-button-hover-color: rgba(255, 255, 255, 0.1);
-    --whitesur-button-active-color: rgba(255, 255, 255, 0.2);
+    --whitesur-button-box-shadow: inset 0 1px #ffffff1a;
+    --whitesur-button-hover-color: #ffffff1a;
+    --whitesur-button-active-color: #ffffff33;
     --whitesur-button-hover-background: linear-gradient(
         to top,
         #707070 0%,
@@ -82,23 +80,21 @@
     --whitesur-button-active-background: #464646;
     --whitesur-button-active-border-color: #1b1b1b;
     --whitesur-button-active-border-accent-color: #1b1b1b;
-    --whitesur-button-active-box-shadow: inset 0 1px rgba(255, 255, 255, 0.1);
+    --whitesur-button-active-box-shadow: inset 0 1px #ffffff1a;
     --whitesur-button-disabled-background: #505050;
     --whitesur-button-disabled-border-color: #323232;
-    --whitesur-button-disabled-box-shadow: inset 0 1px rgba(255, 255, 255, 0.03);
+    --whitesur-button-disabled-box-shadow: inset 0 1px #ffffff08;
     --whitesur-inactive-button-background: linear-gradient(#383838, #383838);
     --whitesur-inactive-button-border-color: #323232;
-    --whitesur-inactive-button-box-shadow: inset 0 1px rgba(255, 255, 255, 0);
-    --whitesur-button-suggested-action-background: #103e75;
+    --whitesur-inactive-button-box-shadow: inset 0 1px #ffffff00;
+    --whitesur-button-suggested-action-background: #15539e;
     --whitesur-button-suggested-action-border-color: #0f3b71;
     --whitesur-button-suggested-action-border-accent-color: #092444;
-    --whitesur-button-suggested-action-box-shadow: inset 0 1px
-        rgba(255, 255, 255, 0.08);
-    --whitesur-button-suggested-action-hover-background: #2757bc;
+    --whitesur-button-suggested-action-box-shadow: inset 0 1px #ffffff14;
+    --whitesur-button-suggested-action-hover-background: #2073d8;
     --whitesur-button-suggested-action-active-background: #103e75;
     --whitesur-button-suggested-action-active-border-color: #0f3b71;
-    --whitesur-button-suggested-action-active-box-shadow: inset 0 1px
-        rgba(255, 255, 255, 0.05);
+    --whitesur-button-suggested-action-active-box-shadow: inset 0 1px #ffffff0d;
     --whitesur-button-destructive-action-background: linear-gradient(
         to top,
         #ae151c 2px,
@@ -106,9 +102,8 @@
     );
     --whitesur-button-destructive-action-border-color: #851015;
     --whitesur-button-destructive-action-border-accent-color: #570b0e;
-    --whitesur-button-destructive-action-box-shadow: inset 0 1px
-            rgba(255, 255, 255, 0.02),
-        0 1px 2px rgba(0, 0, 0, 0.07);
+    --whitesur-button-destructive-action-box-shadow: inset 0 1px #ffffff05,
+        0 1px 2px #00000012;
     --whitesur-button-destructive-action-hover-background: linear-gradient(
         to top,
         #ae151c,
@@ -117,7 +112,7 @@
     --whitesur-button-destructive-action-active-background: #8a1116;
     --whitesur-button-destructive-action-active-border-color: #851015;
     --whitesur-button-destructive-action-active-box-shadow: inset 0 1px
-        rgba(255, 255, 255, 0);
+        #ffffff00;
     --whitesur-button-menulist-color: #fff;
     --whitesur-headerbar-button-hover-background: var(
         --toolbarbutton-hover-background
@@ -129,7 +124,7 @@
     /* URL bar */
     --whitesur-urlbar-background: var(--toolbar-field-background-color);
     --whitesur-urlbar-border-color: var(--chrome-content-separator-color);
-    --whitesur-urlbar-box-shadow: inset 0 0 0 1px rgba(21, 83, 158, 0);
+    --whitesur-urlbar-box-shadow: inset 0 0 0 1px #15539e00;
     --whitesur-urlbar-color: var(--toolbar-field-color);
     --whitesur-hover-urlbar-border-color: var(--chrome-content-separator-color);
     --whitesur-inactive-urlbar-background: var(
@@ -189,8 +184,8 @@
         #353535 90%
     );
     --whitesur-switch-slider-border-color: #111111;
-    --whitesur-switch-slider-box-shadow: inset 0 1px rgba(255, 255, 255, 0.02),
-        0 1px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.07);
+    --whitesur-switch-slider-box-shadow: inset 0 1px #ffffff05, 0 1px #0000001a,
+        0 1px 2px #00000012;
     --whitesur-switch-active-background: #15539e;
     --whitesur-switch-active-border-color: #030c17;
     --whitesur-switch-active-slider-border-color: #030c17;
@@ -214,7 +209,7 @@
         --whitesur-findbar-background: var(--lwt-accent-color);
         --whitesur-toolbar-color: var(--toolbar-color);
         --whitesur-toolbar-border-color: var(--chrome-content-separator-color);
-        --whitesur-inactive-toolbar-color: rgba(46, 52, 54, 0.35);
+        --whitesur-inactive-toolbar-color: #2e343659;
         --whitesur-inactive-toolbar-background: var(--toolbar-bgcolor);
         --whitesur-inactive-toolbar-border-color: #dadada;
 
@@ -236,17 +231,17 @@
             var(--toolbar-field-background-color)
         );
         --whitesur-popover-border-color: var(--chrome-content-separator-color);
-        --whitesur-popover-shadow: 0 5px 8px rgba(0, 0, 0, 0.3);
-        --whitesur-popover-button-hover-background: rgba(0, 0, 0, 0.1);
-        --whitesur-popover-button-active-background: rgba(0, 0, 0, 0.2);
-        --whitesur-popover-separator-color: rgba(0, 0, 0, 0.1);
+        --whitesur-popover-shadow: 0 5px 8px #0000004d;
+        --whitesur-popover-button-hover-background: #0000001a;
+        --whitesur-popover-button-active-background: #00000033;
+        --whitesur-popover-separator-color: #0000001a;
 
         /* Header bar */
         --whitesur-headerbar-background: var(--toolbar-bgcolor);
         --whitesur-headerbar-border-color: var(
             --chrome-content-separator-color
         );
-        --whitesur-headerbar-box-shadow: 0 1px rgba(255, 255, 255, 0.65) inset;
+        --whitesur-headerbar-box-shadow: 0 1px #ffffffa6 inset;
         --whitesur-inactive-headerbar-background: var(--toolbar-bgcolor);
         --whitesur-inactive-headerbar-border-color: #dadada;
         --whitesur-inactive-headerbar-box-shadow: 0 1px #fff inset;
@@ -260,10 +255,9 @@
         );
         --whitesur-button-border-color: #cdc7c2;
         --whitesur-button-border-accent-color: #b2b2b1;
-        --whitesur-button-box-shadow: inset 0 1px white,
-            0 1px 2px rgba(0, 0, 0, 0.03);
-        --whitesur-button-hover-color: rgba(0, 0, 0, 0.1);
-        --whitesur-button-active-color: rgba(0, 0, 0, 0.2);
+        --whitesur-button-box-shadow: inset 0 1px white, 0 1px 2px #00000008;
+        --whitesur-button-hover-color: #0000001a;
+        --whitesur-button-active-color: #00000033;
         --whitesur-button-hover-background: linear-gradient(
             to top,
             #fdfdfd 0%,
@@ -275,27 +269,24 @@
         --whitesur-button-active-background: #cfcfcf;
         --whitesur-button-active-border-color: #b2b2b1;
         --whitesur-button-active-border-accent-color: #b2b2b1;
-        --whitesur-button-active-box-shadow: 0 1px rgba(255, 255, 255, 0) inset;
+        --whitesur-button-active-box-shadow: 0 1px #ffffff00 inset;
         --whitesur-button-disabled-background: #faf9f8;
         --whitesur-button-disabled-border-color: #cdc7c2;
-        --whitesur-button-disabled-box-shadow: inset 0 1px
-            rgba(255, 255, 255, 0);
+        --whitesur-button-disabled-box-shadow: inset 0 1px #ffffff00;
         --whitesur-inactive-button-background: #f6f5f4;
         --whitesur-inactive-button-border-color: #dadada;
-        --whitesur-inactive-button-box-shadow: 0 1px rgba(255, 255, 255, 0)
-                inset,
-            0 1px rgba(255, 255, 255, 0);
+        --whitesur-inactive-button-box-shadow: 0 1px #ffffff00 inset,
+            0 1px #ffffff00;
         --whitesur-button-suggested-action-background: #2379e2;
         --whitesur-button-suggested-action-border-color: #1b6acb;
         --whitesur-button-suggested-action-border-accent-color: #15539e;
-        --whitesur-button-suggested-action-box-shadow: inset 0 1px
-                rgba(255, 255, 255, 0.1),
-            0 1px 2px rgba(0, 0, 0, 0.07);
+        --whitesur-button-suggested-action-box-shadow: inset 0 1px #ffffff1a,
+            0 1px 2px #00000012;
         --whitesur-button-suggested-action-hover-background: #3584e4;
         --whitesur-button-suggested-action-active-background: #1961b9;
         --whitesur-button-suggested-action-active-border-color: #1b6acb;
         --whitesur-button-suggested-action-active-box-shadow: inset 0 1px
-            rgba(255, 255, 255, 0);
+            #ffffff00;
         --whitesur-button-destructive-action-background: linear-gradient(
             to top,
             #ce1921 2px,
@@ -303,9 +294,8 @@
         );
         --whitesur-button-destructive-action-border-color: #b2161d;
         --whitesur-button-destructive-action-border-accent-color: #851015;
-        --whitesur-button-destructive-action-box-shadow: inset 0 1px
-                rgba(255, 255, 255, 0.1),
-            0 1px 2px rgba(0, 0, 0, 0.07);
+        --whitesur-button-destructive-action-box-shadow: inset 0 1px #ffffff1a,
+            0 1px 2px #00000012;
         --whitesur-button-destructive-action-hover-background: linear-gradient(
             to top,
             #e01b24,
@@ -314,7 +304,7 @@
         --whitesur-button-destructive-action-active-background: #a0131a;
         --whitesur-button-destructive-action-active-border-color: #b2161d;
         --whitesur-button-destructive-action-active-box-shadow: inset 0 1px
-            rgba(255, 255, 255, 0);
+            #ffffff00;
         --whitesur-button-menulist-color: #020202;
         --whitesur-headerbar-button-hover-background: var(
             --toolbarbutton-hover-background
@@ -326,8 +316,8 @@
         /* URL bar */
         --whitesur-urlbar-background: var(--toolbar-field-background-color);
         --whitesur-urlbar-border-color: var(--chrome-content-separator-color);
-        --whitesur-urlbar-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.08),
-            0 5px 8px rgba(0, 0, 0, 0.05), 0 8px 16px rgba(0, 0, 0, 0.03);
+        --whitesur-urlbar-box-shadow: 0 3px 3px #00000014, 0 5px 8px #0000000d,
+            0 8px 16px #00000008;
         --whitesur-urlbar-color: var(--toolbar-field-color);
         --whitesur-hover-urlbar-border-color: var(
             --chrome-content-separator-color
@@ -338,7 +328,7 @@
         --whitesur-inactive-urlbar-border-color: var(
             --chrome-content-separator-color
         );
-        --whitesur-inactive-urlbar-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.05);
+        --whitesur-inactive-urlbar-box-shadow: 0 3px 5px #0000000d;
         --whitesur-inactive-urlbar-color: var(--toolbar-field-color);
         --whitesur-focused-urlbar-border-color: #5683da;
         --whitesur-focused-urlbar-highlight-color: #6592e9;
@@ -394,8 +384,8 @@
             white 90%
         );
         --whitesur-switch-slider-border-color: #bfb8b1;
-        --whitesur-switch-slider-box-shadow: inset 0 1px white,
-            0 1px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.07);
+        --whitesur-switch-slider-box-shadow: inset 0 1px white, 0 1px #0000001a,
+            0 1px 2px #00000012;
         --whitesur-switch-active-background: #3584e4;
         --whitesur-switch-active-border-color: #185fb4;
         --whitesur-switch-active-slider-border-color: #185fb4;
@@ -408,7 +398,7 @@
     --macos-menu-border: 1px solid #ffffff33;
     --macos-menu-outline: 0.5px solid #101010;
     --macos-menu-background: #292929b3;
-    --macos-menu-hover: #2073d8;
+    --macos-menu-hover: #2556b9;
     --macos-menu-hover-color: #fff;
     --macos-menu-separator-color: #ffffff33;
 
@@ -429,7 +419,7 @@
         --macos-menu-border: none;
         --macos-menu-outline: 0.5px solid #c8c8c8;
         --macos-menu-background: #e6e6e6ca;
-        --macos-menu-hover: #3584e4;
+        --macos-menu-hover: #55a1ff;
         --macos-menu-hover-color: #fff;
         --macos-menu-separator-color: #00000033;
         --arrowpanel-border-color: transparent !important;

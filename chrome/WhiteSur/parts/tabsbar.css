@@ -528,9 +528,7 @@ toolbar .toolbarbutton-1 {
 .all-tabs-item:hover:active,
 #allTabsMenu-searchTabs:hover,
 #allTabsMenu-searchTabs:hover:active {
-    background-color: var(
-        --whitesur-button-suggested-action-hover-background
-    ) !important;
+    background-color: var(--macos-menu-hover) !important;
 }
 
 .all-tabs-item:hover .toolbarbutton-text,
@@ -542,9 +540,7 @@ toolbar .toolbarbutton-1 {
 
 .all-tabs-item:hover:active,
 #allTabsMenu-searchTabs:hover:active {
-    background-color: var(
-        --whitesur-button-suggested-action-hover-background
-    ) !important;
+    background-color: var(--macos-menu-hover) !important;
 }
 
 /*Inactive tab title*/

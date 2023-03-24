@@ -9,7 +9,7 @@ menupopup {
     padding: 0px 4px !important;
     border-radius: var(--macos-menu-border-radius) !important;
     border: var(--macos-menu-border) !important;
-    outline: var(--macos-menu-outline) !important;
+    /* outline: var(--macos-menu-outline) !important; */
     color: var(--whitesur-toolbar-color) !important;
     background-color: var(--whitesur-menu-background) !important;
 }
@@ -169,17 +169,13 @@ panelview {
 .subviewbutton:not(.nav-bar-overflow-button):not(#appMenu-fxa-label2):not(
         .subviewbutton-iconic
     ):not(.panel-subview-footer-button):hover {
-    background: var(
-        --whitesur-button-suggested-action-hover-background
-    ) !important;
+    background: var(--macos-menu-hover) !important;
     color: #fff !important;
 }
 
 .protections-popup-category:not([disabled]):hover,
 .identity-popup-content-blocking-category:not([disabled]):hover {
-    background: var(
-        --whitesur-button-suggested-action-hover-background
-    ) !important;
+    background: var(--macos-menu-hover) !important;
 }
 
 /* Style popover separators */

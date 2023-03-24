@@ -36,15 +36,17 @@
 }
 
 #tabbrowser-tabs arrowscrollbox {
+    --scrollbox-display: flex;
     --scrollbox-justify-content: start;
 }
 
 #tabbrowser-tabs arrowscrollbox:not([overflowing="true"]) {
+    --scrollbox-display: flex;
     --scrollbox-justify-content: center;
 }
 
-.scrollbox-clip scrollbox {
-    display: flex !important;
+.scrollbox-clip scrollbox:not(:has(scrollbar)) {
+    display: var(--scrollbox-display, -moz-box) !important;
     justify-content: var(--scrollbox-justify-content) !important;
 }
 

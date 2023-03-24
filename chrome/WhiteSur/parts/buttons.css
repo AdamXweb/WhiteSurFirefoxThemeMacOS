@@ -336,7 +336,7 @@ menupopup > menuitem[_moz-menuactive="true"]:not(:hover) {
 button.popup-notification-primary-button,
 #editBookmarkPanelDoneButton,
 #tracking-action-block {
-    color: white !important;
+    color: #ffffff !important;
     background: var(--whitesur-button-suggested-action-background) !important;
     border-color: var(
         --whitesur-button-suggested-action-border-color
@@ -345,7 +345,7 @@ button.popup-notification-primary-button,
         --whitesur-button-suggested-action-border-accent-color
     ) !important;
     box-shadow: var(--whitesur-button-suggested-action-box-shadow) !important;
-    text-shadow: 0 -1px rgba(0, 0, 0, 0.559216) !important;
+    text-shadow: 0 -1px #0000008f !important;
 }
 
 #appMenu-popup .panel-banner-item[notificationid="update-restart"]:hover,
@@ -374,7 +374,7 @@ button.popup-notification-primary-button.popup-notification-button:active,
 /* Buttons with destructive action */
 #editBookmarkPanelRemoveButton,
 #PanelUI-panic-view-button {
-    color: white !important;
+    color: #ffffff !important;
     background: var(--whitesur-button-destructive-action-background) !important;
     border-color: var(
         --whitesur-button-destructive-action-border-color
@@ -383,7 +383,7 @@ button.popup-notification-primary-button.popup-notification-button:active,
         --whitesur-button-destructive-action-border-accent-color
     ) !important;
     box-shadow: var(--whitesur-button-destructive-action-box-shadow) !important;
-    text-shadow: 0 -1px rgba(0, 0, 0, 0.558275) !important;
+    text-shadow: 0 -1px #0000008e !important;
 }
 
 #editBookmarkPanelRemoveButton:hover,
