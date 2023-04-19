@@ -37,6 +37,8 @@
 .notification-anchor-icon[open="true"],
 .identity-box-button:hover:active,
 .identity-box-button[open="true"],
+#notification-popup-box:hover:active,
+#notification-popup-box[open],
 #tracking-protection-icon-container:hover:active,
 #tracking-protection-icon-container[open="true"] {
 	opacity: 1 !important;
