@@ -1,69 +1,47 @@
 :root {
-    --whitesur-tabbar-tab-background: var(
-        --whitesur-tabstoolbar-background
-    ) !important;
-    --whitesur-tabbar-tab-active-background: color-mix(
-        in srgb,
-        var(--whitesur-tabstoolbar-background) 90%,
-        white
-    ) !important;
-    --whitesur-tabbar-tab-active-hover-background: color-mix(
-        in srgb,
-        var(--whitesur-tabstoolbar-background) 95%,
-        white
-    ) !important;
-    --whitesur-inactive-tabbar-tab-active-background: var(
-        --whitesur-tabbar-tab-active-background
-    ) !important;
-    --whitesur-hover-urlbar-border-color: var(
-        --whitesur-tabbar-tab-active-background
-    ) !important;
+	--whitesur-tabbar-tab-background: var(--whitesur-tabstoolbar-background) !important;
+	--whitesur-tabbar-tab-active-background: color-mix(in srgb, var(--whitesur-tabstoolbar-background) 90%, white) !important;
+	--whitesur-tabbar-tab-active-hover-background: color-mix(in srgb, var(--whitesur-tabstoolbar-background) 95%, white) !important;
+	--whitesur-inactive-tabbar-tab-active-background: var(--whitesur-tabbar-tab-active-background) !important;
+	--whitesur-hover-urlbar-border-color: var(--whitesur-tabbar-tab-active-background) !important;
 }
 
 @media (prefers-color-scheme: light) {
-    :root {
-        --whitesur-tabbar-tab-active-background: color-mix(
-            in srgb,
-            var(--whitesur-tabstoolbar-background) 90%,
-            black
-        ) !important;
-        --whitesur-tabbar-tab-active-hover-background: color-mix(
-            in srgb,
-            var(--whitesur-tabstoolbar-background) 95%,
-            black
-        ) !important;
-    }
+	:root {
+		--whitesur-tabbar-tab-active-background: color-mix(in srgb, var(--whitesur-tabstoolbar-background) 90%, black) !important;
+		--whitesur-tabbar-tab-active-hover-background: color-mix(in srgb, var(--whitesur-tabstoolbar-background) 95%, black) !important;
+	}
 }
 
 #tabbrowser-tabs arrowscrollbox {
-    --scrollbox-display: flex;
-    --scrollbox-justify-content: start;
+	--scrollbox-display: flex;
+	--scrollbox-justify-content: start;
 }
 
 #tabbrowser-tabs arrowscrollbox:not([overflowing="true"]) {
-    --scrollbox-display: flex;
-    --scrollbox-justify-content: center;
+	--scrollbox-display: flex;
+	--scrollbox-justify-content: center;
 }
 
 .scrollbox-clip scrollbox:not(:has(scrollbar)) {
-    display: var(--scrollbox-display, -moz-box) !important;
-    justify-content: var(--scrollbox-justify-content) !important;
+	display: var(--scrollbox-display, -moz-box) !important;
+	justify-content: var(--scrollbox-justify-content) !important;
 }
 
 #tabbrowser-tabs {
-    background-color: var(--whitesur-toolbar-background);
+	background-color: var(--whitesur-toolbar-background);
 }
 
 .tabbrowser-tab {
-    min-height: 28px !important;
+	min-height: 28px !important;
 }
 
 tab > stack {
-    height: 28px !important;
+	height: 28px !important;
 }
 
 .tab-content {
-    margin-top: 0 !important;
+	margin-top: 0 !important;
 }
 
 .tab-icon-image,
@@ -74,136 +52,132 @@ tab > stack {
 .tab-close-button,
 .tab-sharing-icon-overlay,
 .tab-icon-overlay {
-    width: 12px !important;
-    min-width: 12px !important;
-    height: 12px !important;
-    image-rendering: optimizequality !important;
+	width: 12px !important;
+	min-width: 12px !important;
+	height: 12px !important;
+	image-rendering: optimizequality !important;
 }
 
 .tab-icon-image:not([src]),
 .tab-icon-image:-moz-broken {
-    display: block !important;
+	display: block !important;
 }
 
 .tab-label {
-    margin: 0 !important;
+	margin: 0 !important;
 }
 
 .tab-secondary-label,
 .tab-icon-overlay {
-    display: none !important;
+	display: none !important;
 }
 
 .tab-close-button.close-icon {
-    width: 12px !important;
-    min-width: 12px !important;
-    height: 12px !important;
-    display: none !important;
+	width: 12px !important;
+	min-width: 12px !important;
+	height: 12px !important;
+	display: none !important;
 }
 
 .tabbrowser-tab:hover .close-icon {
-    display: -moz-inline-box !important;
+	display: -moz-inline-box !important;
 }
 
 .tabbrowser-tab:hover .tab-icon-stack {
-    display: none !important;
+	display: none !important;
 }
 
 .tab-close-button {
-    border-radius: 2px !important;
-    width: 12px !important;
-    height: 12px !important;
-    opacity: 0.85 !important;
+	border-radius: 2px !important;
+	width: 12px !important;
+	height: 12px !important;
+	opacity: 0.85 !important;
 }
 
 .tab-close-button[pinned] {
-    margin-inline-end: 0 !important;
+	margin-inline-end: 0 !important;
 }
 
 .tab-close-button:not([pinned]) {
-    margin-inline-start: auto !important;
-    margin-inline-end: 5.5px !important;
+	margin-inline-start: auto !important;
+	margin-inline-end: 5.5px !important;
 }
 
 .tab-background {
-    transition: none !important;
+	transition: none !important;
 }
 
 .tabbrowser-tab:not([style^="max-width"]):not([pinned]),
 .tabbrowser-tab[style^="max-width: 100px !important;"]:not([pinned]) {
-    max-width: 200px !important;
+	max-width: 200px !important;
 }
 
 .tab-close-button[pinned],
 #tabbrowser-tabs[closebuttons="activetab"]
-    > #tabbrowser-arrowscrollbox
-    > .tabbrowser-tab
-    > .tab-stack
-    > .tab-content
-    > .tab-icon-stack:not([selected="true"]) {
-    margin-left: auto !important;
+	> #tabbrowser-arrowscrollbox
+	> .tabbrowser-tab
+	> .tab-stack
+	> .tab-content
+	> .tab-icon-stack:not([selected="true"]) {
+	margin-left: auto !important;
 }
 
 .tab-background {
-    border-radius: 5px !important;
-    margin-block: 4px !important;
-    margin-inline: 2px !important;
+	border-radius: 5px !important;
+	margin-block: 4px !important;
+	margin-inline: 2px !important;
 }
 
 .tab-background,
 .tab-stack {
-    min-height: 0 !important;
+	min-height: 0 !important;
 }
 
 .tabbrowser-tab[selected="true"] > .tab-stack > .tab-background {
-    margin-inline: 2px !important;
+	margin-inline: 2px !important;
 }
 
 .tabbrowser-tab > .tab-stack > .tab-background:not([selected="true"]) {
-    border: 0 !important;
-    transition: none !important;
+	border: 0 !important;
+	transition: none !important;
 }
 
 .tabbrowser-tab:hover > .tab-stack > .tab-background:not([selected="true"]) {
-    transition: none !important;
+	transition: none !important;
 }
 
 .tabbrowser-tab {
-    margin-top: -2px !important;
-    margin-bottom: 4px !important;
+	margin-top: -2px !important;
+	margin-bottom: 4px !important;
 }
 
 .tabbrowser-tab:not([pinned]) {
-    width: auto !important;
-    max-width: 200px !important;
-    min-width: 50px !important;
-    -moz-box-flex: 0 !important;
-    margin-top: -2px !important;
-    margin-bottom: 4px !important;
+	width: auto !important;
+	max-width: 200px !important;
+	min-width: 50px !important;
+	-moz-box-flex: 0 !important;
+	margin-top: -2px !important;
+	margin-bottom: 4px !important;
 }
 
 .tabbrowser-tab:not([pinned]) .tab-close-button {
-    opacity: 0.85 !important;
-    visibility: visible !important;
-    transition: none !important;
+	opacity: 0.85 !important;
+	visibility: visible !important;
+	transition: none !important;
 }
 
 .tabbrowser-tab:not([pinned]):hover .tab-close-button {
-    opacity: 1;
-    visibility: visible !important;
-    transition: none !important;
+	opacity: 1;
+	visibility: visible !important;
+	transition: none !important;
 }
 
 #nav-bar #searchbar,
 #nav-bar #urlbar #urlbar-input-container {
-    box-shadow: inset 0 0 0 1px var(--whitesur-hover-urlbar-border-color) !important;
+	box-shadow: inset 0 0 0 1px var(--whitesur-hover-urlbar-border-color) !important;
 }
 
 stack[muted="true"] + .tab-label-container[textoverflow],
 stack[soundplaying="true"] + .tab-label-container[textoverflow] {
-    mask-image: linear-gradient(
-        to left,
-        transparent,
-        black var(--tab-label-mask-size)
-    ) !important;
+	mask-image: linear-gradient(to left, transparent, black var(--tab-label-mask-size)) !important;
 }

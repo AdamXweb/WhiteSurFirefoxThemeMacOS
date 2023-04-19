@@ -16,13 +16,14 @@
 @import "parts/windows.css";
 
 /* @import "customs/hide-tabview.css";
-@import "customs/hide-single-tab.css"; */
+@import "customs/hide-single-tab.css";
+@import "customs/mini-tabbar.css"; */
 
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
 /* Set theme version text in customization panel */
 
 #customization-footer::before {
-    content: "Firefox WhiteSur theme (ATBC-compatible)";
-    padding: 9px;
+	content: "Firefox WhiteSur theme (ATBC-compatible)";
+	padding: 9px;
 }

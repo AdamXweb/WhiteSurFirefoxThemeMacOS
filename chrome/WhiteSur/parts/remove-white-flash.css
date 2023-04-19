@@ -6,6 +6,6 @@
 /* Overrides: Change the flash color */
 #tabbrowser-tabpanels,
 #tabbrowser-tabpanels[pendingpaint],
-browser {
-    background-color: var(--whitesur-browser-before-load-background) !important;
+browser:not(#sidebar) {
+	background-color: var(--lwt-accent-color) !important;
 }

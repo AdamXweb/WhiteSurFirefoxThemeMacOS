@@ -3,102 +3,86 @@
 
 /* Overrides: Make the back button the same as other buttons */
 :root:not([uidensity="compact"]) #back-button {
-    border-radius: var(--macos-toolbar-border-radius) !important;
+	border-radius: var(--macos-toolbar-border-radius) !important;
 }
 
 :root:not([uidensity="compact"]) #back-button > .toolbarbutton-icon {
-    background-color: unset !important;
-    border: unset !important;
-    width: calc(2 * var(--toolbarbutton-inner-padding) + 16px) !important;
-    height: calc(2 * var(--toolbarbutton-inner-padding) + 16px) !important;
-    padding: var(--toolbarbutton-inner-padding) !important;
-    border-radius: var(--macos-toolbar-border-radius);
-    box-shadow: none !important;
+	background-color: unset !important;
+	border: unset !important;
+	width: calc(2 * var(--toolbarbutton-inner-padding) + 16px) !important;
+	height: calc(2 * var(--toolbarbutton-inner-padding) + 16px) !important;
+	padding: var(--toolbarbutton-inner-padding) !important;
+	border-radius: var(--macos-toolbar-border-radius);
+	box-shadow: none !important;
 }
 
-:root:not([uidensity="compact"])
-    #back-button:not([disabled]):not([open]):hover
-    > .toolbarbutton-icon {
-    background-color: var(--toolbarbutton-hover-background) !important;
-    box-shadow: unset;
-    border-color: unset;
+:root:not([uidensity="compact"]) #back-button:not([disabled]):not([open]):hover > .toolbarbutton-icon {
+	background-color: var(--toolbarbutton-hover-background) !important;
+	box-shadow: unset;
+	border-color: unset;
 }
 
 :root:not([uidensity="compact"]) #back-button[open] > .toolbarbutton-icon,
-:root:not([uidensity="compact"])
-    #back-button:not([disabled]):hover:active
-    > .toolbarbutton-icon {
-    background-color: var(--toolbarbutton-active-background) !important;
-    border-color: unset;
+:root:not([uidensity="compact"]) #back-button:not([disabled]):hover:active > .toolbarbutton-icon {
+	background-color: var(--toolbarbutton-active-background) !important;
+	border-color: unset;
 }
 
 /* Remove the header bar buttons' hover styles */
 #nav-bar {
-    --toolbarbutton-active-background: transparent !important;
-    --toolbarbutton-hover-background: transparent !important;
+	--toolbarbutton-active-background: transparent !important;
+	--toolbarbutton-hover-background: transparent !important;
 }
 
 /* Glitch customizing: Cut / Copy / Paste buttons' icons
  * :not(#hack) is there just to elevate rule priority */
 :root[customizing] #nav-bar > hbox toolbaritem toolbarbutton image:not(#hack) {
-    opacity: 1 !important;
+	opacity: 1 !important;
 }
 
 /* Glitch customizing: Reload and Cut / Copy / Paste buttons */
-:root:-moz-window-inactive[customizing]
-    #nav-bar
-    #stop-reload-button
-    toolbarbutton,
+:root:-moz-window-inactive[customizing] #nav-bar #stop-reload-button toolbarbutton,
 :root:-moz-window-inactive[customizing] #nav-bar #edit-controls toolbarbutton {
-    background-image: var(--whitesur-inactive-button-background);
-    box-shadow: var(--whitesur-inactive-button-box-shadow);
+	background-image: var(--whitesur-inactive-button-background);
+	box-shadow: var(--whitesur-inactive-button-box-shadow);
 }
 
 /* Glitch customizing: Reload and Cut / Copy / Paste buttons' icons */
-:root:-moz-window-inactive[customizing]
-    #nav-bar
-    #stop-reload-button
-    image.toolbarbutton-icon,
-:root:-moz-window-inactive[customizing]
-    #nav-bar
-    #edit-controls
-    image.toolbarbutton-icon {
-    opacity: 0.7 !important;
+:root:-moz-window-inactive[customizing] #nav-bar #stop-reload-button image.toolbarbutton-icon,
+:root:-moz-window-inactive[customizing] #nav-bar #edit-controls image.toolbarbutton-icon {
+	opacity: 0.7 !important;
 }
 
 /* Glitch: Overflow and Burger buttons
  * :not(#hack) is there just to elevate rule priority */
 :root[customizing] #nav-bar > toolbarbutton[disabled]:not(#hack),
 :root[customizing] #nav-bar > toolbaritem > toolbarbutton[disabled]:not(#hack) {
-    opacity: 0.5 !important;
+	opacity: 0.5 !important;
 }
 
 /* Glitch: Overflow button's icon */
-:root[customizing]
-    #nav-bar
-    toolbarbutton:not(#urlbar-zoom-button)[disabled]
-    image {
-    fill-opacity: var(--toolbarbutton-icon-fill-opacity) !important;
+:root[customizing] #nav-bar toolbarbutton:not(#urlbar-zoom-button)[disabled] image {
+	fill-opacity: var(--toolbarbutton-icon-fill-opacity) !important;
 }
 
 /* Bookmark buttons */
 #nav-bar toolbarbutton.bookmark-item {
-    width: auto !important;
+	width: auto !important;
 }
 
 #nav-bar toolbarbutton.bookmark-item .toolbarbutton-icon {
-    margin-left: 6px;
+	margin-left: 6px;
 }
 
 #nav-bar toolbarbutton.bookmark-item .toolbarbutton-text {
-    padding-right: 6px;
+	padding-right: 6px;
 }
 
 /* Remove Burger button's left separator */
 #PanelUI-button {
-    border: 0 !important;
-    margin: 0 !important;
-    padding-inline-start: 0 !important;
+	border: 0 !important;
+	margin: 0 !important;
+	padding-inline-start: 0 !important;
 }
 
 /* Space main menu button from other headerbar buttons
@@ -108,49 +92,49 @@
 
 /* Fix library animation */
 #library-animatable-box {
-    --library-button-height: 46px !important;
-    --library-icon-x: 1716px !important;
-    /*--library-icon-x: 1715.9833984375px !important;*/
+	--library-button-height: 46px !important;
+	--library-icon-x: 1716px !important;
+	/*--library-icon-x: 1715.9833984375px !important;*/
 }
 
 #library-button[animate] > .toolbarbutton-icon {
-    fill: transparent !important;
+	fill: transparent !important;
 }
 
 /* Fix toolbars close icons */
 .close-icon:not(.tab-close-button) image {
-    height: 16px !important;
-    width: 16px !important;
-    margin: 6px !important;
+	height: 16px !important;
+	width: 16px !important;
+	margin: 6px !important;
 }
 
 /* */
 #appMenu-popup .panel-banner-item[notificationid="update-restart"]::after {
-    display: none !important;
+	display: none !important;
 }
 
 /* Identity site popover buttons */
 .identity-popup-preferences-button:not(#hack) {
-    list-style-image: url("chrome://browser/skin/settings.svg") !important;
+	list-style-image: url("chrome://browser/skin/settings.svg") !important;
 }
 
 #tracking-protection-preferences-button > .toolbarbutton-text {
-    padding-inline-end: 0 !important;
+	padding-inline-end: 0 !important;
 }
 
 .protections-popup-footer-button-label {
-    margin-inline-start: 3px !important;
+	margin-inline-start: 3px !important;
 }
 
 /* Fix findbar buttons issues */
 .findbar-container .findbar-find-previous image,
 .findbar-container .findbar-find-next image {
-    margin: 6px !important;
-    opacity: 1 !important;
+	margin: 6px !important;
+	opacity: 1 !important;
 }
 
 .findbar-container toolbarbutton:focus {
-    outline: 0 !important;
+	outline: 0 !important;
 }
 
 /* Sidebar header button reset font size */
@@ -160,68 +144,65 @@
 #history-panel,
 #bookmarks-view-children,
 #historyTree {
-    font-size: 0.9em !important;
-    background-color: var(--whitesur-sidebar-background) !important;
-    color: var(--whitesur-sidebar-color) !important;
+	font-size: 0.9em !important;
+	color: var(--whitesur-sidebar-color) !important;
 }
 
 /* Sidebar header button arrow opacity */
 #sidebar-switcher-arrow {
-    opacity: 1 !important;
+	opacity: 1 !important;
 }
 
 /* Sidebar history view */
 #viewButton {
-    margin: 0 !important;
-    margin-inline-start: 6px !important;
+	margin: 0 !important;
+	margin-inline-start: 6px !important;
 }
 
 /* Menulist */
 menulist {
-    -moz-appearance: none !important;
+	-moz-appearance: none !important;
 }
 
 #identity-popup-popup-menulist {
-    margin-right: 0 !important;
+	margin-right: 0 !important;
 }
 
 #appMenu-protonMainView .toolbarbutton-text {
-    margin: 2px !important;
+	margin: 2px !important;
 }
 
-#appMenu-popup
-    .toolbaritem-combined-buttons
-    toolbarbutton:not(#appMenu-fxa-label) {
-    color: var(--whitesur-button-menulist-color) !important;
+#appMenu-popup .toolbaritem-combined-buttons toolbarbutton:not(#appMenu-fxa-label) {
+	color: var(--whitesur-button-menulist-color) !important;
 }
 
 /* Bookmarks editor buttons */
 .expander-down image,
 .expander-up image {
-    margin: 6px !important;
+	margin: 6px !important;
 }
 
 /* Identity popup tracking protection button */
 .tracking-protection-button {
-    margin-inline-end: 0 !important;
+	margin-inline-end: 0 !important;
 }
 
 /* Identity popup delete permission button */
 .identity-popup-permission-remove-button {
-    opacity: 1 !important;
+	opacity: 1 !important;
 }
 
 /* Identity popup expander button */
 #identity-popup-security {
-    -moz-box-align: center;
+	-moz-box-align: center;
 }
 
 #identity-popup-security-expander {
-    width: 34px !important;
+	width: 34px !important;
 }
 
 #identity-popup-security-expander .button-icon {
-    margin: 0 !important;
+	margin: 0 !important;
 }
 
 #tracking-protection-icon-container:hover:not([open="true"]),
@@ -229,7 +210,6 @@ menulist {
 .urlbar-page-action:not([disabled]):hover,
 #urlbar-go-button:hover,
 .search-go-button:hover,
-#identity-box[pageproxystate="valid"].extensionPage
-    > .identity-box-button:hover:not([open]) {
-    --urlbar-box-hover-bgcolor: var(--whitesur-button-hover-color) !important;
+#identity-box[pageproxystate="valid"].extensionPage > .identity-box-button:hover:not([open]) {
+	--urlbar-box-hover-bgcolor: var(--whitesur-button-hover-color) !important;
 }

@@ -1,14 +1,11 @@
-GNOME CSD styles for headerbar on Firefox [tabsintitlebar] @namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+/* GNOME CSD styles for headerbar on Firefox [tabsintitlebar] @namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"); */
 
 #main-window {
 	-moz-appearance: -moz-window-titlebar !important;
 }
 
-
 /* Window buttons: at least 1 button */
-@media (-moz-gtk-csd-minimize-button),
-(-moz-gtk-csd-maximize-button),
-(-moz-gtk-csd-close-button) {
+@media (-moz-gtk-csd-minimize-button), (-moz-gtk-csd-maximize-button), (-moz-gtk-csd-close-button) {
 	:root[tabsintitlebar]:not([inFullscreen]) #nav-bar {
 		padding-right: 60px !important;
 	}
@@ -16,8 +13,8 @@ GNOME CSD styles for headerbar on Firefox [tabsintitlebar] @namespace xul url("h
 
 /* Window buttons: at least 2 buttons */
 @media (-moz-gtk-csd-minimize-button) and (-moz-gtk-csd-maximize-button),
-(-moz-gtk-csd-minimize-button) and (-moz-gtk-csd-close-button),
-(-moz-gtk-csd-maximize-button) and (-moz-gtk-csd-close-button) {
+	(-moz-gtk-csd-minimize-button) and (-moz-gtk-csd-close-button),
+	(-moz-gtk-csd-maximize-button) and (-moz-gtk-csd-close-button) {
 	:root[tabsintitlebar]:not([inFullscreen]) #nav-bar {
 		padding-right: 70px !important;
 	}
@@ -51,10 +48,8 @@ GNOME CSD styles for headerbar on Firefox [tabsintitlebar] @namespace xul url("h
 	position: absolute !important;
 	left: 8px;
 	display: block !important;
-	top:10px !important;
+	top: 10px !important;
 }
-
-
 
 /* Left window buttons */
 @media (-moz-gtk-csd-reversed-placement) {
@@ -69,14 +64,13 @@ GNOME CSD styles for headerbar on Firefox [tabsintitlebar] @namespace xul url("h
 		right: auto;
 	}
 
-
 	/* Remove tabsbar titlebar blank spaces */
 	:root[tabsintitlebar] #TabsToolbar .titlebar-placeholder {
 		display: none !important;
 	}
 
 	/* Prevent menubar from breaking */
-	:root[tabsintitlebar] #toolbar-menubar:not([inactive=true]) {
+	:root[tabsintitlebar] #toolbar-menubar:not([inactive="true"]) {
 		height: 30px !important;
 		margin-bottom: 8px;
 	}
@@ -90,3 +84,4 @@ GNOME CSD styles for headerbar on Firefox [tabsintitlebar] @namespace xul url("h
 	:root[tabsintitlebar] #navigator-toolbox[movingtab] #TabsToolbar {
 		padding-bottom: 0 !important;
 	}
+}
