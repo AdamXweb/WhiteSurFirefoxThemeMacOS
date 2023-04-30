@@ -29,9 +29,9 @@
 	--whitesur-sidebar-color: var(--lwt-text-color);
 
 	/* Popups */
-	--whitesur-menu-background: color-mix(in srgb, #292929 70%, var(--toolbar-field-background-color));
+	--whitesur-menu-background: color-mix(in srgb, #292929 70%, var(--toolbar-field-focus-background-color));
 	--whitesur-menu-border-color: var(--chrome-content-separator-color);
-	--whitesur-popover-background: color-mix(in srgb, #292929 70%, var(--toolbar-field-background-color));
+	--whitesur-popover-background: color-mix(in srgb, #292929 70%, var(--toolbar-field-focus-background-color));
 	--whitesur-popover-border-color: var(--chrome-content-separator-color);
 	--whitesur-popover-shadow: 0 5px 8px #0000004d, inset 0 0 0 1px #ffffff0f;
 	--whitesur-popover-button-hover-background: var(--toolbarbutton-hover-background);
@@ -154,9 +154,9 @@
 		--whitesur-sidebar-color: var(--lwt-text-color);
 
 		/* Popups */
-		--whitesur-menu-background: color-mix(in srgb, #e6e6e6 72%, var(--toolbar-field-background-color));
+		--whitesur-menu-background: color-mix(in srgb, #e6e6e6 72%, var(--toolbar-field-focus-background-color));
 		--whitesur-menu-border-color: var(--chrome-content-separator-color);
-		--whitesur-popover-background: color-mix(in srgb, #e6e6e6 72%, var(--toolbar-field-background-color));
+		--whitesur-popover-background: color-mix(in srgb, #e6e6e6 72%, var(--toolbar-field-focus-background-color));
 		--whitesur-popover-border-color: var(--chrome-content-separator-color);
 		--whitesur-popover-shadow: 0 5px 8px #0000004d;
 		--whitesur-popover-button-hover-background: #0000001a;
