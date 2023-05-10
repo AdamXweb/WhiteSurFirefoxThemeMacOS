@@ -15,8 +15,7 @@
 @import "colors/color.css";
 @import "parts/windows.css";
 
-/* @import "customs/hide-tabview.css";
-@import "customs/hide-single-tab.css";
+/* @import "customs/hide-single-tab.css";
 @import "customs/mini-tabbar.css"; */
 
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";

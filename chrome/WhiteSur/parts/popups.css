@@ -163,7 +163,6 @@ panelview {
 .panel-subview-body .toolbarbutton-1:not(.subviewbutton):hover,
 .subviewbutton.identity-popup-security-connection:hover,
 .subviewbutton.sendToDevice-device:hover,
-#protections-popup-not-blocking-section-why:hover,
 #protections-popup-show-report-stack:hover > .protections-popup-footer-button,
 .subviewbutton:not(.nav-bar-overflow-button):not(#appMenu-fxa-label2):not(.subviewbutton-iconic):not(.panel-subview-footer-button):hover {
 	background: var(--macos-menu-hover) !important;

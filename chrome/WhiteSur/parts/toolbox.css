@@ -82,6 +82,10 @@
 	align-items: center;
 }
 
+#unified-extensions-panel .unified-extensions-list {
+	display: none !important;
+}
+
 .widget-overflow-list .subviewbutton-nav::after,
 #widget-overflow-list .toolbarbutton-text,
 #widget-overflow-fixed-list .toolbarbutton-text,
@@ -173,14 +177,17 @@ findbar:-moz-window-inactive label,
 #navigator-toolbox #nav-bar,
 findbar {
 	-moz-box-ordinal-group: 0;
+	order: 0;
 }
 
 #navigator-toolbox #PersonalToolbar {
 	-moz-box-ordinal-group: 1;
+	order: 1;
 }
 
 #navigator-toolbox #titlebar {
 	-moz-box-ordinal-group: 2;
+	order: 2;
 }
 
 #navigator-toolbox toolbar {
@@ -189,6 +196,7 @@ findbar {
 
 #navigator-toolbox #TabsToolbar {
 	-moz-box-ordinal-group: 100;
+	order: 100;
 }
 
 /* Overrides: Don't shift other toolbars on tab drag and drop */

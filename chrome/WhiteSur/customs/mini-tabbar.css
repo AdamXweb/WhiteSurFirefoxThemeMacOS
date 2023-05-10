@@ -1,3 +1,5 @@
+@import "./hide-tabview.css";
+
 :root {
 	--whitesur-tabbar-tab-background: var(--whitesur-tabstoolbar-background) !important;
 	--whitesur-tabbar-tab-active-background: color-mix(in srgb, var(--whitesur-tabstoolbar-background) 90%, white) !important;
@@ -24,7 +26,7 @@
 }
 
 .scrollbox-clip scrollbox:not(:has(scrollbar)) {
-	display: var(--scrollbox-display, -moz-box) !important;
+	display: var(--scrollbox-display, flex, -moz-box) !important;
 	justify-content: var(--scrollbox-justify-content) !important;
 }
 
@@ -79,8 +81,8 @@ tab > stack {
 	display: none !important;
 }
 
-.tabbrowser-tab:hover .close-icon {
-	display: -moz-inline-box !important;
+.tabbrowser-tab:hover .tab-close-button.close-icon {
+	display: flex !important;
 }
 
 .tabbrowser-tab:hover .tab-icon-stack {
@@ -152,10 +154,9 @@ tab > stack {
 }
 
 .tabbrowser-tab:not([pinned]) {
-	width: auto !important;
-	max-width: 200px !important;
-	min-width: 50px !important;
+	min-width: min(fit-content, 200px) !important;
 	-moz-box-flex: 0 !important;
+	flex: 0 auto !important;
 	margin-top: -2px !important;
 	margin-bottom: 4px !important;
 }
