@@ -36,12 +36,6 @@ Go to `about:config`
 
 <br>
 
-### Note
-
-This CSS theme is still under construction. To be optimised are: buttons, dropdown menus, and icons.
-
-<br>
-
 Additional `README.md` ends here.
 
 <br><br>
