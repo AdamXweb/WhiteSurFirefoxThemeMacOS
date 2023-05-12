@@ -10,6 +10,9 @@
   }
   
   #tabbrowser-tabs tab[first-visible-tab="true"][last-visible-tab="true"]:not([pinned]),
-  #tabbrowser-tabs tab[first-visible-tab="true"][last-visible-tab="true"]:not([pinned]) ~ #titlebar {
-    display: none;
+  .tabbrowser-tab:only-of-type,
+  #tabbrowser-tab[first-visible-tab="true"][last-visible-tab="true"]:not([pinned]) ~ #titlebar {
+    visibility: collapse !important;
+    min-height: 0 !important;
+    height: 0;
   }
