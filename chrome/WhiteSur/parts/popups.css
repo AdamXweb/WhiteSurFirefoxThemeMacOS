@@ -110,7 +110,6 @@ panelview {
 	border-radius: 8px !important;
 	color: var(--gnome-toolbar-color) !important;
 	font: menu !important;
-	/* -moz-box-pack: inherit !important; */
 }
 
 .subviewbutton:not(.subviewbutton-back),

@@ -18,7 +18,7 @@
 }
 /* If arrangement of close is to be Min Max Close*/
 .titlebar-close {
-    -moz-box-ordinal-group: 1 !important;
+    order: 1 !important;
 }
 
 /* fix fullscreen issue on window TBCs*/
@@ -36,5 +36,5 @@
   }
 
   :root[tabsintitlebar][inFullscreen]  #titlebar .titlebar-buttonbox-container{
-    -moz-box-ordinal-group: 1000 !important;
+    order: 1000 !important;
     }

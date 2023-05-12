@@ -148,9 +148,10 @@ tab[selected]:-moz-window-inactive {
 	margin-left:auto !important;
 }
 
-/* If tab favicon is not present, force tab label to the center */
+/* If tab favicon is not present, force tab label to the center - magic sauce for v113 centre favicon in tabs*/
 .tabbrowser-tab .tab-label-container {
 	margin-left: 0 !important;
+	max-width: fit-content;
 }
 
 .tabbrowser-tab:not([image]):not([busy]):not([progress]) .tab-label-container {
@@ -403,7 +404,7 @@ tab[selected]:-moz-window-inactive {
 	}
 	/*Align personal bookmarks v89 */
 	#personal-bookmarks {
-		-moz-box-align: center !important;
+		align-content: center !important;
 	}
 	/* fix misc spacing between tabs */
 	.tabbrowser-tab {

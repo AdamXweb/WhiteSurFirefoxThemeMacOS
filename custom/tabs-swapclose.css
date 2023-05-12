@@ -3,21 +3,21 @@
 
 .tab-content:not([pinned])::before,
 .tab-content:not([pinned])::after {
-    display: -moz-box;
+    display: flex;
     content: "";
-    -moz-box-flex: 2
+    flex-grow: 2
 }
 
 .tab-content:not([pinned])::after {
-    -moz-box-flex: 1;
+    flex-grow: 1;
 }
 /* Place close button on left side */
 .tab-content {
-    display: -moz-box !important;
+    display: flex !important;
 }
 
 .tab-close-button {
-    -moz-box-ordinal-group: 0
+    order: 0
 }
 
 .tab-icon-stack{

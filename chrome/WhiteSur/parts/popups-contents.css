@@ -25,7 +25,7 @@
 
 /* Main menu */
 #appMenu-popup .panel-banner-item:after {
-	-moz-box-ordinal-group: 0;
+	order: 0;
 	margin: 0 8px 0 0 !important;
 }
 #appMenu-popup .toolbaritem-combined-buttons {
@@ -287,7 +287,7 @@
 .protections-popup-tp-switch-box {
 	margin-top: 16px;
 	padding: 0 !important;
-	-moz-box-pack: start !important;
+	justify-content: flex-start !important;
 }
 #protections-popup-tp-switch:not([enabled])[showdotindicator]::after {
 	display: none !important;

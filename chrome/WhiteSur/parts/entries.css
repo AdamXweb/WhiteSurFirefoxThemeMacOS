@@ -55,6 +55,7 @@
 #urlbar-container, #search-container {
 	padding: 0 !important;
 	margin: 0 3px !important;
+	--urlbar-container-height: 36px;
 }
 #urlbar-input-container {
 	background: transparent !important;

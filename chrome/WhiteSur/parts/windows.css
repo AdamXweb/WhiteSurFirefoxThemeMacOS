@@ -23,7 +23,7 @@
     :root[tabsintitlebar][inFullscreen]  #titlebar .titlebar-buttonbox-container{
     margin-top: -34px;
     margin-bottom: 44px !important;
-    -moz-box-ordinal-group: 0 !important;
+    order: 0 !important;
     }
 
     tab {
@@ -41,7 +41,7 @@
 
 
     .titlebar-close {
-        -moz-box-ordinal-group: 0;
+        order: 0;
     }
 
     .titlebar-button {
