@@ -41,7 +41,7 @@
 
 
     .titlebar-close {
-        order: 0;
+        order: -1;
     }
 
     .titlebar-button {
