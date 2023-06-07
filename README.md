@@ -5,15 +5,11 @@ To skip to the original `README.md`, please click [here](#firefox-whitesur-theme
 
 <p align="center"><img width="45%" src="https://raw.githubusercontent.com/easonwong-de/WhiteSurFirefoxThemeMacOS/master/githubpreview/White_Sur_%26_ATBC_3.png"><img width="45%" src="https://raw.githubusercontent.com/easonwong-de/WhiteSurFirefoxThemeMacOS/master/githubpreview/White_Sur_%26_ATBC_2.png"></p>
 
-<br>
-
 ### Quick Link
 
 [Installation](#installation-macos)  
 ~~1. [The Geeky Way](#installation-flags)~~  
 2. [The Simple Way (MacOS & Windows)](#manual-installation-macos--windows)
-
-<br>
 
 ### Changes
 
@@ -21,9 +17,7 @@ To skip to the original `README.md`, please click [here](#firefox-whitesur-theme
 2. Close tab buttons are on the left side
 3. Buttons and the outline of URL field behave closer to Safari
 4. Colors of button icons now follow the browser theme
-5. (Mostly) fixed popover menus
-
-<br>
+5. Fixed popover menus
 
 ### Browser Configurations
 
@@ -34,7 +28,11 @@ Go to `about:config`
 - Set `layout.css.backdrop-filter.force-enabled` to `true` (optional)  
 - Set `layout.css.color-mix.color-spaces.enabled` to `true` (optional)
 
-<br>
+### Theme Configuations
+
+The theme can be configured in `chrome -> WhiteSur -> theme.css`. The available options can be found under `chrome -> WhiteSur -> customs`.
+
+<br><br>
 
 Additional `README.md` ends here.
 
