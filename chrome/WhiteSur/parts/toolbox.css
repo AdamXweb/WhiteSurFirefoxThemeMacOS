@@ -178,7 +178,7 @@ findbar:-moz-window-inactive label,
 #navigator-toolbox #nav-bar,
 findbar {
 	-moz-box-ordinal-group: 0;
-	order: 0;
+	order: -1;
 }
 
 #navigator-toolbox #PersonalToolbar {
