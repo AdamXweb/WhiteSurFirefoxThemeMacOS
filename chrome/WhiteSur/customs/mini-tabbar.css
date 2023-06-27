@@ -192,5 +192,5 @@ stack[soundplaying="true"] + .tab-label-container[textoverflow] {
 }
 
 .tabbrowser-tab::after {
-	top: 50px !important;
+	top: 80px !important;
 }
