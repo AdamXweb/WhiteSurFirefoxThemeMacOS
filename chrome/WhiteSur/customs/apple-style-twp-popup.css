@@ -1,0 +1,16 @@
+/* Apple style popup of Add-on: TWP - Translate Web Pages */
+
+/* To be imported to userContent.css */
+
+@namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+#eDivResult {
+	backdrop-filter: blur(25px) !important;
+	background-color: var(--context-menu-background) !important;
+	border: var(--context-menu-border) !important;
+	outline: var(--context-menu-outline) !important;
+}
+
+#eSelTextTrans {
+	color: var(--context-menu-hover) !important;
+}

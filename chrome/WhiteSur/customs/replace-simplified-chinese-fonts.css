@@ -1,0 +1,52 @@
+/* Replaces Simplified Chinese fonts */
+
+/* Also import to CSS injection add-on (e.g. Stylish) for better result */
+
+/* To be imported to userContent.css */
+
+@namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+@font-face {
+	font-family: "noto serif sc";
+	src: local("LiSong Pro");
+}
+
+@font-face {
+	font-family: "SongTi SC";
+	src: local("LiSong Pro");
+}
+
+@font-face {
+	font-family: "noto sans sc";
+	src: local("PingFang HK");
+}
+
+@font-face {
+	font-family: "PingFang SC";
+	src: local("PingFang HK");
+}
+
+@font-face {
+	font-family: "Hiragino Sans GB";
+	src: local("PingFang HK");
+}
+
+@font-face {
+	font-family: "Microsoft YaHei UI";
+	src: local("PingFang HK");
+}
+
+@font-face {
+	font-family: "Microsoft YaHei";
+	src: local("PingFang HK");
+}
+
+@font-face {
+	font-family: "Microsoft Yahei";
+	src: local("PingFang HK");
+}
+
+@font-face {
+	font-family: "SF Pro SC";
+	src: local("PingFang HK");
+}

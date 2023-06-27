@@ -1,4 +1,8 @@
-@import "./hide-tabview.css";
+/* Minimum size tabbar style */
+
+/* Also hides all buttons in the tabbar */
+
+@namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
 :root {
 	--whitesur-tabbar-tab-background: var(--whitesur-tabstoolbar-background) !important;
@@ -181,4 +185,12 @@ tab > stack {
 stack[muted="true"] + .tab-label-container[textoverflow],
 stack[soundplaying="true"] + .tab-label-container[textoverflow] {
 	mask-image: linear-gradient(to left, transparent, black var(--tab-label-mask-size)) !important;
+}
+
+#TabsToolbar-customization-target > toolbarbutton {
+	display: none !important;
+}
+
+.tabbrowser-tab::after {
+	top: 50px !important;
 }

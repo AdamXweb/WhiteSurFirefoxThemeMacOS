@@ -1,9 +1,9 @@
 /* Popup menus and context menus */
 
-@import "popups-contents.css";
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
 /* Style menus */
+
 menupopup {
 	-moz-appearance: none !important;
 	padding: 0px 4px !important;
@@ -44,6 +44,7 @@ menupopup menu[disabled="true"]:hover {
 }
 
 /* Adjust popovers position, includes background colour with transparency */
+
 panel[type="arrow"] {
 	margin-top: 9px !important;
 	max-height: 80vh !important;
@@ -57,6 +58,7 @@ panel[type="arrow"] {
 }
 
 /* Style popovers */
+
 .panel-arrowcontent .panel-arrowcontent,
 .panel-header,
 .PanelUI-subView,
@@ -120,14 +122,14 @@ panelview {
 }
 
 /* Style popovers menu buttons */
-.subviewbutton:not(.subviewbutton-back),
+
+.subviewbutton:not(.subviewbutton-back):not(.toolbarbutton-text),
 .protections-popup-category,
 .protections-popup-category[disabled],
 .identity-popup-content-blocking-category {
 	border-radius: var(--macos-menu-item-border-radius) !important;
 	color: inherit !important;
 	font: menu !important;
-	/* -moz-box-pack: inherit !important; */
 }
 
 .subviewbutton:not(.subviewbutton-back):not(.toolbarbutton-1),
@@ -175,6 +177,7 @@ panelview {
 }
 
 /* Style popover separators */
+
 toolbarseparator,
 menuseparator {
 	border-color: var(--whitesur-popover-separator-color) !important;
@@ -196,21 +199,24 @@ toolbarseparator[orient="vertical"] {
 	visibility: visible !important;
 }
 
-/* Webchat e.g. google meet share screen display select*/
+/* Webchat e.g. google meet share screen display select */
+
 #webRTC-selectWindow-menulist {
 	color: var(--whitesur-inactive-urlbar-color) !important;
 	background: var(--whitesur-button-hover-background) !important;
 	border-radius: 5px;
 }
 
-/* Proton right click menu*/
+/* Proton right click menu */
+
 @media (-moz-proton) {
 	#context-navigation > .menuitem-iconic[_moz-menuactive="true"]:not([disabled="true"]) > .menu-iconic-left > .menu-iconic-icon {
 		background-color: transparent !important;
 	}
 }
 
-/* fix padding for menu items*/
+/* fix padding for menu items */
+
 panelview:not([extension]) {
 	padding: 4px !important;
 }
@@ -219,19 +225,22 @@ panelview:not([extension]) {
 	display: none !important;
 }
 
-/* fix menu button padding and alignment*/
+/* fix menu button padding and alignment */
+
 #PanelUI-menu-button {
 	padding-inline-end: 0px !important;
 	padding-left: 0px !important;
 }
 
-/* Fix alignment of menu*/
+/* Fix alignment of menu */
+
 panel[type="arrow"][side="top"],
 panel[type="arrow"][side="bottom"] {
 	margin-inline: -20px !important;
 }
 
 /* Fix bookmarks v92 */
+
 menuseparator {
 	-moz-appearance: none !important;
 	padding-top: 0px !important;
@@ -274,12 +283,14 @@ toolbarbutton.bookmark-item[open="true"] {
 }
 
 /* Update close button styling */
+
 :root[dialogroot],
 :host(dialog) {
 	--in-content-page-background: var(--whitesur-menu-background) !important;
 }
 
 /* Cancel or secondary */
+
 .dialog-button-box > button {
 	background-color: var(--whitesur-button-active-background-alt) !important;
 	color: var(--whitesur-button-menulist-color) !important;
@@ -294,6 +305,7 @@ xul|button:not([disabled="true"]):hover {
 }
 
 /* Quit or primary button */
+
 xul|button[default] {
 	background-color: var(--whitesur-button-suggested-action-background) !important;
 	color: var(--whitesur-button-menulist-color) !important;
@@ -311,6 +323,7 @@ button:focus-visible {
 }
 
 /* checkbox */
+
 .checkbox-check[checked] {
 	background-color: var(--theme-primary-color) !important;
 	color: var(--theme-alt-color) !important;

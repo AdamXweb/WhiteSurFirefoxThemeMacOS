@@ -1,11 +1,11 @@
 /* Windows specific */
+
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+
 @media screen and (-moz-windows-compositor) {
 	.titlebar-button {
 		border: none;
 		margin: 0 !important;
-		/*		padding: 3px 6px !important;
-*/
 		padding: 1px 3px !important;
 		-moz-content-properties: none !important;
 		stroke: none !important;

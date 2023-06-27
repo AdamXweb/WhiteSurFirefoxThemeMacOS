@@ -1,0 +1,113 @@
+/* Tab Preview On Hover supporting CSS theme */
+
+/* Use with Tab Preview On Hover add-on: https://addons.mozilla.org/firefox/addon/tab-preview-on-hover/ */
+
+/* Version 2023-06-28 */
+
+#navigator-toolbox:-moz-lwtheme,
+.browserContainer > findbar:-moz-lwtheme {
+	background-image: none !important;
+}
+
+#tabbrowser-tab-tooltip {
+	display: none !important;
+}
+
+.tabbrowser-tab::after {
+	--preview-delay: 1s; /* Delay of tab preview when the cursor move onto a tab from outside of tab bar */
+	--preview-delay-tolerance: 0.75s; /* Max time period of cursor not hovering on tab bar before preview delay re-engages */
+	--preview-width: 200px; /* Width of the preview panel */
+	--preview-height: 150px; /* Height of the preview panel */
+}
+
+.tabbrowser-tab::after {
+	box-shadow: 0 0 50px black, 0 0 0 1px var(--arrowpanel-border-color) inset;
+	outline: 0.5px solid black;
+	pointer-events: none;
+	content: "";
+	display: none;
+	position: absolute;
+	z-index: 10000;
+	top: 90px /* Edit if the preview panel is misplaced */;
+	width: var(--preview-width);
+	height: var(--preview-height);
+	background-color: var(--lwt-accent-color);
+	background-image: var(--lwt-additional-images);
+	background-repeat: no-repeat;
+	background-clip: padding-box;
+	border-radius: 8px;
+	image-rendering: optimizequality;
+}
+
+#tabbrowser-arrowscrollbox:not(:hover) .tabbrowser-tab::after {
+	transition: opacity 0.5s, filter 0s var(--preview-delay-tolerance);
+	filter: opacity(0);
+}
+
+#tabbrowser-arrowscrollbox:hover .tabbrowser-tab::after {
+	transition: opacity 0.5s, filter 0.5s var(--preview-delay);
+	filter: opacity(1);
+}
+
+.tabbrowser-tab:not(:hover)::after {
+	opacity: 0;
+}
+
+.tabbrowser-tab:hover::after {
+	opacity: 1;
+}
+
+.tabbrowser-tab[selected]:hover::after {
+	opacity: 0;
+	transition-duration: 0.25s !important;
+}
+
+.tabbrowser-tab:nth-of-type(1)::after {
+	display: block;
+	background-size: cover, 0, 0, 0, 0, 0, 0, 0, 0, 0;
+}
+
+.tabbrowser-tab:nth-of-type(2)::after {
+	display: block;
+	background-size: 0, cover, 0, 0, 0, 0, 0, 0, 0, 0;
+}
+
+.tabbrowser-tab:nth-of-type(3)::after {
+	display: block;
+	background-size: 0, 0, cover, 0, 0, 0, 0, 0, 0, 0;
+}
+
+.tabbrowser-tab:nth-of-type(4)::after {
+	display: block;
+	background-size: 0, 0, 0, cover, 0, 0, 0, 0, 0, 0;
+}
+
+.tabbrowser-tab:nth-of-type(5)::after {
+	display: block;
+	background-size: 0, 0, 0, 0, cover, 0, 0, 0, 0, 0;
+}
+
+.tabbrowser-tab:nth-of-type(6)::after {
+	display: block;
+	background-size: 0, 0, 0, 0, 0, cover, 0, 0, 0, 0;
+}
+
+.tabbrowser-tab:nth-of-type(7)::after {
+	display: block;
+	background-size: 0, 0, 0, 0, 0, 0, cover, 0, 0, 0;
+}
+
+.tabbrowser-tab:nth-of-type(8)::after {
+	display: block;
+	background-size: 0, 0, 0, 0, 0, 0, 0, cover, 0, 0;
+}
+
+.tabbrowser-tab:nth-of-type(9)::after {
+	display: block;
+	background-size: 0, 0, 0, 0, 0, 0, 0, 0, cover, 0;
+}
+
+.tabbrowser-tab:nth-of-type(10)::after {
+	display: block;
+	background-size: 0, 0, 0, 0, 0, 0, 0, 0, 0, cover;
+}

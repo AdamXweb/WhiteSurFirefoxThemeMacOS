@@ -9,6 +9,7 @@
 }
 
 /* Avoid window dragging from urlbar */
+
 :root[tabsintitlebar] #nav-bar .urlbar-input-box,
 :root[tabsintitlebar] #nav-bar .urlbar-input-box * {
 	-moz-window-dragging: no-drag !important;

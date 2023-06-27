@@ -2,7 +2,8 @@
 
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
-/*Badge and buttons on the left*/
+/* Badge and buttons on the left */
+
 #identity-box.chromeUI #identity-icon {
 	width: 12px !important;
 	height: 12px !important;
@@ -53,15 +54,11 @@
 	background-color: transparent !important;
 }
 
-/*Buttons to the right*/
+/* Buttons to the right */
+
 #urlbar #page-action-buttons {
 	filter: saturate(0%) brightness(120%) !important;
 }
-
-/* #urlbar:hover #page-action-buttons,
-#urlbar[focused] #page-action-buttons {
-	filter: saturate(100%) brightness(100%) !important;
-} */
 
 .urlbar-page-action:not([disabled]),
 #urlbar-go-button,
@@ -96,7 +93,8 @@
 	margin-block: 5px;
 }
 
-/* Centre URL bar text input*/
+/* Centre URL bar text input */
+
 #urlbar-input {
 	position: absolute;
 	width: 50%;
@@ -107,6 +105,7 @@
 }
 
 /* Unless text input is selected like safari*/
+
 #urlbar[focused] #urlbar-input {
 	transform: translateX(0);
 	width: 100%;
@@ -114,26 +113,12 @@
 }
 
 /* Center the URL bar */
+
 toolbarspring {
 	max-width: 10000px !important;
 }
 
 /* URL bar */
-
-/* Hover effect */
-
-/* #urlbar #urlbar-input-container > *,
-#searchbar > * {
-    opacity: 0.5 !important;
-    transition: opacity 0.2s !important;
-}
-
-#urlbar:hover #urlbar-input-container > *,
-#urlbar[focused] #urlbar-input-container > *,
-#searchbar:hover > *,
-#searchbar:focus-within > * {
-    opacity: 1 !important;
-} */
 
 #urlbar-background {
 	box-shadow: none !important;
@@ -170,6 +155,7 @@ toolbarspring {
 }
 
 /* URL bar results */
+
 .urlbarView {
 	width: 100% !important;
 	padding: 4px !important;
@@ -396,6 +382,7 @@ toolbarspring {
 }
 
 /* URL bar and Search bar's icons */
+
 .urlbar-icon:hover,
 .urlbar-icon-wrapper:hover,
 .urlbar-icon[open],
@@ -415,7 +402,8 @@ toolbarspring {
 	margin: auto !important;
 }
 
-/* Fix for firefox v92 onwards that changed icon size on MacOS*/
+/* Fix for firefox v92 onwards that changed icon size on MacOS */
+
 .urlbar-page-action {
 	padding: inherit !important;
 }

@@ -253,7 +253,9 @@
 	}
 }
 
-/* macOS native popover menu*/
+/* macOS native popover menu color platte */
+
+/* Values are sampled from real macOS UI */
 
 :root {
 	--macos-menu-border: 1px solid #ffffff33;
@@ -269,6 +271,8 @@
 
 	--arrowpanel-border-radius: var(--macos-menu-border-radius) !important;
 	--arrowpanel-border-color: color-mix(in srgb, currentColor 20%, transparent) !important;
+	--panel-item-hover-bgcolor: var(--macos-menu-hover) !important;
+	--panel-item-active-bgcolor: var(--macos-menu-hover) !important;
 }
 
 @media (prefers-color-scheme: light) {
@@ -279,6 +283,7 @@
 		--macos-menu-hover: #55a1ff;
 		--macos-menu-hover-color: #fff;
 		--macos-menu-separator-color: #00000033;
+
 		--arrowpanel-border-color: transparent !important;
 	}
 }

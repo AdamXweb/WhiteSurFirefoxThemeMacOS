@@ -3,6 +3,7 @@
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
 /* Entries */
+
 #searchbar,
 #search-box,
 .findbar-textbox {
@@ -26,6 +27,7 @@
 }
 
 /* Entries not focused */
+
 #urlbar > #urlbar-input-container,
 #searchbar,
 #search-box,
@@ -49,6 +51,7 @@
 }
 
 /* Entries focused */
+
 #urlbar[focused] > #urlbar-input-container,
 #searchbar:focus-within,
 #search-box[focused],
@@ -61,15 +64,15 @@
 }
 
 /* Inactive window entries */
+
 #searchbar:-moz-window-inactive,
 #search-box:-moz-window-inactive,
 .findbar-textbox:-moz-window-inactive {
-	background: var(--whitesur-inactive-urlbar-background) !important;
-	border-color: var(--whitesur-inactive-urlbar-border-color) !important;
 	color: var(--whitesur-inactive-urlbar-color) !important;
 }
 
 /* Entries combined */
+
 .findbar-textbox:not(.minimal) {
 	border-top-right-radius: 0 !important;
 	border-bottom-right-radius: 0 !important;
@@ -82,6 +85,7 @@
 }
 
 /* Entries fixes */
+
 #urlbar-container,
 #search-container {
 	padding: 0 !important;

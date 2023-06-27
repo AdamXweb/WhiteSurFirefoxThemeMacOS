@@ -1,3 +1,7 @@
+/* Hides tabbar when there is only one tab */
+
+/* Also hides all buttons in the tabbar */
+
 @namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
 /* From user @luan https://github.com/AdamXweb/WhiteSurFirefoxThemeMacOS/issues/52#issuecomment-1120470140 */
@@ -13,5 +17,9 @@
 }
 
 #tabbrowser-tabs tab:only-of-type {
+	display: none !important;
+}
+
+#TabsToolbar-customization-target > toolbarbutton {
 	display: none !important;
 }

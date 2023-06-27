@@ -1,5 +1,34 @@
-/* Import theme */
+@import "WhiteSur/parts/buttons-fixes.css";
+@import "WhiteSur/parts/buttons.css";
+@import "WhiteSur/parts/csd.css";
+@import "WhiteSur/parts/custom-icons.css";
+@import "WhiteSur/parts/entries.css";
+@import "WhiteSur/parts/findbar.css";
+@import "WhiteSur/parts/headerbar-private-urlbar.css";
+@import "WhiteSur/parts/headerbar-urlbar.css";
+@import "WhiteSur/parts/headerbar.css";
+@import "WhiteSur/parts/icons.css";
+@import "WhiteSur/parts/popups-contents.css";
+@import "WhiteSur/parts/popups.css";
+@import "WhiteSur/parts/remove-white-flash.css";
+@import "WhiteSur/parts/scrollbars.css";
+@import "WhiteSur/parts/tabsbar.css";
+@import "WhiteSur/parts/titlebutton-light.css";
+@import "WhiteSur/parts/titlebutton-dark.css";
+@import "WhiteSur/parts/toolbox.css";
+@import "WhiteSur/parts/windows.css";
+@import "WhiteSur/color.css";
 
-@import "WhiteSur/theme.css";
+/* Custom settings */
 
-/* @import "customChrome.css"; */
+@import "WhiteSur/customs/extension-menu-in-grid.css";
+/* @import "WhiteSur/customs/tab-preview-on-hover.css"; */
+/* @import "WhiteSur/customs/hide-single-tab.css"; */
+/* @import "WhiteSur/customs/mini-tabbar.css"; */
+
+/* Set theme version text in customization panel */
+
+#customization-footer::before {
+	content: "Firefox White Sur theme (ATBC-compatible) ver.2023-06-28";
+	padding: 9px;
+}

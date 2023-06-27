@@ -1,8 +1,9 @@
 /* Buttons */
-@import "buttons-fixes.css";
+
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
 /* Hide buttons separator */
+
 #nav-bar .toolbaritem-combined-buttons separator {
 	display: none !important;
 }
@@ -12,6 +13,7 @@
 }
 
 /* Buttons  */
+
 .subviewbutton.panel-subview-footer,
 .subviewbutton.panel-subview-footer-button,
 .panel-footer button,
@@ -52,6 +54,7 @@
 }
 
 /* Text buttons */
+
 .subviewbutton.panel-subview-footer,
 .subviewbutton.panel-subview-footer-button,
 .panel-footer button,
@@ -74,10 +77,12 @@
 }
 
 /* Drop down buttons */
+
 #sidebar-switcher-target,
 #viewButton {
 	padding: 2px 16px !important;
-	position: relative;
+	position: relative !important;
+	flex-basis: auto !important;
 }
 
 #sidebar-switcher-arrow,
@@ -104,6 +109,7 @@
 }
 
 /* Hover buttons */
+
 .subviewbutton.panel-subview-footer:hover,
 .subviewbutton.panel-subview-footer-button:hover,
 .panel-footer button:hover,
@@ -133,6 +139,7 @@ menulist:hover .menulist-label-box,
 }
 
 /* Active buttons */
+
 .subviewbutton.panel-subview-footer:active,
 .subviewbutton.panel-subview-footer-button:active,
 .panel-footer button:active,
@@ -168,6 +175,7 @@ menulist > menupopup > menuitem:is([checked="true"], [selected="true"])::before 
 }
 
 /* Fix HTML select colour */
+
 menupopup > menuitem,
 menupopup > menucaption,
 menupopup > menu {
@@ -187,6 +195,7 @@ menupopup > menuitem[_moz-menuactive="true"]:not(:hover) {
 }
 
 /* Disabled buttons */
+
 #appMenu-popup .toolbaritem-combined-buttons toolbarbutton[disabled],
 #context-navigation menuitem[disabled],
 #webRTC-shareDevices-notification > .popup-notification-button-container > .popup-notification-primary-button[disabled] {
@@ -279,6 +288,7 @@ menupopup > menuitem[_moz-menuactive="true"]:not(:hover) {
 }
 
 /* Circle buttons */
+
 #downloadsPanel-mainView .download-state .downloadButton,
 .identity-popup-permission-remove-button:not(#hack) {
 	padding: 0 0 !important;
@@ -290,7 +300,7 @@ menupopup > menuitem[_moz-menuactive="true"]:not(:hover) {
 }
 
 /* Combined buttons */
-/* #nav-bar .toolbaritem-combined-buttons toolbarbutton:not(:last-of-type):not(#hack), */
+
 .subviewbutton.panel-subview-footer:not(:only-of-type):not(:last-of-type),
 .panel-footer button:not(:only-of-type):not(:last-of-type),
 #appMenu-popup .toolbaritem-combined-buttons toolbarbutton:not(:last-of-type):not(#appMenu-zoomEnlarge-button),
@@ -303,7 +313,6 @@ menupopup > menuitem[_moz-menuactive="true"]:not(:hover) {
 	margin-right: 0 !important;
 }
 
-/* #nav-bar .toolbaritem-combined-buttons toolbarbutton:not(:first-of-type):not(#hack), */
 .subviewbutton.panel-subview-footer:not(:only-of-type):not(:first-of-type),
 .panel-footer button:not(:only-of-type):not(:first-of-type),
 #appMenu-popup .toolbaritem-combined-buttons toolbarbutton:not(:first-of-type):not(#appMenu-fullscreen-button),
@@ -322,6 +331,7 @@ menupopup > menuitem[_moz-menuactive="true"]:not(:hover) {
 }
 
 /* Buttons with suggested action */
+
 #appMenu-popup .panel-banner-item[notificationid="update-restart"],
 button.popup-notification-primary-button,
 #editBookmarkPanelDoneButton,
@@ -350,6 +360,7 @@ button.popup-notification-primary-button.popup-notification-button:active,
 }
 
 /* Buttons with destructive action */
+
 #editBookmarkPanelRemoveButton,
 #PanelUI-panic-view-button {
 	color: #ffffff !important;
@@ -386,6 +397,7 @@ button.popup-notification-primary-button.popup-notification-button:active,
 }
 
 /* User sync menu, bigger avatar */
+
 #fxa-toolbar-menu-button .toolbarbutton-badge-stack {
 	margin: 0 !important;
 }

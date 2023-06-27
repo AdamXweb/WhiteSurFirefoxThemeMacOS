@@ -1,15 +1,16 @@
 /* Header bar */
-@import "headerbar-urlbar.css";
-@import "headerbar-private-urlbar.css";
+
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
 /* Headerbar */
+
 #nav-bar {
 	padding: 8px 16px 8px 86px !important;
 	transition: none !important;
 }
 
 /* Headerbar CSD colors */
+
 :root[tabsintitlebar] #nav-bar {
 	border: none !important;
 	border-bottom: none !important;
@@ -21,6 +22,7 @@
 }
 
 /* Headerbar buttons */
+
 #nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.subviewbutton):not(.toolbarbutton-1) {
 	-moz-appearance: none !important;
 	border: none !important;
@@ -35,12 +37,14 @@
 }
 
 /* Hover headerbar buttons */
+
 #nav-bar toolbarbutton:not(#allTabsMenu-searchTabs):not(.all-tabs-button):not(.all-tabs-secondary-button):not([checked]):not([disabled]):hover {
 	outline: 0 !important;
 	background: var(--whitesur-headerbar-button-hover-background) !important;
 }
 
 /* Active headerbar buttons */
+
 #nav-bar
 	toolbarbutton:not(#allTabsMenu-searchTabs):not(.all-tabs-button):not(.all-tabs-secondary-button):not(#urlbar-zoom-button):not([disabled]):not(
 		#hack
@@ -55,6 +59,7 @@
 }
 
 /* Buttons with margins */
+
 #nav-bar toolbarbutton:not(#urlbar-zoom-button):not(#allTabsMenu-searchTabs) {
 	margin: 0 2px !important;
 }
@@ -75,6 +80,7 @@
 }
 
 /* Headerbar entries */
+
 #nav-bar #searchbar,
 #nav-bar #urlbar #urlbar-input-container {
 	-moz-appearance: none !important;

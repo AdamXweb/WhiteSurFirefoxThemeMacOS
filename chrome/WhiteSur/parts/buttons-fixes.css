@@ -1,7 +1,9 @@
-/* Buttons Issues/Glitches fixes */
+/* Buttons ussues / glitches fixes */
+
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
 /* Overrides: Make the back button the same as other buttons */
+
 :root:not([uidensity="compact"]) #back-button {
 	border-radius: var(--macos-toolbar-border-radius) !important;
 }
@@ -29,6 +31,7 @@
 }
 
 /* Remove the header bar buttons' hover styles */
+
 #nav-bar {
 	--toolbarbutton-active-background: transparent !important;
 	--toolbarbutton-hover-background: transparent !important;
@@ -36,11 +39,13 @@
 
 /* Glitch customizing: Cut / Copy / Paste buttons' icons
  * :not(#hack) is there just to elevate rule priority */
+
 :root[customizing] #nav-bar > hbox toolbaritem toolbarbutton image:not(#hack) {
 	opacity: 1 !important;
 }
 
 /* Glitch customizing: Reload and Cut / Copy / Paste buttons */
+
 :root:-moz-window-inactive[customizing] #nav-bar #stop-reload-button toolbarbutton,
 :root:-moz-window-inactive[customizing] #nav-bar #edit-controls toolbarbutton {
 	background-image: var(--whitesur-inactive-button-background);
@@ -48,6 +53,7 @@
 }
 
 /* Glitch customizing: Reload and Cut / Copy / Paste buttons' icons */
+
 :root:-moz-window-inactive[customizing] #nav-bar #stop-reload-button image.toolbarbutton-icon,
 :root:-moz-window-inactive[customizing] #nav-bar #edit-controls image.toolbarbutton-icon {
 	opacity: 0.7 !important;
@@ -55,17 +61,20 @@
 
 /* Glitch: Overflow and Burger buttons
  * :not(#hack) is there just to elevate rule priority */
+
 :root[customizing] #nav-bar > toolbarbutton[disabled]:not(#hack),
 :root[customizing] #nav-bar > toolbaritem > toolbarbutton[disabled]:not(#hack) {
 	opacity: 0.5 !important;
 }
 
 /* Glitch: Overflow button's icon */
+
 :root[customizing] #nav-bar toolbarbutton:not(#urlbar-zoom-button)[disabled] image {
 	fill-opacity: var(--toolbarbutton-icon-fill-opacity) !important;
 }
 
 /* Bookmark buttons */
+
 #nav-bar toolbarbutton.bookmark-item {
 	width: auto !important;
 }
@@ -79,18 +88,15 @@
 }
 
 /* Remove Burger button's left separator */
+
 #PanelUI-button {
 	border: 0 !important;
 	margin: 0 !important;
 	padding-inline-start: 0 !important;
 }
 
-/* Space main menu button from other headerbar buttons
-#nav-bar #PanelUI-menu-button:not(#hack) {
-	margin-left: 10px !important;
-}*/
-
 /* Fix library animation */
+
 #library-animatable-box {
 	--library-button-height: 46px !important;
 	--library-icon-x: 1716px !important;
@@ -102,18 +108,19 @@
 }
 
 /* Fix toolbars close icons */
+
 .close-icon:not(.tab-close-button) image {
 	height: 16px !important;
 	width: 16px !important;
 	margin: 6px !important;
 }
 
-/* */
 #appMenu-popup .panel-banner-item[notificationid="update-restart"]::after {
 	display: none !important;
 }
 
 /* Identity site popover buttons */
+
 .identity-popup-preferences-button:not(#hack) {
 	list-style-image: url("chrome://browser/skin/settings.svg") !important;
 }
@@ -127,6 +134,7 @@
 }
 
 /* Fix findbar buttons issues */
+
 .findbar-container .findbar-find-previous image,
 .findbar-container .findbar-find-next image {
 	margin: 6px !important;
@@ -138,6 +146,7 @@
 }
 
 /* Sidebar header button reset font size */
+
 #sidebar-header,
 #sidebar-search-container,
 #bookmarksPanel,
@@ -149,18 +158,22 @@
 }
 
 /* Sidebar header button arrow opacity */
+
 #sidebar-switcher-arrow {
 	opacity: 1 !important;
 }
 
 /* Sidebar history view */
+
 #viewButton {
 	margin: 0 !important;
 	margin-inline-start: 6px !important;
 }
 
 /* Menulist */
+
 menulist {
+	appearance: none !important;
 	-moz-appearance: none !important;
 }
 
@@ -177,22 +190,26 @@ menulist {
 }
 
 /* Bookmarks editor buttons */
+
 .expander-down image,
 .expander-up image {
 	margin: 6px !important;
 }
 
 /* Identity popup tracking protection button */
+
 .tracking-protection-button {
 	margin-inline-end: 0 !important;
 }
 
 /* Identity popup delete permission button */
+
 .identity-popup-permission-remove-button {
 	opacity: 1 !important;
 }
 
 /* Identity popup expander button */
+
 #identity-popup-security {
 	-moz-box-align: center;
 }

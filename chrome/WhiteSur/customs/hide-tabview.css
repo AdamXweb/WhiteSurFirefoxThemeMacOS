@@ -1,3 +1,7 @@
+/* Hides tab view button */
+
+@namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
 #alltabs-button {
 	display: none !important;
 }
