@@ -189,6 +189,7 @@ menupopup > menuitem:where([_moz-menuactive="true"]:not([disabled="true"])) {
 }
 
 #context-navigation > .menuitem-iconic > .menu-iconic-left > .menu-iconic-icon {
+	padding: 6px !important;
 	background-color: transparent !important;
 	width: auto !important;
 	height: auto !important;
