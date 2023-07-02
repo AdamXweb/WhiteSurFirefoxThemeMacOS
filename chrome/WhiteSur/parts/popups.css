@@ -5,11 +5,12 @@
 /* Style menus */
 
 menupopup {
+	appearance: none;
 	-moz-appearance: none !important;
-	padding: 0px 4px !important;
+	padding: 4px !important;
 	border-radius: var(--macos-menu-border-radius) !important;
 	border: var(--macos-menu-border) !important;
-	/* outline: var(--macos-menu-outline) !important; */
+	outline: var(--macos-menu-outline) !important;
 	color: var(--whitesur-toolbar-color) !important;
 	background-color: var(--whitesur-menu-background) !important;
 }
@@ -25,6 +26,7 @@ menubar > menu > menupopup {
 
 menuitem,
 menupopup menu {
+	appearance: none;
 	-moz-appearance: none !important;
 	padding: 4px 8px !important;
 }
@@ -166,9 +168,32 @@ panelview {
 .subviewbutton.identity-popup-security-connection:hover,
 .subviewbutton.sendToDevice-device:hover,
 #protections-popup-show-report-stack:hover > .protections-popup-footer-button,
-.subviewbutton:not(.nav-bar-overflow-button):not(#appMenu-fxa-label2):not(.subviewbutton-iconic):not(.panel-subview-footer-button):hover {
+.subviewbutton:not(.nav-bar-overflow-button):not(#appMenu-fxa-label2):not(.subviewbutton-iconic):not(.panel-subview-footer-button):hover,
+menupopup > menuitem:hover,
+menupopup > menuitem[_moz-menuactive="true"]:hover,
+menupopup > menu:where([_moz-menuactive="true"]:not([disabled="true"])),
+menupopup > menuitem:where([_moz-menuactive="true"]:not([disabled="true"])) {
 	background: var(--macos-menu-hover) !important;
 	color: #fff !important;
+}
+
+/* Right click menu */
+
+#context-navigation > .menuitem-iconic {
+	flex: 1 1 100% !important;
+	width: 0 !important;
+}
+
+#context-navigation > .menuitem-iconic > .menu-iconic-left {
+	height: 100% !important;
+}
+
+#context-navigation > .menuitem-iconic > .menu-iconic-left > .menu-iconic-icon {
+	background-color: transparent !important;
+	width: auto !important;
+	height: auto !important;
+	max-width: 100% !important;
+	max-height: 100% !important;
 }
 
 .protections-popup-category:not([disabled]):hover,
@@ -242,6 +267,7 @@ panel[type="arrow"][side="bottom"] {
 /* Fix bookmarks v92 */
 
 menuseparator {
+	appearance: none;
 	-moz-appearance: none !important;
 	padding-top: 0px !important;
 	padding-bottom: 0px !important;
@@ -278,6 +304,9 @@ toolbarbutton.bookmark-item[open="true"] {
 }
 
 .menupopup-arrowscrollbox {
+	padding: 0 !important;
+	margin: 0 !important;
+	box-shadow: none !important;
 	background: transparent !important;
 	border: 0 !important;
 }
@@ -342,4 +371,9 @@ checkbox:not([disabled="true"]):hover > .checkbox-check[checked] {
 #editBookmarkPanelContent .panel-button image {
 	width: 16px;
 	height: 16px;
+}
+
+browser[primary="true"][tabDialogShowing="true"],
+#main-window[window-modal-open="true"] > body > #browser {
+	filter: blur(5px);
 }

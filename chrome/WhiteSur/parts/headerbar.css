@@ -24,14 +24,15 @@
 /* Headerbar buttons */
 
 #nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.subviewbutton):not(.toolbarbutton-1) {
+	appearance: none;
 	-moz-appearance: none !important;
 	border: none !important;
 	box-shadow: none !important;
 	background: none !important;
 	border-radius: var(--macos-menu-border-radius) !important;
 	padding: 0 4px !important;
-	min-height: 28px !important;
-	min-width: 28px !important;
+	min-height: 26px !important;
+	min-width: 26px !important;
 	color: var(--whitesur-toolbar-color) !important;
 	transition: background 200ms;
 }
@@ -83,6 +84,7 @@
 
 #nav-bar #searchbar,
 #nav-bar #urlbar #urlbar-input-container {
+	appearance: none;
 	-moz-appearance: none !important;
 	background: var(--whitesur-urlbar-background) !important;
 	border: none !important;
@@ -92,6 +94,10 @@
 	padding: 0 6px !important;
 	height: 32px !important;
 	max-height: 32px !important;
+}
+
+#nav-bar-customization-target {
+	max-height: 36px !important;
 }
 
 #nav-bar #urlbar {
@@ -104,7 +110,8 @@
 	padding: 0 6px !important;
 }
 
-#nav-bar #searchbar:focus-within {
+#nav-bar #searchbar:focus-within,
+#urlbar[focused] #urlbar-input-container {
 	border: none !important;
 	background: var(--whitesur-urlbar-background) !important;
 	box-shadow: inset 0 0 0 2px var(--whitesur-focused-urlbar-highlight-color) !important;

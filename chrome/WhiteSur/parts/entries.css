@@ -7,6 +7,7 @@
 #searchbar,
 #search-box,
 .findbar-textbox {
+	appearance: none;
 	-moz-appearance: none !important;
 	background: var(--whitesur-urlbar-background) !important;
 	border: 1px solid var(--whitesur-urlbar-border-color) !important;

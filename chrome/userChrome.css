@@ -26,9 +26,11 @@
 /* @import "WhiteSur/customs/hide-single-tab.css"; */
 /* @import "WhiteSur/customs/mini-tabbar.css"; */
 
+@namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+
 /* Set theme version text in customization panel */
 
 #customization-footer::before {
-	content: "Firefox White Sur theme (ATBC-compatible) ver.2023-06-28";
+	content: "Firefox White Sur theme (ATBC-compatible) ver.2023-07-02";
 	padding: 9px;
 }

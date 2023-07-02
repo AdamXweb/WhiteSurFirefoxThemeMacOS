@@ -1,8 +1,11 @@
 /* GNOME CSD styles for headerbar on Firefox [tabsintitlebar] @namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"); */
 
-#main-window {
+@namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+
+/* #main-window {
+	appearance: -moz-window-titlebar;
 	-moz-appearance: -moz-window-titlebar !important;
-}
+} */
 
 /* Window buttons: at least 1 button */
 
@@ -40,15 +43,17 @@
 
 :root[tabsintitlebar]:not([inFullscreen]) #titlebar .titlebar-buttonbox-container,
 :root[tabsintitlebar]:not([inFullscreen]) #titlebar-buttonbox-container {
+	appearance: none;
 	-moz-appearance: none !important;
 	padding: 0 3px 0 4px;
 	position: absolute !important;
-	left: 8px;
-	top: 15px;
+	left: 2px;
+	top: 18px;
 	display: block !important;
 }
 
 :root[tabsintitlebar][inFullscreen] #window-controls {
+	appearance: none;
 	-moz-appearance: none !important;
 	padding: 0 3px 0 4px;
 	position: absolute !important;
@@ -88,6 +93,7 @@
 	/* Remove default style of titlebar */
 
 	:root[tabsintitlebar] #titlebar {
+		appearance: none;
 		-moz-appearance: none !important;
 	}
 

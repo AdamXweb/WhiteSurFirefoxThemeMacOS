@@ -84,8 +84,8 @@
 }
 
 #urlbar {
-	--urlbar-height: 32px;
-	--urlbar-toolbar-height: 32px !important;
+	--urlbar-height: 30px !important;
+	--urlbar-toolbar-height: 30px !important;
 }
 
 #urlbar-search-mode-indicator {
@@ -121,6 +121,7 @@ toolbarspring {
 /* URL bar */
 
 #urlbar-background {
+	outline: none !important;
 	box-shadow: none !important;
 	border: 0 !important;
 	background: transparent !important;
@@ -333,6 +334,7 @@ toolbarspring {
 }
 
 .searchbar-engine-one-off-item {
+	appearance: none;
 	-moz-appearance: none !important;
 	--toolbarbutton-active-background: transparent !important;
 	--toolbarbutton-hover-background: transparent !important;

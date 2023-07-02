@@ -211,7 +211,7 @@ menulist {
 /* Identity popup expander button */
 
 #identity-popup-security {
-	-moz-box-align: center;
+	align-content: center;
 }
 
 #identity-popup-security-expander {

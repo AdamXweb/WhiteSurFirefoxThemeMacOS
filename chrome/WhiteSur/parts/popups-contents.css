@@ -31,7 +31,7 @@
 /* Main menu */
 
 #appMenu-popup .panel-banner-item:after {
-	-moz-box-ordinal-group: 0;
+	order: 0;
 	margin: 0 8px 0 0 !important;
 }
 
@@ -128,7 +128,16 @@
 }
 
 #customization-panelWrapper > .panel-arrowbox {
-	margin-bottom: -5px !important;
+	margin-bottom: 0px !important;
+}
+
+#customization-container {
+	background-color: var(--lwt-accent-color) !important;
+	background-image: none !important;
+}
+
+#customization-panelWrapper > .panel-arrowcontent {
+	background: var(--whitesur-popover-background) !important;
 }
 
 /* Confirmation Hint */
@@ -319,4 +328,8 @@
 
 #contextual-feature-recommendation-notification {
 	width: auto !important;
+}
+
+#PlacesToolbar menupopup[placespopup="true"] menuseparator:last-of-type {
+	display: none !important;
 }

@@ -38,6 +38,7 @@
 #PanelUI-panic-view-button,
 .tracking-protection-button,
 .dialog-button {
+	appearance: none;
 	-moz-appearance: none !important;
 	background: var(--whitesur-button-background) !important;
 	box-shadow: var(--whitesur-button-box-shadow) !important;
@@ -182,12 +183,6 @@ menupopup > menu {
 	max-width: none;
 	border-radius: 4px !important;
 	color: var(--whitesur-button-menulist-color) !important;
-}
-
-menupopup > menuitem:hover,
-menupopup > menuitem[_moz-menuactive="true"]:hover {
-	color: var(--macos-menu-hover-color) !important;
-	background: var(--macos-menu-hover) !important;
 }
 
 menupopup > menuitem[_moz-menuactive="true"]:not(:hover) {
@@ -392,9 +387,9 @@ button.popup-notification-primary-button.popup-notification-button:active,
 	box-shadow: var(--whitesur-button-destructive-action-box-shadow) !important;
 }
 
-.identity-popup-permission-remove-button:not(#hack):hover .button-icon {
+/* .identity-popup-permission-remove-button:not(#hack):hover .button-icon {
 	filter: invert(100%) brightness(200%);
-}
+} */
 
 /* User sync menu, bigger avatar */
 

@@ -53,6 +53,7 @@
 /* Sub menu arrow */
 
 .menu-right {
+	appearance: none;
 	-moz-appearance: none !important;
 	list-style-image: url("../icons/pan-end-symbolic.svg") !important;
 	width: 16px !important;
@@ -63,15 +64,16 @@ menu[disabled] > .menu-right {
 	opacity: 0.3;
 }
 
-menu:not([disabled]):hover > .menu-right {
+/* menu:not([disabled]):hover > .menu-right {
 	filter: invert(100%) brightness(200%);
-}
+} */
 
 /* Arrow down buttons */
 
 .expander-down > .button-box,
 #sidebar-switcher-arrow,
 #viewButton .button-menu-dropmarker {
+	appearance: none;
 	-moz-appearance: none !important;
 	list-style-image: url("../icons/pan-down-symbolic.svg") !important;
 	width: 16px !important;
@@ -85,6 +87,7 @@ menu:not([disabled]):hover > .menu-right {
 /* Arrow up buttons */
 
 .expander-up > .button-box {
+	appearance: none;
 	-moz-appearance: none !important;
 	list-style-image: url("../icons/pan-up-symbolic.svg") !important;
 	width: 16px !important;
@@ -145,8 +148,8 @@ menuitem[type="checkbox"] {
 	list-style-image: url("../icons/checkbox-symbolic.svg") !important;
 }
 
-menuitem[type="checkbox"][hover="true"] {
-}
+/* menuitem[type="checkbox"][hover="true"] {
+} */
 
 menuitem[type="checkbox"][checked="true"] {
 	list-style-image: url("../icons/checkbox-checked-symbolic.svg") !important;
@@ -156,9 +159,9 @@ menuitem[type="checkbox"][disabled="true"] .menu-iconic-icon {
 	opacity: 0.5;
 }
 
-menuitem[type="checkbox"]:not([disabled="true"]):hover .menu-iconic-icon {
+/* menuitem[type="checkbox"]:not([disabled="true"]):hover .menu-iconic-icon {
 	filter: invert(100%) brightness(200%);
-}
+} */
 
 /* Menu radio */
 
@@ -174,9 +177,9 @@ menuitem[type="radio"][disabled="true"] .menu-iconic-icon {
 	opacity: 0.5;
 }
 
-menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
+/* menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
 	filter: invert(100%) brightness(200%);
-}
+} */
 
 /* Close button */
 

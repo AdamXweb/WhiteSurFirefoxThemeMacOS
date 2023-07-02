@@ -185,6 +185,7 @@ tab[selected]:-moz-window-inactive {
 
 .tab-close-button {
 	order: -1;
+	appearance: none;
 	-moz-appearance: none !important;
 	margin-inline-end: 0 !important;
 	border: none !important;
@@ -443,7 +444,7 @@ toolbar .toolbarbutton-1 {
 /*Align personal bookmarks v89 */
 
 #personal-bookmarks {
-	-moz-box-align: center !important;
+	align-content: center !important;
 }
 
 /* fix misc spacing between tabs */
