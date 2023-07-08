@@ -30,7 +30,7 @@ Go to `about:config`
 
 ### Theme Configuations
 
-The theme can be configured in `chrome -> WhiteSur -> theme.css`. The available options can be found under `chrome -> WhiteSur -> customs`.
+The theme can be configured in `userChrome.css` and `userContent.css`. The available options can be found under `chrome -> WhiteSur -> customs`.
 
 <br><br>
 
