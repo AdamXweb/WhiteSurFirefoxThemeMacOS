@@ -9,11 +9,11 @@
 .findbar-textbox {
 	appearance: none;
 	-moz-appearance: none !important;
-	background: var(--whitesur-urlbar-background) !important;
-	border: 1px solid var(--whitesur-urlbar-border-color) !important;
+	background: var(--macos-urlbar-background) !important;
+	border: 1px solid var(--macos-urlbar-border-color) !important;
 	border-radius: var(--macos-menu-border-radius) !important;
 	box-shadow: none !important;
-	color: var(--whitesur-urlbar-color) !important;
+	color: var(--macos-urlbar-color) !important;
 	height: 28px !important;
 	max-height: 28px !important;
 	margin: 0 !important;
@@ -59,7 +59,7 @@
 .findbar-textbox[focused],
 .findbar-textbox:focus,
 [type="text"]:focus-visible {
-	outline-color: var(--whitesur-focused-urlbar-border-color) !important;
+	outline-color: var(--macos-focused-urlbar-border-color) !important;
 	outline-width: 3px !important;
 	transition: outline-color 0.3s cubic-bezier(0, 0.7, 0.3, 1), outline-width 0.3s cubic-bezier(0, 0.7, 0.3, 1) !important;
 }
@@ -69,7 +69,7 @@
 #searchbar:-moz-window-inactive,
 #search-box:-moz-window-inactive,
 .findbar-textbox:-moz-window-inactive {
-	color: var(--whitesur-inactive-urlbar-color) !important;
+	color: var(--macos-inactive-urlbar-color) !important;
 }
 
 /* Entries combined */

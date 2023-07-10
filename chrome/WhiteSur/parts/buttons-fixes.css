@@ -48,8 +48,8 @@
 
 :root:-moz-window-inactive[customizing] #nav-bar #stop-reload-button toolbarbutton,
 :root:-moz-window-inactive[customizing] #nav-bar #edit-controls toolbarbutton {
-	background-image: var(--whitesur-inactive-button-background);
-	box-shadow: var(--whitesur-inactive-button-box-shadow);
+	background-image: var(--macos-inactive-button-background);
+	box-shadow: var(--macos-inactive-button-box-shadow);
 }
 
 /* Glitch customizing: Reload and Cut / Copy / Paste buttons' icons */
@@ -154,7 +154,7 @@
 #bookmarks-view-children,
 #historyTree {
 	font-size: 0.9em !important;
-	color: var(--whitesur-sidebar-color) !important;
+	color: var(--macos-sidebar-color) !important;
 }
 
 /* Sidebar header button arrow opacity */
@@ -186,7 +186,7 @@ menulist {
 }
 
 #appMenu-popup .toolbaritem-combined-buttons toolbarbutton:not(#appMenu-fxa-label) {
-	color: var(--whitesur-button-menulist-color) !important;
+	color: var(--macos-button-menulist-color) !important;
 }
 
 /* Bookmarks editor buttons */
@@ -228,5 +228,5 @@ menulist {
 #urlbar-go-button:hover,
 .search-go-button:hover,
 #identity-box[pageproxystate="valid"].extensionPage > .identity-box-button:hover:not([open]) {
-	--urlbar-box-hover-bgcolor: var(--whitesur-button-hover-color) !important;
+	--urlbar-box-hover-bgcolor: var(--macos-button-hover-color) !important;
 }

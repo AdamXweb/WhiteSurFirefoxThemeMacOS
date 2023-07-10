@@ -40,10 +40,10 @@
 .dialog-button {
 	appearance: none;
 	-moz-appearance: none !important;
-	background: var(--whitesur-button-background) !important;
-	box-shadow: var(--whitesur-button-box-shadow) !important;
-	border: 1px solid var(--whitesur-button-border-color) !important;
-	border-bottom-color: var(--whitesur-button-border-accent-color) !important;
+	background: var(--macos-button-background) !important;
+	box-shadow: var(--macos-button-box-shadow) !important;
+	border: 1px solid var(--macos-button-border-color) !important;
+	border-bottom-color: var(--macos-button-border-accent-color) !important;
 	border-radius: 5px !important;
 	padding: 0 4px !important;
 	height: 28px !important;
@@ -69,7 +69,7 @@
 #PanelUI-panic-view-button,
 .tracking-protection-button,
 .dialog-button {
-	padding: 2px 10px !important;
+	padding: var(--macos-menu-item-padding) !important;
 	text-align: left !important;
 }
 
@@ -136,7 +136,7 @@ menulist:hover .menulist-label-box,
 .tracking-protection-button:hover,
 .dialog-button:hover {
 	outline: 0 !important;
-	background: var(--whitesur-button-hover-background) !important;
+	background: var(--macos-button-hover-background) !important;
 }
 
 /* Active buttons */
@@ -166,9 +166,9 @@ menulist[open] .menulist-label-box,
 #identity-popup-security-expander:active,
 .tracking-protection-button:active,
 .dialog-button:active {
-	background: var(--whitesur-button-active-background) !important;
-	box-shadow: var(--whitesur-button-active-box-shadow) !important;
-	border-color: var(--whitesur-button-active-border-color) !important;
+	background: var(--macos-button-active-background) !important;
+	box-shadow: var(--macos-button-active-box-shadow) !important;
+	border-color: var(--macos-button-active-border-color) !important;
 }
 
 menulist > menupopup > menuitem:is([checked="true"], [selected="true"])::before {
@@ -182,7 +182,7 @@ menupopup > menucaption,
 menupopup > menu {
 	max-width: none;
 	border-radius: 4px !important;
-	color: var(--whitesur-button-menulist-color) !important;
+	color: var(--macos-button-menulist-color) !important;
 }
 
 menupopup > menuitem[_moz-menuactive="true"]:not(:hover) {
@@ -194,9 +194,9 @@ menupopup > menuitem[_moz-menuactive="true"]:not(:hover) {
 #appMenu-popup .toolbaritem-combined-buttons toolbarbutton[disabled],
 #context-navigation menuitem[disabled],
 #webRTC-shareDevices-notification > .popup-notification-button-container > .popup-notification-primary-button[disabled] {
-	background: var(--whitesur-button-disabled-background) !important;
-	border-color: var(--whitesur-button-disabled-border-color) !important;
-	box-shadow: var(--whitesur-button-disabled-box-shadow) !important;
+	background: var(--macos-button-disabled-background) !important;
+	border-color: var(--macos-button-disabled-border-color) !important;
+	box-shadow: var(--macos-button-disabled-box-shadow) !important;
 	opacity: 1 !important;
 }
 
@@ -207,16 +207,16 @@ menupopup > menuitem[_moz-menuactive="true"]:not(:hover) {
 }
 
 #appMenu-popup .toolbaritem-combined-buttons toolbarbutton[disabled]:hover {
-	background: var(--whitesur-button-disabled-background) !important;
+	background: var(--macos-button-disabled-background) !important;
 }
 
 /* Inactive window buttons */
 .findbar-container toolbarbutton:-moz-window-inactive,
 #sidebar-switcher-target:-moz-window-inactive,
 #viewButton:-moz-window-inactive {
-	background: var(--whitesur-inactive-button-background) !important;
-	box-shadow: var(--whitesur-inactive-button-box-shadow) !important;
-	border-color: var(--whitesur-inactive-button-border-color) !important;
+	background: var(--macos-inactive-button-background) !important;
+	box-shadow: var(--macos-inactive-button-box-shadow) !important;
+	border-color: var(--macos-inactive-button-border-color) !important;
 }
 
 /* Flat buttons */
@@ -229,9 +229,9 @@ menupopup > menuitem[_moz-menuactive="true"]:not(:hover) {
 }
 
 .subviewbutton-back:not(#hack):not(:active):hover {
-	box-shadow: var(--whitesur-button-box-shadow) !important;
-	border-color: var(--whitesur-button-border-color) !important;
-	border-bottom-color: var(--whitesur-button-border-accent-color) !important;
+	box-shadow: var(--macos-button-box-shadow) !important;
+	border-color: var(--macos-button-border-color) !important;
+	border-bottom-color: var(--macos-button-border-accent-color) !important;
 }
 
 .close-icon:not(.tab-close-button) {
@@ -279,7 +279,7 @@ menupopup > menuitem[_moz-menuactive="true"]:not(:hover) {
 #TabsToolbar .toolbarbutton-1:active,
 #TabsToolbar .toolbarbutton-1[open] {
 	outline: 0 !important;
-	background: var(--whitesur-headerbar-button-active-background) !important;
+	background: var(--macos-headerbar-button-active-background) !important;
 }
 
 /* Circle buttons */
@@ -332,25 +332,25 @@ button.popup-notification-primary-button,
 #editBookmarkPanelDoneButton,
 #tracking-action-block {
 	color: #ffffff !important;
-	background: var(--whitesur-button-suggested-action-background) !important;
-	border-color: var(--whitesur-button-suggested-action-border-color) !important;
-	border-bottom-color: var(--whitesur-button-suggested-action-border-accent-color) !important;
-	box-shadow: var(--whitesur-button-suggested-action-box-shadow) !important;
+	background: var(--macos-button-suggested-action-background) !important;
+	border-color: var(--macos-button-suggested-action-border-color) !important;
+	border-bottom-color: var(--macos-button-suggested-action-border-accent-color) !important;
+	box-shadow: var(--macos-button-suggested-action-box-shadow) !important;
 	text-shadow: 0 -1px #0000008f !important;
 }
 
 #appMenu-popup .panel-banner-item[notificationid="update-restart"]:hover,
 button.popup-notification-primary-button.popup-notification-button:hover,
 #editBookmarkPanelDoneButton:hover {
-	background: var(--whitesur-button-suggested-action-hover-background) !important;
+	background: var(--macos-button-suggested-action-hover-background) !important;
 }
 
 #appMenu-popup .panel-banner-item[notificationid="update-restart"]:active,
 button.popup-notification-primary-button.popup-notification-button:active,
 #editBookmarkPanelDoneButton:active {
-	background: var(--whitesur-button-suggested-action-active-background) !important;
-	border-color: var(--whitesur-button-suggested-action-active-border-color) !important;
-	box-shadow: var(--whitesur-button-suggested-action-active-box-shadow) !important;
+	background: var(--macos-button-suggested-action-active-background) !important;
+	border-color: var(--macos-button-suggested-action-active-border-color) !important;
+	box-shadow: var(--macos-button-suggested-action-active-box-shadow) !important;
 	text-shadow: none !important;
 }
 
@@ -359,37 +359,33 @@ button.popup-notification-primary-button.popup-notification-button:active,
 #editBookmarkPanelRemoveButton,
 #PanelUI-panic-view-button {
 	color: #ffffff !important;
-	background: var(--whitesur-button-destructive-action-background) !important;
-	border-color: var(--whitesur-button-destructive-action-border-color) !important;
-	border-bottom-color: var(--whitesur-button-destructive-action-border-accent-color) !important;
-	box-shadow: var(--whitesur-button-destructive-action-box-shadow) !important;
+	background: var(--macos-button-destructive-action-background) !important;
+	border-color: var(--macos-button-destructive-action-border-color) !important;
+	border-bottom-color: var(--macos-button-destructive-action-border-accent-color) !important;
+	box-shadow: var(--macos-button-destructive-action-box-shadow) !important;
 	text-shadow: 0 -1px #0000008e !important;
 }
 
 #editBookmarkPanelRemoveButton:hover,
 .identity-popup-permission-remove-button:not(#hack):hover,
 #PanelUI-panic-view-button:hover {
-	background: var(--whitesur-button-destructive-action-hover-background) !important;
+	background: var(--macos-button-destructive-action-hover-background) !important;
 }
 
 #editBookmarkPanelRemoveButton:active,
 .identity-popup-permission-remove-button:not(#hack):active,
 #PanelUI-panic-view-button:active {
-	background: var(--whitesur-button-destructive-action-active-background) !important;
-	border-color: var(--whitesur-button-destructive-action-active-border-color) !important;
-	box-shadow: var(--whitesur-button-destructive-action-active-box-shadow) !important;
+	background: var(--macos-button-destructive-action-active-background) !important;
+	border-color: var(--macos-button-destructive-action-active-border-color) !important;
+	box-shadow: var(--macos-button-destructive-action-active-box-shadow) !important;
 }
 
 .identity-popup-permission-remove-button:not(#hack):hover {
 	/* Is flat */
-	border-color: var(--whitesur-button-destructive-action-border-color) !important;
-	border-bottom-color: var(--whitesur-button-destructive-action-border-accent-color) !important;
-	box-shadow: var(--whitesur-button-destructive-action-box-shadow) !important;
+	border-color: var(--macos-button-destructive-action-border-color) !important;
+	border-bottom-color: var(--macos-button-destructive-action-border-accent-color) !important;
+	box-shadow: var(--macos-button-destructive-action-box-shadow) !important;
 }
-
-/* .identity-popup-permission-remove-button:not(#hack):hover .button-icon {
-	filter: invert(100%) brightness(200%);
-} */
 
 /* User sync menu, bigger avatar */
 

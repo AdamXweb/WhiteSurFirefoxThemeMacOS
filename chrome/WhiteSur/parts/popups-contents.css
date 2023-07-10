@@ -82,7 +82,7 @@
 }
 
 #downloadsPanel-mainView .download-state:hover {
-	background-color: var(--whitesur-popover-button-hover-background) !important;
+	background-color: var(--macos-menu-button-hover-background) !important;
 }
 
 #downloadsPanel-mainView .download-state:last-child {
@@ -137,19 +137,19 @@
 }
 
 #customization-panelWrapper > .panel-arrowcontent {
-	background: var(--whitesur-popover-background) !important;
+	background: var(--macos-menu-background) !important;
 }
 
 /* Confirmation Hint */
 
 #confirmation-hint .panel-arrowcontent {
-	background: var(--whitesur-button-suggested-action-background) !important;
-	border-color: var(--whitesur-button-suggested-action-border-color) !important;
+	background: var(--macos-button-suggested-action-background) !important;
+	border-color: var(--macos-button-suggested-action-border-color) !important;
 }
 
 #confirmation-hint .panel-arrow {
-	fill: var(--whitesur-button-suggested-action-border-color) !important;
-	stroke: var(--whitesur-button-suggested-action-border-color) !important;
+	fill: var(--macos-button-suggested-action-border-color) !important;
+	stroke: var(--macos-button-suggested-action-border-color) !important;
 }
 
 #confirmation-hint-message {
@@ -227,17 +227,17 @@
 	padding-bottom: 10px !important;
 }
 
-/* TODO: create custom --whitesur-list vars */
+/* TODO: create custom --macos-list vars */
 
 #identity-popup-permission-list:not(:empty) {
-	border: 1px solid var(--whitesur-button-border-color);
+	border: 1px solid var(--macos-button-border-color);
 	border-bottom: 0 !important;
 	padding: 0 !important;
 }
 
 .identity-popup-permission-item {
-	background: var(--whitesur-menu-background);
-	border-bottom: 1px solid var(--whitesur-button-border-color);
+	background: var(--macos-menu-background);
+	border-bottom: 1px solid var(--macos-button-border-color);
 	padding: 6px !important;
 	margin: 0 !important;
 }
@@ -262,8 +262,8 @@
 
 #protections-popup[hasException] #protections-popup-tp-switch-section,
 #protections-popup[hasException] #protections-popup-mainView-panel-header {
-	background: var(--whitesur-button-destructive-action-background) !important;
-	border-color: var(--whitesur-button-destructive-action-border-color) !important;
+	background: var(--macos-button-destructive-action-background) !important;
+	border-color: var(--macos-button-destructive-action-border-color) !important;
 }
 
 #protections-popup-no-trackers-found-description {

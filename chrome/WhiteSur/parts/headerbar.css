@@ -33,7 +33,7 @@
 	padding: 0 4px !important;
 	min-height: 26px !important;
 	min-width: 26px !important;
-	color: var(--whitesur-toolbar-color) !important;
+	color: var(--macos-toolbar-color) !important;
 	transition: background 200ms;
 }
 
@@ -41,7 +41,7 @@
 
 #nav-bar toolbarbutton:not(#allTabsMenu-searchTabs):not(.all-tabs-button):not(.all-tabs-secondary-button):not([checked]):not([disabled]):hover {
 	outline: 0 !important;
-	background: var(--whitesur-headerbar-button-hover-background) !important;
+	background: var(--macos-headerbar-button-hover-background) !important;
 }
 
 /* Active headerbar buttons */
@@ -56,7 +56,7 @@
 	toolbarbutton:not(#allTabsMenu-searchTabs):not(.all-tabs-button):not(.all-tabs-secondary-button):not(#urlbar-zoom-button):not(
 		[disabled]
 	)[checked] {
-	background: var(--whitesur-headerbar-button-active-background) !important;
+	background: var(--macos-headerbar-button-active-background) !important;
 }
 
 /* Buttons with margins */
@@ -86,11 +86,11 @@
 #nav-bar #urlbar #urlbar-input-container {
 	appearance: none;
 	-moz-appearance: none !important;
-	background: var(--whitesur-urlbar-background) !important;
+	background: var(--macos-urlbar-background) !important;
 	border: none !important;
-	box-shadow: inset 0 0 0 1px var(--whitesur-hover-urlbar-border-color) !important;
+	box-shadow: inset 0 0 0 1px var(--macos-hover-urlbar-border-color) !important;
 	border-radius: var(--macos-toolbar-border-radius) !important;
-	color: var(--whitesur-urlbar-color) !important;
+	color: var(--macos-urlbar-color) !important;
 	padding: 0 6px !important;
 	height: 32px !important;
 	max-height: 32px !important;
@@ -113,6 +113,6 @@
 #nav-bar #searchbar:focus-within,
 #urlbar[focused] #urlbar-input-container {
 	border: none !important;
-	background: var(--whitesur-urlbar-background) !important;
-	box-shadow: inset 0 0 0 2px var(--whitesur-focused-urlbar-highlight-color) !important;
+	background: var(--macos-urlbar-background) !important;
+	box-shadow: inset 0 0 0 2px var(--macos-focused-urlbar-highlight-color) !important;
 }

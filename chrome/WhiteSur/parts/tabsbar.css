@@ -74,26 +74,26 @@ tab > stack {
 /* Tab labels */
 
 tab {
-	color: var(--whitesur-tabbar-tab-color) !important;
+	color: var(--macos-tabbar-tab-color) !important;
 	font-family: Cantarell, inherit;
 	font-weight: bold;
 	font-size: 1em;
 }
 
 tab:hover {
-	color: var(--whitesur-tabbar-tab-hover-color) !important;
+	color: var(--macos-tabbar-tab-hover-color) !important;
 }
 
 tab[selected] {
-	color: var(--whitesur-tabbar-tab-active-color) !important;
+	color: var(--macos-tabbar-tab-active-color) !important;
 }
 
 tab:-moz-window-inactive {
-	color: var(--whitesur-inactive-tabbar-tab-color) !important;
+	color: var(--macos-inactive-tabbar-tab-color) !important;
 }
 
 tab[selected]:-moz-window-inactive {
-	color: var(--whitesur-inactive-tabbar-tab-active-color) !important;
+	color: var(--macos-inactive-tabbar-tab-active-color) !important;
 }
 
 /* Center all inside tab */
@@ -174,7 +174,7 @@ tab[selected]:-moz-window-inactive {
 /* Close tab button */
 
 :root {
-	--whitesur-fill-icon: red !important;
+	--macos-fill-icon: red !important;
 }
 
 .close-icon {
@@ -215,13 +215,13 @@ stack[soundplaying="true"] + .tab-label-container[textoverflow] {
 }
 
 :root:not(:-moz-window-inactive) .tab-close-button:hover {
-	background-color: var(--whitesur-button-hover-color) !important;
+	background-color: var(--macos-button-hover-color) !important;
 	border: none !important;
 	opacity: 1;
 }
 
 :root:not(:-moz-window-inactive) .tab-close-button:active {
-	background-color: var(--whitesur-button-active-color) !important;
+	background-color: var(--macos-button-active-color) !important;
 }
 
 .tab-close-button:active:not(:hover) {
@@ -264,7 +264,7 @@ stack[soundplaying="true"] + .tab-label-container[textoverflow] {
 /* change background of tabs based on mode to not rely on theme */
 
 .tab-background {
-	background-color: var(--whitesur-tabbar-tab-background) !important;
+	background-color: var(--macos-tabbar-tab-background) !important;
 	outline: none !important;
 	transition: all 200ms;
 }
@@ -275,19 +275,19 @@ toolbar .toolbarbutton-1 {
 
 #TabsToolbar .toolbarbutton-1 {
 	opacity: 1 !important;
-	background: var(--whitesur-tabbar-tab-background) !important;
-	background-color: var(--whitesur-tabbar-tab-background) !important;
+	background: var(--macos-tabbar-tab-background) !important;
+	background-color: var(--macos-tabbar-tab-background) !important;
 }
 
 #TabsToolbar .toolbarbutton-1:hover {
-	background: var(--whitesur-tabbar-tab-hover-background) !important;
-	background-color: var(--whitesur-tabbar-tab-hover-background) !important;
+	background: var(--macos-tabbar-tab-hover-background) !important;
+	background-color: var(--macos-tabbar-tab-hover-background) !important;
 }
 
 /* Active tab */
 
 .tab-background[selected="true"] {
-	background-color: var(--whitesur-tabbar-tab-active-background) !important;
+	background-color: var(--macos-tabbar-tab-active-background) !important;
 	background-image: none !important;
 	border: none !important;
 	border-image: none !important;
@@ -297,14 +297,14 @@ toolbar .toolbarbutton-1 {
 }
 
 .tab-background[selected="true"]:-moz-window-inactive {
-	background-color: var(--whitesur-inactive-tabbar-tab-active-background) !important;
+	background-color: var(--macos-inactive-tabbar-tab-active-background) !important;
 	border-image: none !important;
 }
 
 /* Tab hover */
 
 #TabsToolbar .tabbrowser-tab:hover > .tab-stack > .tab-background:not([selected="true"]) {
-	background-color: var(--whitesur-tabbar-tab-active-hover-background) !important;
+	background-color: var(--macos-tabbar-tab-active-hover-background) !important;
 	border-image: none !important;
 	box-shadow: none !important;
 }
@@ -313,7 +313,7 @@ toolbar .toolbarbutton-1 {
 
 #TabsToolbar .scrollbutton-up:not([disabled]):hover,
 #TabsToolbar .scrollbutton-down:not([disabled]):hover {
-	background-color: var(--whitesur-tabbar-tab-active-hover-background) !important;
+	background-color: var(--macos-tabbar-tab-active-hover-background) !important;
 }
 
 /* Full width tabs */
@@ -476,7 +476,7 @@ toolbar .toolbarbutton-1 {
 
 .tabbrowser-tab > .tab-stack > .tab-background:not([selected="true"]),
 #TabsToolbar-customization-target > toolbarbutton.toolbarbutton-1 {
-	border-top: 1px solid var(--whitesur-toolbar-border-color) !important;
+	border-top: 1px solid var(--macos-toolbar-border-color) !important;
 	transition: background-color 80ms !important;
 }
 
@@ -509,7 +509,7 @@ toolbar .toolbarbutton-1 {
 .all-tabs-item:hover:active,
 #allTabsMenu-searchTabs:hover,
 #allTabsMenu-searchTabs:hover:active {
-	background-color: var(--macos-menu-hover) !important;
+	background-color: var(--macos-menu-item-hover) !important;
 }
 
 .all-tabs-item:hover .toolbarbutton-text,
@@ -521,7 +521,7 @@ toolbar .toolbarbutton-1 {
 
 .all-tabs-item:hover:active,
 #allTabsMenu-searchTabs:hover:active {
-	background-color: var(--macos-menu-hover) !important;
+	background-color: var(--macos-menu-item-hover) !important;
 }
 
 /*Inactive tab title*/

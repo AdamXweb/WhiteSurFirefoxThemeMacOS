@@ -11,12 +11,12 @@
 
 #navigator-toolbox {
 	border: 0 !important;
-	background: var(--whitesur-tabstoolbar-background) !important;
+	background: var(--macos-tabstoolbar-background) !important;
 }
 
 .toolbarbutton-icon {
 	color: inherit;
-	fill: var(--whitesur-toolbar-color);
+	fill: var(--macos-toolbar-color);
 }
 
 #nav-bar toolbarbutton > * {
@@ -27,27 +27,27 @@
 #PersonalToolbar,
 #toolbar-menubar {
 	border: 0 !important;
-	color: var(--whitesur-toolbar-color);
-	background: var(--whitesur-toolbar-background) !important;
+	color: var(--macos-toolbar-color);
+	background: var(--macos-toolbar-background) !important;
 	border-bottom: none !important;
 }
 
 #TabsToolbar {
-	background: var(--whitesur-tabstoolbar-background) !important;
+	background: var(--macos-tabstoolbar-background) !important;
 	border: 0 !important;
-	border-bottom: 1px solid var(--whitesur-toolbar-border-color) !important;
+	border-bottom: 1px solid var(--macos-toolbar-border-color) !important;
 }
 
 findbar {
 	border: 0 !important;
-	background: var(--whitesur-findbar-background) !important;
-	border-bottom: 1px solid var(--whitesur-toolbar-border-color) !important;
+	background: var(--macos-findbar-background) !important;
+	border-bottom: 1px solid var(--macos-toolbar-border-color) !important;
 }
 
 #nav-bar:-moz-window-inactive,
 #PersonalToolbar:-moz-window-inactive,
 #toolbar-menubar:-moz-window-inactive {
-	background: var(--whitesur-inactive-toolbar-background) !important;
+	background: var(--macos-inactive-toolbar-background) !important;
 }
 
 #navigator-toolbox:-moz-window-inactive label,

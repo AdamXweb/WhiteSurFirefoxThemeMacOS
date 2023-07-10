@@ -1,13 +1,13 @@
 @namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
-/* Variables that start with --whitesur- are added by me and are assigned
+/* Variables that start with --macos- are added by me and are assigned
  * to elements somewhere in this code. The rest of the variables are
  * built-in in Firefox, so you need to add an !important if you wanna
  * override them. */
 
 :root {
 	/* Browser area before a page starts loading */
-	--whitesur-browser-before-load-background: #1e1e1e;
+	--macos-browser-before-load-background: #1e1e1e;
 	--theme-primary-color: #315bef !important;
 	--theme-primary-color-hover: #3863ff;
 	--theme-alt-color: #fff;
@@ -15,123 +15,124 @@
 	--in-content-link-color-hover: var(--theme-primary-color-hover) !important;
 
 	/* Toolbars */
-	--whitesur-toolbar-background: var(--toolbar-bgcolor);
-	--whitesur-tabstoolbar-background: var(--lwt-accent-color);
-	--whitesur-findbar-background: var(--lwt-accent-color);
-	--whitesur-toolbar-color: var(--toolbar-color);
-	--whitesur-toolbar-border-color: var(--chrome-content-separator-color);
-	--whitesur-inactive-toolbar-background: var(--toolbar-bgcolor);
-	--whitesur-inactive-toolbar-border-color: #121212;
+	--macos-toolbar-background: var(--toolbar-bgcolor);
+	--macos-tabstoolbar-background: var(--lwt-accent-color);
+	--macos-findbar-background: var(--lwt-accent-color);
+	--macos-toolbar-color: var(--toolbar-color);
+	--macos-toolbar-border-color: var(--chrome-content-separator-color);
+	--macos-inactive-toolbar-background: var(--toolbar-bgcolor);
+	--macos-inactive-toolbar-border-color: #121212;
 
 	/* Sidebar */
-	--whitesur-sidebar-background: var(--lwt-accent-color);
-	--whitesur-inactive-sidebar-background: var(--lwt-accent-color);
-	--whitesur-sidebar-color: var(--lwt-text-color);
+	--macos-sidebar-background: var(--lwt-accent-color);
+	--macos-inactive-sidebar-background: var(--lwt-accent-color);
+	--macos-sidebar-color: var(--lwt-text-color);
 
-	/* Popups */
-	--whitesur-menu-background: color-mix(in srgb, #292929 70%, var(--toolbar-field-focus-background-color));
-	--whitesur-menu-border-color: var(--chrome-content-separator-color);
-	--whitesur-popover-background: color-mix(in srgb, #292929 70%, var(--toolbar-field-focus-background-color));
-	--whitesur-popover-border-color: var(--chrome-content-separator-color);
-	--whitesur-popover-shadow: 0 5px 8px #0000004d, inset 0 0 0 1px #ffffff0f;
-	--whitesur-popover-button-hover-background: var(--toolbarbutton-hover-background);
-	--whitesur-popover-button-active-background: var(--toolbarbutton-active-background);
-	--whitesur-popover-separator-color: #0000001a;
+	/* Popups and menus */
+	--macos-menu-background: color-mix(in srgb, #292929 70%, var(--toolbar-field-focus-background-color));
+	--macos-menu-border-color: #ffffff33;
+	--macos-menu-outline-color: #101010;
+	--macos-menu-shadow: 0 5px 8px #0000004d, inset 0 0 0 1px #ffffff0f;
+	--macos-menu-button-hover-background: #ffffff33;
+	--macos-menu-button-active-background: #ffffff49;
+	--macos-menu-item-hover: #2556b9;
+	--macos-menu-item-hover-color: #fff;
+	--macos-menu-separator-color: #ffffff33;
 
 	/* Header bar */
-	--whitesur-headerbar-background: var(--toolbar-bgcolor);
-	--whitesur-headerbar-border-color: var(--chrome-content-separator-color);
-	--whitesur-headerbar-box-shadow: inset 0 1px #ffffff26;
-	--whitesur-inactive-headerbar-background: var(--toolbar-bgcolor);
-	--whitesur-inactive-headerbar-border-color: #212121;
-	--whitesur-inactive-headerbar-box-shadow: inset 0 1px #ffffff14;
+	--macos-headerbar-background: var(--toolbar-bgcolor);
+	--macos-headerbar-border-color: var(--chrome-content-separator-color);
+	--macos-headerbar-box-shadow: inset 0 1px #ffffff26;
+	--macos-inactive-headerbar-background: var(--toolbar-bgcolor);
+	--macos-inactive-headerbar-border-color: #212121;
+	--macos-inactive-headerbar-box-shadow: inset 0 1px #ffffff14;
 
 	/* Buttons */
-	--whitesur-button-background: linear-gradient(to top, #636363 0%, #696969 100%);
-	--whitesur-button-border-color: #282828;
-	--whitesur-button-border-accent-color: #282828;
-	--whitesur-button-box-shadow: inset 0 1px #ffffff1a;
-	--whitesur-button-hover-color: #ffffff1a;
-	--whitesur-button-active-color: #ffffff33;
-	--whitesur-button-hover-background: linear-gradient(to top, #707070 0%, #737373 100%);
-	--whitesur-button-active-background-alt: #707070 !important;
-	--whitesur-button-active-background-alt-border: #737373 !important;
-	--whitesur-button-active-background-alt-hover: #9b9b9b !important;
-	--whitesur-button-active-background: #464646;
-	--whitesur-button-active-border-color: #1b1b1b;
-	--whitesur-button-active-border-accent-color: #1b1b1b;
-	--whitesur-button-active-box-shadow: inset 0 1px #ffffff1a;
-	--whitesur-button-disabled-background: #505050;
-	--whitesur-button-disabled-border-color: #323232;
-	--whitesur-button-disabled-box-shadow: inset 0 1px #ffffff08;
-	--whitesur-inactive-button-background: linear-gradient(#383838, #383838);
-	--whitesur-inactive-button-border-color: #323232;
-	--whitesur-inactive-button-box-shadow: inset 0 1px #ffffff00;
-	--whitesur-button-suggested-action-background: #15539e;
-	--whitesur-button-suggested-action-border-color: #0f3b71;
-	--whitesur-button-suggested-action-border-accent-color: #092444;
-	--whitesur-button-suggested-action-box-shadow: inset 0 1px #ffffff14;
-	--whitesur-button-suggested-action-hover-background: #2073d8;
-	--whitesur-button-suggested-action-active-background: #103e75;
-	--whitesur-button-suggested-action-active-border-color: #0f3b71;
-	--whitesur-button-suggested-action-active-box-shadow: inset 0 1px #ffffff0d;
-	--whitesur-button-destructive-action-background: linear-gradient(to top, #ae151c 2px, #b2161d);
-	--whitesur-button-destructive-action-border-color: #851015;
-	--whitesur-button-destructive-action-border-accent-color: #570b0e;
-	--whitesur-button-destructive-action-box-shadow: inset 0 1px #ffffff05, 0 1px 2px #00000012;
-	--whitesur-button-destructive-action-hover-background: linear-gradient(to top, #ae151c, #b7161d 1px);
-	--whitesur-button-destructive-action-active-background: #8a1116;
-	--whitesur-button-destructive-action-active-border-color: #851015;
-	--whitesur-button-destructive-action-active-box-shadow: inset 0 1px #ffffff00;
-	--whitesur-button-menulist-color: #fff;
-	--whitesur-headerbar-button-hover-background: var(--toolbarbutton-hover-background);
-	--whitesur-headerbar-button-active-background: var(--toolbarbutton-active-background);
+	--macos-button-background: linear-gradient(to top, #636363 0%, #696969 100%);
+	--macos-button-border-color: #282828;
+	--macos-button-border-accent-color: #282828;
+	--macos-button-box-shadow: inset 0 1px #ffffff1a;
+	--macos-button-hover-color: #ffffff1a;
+	--macos-button-active-color: #ffffff33;
+	--macos-button-hover-background: linear-gradient(to top, #707070 0%, #737373 100%);
+	--macos-button-active-background-alt: #707070 !important;
+	--macos-button-active-background-alt-border: #737373 !important;
+	--macos-button-active-background-alt-hover: #9b9b9b !important;
+	--macos-button-active-background: #464646;
+	--macos-button-active-border-color: #1b1b1b;
+	--macos-button-active-border-accent-color: #1b1b1b;
+	--macos-button-active-box-shadow: inset 0 1px #ffffff1a;
+	--macos-button-disabled-background: #505050;
+	--macos-button-disabled-border-color: #323232;
+	--macos-button-disabled-box-shadow: inset 0 1px #ffffff08;
+	--macos-inactive-button-background: linear-gradient(#383838, #383838);
+	--macos-inactive-button-border-color: #323232;
+	--macos-inactive-button-box-shadow: inset 0 1px #ffffff00;
+	--macos-button-suggested-action-background: #15539e;
+	--macos-button-suggested-action-border-color: #0f3b71;
+	--macos-button-suggested-action-border-accent-color: #092444;
+	--macos-button-suggested-action-box-shadow: inset 0 1px #ffffff14;
+	--macos-button-suggested-action-hover-background: #2073d8;
+	--macos-button-suggested-action-active-background: #103e75;
+	--macos-button-suggested-action-active-border-color: #0f3b71;
+	--macos-button-suggested-action-active-box-shadow: inset 0 1px #ffffff0d;
+	--macos-button-destructive-action-background: linear-gradient(to top, #ae151c 2px, #b2161d);
+	--macos-button-destructive-action-border-color: #851015;
+	--macos-button-destructive-action-border-accent-color: #570b0e;
+	--macos-button-destructive-action-box-shadow: inset 0 1px #ffffff05, 0 1px 2px #00000012;
+	--macos-button-destructive-action-hover-background: linear-gradient(to top, #ae151c, #b7161d 1px);
+	--macos-button-destructive-action-active-background: #8a1116;
+	--macos-button-destructive-action-active-border-color: #851015;
+	--macos-button-destructive-action-active-box-shadow: inset 0 1px #ffffff00;
+	--macos-button-menulist-color: #fff;
+	--macos-headerbar-button-hover-background: var(--toolbarbutton-hover-background);
+	--macos-headerbar-button-active-background: var(--toolbarbutton-active-background);
 
 	/* URL bar */
-	--whitesur-urlbar-background: var(--toolbar-field-background-color);
-	--whitesur-urlbar-border-color: var(--chrome-content-separator-color);
-	--whitesur-urlbar-box-shadow: inset 0 0 0 1px #15539e00;
-	--whitesur-urlbar-color: var(--toolbar-field-color);
-	--whitesur-hover-urlbar-border-color: var(--chrome-content-separator-color);
-	--whitesur-inactive-urlbar-background: var(--toolbar-field-background-color);
-	--whitesur-inactive-urlbar-border-color: var(--chrome-content-separator-color);
-	--whitesur-inactive-urlbar-box-shadow: none;
-	--whitesur-inactive-urlbar-color: var(--toolbar-field-color);
-	--whitesur-focused-urlbar-border-color: #338cbe;
-	--whitesur-focused-urlbar-highlight-color: #006ea0;
-	--whitesur-private-urlbar-background: var(--toolbar-field-background-color);
+	--macos-urlbar-background: var(--toolbar-field-background-color);
+	--macos-urlbar-border-color: var(--chrome-content-separator-color);
+	--macos-urlbar-box-shadow: inset 0 0 0 1px #15539e00;
+	--macos-urlbar-color: var(--toolbar-field-color);
+	--macos-hover-urlbar-border-color: var(--chrome-content-separator-color);
+	--macos-inactive-urlbar-background: var(--toolbar-field-background-color);
+	--macos-inactive-urlbar-border-color: var(--chrome-content-separator-color);
+	--macos-inactive-urlbar-box-shadow: none;
+	--macos-inactive-urlbar-color: var(--toolbar-field-color);
+	--macos-focused-urlbar-border-color: #338cbe;
+	--macos-focused-urlbar-highlight-color: #006ea0;
+	--macos-private-urlbar-background: var(--toolbar-field-background-color);
 	/* --urlbar-box-bgcolor: var(--toolbarbutton-hover-background) !important; */
 	--urlbar-icon-border-radius: var(--macos-toolbar-border-radius) !important;
 
 	/* Tabs */
-	--whitesur-tabbar-tab-background: transparent;
-	--whitesur-tabbar-tab-color: var(--lwt-tab-text, var(--toolbar-color));
-	--whitesur-tabbar-tab-hover-background: color-mix(in srgb, var(--toolbar-bgcolor) 50%, transparent);
-	--whitesur-tabbar-tab-hover-border-bottom-color: #1b1b1b;
-	--whitesur-tabbar-tab-hover-color: var(--lwt-tab-text, var(--toolbar-color));
-	--whitesur-tabbar-tab-active-background: var(--toolbar-bgcolor);
-	--whitesur-tabbar-tab-active-color: var(--lwt-tab-text, var(--toolbar-color));
-	--whitesur-tabbar-tab-active-hover-background: color-mix(in srgb, var(--toolbar-bgcolor) 50%, transparent);
-	--whitesur-inactive-tabbar-tab-color: var(--lwt-tab-text, var(--toolbar-color));
-	--whitesur-inactive-tabbar-tab-active-background: var(--toolbar-bgcolor);
-	--whitesur-inactive-tabbar-tab-active-border-bottom-color: #15539e;
-	--whitesur-inactive-tabbar-tab-active-color: var(--lwt-tab-text, var(--toolbar-color));
+	--macos-tabbar-tab-background: transparent;
+	--macos-tabbar-tab-color: var(--lwt-tab-text, var(--toolbar-color));
+	--macos-tabbar-tab-hover-background: color-mix(in srgb, var(--toolbar-bgcolor) 50%, transparent);
+	--macos-tabbar-tab-hover-border-bottom-color: #1b1b1b;
+	--macos-tabbar-tab-hover-color: var(--lwt-tab-text, var(--toolbar-color));
+	--macos-tabbar-tab-active-background: var(--toolbar-bgcolor);
+	--macos-tabbar-tab-active-color: var(--lwt-tab-text, var(--toolbar-color));
+	--macos-tabbar-tab-active-hover-background: color-mix(in srgb, var(--toolbar-bgcolor) 50%, transparent);
+	--macos-inactive-tabbar-tab-color: var(--lwt-tab-text, var(--toolbar-color));
+	--macos-inactive-tabbar-tab-active-background: var(--toolbar-bgcolor);
+	--macos-inactive-tabbar-tab-active-border-bottom-color: #15539e;
+	--macos-inactive-tabbar-tab-active-color: var(--lwt-tab-text, var(--toolbar-color));
 
 	/* Switch */
-	--whitesur-switch-background: #282828;
-	--whitesur-switch-border-color: #1b1b1b;
-	--whitesur-switch-slider-background: linear-gradient(to bottom, #3c3c3c 20%, #353535 90%);
-	--whitesur-switch-slider-border-color: #111111;
-	--whitesur-switch-slider-box-shadow: inset 0 1px #ffffff05, 0 1px #0000001a, 0 1px 2px #00000012;
-	--whitesur-switch-active-background: #15539e;
-	--whitesur-switch-active-border-color: #030c17;
-	--whitesur-switch-active-slider-border-color: #030c17;
+	--macos-switch-background: #282828;
+	--macos-switch-border-color: #1b1b1b;
+	--macos-switch-slider-background: linear-gradient(to bottom, #3c3c3c 20%, #353535 90%);
+	--macos-switch-slider-border-color: #111111;
+	--macos-switch-slider-box-shadow: inset 0 1px #ffffff05, 0 1px #0000001a, 0 1px 2px #00000012;
+	--macos-switch-active-background: #15539e;
+	--macos-switch-active-border-color: #030c17;
+	--macos-switch-active-slider-border-color: #030c17;
 }
 
 @media (prefers-color-scheme: light) {
 	:root {
 		/* Browser area before a page starts loading */
-		--whitesur-browser-before-load-background: #f5f5f5;
+		--macos-browser-before-load-background: #f5f5f5;
 		--theme-primary-color: #315bef;
 		--theme-primary-color-hover: #3863ff;
 		--theme-alt-color: #fff;
@@ -139,151 +140,117 @@
 		--in-content-link-color-hover: var(--theme-primary-color-hover) !important;
 
 		/* Toolbars */
-		--whitesur-toolbar-background: var(--toolbar-bgcolor);
-		--whitesur-tabstoolbar-background: var(--lwt-accent-color);
-		--whitesur-findbar-background: var(--lwt-accent-color);
-		--whitesur-toolbar-color: var(--toolbar-color);
-		--whitesur-toolbar-border-color: var(--chrome-content-separator-color);
-		--whitesur-inactive-toolbar-color: #2e343659;
-		--whitesur-inactive-toolbar-background: var(--toolbar-bgcolor);
-		--whitesur-inactive-toolbar-border-color: #dadada;
+		--macos-toolbar-background: var(--toolbar-bgcolor);
+		--macos-tabstoolbar-background: var(--lwt-accent-color);
+		--macos-findbar-background: var(--lwt-accent-color);
+		--macos-toolbar-color: var(--toolbar-color);
+		--macos-toolbar-border-color: var(--chrome-content-separator-color);
+		--macos-inactive-toolbar-color: #2e343659;
+		--macos-inactive-toolbar-background: var(--toolbar-bgcolor);
+		--macos-inactive-toolbar-border-color: #dadada;
 
 		/* Sidebar */
-		--whitesur-sidebar-background: var(--lwt-accent-color);
-		--whitesur-inactive-sidebar-background: var(--lwt-accent-color);
-		--whitesur-sidebar-color: var(--lwt-text-color);
+		--macos-sidebar-background: var(--lwt-accent-color);
+		--macos-inactive-sidebar-background: var(--lwt-accent-color);
+		--macos-sidebar-color: var(--lwt-text-color);
 
 		/* Popups */
-		--whitesur-menu-background: color-mix(in srgb, #e6e6e6 72%, var(--toolbar-field-focus-background-color));
-		--whitesur-menu-border-color: var(--chrome-content-separator-color);
-		--whitesur-popover-background: color-mix(in srgb, #e6e6e6 72%, var(--toolbar-field-focus-background-color));
-		--whitesur-popover-border-color: var(--chrome-content-separator-color);
-		--whitesur-popover-shadow: 0 5px 8px #0000004d;
-		--whitesur-popover-button-hover-background: #0000001a;
-		--whitesur-popover-button-active-background: #00000033;
-		--whitesur-popover-separator-color: #0000001a;
+		--macos-menu-background: color-mix(in srgb, #e6e6e6 72%, var(--toolbar-field-focus-background-color));
+		--macos-menu-border-color: transparent;
+		--macos-menu-outline-color: #c8c8c8;
+		--macos-menu-shadow: 0 5px 8px #0000004d;
+		--macos-menu-button-hover-background: #00000033;
+		--macos-menu-button-active-background: #0000004d;
+		--macos-menu-item-hover: #55a1ff;
+		--macos-menu-item-hover-color: #fff;
+		--macos-menu-separator-color: #00000033;
 
 		/* Header bar */
-		--whitesur-headerbar-background: var(--toolbar-bgcolor);
-		--whitesur-headerbar-border-color: var(--chrome-content-separator-color);
-		--whitesur-headerbar-box-shadow: 0 1px #ffffffa6 inset;
-		--whitesur-inactive-headerbar-background: var(--toolbar-bgcolor);
-		--whitesur-inactive-headerbar-border-color: #dadada;
-		--whitesur-inactive-headerbar-box-shadow: 0 1px #fff inset;
+		--macos-headerbar-background: var(--toolbar-bgcolor);
+		--macos-headerbar-border-color: var(--chrome-content-separator-color);
+		--macos-headerbar-box-shadow: 0 1px #ffffffa6 inset;
+		--macos-inactive-headerbar-background: var(--toolbar-bgcolor);
+		--macos-inactive-headerbar-border-color: #dadada;
+		--macos-inactive-headerbar-box-shadow: 0 1px #fff inset;
 
 		/* Buttons */
-		--whitesur-button-background: linear-gradient(to top, #f1f1f1 0%, #fdfdfd 95%, #fefefe 100%);
-		--whitesur-button-border-color: #cdc7c2;
-		--whitesur-button-border-accent-color: #b2b2b1;
-		--whitesur-button-box-shadow: inset 0 1px white, 0 1px 2px #00000008;
-		--whitesur-button-hover-color: #0000001a;
-		--whitesur-button-active-color: #00000033;
-		--whitesur-button-hover-background: linear-gradient(to top, #fdfdfd 0%, #ffffff 100%);
-		--whitesur-button-active-background-alt: #f0f0f4 !important;
-		--whitesur-button-active-background-alt-border: #f0f0f4 !important;
-		--whitesur-button-active-background-alt-hover: #ffffff !important;
-		--whitesur-button-active-background: #cfcfcf;
-		--whitesur-button-active-border-color: #b2b2b1;
-		--whitesur-button-active-border-accent-color: #b2b2b1;
-		--whitesur-button-active-box-shadow: 0 1px #ffffff00 inset;
-		--whitesur-button-disabled-background: #faf9f8;
-		--whitesur-button-disabled-border-color: #cdc7c2;
-		--whitesur-button-disabled-box-shadow: inset 0 1px #ffffff00;
-		--whitesur-inactive-button-background: #f6f5f4;
-		--whitesur-inactive-button-border-color: #dadada;
-		--whitesur-inactive-button-box-shadow: 0 1px #ffffff00 inset, 0 1px #ffffff00;
-		--whitesur-button-suggested-action-background: #2379e2;
-		--whitesur-button-suggested-action-border-color: #1b6acb;
-		--whitesur-button-suggested-action-border-accent-color: #15539e;
-		--whitesur-button-suggested-action-box-shadow: inset 0 1px #ffffff1a, 0 1px 2px #00000012;
-		--whitesur-button-suggested-action-hover-background: #3584e4;
-		--whitesur-button-suggested-action-active-background: #1961b9;
-		--whitesur-button-suggested-action-active-border-color: #1b6acb;
-		--whitesur-button-suggested-action-active-box-shadow: inset 0 1px #ffffff00;
-		--whitesur-button-destructive-action-background: linear-gradient(to top, #ce1921 2px, #e01b24);
-		--whitesur-button-destructive-action-border-color: #b2161d;
-		--whitesur-button-destructive-action-border-accent-color: #851015;
-		--whitesur-button-destructive-action-box-shadow: inset 0 1px #ffffff1a, 0 1px 2px #00000012;
-		--whitesur-button-destructive-action-hover-background: linear-gradient(to top, #e01b24, #e41c26 1px);
-		--whitesur-button-destructive-action-active-background: #a0131a;
-		--whitesur-button-destructive-action-active-border-color: #b2161d;
-		--whitesur-button-destructive-action-active-box-shadow: inset 0 1px #ffffff00;
-		--whitesur-button-menulist-color: #020202;
-		--whitesur-headerbar-button-hover-background: var(--toolbarbutton-hover-background);
-		--whitesur-headerbar-button-active-background: var(--toolbarbutton-active-background);
+		--macos-button-background: linear-gradient(to top, #f1f1f1 0%, #fdfdfd 95%, #fefefe 100%);
+		--macos-button-border-color: #cdc7c2;
+		--macos-button-border-accent-color: #b2b2b1;
+		--macos-button-box-shadow: inset 0 1px white, 0 1px 2px #00000008;
+		--macos-button-hover-color: #0000001a;
+		--macos-button-active-color: #00000033;
+		--macos-button-hover-background: linear-gradient(to top, #fdfdfd 0%, #ffffff 100%);
+		--macos-button-active-background-alt: #f0f0f4 !important;
+		--macos-button-active-background-alt-border: #f0f0f4 !important;
+		--macos-button-active-background-alt-hover: #ffffff !important;
+		--macos-button-active-background: #cfcfcf;
+		--macos-button-active-border-color: #b2b2b1;
+		--macos-button-active-border-accent-color: #b2b2b1;
+		--macos-button-active-box-shadow: 0 1px #ffffff00 inset;
+		--macos-button-disabled-background: #faf9f8;
+		--macos-button-disabled-border-color: #cdc7c2;
+		--macos-button-disabled-box-shadow: inset 0 1px #ffffff00;
+		--macos-inactive-button-background: #f6f5f4;
+		--macos-inactive-button-border-color: #dadada;
+		--macos-inactive-button-box-shadow: 0 1px #ffffff00 inset, 0 1px #ffffff00;
+		--macos-button-suggested-action-background: #2379e2;
+		--macos-button-suggested-action-border-color: #1b6acb;
+		--macos-button-suggested-action-border-accent-color: #15539e;
+		--macos-button-suggested-action-box-shadow: inset 0 1px #ffffff1a, 0 1px 2px #00000012;
+		--macos-button-suggested-action-hover-background: #3584e4;
+		--macos-button-suggested-action-active-background: #1961b9;
+		--macos-button-suggested-action-active-border-color: #1b6acb;
+		--macos-button-suggested-action-active-box-shadow: inset 0 1px #ffffff00;
+		--macos-button-destructive-action-background: linear-gradient(to top, #ce1921 2px, #e01b24);
+		--macos-button-destructive-action-border-color: #b2161d;
+		--macos-button-destructive-action-border-accent-color: #851015;
+		--macos-button-destructive-action-box-shadow: inset 0 1px #ffffff1a, 0 1px 2px #00000012;
+		--macos-button-destructive-action-hover-background: linear-gradient(to top, #e01b24, #e41c26 1px);
+		--macos-button-destructive-action-active-background: #a0131a;
+		--macos-button-destructive-action-active-border-color: #b2161d;
+		--macos-button-destructive-action-active-box-shadow: inset 0 1px #ffffff00;
+		--macos-button-menulist-color: #020202;
+		--macos-headerbar-button-hover-background: var(--toolbarbutton-hover-background);
+		--macos-headerbar-button-active-background: var(--toolbarbutton-active-background);
 
 		/* URL bar */
-		--whitesur-urlbar-background: var(--toolbar-field-background-color);
-		--whitesur-urlbar-border-color: var(--chrome-content-separator-color);
-		--whitesur-urlbar-box-shadow: 0 3px 3px #00000014, 0 5px 8px #0000000d, 0 8px 16px #00000008;
-		--whitesur-urlbar-color: var(--toolbar-field-color);
-		--whitesur-hover-urlbar-border-color: var(--chrome-content-separator-color);
-		--whitesur-inactive-urlbar-background: var(--toolbar-field-background-color);
-		--whitesur-inactive-urlbar-border-color: var(--chrome-content-separator-color);
-		--whitesur-inactive-urlbar-box-shadow: 0 3px 5px #0000000d;
-		--whitesur-inactive-urlbar-color: var(--toolbar-field-color);
-		--whitesur-focused-urlbar-border-color: #5683da;
-		--whitesur-focused-urlbar-highlight-color: #6592e9;
-		--whitesur-private-urlbar-background: var(--toolbar-field-background-color);
+		--macos-urlbar-background: var(--toolbar-field-background-color);
+		--macos-urlbar-border-color: var(--chrome-content-separator-color);
+		--macos-urlbar-box-shadow: 0 3px 3px #00000014, 0 5px 8px #0000000d, 0 8px 16px #00000008;
+		--macos-urlbar-color: var(--toolbar-field-color);
+		--macos-hover-urlbar-border-color: var(--chrome-content-separator-color);
+		--macos-inactive-urlbar-background: var(--toolbar-field-background-color);
+		--macos-inactive-urlbar-border-color: var(--chrome-content-separator-color);
+		--macos-inactive-urlbar-box-shadow: 0 3px 5px #0000000d;
+		--macos-inactive-urlbar-color: var(--toolbar-field-color);
+		--macos-focused-urlbar-border-color: #5683da;
+		--macos-focused-urlbar-highlight-color: #6592e9;
+		--macos-private-urlbar-background: var(--toolbar-field-background-color);
 		--urlbar-icon-border-radius: var(--macos-toolbar-border-radius) !important;
 
 		/* Tabs */
-		--whitesur-tabbar-tab-background: transparent;
-		--whitesur-tabbar-tab-color: var(--lwt-tab-text, var(--toolbar-color));
-		--whitesur-tabbar-tab-hover-background: color-mix(in srgb, var(--toolbar-bgcolor) 50%, transparent);
-		--whitesur-tabbar-tab-hover-border-bottom-color: #b6b6b3;
-		--whitesur-tabbar-tab-hover-color: var(--lwt-tab-text, var(--toolbar-color));
-		--whitesur-tabbar-tab-active-background: var(--toolbar-bgcolor);
-		--whitesur-tabbar-tab-active-color: var(--lwt-tab-text, var(--toolbar-color));
-		--whitesur-tabbar-tab-active-hover-background: color-mix(in srgb, var(--toolbar-bgcolor) 50%, transparent);
-		--whitesur-inactive-tabbar-tab-color: var(--lwt-tab-text, var(--toolbar-color));
-		--whitesur-inactive-tabbar-tab-active-background: var(--toolbar-bgcolor);
-		--whitesur-inactive-tabbar-tab-active-border-bottom-color: #4a90d9;
-		--whitesur-inactive-tabbar-tab-active-color: var(--lwt-tab-text, var(--toolbar-color));
+		--macos-tabbar-tab-background: transparent;
+		--macos-tabbar-tab-color: var(--lwt-tab-text, var(--toolbar-color));
+		--macos-tabbar-tab-hover-background: color-mix(in srgb, var(--toolbar-bgcolor) 50%, transparent);
+		--macos-tabbar-tab-hover-border-bottom-color: #b6b6b3;
+		--macos-tabbar-tab-hover-color: var(--lwt-tab-text, var(--toolbar-color));
+		--macos-tabbar-tab-active-background: var(--toolbar-bgcolor);
+		--macos-tabbar-tab-active-color: var(--lwt-tab-text, var(--toolbar-color));
+		--macos-tabbar-tab-active-hover-background: color-mix(in srgb, var(--toolbar-bgcolor) 50%, transparent);
+		--macos-inactive-tabbar-tab-color: var(--lwt-tab-text, var(--toolbar-color));
+		--macos-inactive-tabbar-tab-active-background: var(--toolbar-bgcolor);
+		--macos-inactive-tabbar-tab-active-border-bottom-color: #4a90d9;
+		--macos-inactive-tabbar-tab-active-color: var(--lwt-tab-text, var(--toolbar-color));
 
 		/* Switch */
-		--whitesur-switch-background: #e1dedb;
-		--whitesur-switch-border-color: #cdc7c2;
-		--whitesur-switch-slider-background: linear-gradient(to bottom, white 10%, white 90%);
-		--whitesur-switch-slider-border-color: #bfb8b1;
-		--whitesur-switch-slider-box-shadow: inset 0 1px white, 0 1px #0000001a, 0 1px 2px #00000012;
-		--whitesur-switch-active-background: #3584e4;
-		--whitesur-switch-active-border-color: #185fb4;
-		--whitesur-switch-active-slider-border-color: #185fb4;
-	}
-}
-
-/* macOS native popover menu color platte */
-
-/* Values are sampled from real macOS UI */
-
-:root {
-	--macos-menu-border: 1px solid #ffffff33;
-	--macos-menu-outline: 0.5px solid #101010;
-	--macos-menu-background: #292929b3;
-	--macos-menu-hover: #2556b9;
-	--macos-menu-hover-color: #fff;
-	--macos-menu-separator-color: #ffffff33;
-
-	--macos-menu-item-border-radius: 4px;
-	--macos-menu-border-radius: 6px;
-	--macos-toolbar-border-radius: 8px;
-
-	--arrowpanel-border-radius: var(--macos-menu-border-radius) !important;
-	--arrowpanel-border-color: color-mix(in srgb, currentColor 20%, transparent) !important;
-	--panel-item-hover-bgcolor: var(--macos-menu-hover) !important;
-	--panel-item-active-bgcolor: var(--macos-menu-hover) !important;
-}
-
-@media (prefers-color-scheme: light) {
-	:root {
-		--macos-menu-border: none;
-		--macos-menu-outline: 0.5px solid #c8c8c8;
-		--macos-menu-background: #e6e6e6ca;
-		--macos-menu-hover: #55a1ff;
-		--macos-menu-hover-color: #fff;
-		--macos-menu-separator-color: #00000033;
-
-		--arrowpanel-border-color: transparent !important;
+		--macos-switch-background: #e1dedb;
+		--macos-switch-border-color: #cdc7c2;
+		--macos-switch-slider-background: linear-gradient(to bottom, white 10%, white 90%);
+		--macos-switch-slider-border-color: #bfb8b1;
+		--macos-switch-slider-box-shadow: inset 0 1px white, 0 1px #0000001a, 0 1px 2px #00000012;
+		--macos-switch-active-background: #3584e4;
+		--macos-switch-active-border-color: #185fb4;
+		--macos-switch-active-slider-border-color: #185fb4;
 	}
 }

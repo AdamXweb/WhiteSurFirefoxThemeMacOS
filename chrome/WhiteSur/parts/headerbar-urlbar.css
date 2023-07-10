@@ -148,7 +148,7 @@ toolbarspring {
 }
 
 #urlbar[breakout][breakout-extend][open] #urlbar-background {
-	box-shadow: var(--whitesur-urlbar-box-shadow) !important;
+	box-shadow: var(--macos-urlbar-box-shadow) !important;
 }
 
 #urlbar:not([focused]) > #urlbar-input-container > .urlbar-input-box > #urlbar-input {
@@ -162,8 +162,8 @@ toolbarspring {
 	padding: 4px !important;
 	margin: 0 !important;
 	border-radius: var(--macos-menu-border-radius) !important;
-	color: var(--whitesur-toolbar-color) !important;
-	background: var(--whitesur-popover-background) !important;
+	color: var(--macos-toolbar-color) !important;
+	background: var(--macos-menu-background) !important;
 	border: var(--macos-menu-border) !important;
 	outline: var(--macos-menu-outline) !important;
 	box-shadow: 0 0 15px #00000040 !important;
@@ -228,9 +228,9 @@ toolbarspring {
 
 .urlbarView-row[label]::before {
 	top: -2.5em !important;
-	width: calc(100% - 20px) !important;
+	width: calc(100% - 18px) !important;
 	padding-block-start: 6px !important;
-	margin-inline-start: 10px !important;
+	margin-inline: 9px !important;
 	color: var(--macos-menu-separator-color) !important;
 	font-weight: 700 !important;
 	border-top: 1px solid var(--macos-menu-separator-color) !important;
@@ -249,8 +249,8 @@ toolbarspring {
 .urlbarView-row:not([type="tip"], [type="dynamic"], [has-buttons]):hover > .urlbarView-row-inner,
 .urlbarView-row[dynamicType="onboardTabToSearch"]:hover > .urlbarView-row-inner,
 .urlbarView-row[has-buttons] > .urlbarView-row-inner:not([selected]):hover {
-	background-color: var(--macos-menu-hover) !important;
-	color: var(--macos-menu-hover-color) !important;
+	background-color: var(--macos-menu-item-hover) !important;
+	color: var(--macos-menu-item-hover-color) !important;
 }
 
 .urlbarView-title-separator::before {
@@ -338,18 +338,18 @@ toolbarspring {
 	-moz-appearance: none !important;
 	--toolbarbutton-active-background: transparent !important;
 	--toolbarbutton-hover-background: transparent !important;
-	background: var(--whitesur-button-background) !important;
-	box-shadow: var(--whitesur-button-box-shadow) !important;
-	border: 1px solid var(--whitesur-button-border-color) !important;
+	background: var(--macos-button-background) !important;
+	box-shadow: var(--macos-button-box-shadow) !important;
+	border: 1px solid var(--macos-button-border-color) !important;
 	border-left-width: 0 !important;
-	border-bottom-color: var(--whitesur-button-border-accent-color) !important;
+	border-bottom-color: var(--macos-button-border-accent-color) !important;
 	padding: 0 2px !important;
 	margin: 0 !important;
 }
 
 .searchbar-engine-one-off-item:hover,
 .searchbar-engine-one-off-item[selected] {
-	background: var(--whitesur-button-hover-background) !important;
+	background: var(--macos-button-hover-background) !important;
 	color: unset !important;
 }
 
@@ -365,7 +365,7 @@ toolbarspring {
 
 #urlbar-anon-search-settings-compact {
 	border-left-width: 1px !important;
-	border-bottom: 1px solid var(--whitesur-button-border-accent-color) !important;
+	border-bottom: 1px solid var(--macos-button-border-accent-color) !important;
 	border-radius: 5px;
 	margin-left: 6px !important;
 }

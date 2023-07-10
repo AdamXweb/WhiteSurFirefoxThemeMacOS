@@ -52,6 +52,6 @@
 	}
 
 	.PanelUI-subView {
-		background: var(--whitesur-menu-background) !important;
+		background: var(--macos-menu-background) !important;
 	}
 }

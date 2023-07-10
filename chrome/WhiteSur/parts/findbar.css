@@ -41,11 +41,11 @@ hbox[anonid="findbar-textbox-wrapper"] {
 }
 
 .findbar-closebutton:hover {
-	background-color: var(--whitesur-button-hover-color) !important;
+	background-color: var(--macos-button-hover-color) !important;
 }
 
 .findbar-closebutton:hover:active {
-	background-color: var(--whitesur-button-active-color) !important;
+	background-color: var(--macos-button-active-color) !important;
 }
 
 @media (max-width: 1100px) {
