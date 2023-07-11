@@ -2,6 +2,10 @@
 
 /* By u/It_Was_The_Other_Guy */
 
+#unified-extensions-view {
+	width: fit-content !important;
+}
+
 #widget-overflow-list,
 #widget-overflow-fixed-list,
 #unified-extensions-panel .panel-subview-body > * {
