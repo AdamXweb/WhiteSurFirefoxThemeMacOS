@@ -424,12 +424,13 @@ richlistbox.autocomplete-richlistbox {
 
 #PopupAutoComplete > richlistbox > richlistitem {
 	justify-content: flex-start !important;
-	min-height: 20px !important;
 	box-sizing: content-box !important;
+	min-height: 20px !important;
 	padding: var(--macos-menu-item-padding) !important;
 	background-color: transparent !important;
 	border: none !important;
 	border-radius: var(--macos-menu-item-border-radius) !important;
+	font: menu !important;
 }
 
 #PopupAutoComplete > richlistbox > richlistitem:hover {
@@ -438,19 +439,20 @@ richlistbox.autocomplete-richlistbox {
 }
 
 .autocomplete-richlistitem[originaltype="loginsFooter"] {
-	color: inherit !important;
-	position: relative;
-	overflow: visible;
 	margin-block-start: 12px;
+	position: relative;
+	overflow: visible !important;
+	font: menu !important;
+	color: inherit !important;
 }
 
 .autocomplete-richlistitem[originaltype="loginsFooter"]::before {
 	content: "";
 	position: absolute;
-	width: calc(100% - 10px);
-	border-top: 1px solid var(--macos-menu-separator-color);
 	top: -6px;
 	left: 5px;
+	width: calc(100% - 10px);
+	border-top: 1px solid var(--macos-menu-separator-color);
 }
 
 #PopupAutoComplete > richlistbox > richlistitem > .ac-login-item > .ac-settings-button {
