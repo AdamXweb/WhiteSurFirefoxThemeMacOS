@@ -72,7 +72,7 @@ menupopup menu[disabled="true"]:hover {
 panel {
 	appearance: none !important;
 	background: transparent !important;
-	font: inherit !important;
+	font: menu !important;
 	--panel-background: var(--macos-menu-background) !important;
 	--panel-color: var(--macos-button-menulist-color) !important;
 	--panel-border-color: var(--arrowpanel-border-color) !important;
@@ -424,7 +424,8 @@ richlistbox.autocomplete-richlistbox {
 
 #PopupAutoComplete > richlistbox > richlistitem {
     justify-content: flex-start !important;
-    min-height: fit-content !important;
+    min-height: 20px !important;
+	box-sizing: content-box !important;
     padding: var(--macos-menu-item-padding) !important;
     background-color: transparent !important;
     border: none !important;
