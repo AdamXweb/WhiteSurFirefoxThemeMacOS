@@ -241,9 +241,13 @@ toolbarspring {
 	background-color: transparent !important;
 }
 
+.urlbarView-row[selected] {
+	color: inherit !important;
+}
+
 .urlbarView-row:not([type="tip"], [type="dynamic"])[selected] > .urlbarView-row-inner,
 .urlbarView-row-inner[selected] {
-	background-color: var(--autocomplete-popup-hover-background) !important;
+	background-color: var(--macos-menu-button-hover-background) !important;
 }
 
 .urlbarView-row:not([type="tip"], [type="dynamic"], [has-buttons]):hover > .urlbarView-row-inner,
@@ -371,6 +375,7 @@ toolbarspring {
 }
 
 /* URL bar and Search bar */
+
 #urlbar[focused] .urlbar-textbox-container {
 	margin: -1px !important;
 }
