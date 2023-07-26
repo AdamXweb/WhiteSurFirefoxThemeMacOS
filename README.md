@@ -30,19 +30,24 @@ Go to `about:config`
 
 ### Theme Configuations
 
-The theme can be configured in `userChrome.css` and `userContent.css`. The available options can be found under `chrome -> WhiteSur -> customs`.
+The theme can be configured in `userChrome.css` and `userContent.css`.
 
 These are some examples:
 
 - Configuations in `userChrome.css`
-	- `drag-window-headerbar-buttons.css`
-	- `extension-menu-in-grid.css`
+	- `extension-menu-in-grid.css`  
+		<img height="4rem" src="https://raw.githubusercontent.com/easonwong-de/WhiteSurFirefoxThemeMacOS/master/githubpreview/extension-menu-in-grid.png">
 	- `hide-single-tab.css`
-	- `hide-tabview.css`
+		<img height="4rem" src="https://raw.githubusercontent.com/easonwong-de/WhiteSurFirefoxThemeMacOS/master/githubpreview/hide-single-tab.png">
 	- `mini-tabbar.css`
+		<img height="4rem" src="https://raw.githubusercontent.com/easonwong-de/WhiteSurFirefoxThemeMacOS/master/githubpreview/mini-tabbar.png">
+	- `tab-preview-on-hover.css` (Requires [Tab Preview On Hover](https://github.com/easonwong-de/Tab-Preview-On-Hover))
+		<img height="4rem" src="https://raw.githubusercontent.com/easonwong-de/WhiteSurFirefoxThemeMacOS/master/githubpreview/tab-preview-on-hover.png">
 - Configuations in `userChrome.css`
 	- `apple-style-homepage.css`
 	- `apple-style-twp-popup.css`
+
+The whole configuation list can be found under `chrome -> WhiteSur -> customs`.
 
 <br><br>
 
