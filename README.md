@@ -13,20 +13,21 @@ To skip to the original `README.md`, please click [here](#firefox-whitesur-theme
 
 ### Changes
 
-- Colors are controled by browser theme, thus controled by Adaptive Tab Bar Color
-- Close tab buttons are on the left side
-- Buttons and the outline of URL field behave closer to Safari
-- Colors of button icons now follow the browser theme
-- Fixed popover menus
+-   Colors are controled by browser theme, thus controled by Adaptive Tab Bar Color
+-   Close tab buttons are on the left side
+-   Buttons and the outline of URL field behave closer to Safari
+-   Colors of button icons now follow the browser theme
+-   Fixed popover menus
 
 ### Browser Configurations
 
-Go to `about:config`  
-- Set `toolkit.legacyUserProfileCustomizations.stylesheets` to `true`  
-- Set `svg.context-properties.content.enabled` to `true`  
-- Set `layout.css.color-mix.enabled` to `true`  
-- Set `layout.css.backdrop-filter.force-enabled` to `true` (optional)  
-- Set `layout.css.color-mix.color-spaces.enabled` to `true` (optional)
+Go to `about:config`
+
+-   Set `toolkit.legacyUserProfileCustomizations.stylesheets` to `true`
+-   Set `svg.context-properties.content.enabled` to `true`
+-   Set `layout.css.color-mix.enabled` to `true`
+-   Set `layout.css.backdrop-filter.force-enabled` to `true` (optional)
+-   Set `layout.css.color-mix.color-spaces.enabled` to `true` (optional)
 
 ### Theme Configuations
 
@@ -34,18 +35,27 @@ The theme can be configured in `userChrome.css` and `userContent.css`.
 
 These are some examples:
 
-- Configuations in `userChrome.css`
-	- `extension-menu-in-grid.css`  
-		<img width="778px" src="https://raw.githubusercontent.com/easonwong-de/WhiteSurFirefoxThemeMacOS/master/githubpreview/extension-menu-in-grid.png">
-	- `hide-single-tab.css`
-		<img width="1094px" src="https://raw.githubusercontent.com/easonwong-de/WhiteSurFirefoxThemeMacOS/master/githubpreview/hide-single-tab.png">
-	- `mini-tabbar.css`
-		<img width="1324px" src="https://raw.githubusercontent.com/easonwong-de/WhiteSurFirefoxThemeMacOS/master/githubpreview/mini-tabbar.png">
-	- `tab-preview-on-hover.css` (Requires [Tab Preview On Hover](https://github.com/easonwong-de/Tab-Preview-On-Hover))
-		<img width="716px" src="https://raw.githubusercontent.com/easonwong-de/WhiteSurFirefoxThemeMacOS/master/githubpreview/tab-preview-on-hover.png">
-- Configuations in `userChrome.css`
-	- `apple-style-homepage.css`
-	- `apple-style-twp-popup.css`
+-   Configuations in `userChrome.css`
+
+    -   `extension-menu-in-grid.css`
+
+    <img width="778px" src="https://raw.githubusercontent.com/easonwong-de/WhiteSurFirefoxThemeMacOS/master/githubpreview/extension-menu-in-grid.png">
+
+    -   `hide-single-tab.css`
+
+    <img width="1094px" src="https://raw.githubusercontent.com/easonwong-de/WhiteSurFirefoxThemeMacOS/master/githubpreview/hide-single-tab.png">
+
+    -   `mini-tabbar.css`
+
+    <img width="1324px" src="https://raw.githubusercontent.com/easonwong-de/WhiteSurFirefoxThemeMacOS/master/githubpreview/mini-tabbar.png">
+
+    -   `tab-preview-on-hover.css` (Requires [Tab Preview On Hover](https://github.com/easonwong-de/Tab-Preview-On-Hover))
+
+    <img width="716px" src="https://raw.githubusercontent.com/easonwong-de/WhiteSurFirefoxThemeMacOS/master/githubpreview/tab-preview-on-hover.png">
+
+-   Configuations in `userChrome.css`
+    -   `apple-style-homepage.css`
+    -   `apple-style-twp-popup.css`
 
 The whole configuation list can be found under `chrome -> WhiteSur -> customs`.
 
@@ -56,6 +66,7 @@ Additional `README.md` ends here.
 <br><br>
 
 ## Firefox WhiteSur theme
+
 <p align="center">
 <img width="120" src="https://github.com/AdamXweb/WhiteSurFirefoxThemeMacOS/raw/master/githubpreview/safarifirefox.png?raw=true">
 	<br>
@@ -80,12 +91,13 @@ Follow the prompts
 ### Installation flags
 
 The script supports the following flags
-- `-c` To enable close button on the left hand side
-- `-f` To specify the default firefox folder (it will try to find the profile folder to place the theme within)
-- `-l` Default location of most Linux installations
-- `-u` Remove the animation on URL bar to be clickable throughout
-- `-n` Removes the identity colour from tabs
-- `-r` Remove the theme
+
+-   `-c` To enable close button on the left hand side
+-   `-f` To specify the default firefox folder (it will try to find the profile folder to place the theme within)
+-   `-l` Default location of most Linux installations
+-   `-u` Remove the animation on URL bar to be clickable throughout
+-   `-n` Removes the identity colour from tabs
+-   `-r` Remove the theme
 
 e.g. To install with script, with close button left hand side: `bash install.sh -c`
 
@@ -99,18 +111,20 @@ To find your Firefox Profile Directory you can:
 2. Application Basics > Profile Directory > Open Directory.
 3. Copy folders mentioned above into the profile folder. (usually has `-release` at the end).
 4. If you are using Firefox 69+:
-	1. Go to `about:config` in Firefox.
-	2. Search for `toolkit.legacyUserProfileCustomizations.stylesheets` and set it to `true`.
+    1. Go to `about:config` in Firefox.
+    2. Search for `toolkit.legacyUserProfileCustomizations.stylesheets` and set it to `true`.
 5. Restart Firefox.
 6. Done!
 
 #### Manual theme overrides:
+
 To manually add a custom override, copy the `*.css` from the `custom` folder of whichever option you are after. Place it in the `chrome/WhiteSur/parts` foder within the profile directory you opened above.\
 Next, import the `.css` file you just specified. To do this, open `chrome/WhiteSur/theme.css` in the same directory above and add the line\
 `@import "parts/NAMEOFOPTION.css";` above the line that says `@namespace xul...`\
 That's it, the theme should load your overriden settings
 
 #### Swap navbar close buttons on Windows:
+
 `windows-swapclose.css` contains the styles required to swap the close buttons, as well as to re-order the close button from MacOS styling to Windows.
 Follow the directions above for the manual theme override to activate.
 
@@ -135,7 +149,6 @@ Fix: Change the installed theme to appropriate colour scheme to avoid issues.
 If you're looking to change the directory to run the script, you can always type `bash` then drag the file into terminal. You can also type `cd` and then drag the folder and press enter to navigate to the directory.\
 Alternatively, if you're running Catalina, the default teminal is zsh, meaning you can change folders by typing the name to enter the folder e.g. `WhiteSurFirefoxThemeMacOS`
 
-
 Q: "Why bother doing this, and not just use safari?" \
 A: I've used safari for quite a few years, and was rather disappointed with the change in extensions, particularly with content blocking. This prompted me to use uBlock origin on Firefox, and to customise it to have the best aesthetics, and simplest transition.
 
@@ -148,9 +161,9 @@ Thanks!
 ## Screenshot
 
 ### Windows
+
 ![Preview](githubpreview/whitesurwindows.gif?raw=true)
 
-
 ### MacOS
-![Preview](githubpreview/whitesur.gif?raw=true)
 
+![Preview](githubpreview/whitesur.gif?raw=true)
