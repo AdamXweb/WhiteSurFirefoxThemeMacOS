@@ -8,16 +8,16 @@ To skip to the original `README.md`, please click [here](#firefox-whitesur-theme
 ### Quick Link
 
 [Installation](#installation-macos)  
-~~1. [The Geeky Way](#installation-flags)~~  
-2. [The Simple Way (MacOS & Windows)](#manual-installation-macos--windows)
+~~1. [Command](#installation-flags)~~  
+2. [Manual](#manual-installation-macos--windows)
 
 ### Changes
 
-1. Colors are controled by browser theme, thus controled by Adaptive Tab Bar Color
-2. Close tab buttons are on the left side
-3. Buttons and the outline of URL field behave closer to Safari
-4. Colors of button icons now follow the browser theme
-5. Fixed popover menus
+- Colors are controled by browser theme, thus controled by Adaptive Tab Bar Color
+- Close tab buttons are on the left side
+- Buttons and the outline of URL field behave closer to Safari
+- Colors of button icons now follow the browser theme
+- Fixed popover menus
 
 ### Browser Configurations
 
@@ -31,6 +31,18 @@ Go to `about:config`
 ### Theme Configuations
 
 The theme can be configured in `userChrome.css` and `userContent.css`. The available options can be found under `chrome -> WhiteSur -> customs`.
+
+These are some examples:
+
+- Configuations in `userChrome.css`
+	- `drag-window-headerbar-buttons.css`
+	- `extension-menu-in-grid.css`
+	- `hide-single-tab.css`
+	- `hide-tabview.css`
+	- `mini-tabbar.css`
+- Configuations in `userChrome.css`
+	- `apple-style-homepage.css`
+	- `apple-style-twp-popup.css`
 
 <br><br>
 
