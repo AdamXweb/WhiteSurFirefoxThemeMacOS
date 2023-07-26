@@ -37,19 +37,19 @@ These are some examples:
 
 -   Configuations in `userChrome.css`
 
-    -   `extension-menu-in-grid.css` <br>
+    -   `extension-menu-in-grid.css` <br><br>
 
     <img width="50%" src="https://raw.githubusercontent.com/easonwong-de/WhiteSurFirefoxThemeMacOS/master/githubpreview/extension-menu-in-grid.png">
 
-    -   `hide-single-tab.css` <br>
+    -   `hide-single-tab.css` <br><br>
 
     <img width="50%" src="https://raw.githubusercontent.com/easonwong-de/WhiteSurFirefoxThemeMacOS/master/githubpreview/hide-single-tab.png">
 
-    -   `mini-tabbar.css` <br>
+    -   `mini-tabbar.css` <br><br>
 
     <img width="50%" src="https://raw.githubusercontent.com/easonwong-de/WhiteSurFirefoxThemeMacOS/master/githubpreview/mini-tabbar.png">
 
-    -   `tab-preview-on-hover.css` (Requires [Tab Preview On Hover](https://github.com/easonwong-de/Tab-Preview-On-Hover)) <br>
+    -   `tab-preview-on-hover.css` (Requires [Tab Preview On Hover](https://github.com/easonwong-de/Tab-Preview-On-Hover)) <br><br>
 
     <img width="50%" src="https://raw.githubusercontent.com/easonwong-de/WhiteSurFirefoxThemeMacOS/master/githubpreview/tab-preview-on-hover.png">
 
