@@ -39,19 +39,19 @@ These are some examples:
 
     -   `extension-menu-in-grid.css` <br><br>
 
-    <img width="50%" src="https://raw.githubusercontent.com/easonwong-de/WhiteSurFirefoxThemeMacOS/master/githubpreview/extension-menu-in-grid.png">
+    <img width="50%" src="https://raw.githubusercontent.com/easonwong-de/WhiteSurFirefoxThemeMacOS/master/githubpreview/extension-menu-in-grid.png"><br>
 
     -   `hide-single-tab.css` <br><br>
 
-    <img width="50%" src="https://raw.githubusercontent.com/easonwong-de/WhiteSurFirefoxThemeMacOS/master/githubpreview/hide-single-tab.png">
+    <img width="50%" src="https://raw.githubusercontent.com/easonwong-de/WhiteSurFirefoxThemeMacOS/master/githubpreview/hide-single-tab.png"><br>
 
     -   `mini-tabbar.css` <br><br>
 
-    <img width="50%" src="https://raw.githubusercontent.com/easonwong-de/WhiteSurFirefoxThemeMacOS/master/githubpreview/mini-tabbar.png">
+    <img width="50%" src="https://raw.githubusercontent.com/easonwong-de/WhiteSurFirefoxThemeMacOS/master/githubpreview/mini-tabbar.png"><br>
 
     -   `tab-preview-on-hover.css` (Requires [Tab Preview On Hover](https://github.com/easonwong-de/Tab-Preview-On-Hover)) <br><br>
 
-    <img width="50%" src="https://raw.githubusercontent.com/easonwong-de/WhiteSurFirefoxThemeMacOS/master/githubpreview/tab-preview-on-hover.png">
+    <img width="50%" src="https://raw.githubusercontent.com/easonwong-de/WhiteSurFirefoxThemeMacOS/master/githubpreview/tab-preview-on-hover.png"><br>
 
 -   Configuations in `userChrome.css`
     -   `apple-style-homepage.css`
