@@ -1,6 +1,6 @@
 ## About This Fork
 
-This is an [Adaptive-Tab-Bar-Color](https://github.com/easonwong-de/Adaptive-Tab-Bar-Color)-compatible version of Firefox WhiteSur theme  
+This is an [Adaptive-Tab-Bar-Colour](https://github.com/easonwong-de/Adaptive-Tab-Bar-Colour)-compatible version of Firefox WhiteSur theme  
 To skip to the original `README.md`, please click [here](#firefox-whitesur-theme)
 
 <p align="center"><img width="45%" src="https://raw.githubusercontent.com/easonwong-de/WhiteSurFirefoxThemeMacOS/master/githubpreview/White_Sur_%26_ATBC_3.png"><img width="45%" src="https://raw.githubusercontent.com/easonwong-de/WhiteSurFirefoxThemeMacOS/master/githubpreview/White_Sur_%26_ATBC_2.png"></p>
@@ -13,10 +13,10 @@ To skip to the original `README.md`, please click [here](#firefox-whitesur-theme
 
 ### Changes
 
--   Colors are controled by browser theme, thus controled by Adaptive Tab Bar Color
+-   Colours are controled by browser theme, thus controled by Adaptive Tab Bar Colour
 -   Close tab buttons are on the left side
 -   Buttons and the outline of URL field behave closer to Safari
--   Colors of button icons now follow the browser theme
+-   Colours of button icons now follow the browser theme
 -   Fixed popover menus
 
 ### Browser Configurations
