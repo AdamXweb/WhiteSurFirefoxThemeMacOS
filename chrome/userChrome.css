@@ -31,6 +31,6 @@
 /* Set theme version text in customization panel */
 
 #customization-footer::before {
-	content: "Firefox White Sur theme (ATBC-compatible) ver.2023-07-11";
+	content: "Firefox White Sur theme (ATBC-compatible) ver.2023-07-29";
 	padding: 9px;
 }
