@@ -308,6 +308,20 @@ menupopup > menuitem[_moz-menuactive="true"]:not(:hover) {
 	margin-right: 0 !important;
 }
 
+#appMenu-zoomReduce-button2:not([disabled]):hover > .toolbarbutton-icon,
+#appMenu-zoomEnlarge-button2:not([disabled]):hover > .toolbarbutton-icon,
+#appMenu-zoomReduce-button2:not([disabled]):active > .toolbarbutton-icon,
+#appMenu-zoomEnlarge-button2:not([disabled]):active > .toolbarbutton-icon {
+	stroke: var(--button-bgcolor) !important;
+}
+
+#appMenu-zoomReset-button2:not([disabled]):hover > .toolbarbutton-text,
+#appMenu-fullscreen-button2:not([disabled]):hover > .toolbarbutton-icon,
+#appMenu-zoomReset-button2:not([disabled]):active > .toolbarbutton-text,
+#appMenu-fullscreen-button2:not([disabled]):active > .toolbarbutton-icon {
+	background-color: var(--button-bgcolor) !important;
+}
+
 .subviewbutton.panel-subview-footer:not(:only-of-type):not(:first-of-type),
 .panel-footer button:not(:only-of-type):not(:first-of-type),
 #appMenu-popup .toolbaritem-combined-buttons toolbarbutton:not(:first-of-type):not(#appMenu-fullscreen-button),

@@ -24,6 +24,15 @@
 	--arrowpanel-menuitem-margin: var(--macos-menu-item-margin) !important;
 }
 
+.cui-widget-panel {
+	--arrowpanel-padding: var(--macos-menu-padding) !important;
+}
+
+#PopupSearchAutoComplete {
+	--panel-subview-body-padding: var(--macos-menu-padding) !important;
+	--panel-padding: var(--macos-menu-padding) !important;
+}
+
 /* Style menus */
 
 menupopup {
@@ -50,11 +59,7 @@ menuitem,
 menupopup menu {
 	appearance: none;
 	-moz-appearance: none !important;
-	padding: 4px 8px !important;
-}
-
-.cui-widget-panel {
-	--arrowpanel-padding: 4px !important;
+	padding: var(--macos-menu-item-padding) !important;
 }
 
 menuitem[type="checkbox"] image,
@@ -65,6 +70,17 @@ menuitem[type="radio"] image {
 menuitem[disabled="true"]:hover,
 menupopup menu[disabled="true"]:hover {
 	background: transparent !important;
+}
+
+.menu-right, .menu-accel-container {
+	margin-inline: auto !important;
+}
+
+#customizationui-widget-multiview #appMenu-libraryView,
+#pageActionPanel panelview,
+#widget-overflow panelview {
+	min-width: fit-content !important;
+	max-width: max-content !important;
 }
 
 /* Adjust popovers position, includes background colour with transparency */
@@ -86,6 +102,20 @@ panel[type="arrow"] {
 
 #customizationui-widget-panel {
 	margin-top: 15px !important;
+}
+
+/* Panel padding */
+
+panel[type="arrow"].panel-no-padding:not(#customizationui-widget-panel) > * {
+	margin-inline: var(--panel-padding) !important;
+}
+
+panel[type="arrow"].panel-no-padding:not(#customizationui-widget-panel) > *:first-of-type {
+	margin-block-start: var(--panel-padding) !important;
+}
+
+panel[type="arrow"].panel-no-padding:not(#customizationui-widget-panel) > *:last-of-type {
+	margin-block-end: var(--panel-padding) !important;
 }
 
 /* Style popovers */
@@ -238,9 +268,13 @@ menuseparator {
 
 toolbarseparator:not([orient="vertical"]),
 menuseparator {
-	margin: 6px 9px !important;
+	margin: 6px 8px !important;
 	border-top: 1px solid currentColor !important;
 	opacity: 0.2;
+}
+
+menuseparator::before {
+	content: none !important;
 }
 
 toolbarseparator[orient="vertical"] {
@@ -266,12 +300,6 @@ toolbarseparator[orient="vertical"] {
 	#context-navigation > .menuitem-iconic[_moz-menuactive="true"]:not([disabled="true"]) > .menu-iconic-left > .menu-iconic-icon {
 		background-color: transparent !important;
 	}
-}
-
-/* fix padding for menu items */
-
-panelview:not([extension]) {
-	padding: 4px !important;
 }
 
 .unified-extensions-item-open-menu.subviewbutton {
@@ -303,7 +331,7 @@ menuseparator {
 
 menupopup > menuitem,
 menupopup > menu {
-	padding-block: 2px !important;
+	padding: var(--macos-menu-item-padding) !important;
 	min-height: unset !important;
 }
 
@@ -479,4 +507,15 @@ richlistbox.autocomplete-richlistbox {
 .autocomplete-richlistitem[originaltype="loginsFooter"],
 #PopupAutoComplete > richlistbox > richlistitem > .ac-title {
 	font: menu !important;
+}
+
+/* Search bar menu */
+
+#PopupSearchAutoComplete > hbox.search-panel-header {
+	padding: var(--macos-menu-item-padding) !important;
+	border-radius: var(--macos-menu-item-border-radius) !important;
+}
+
+#PopupSearchAutoComplete > hbox.search-panel-header:hover {
+	background-color: var(--macos-menu-item-hover);
 }

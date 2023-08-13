@@ -191,7 +191,8 @@ toolbarspring {
 }
 
 .urlbarView-url {
-	padding-inline: 0 !important;
+	margin: 0 !important;
+	padding-inline: 0.5rem !important;
 	color: inherit !important;
 	opacity: 0.6 !important;
 }
