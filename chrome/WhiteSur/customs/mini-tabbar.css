@@ -158,7 +158,7 @@ tab > stack {
 }
 
 .tabbrowser-tab:not([pinned]) {
-	min-width: min(fit-content, 200px) !important;
+	min-width: 50px !important;
 	-moz-box-flex: 0 !important;
 	flex: 0 auto !important;
 	margin-top: -2px !important;
