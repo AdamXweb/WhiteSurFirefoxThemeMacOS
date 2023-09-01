@@ -103,3 +103,18 @@
 		padding-bottom: 0 !important;
 	}
 }
+
+/* Reverse the botton placing */
+
+#titlebar .titlebar-buttonbox {
+	flex-direction: row-reverse !important;
+}
+
+/* Remove default symbols in the button & resize & relocate */
+
+#titlebar .titlebar-buttonbox .titlebar-button {
+	list-style-image: none !important;
+	padding: 2px !important;
+	margin: 0 4px !important;
+	background-color: transparent !important;
+}
