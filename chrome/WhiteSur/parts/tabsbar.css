@@ -76,7 +76,6 @@ tab > stack {
 tab {
 	color: var(--macos-tabbar-tab-color) !important;
 	font-family: Cantarell, inherit;
-	font-weight: bold;
 	font-size: 1em;
 }
 
@@ -85,6 +84,7 @@ tab:hover {
 }
 
 tab[selected] {
+	font-weight: 600;
 	color: var(--macos-tabbar-tab-active-color) !important;
 }
 
