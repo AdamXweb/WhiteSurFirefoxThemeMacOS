@@ -104,10 +104,10 @@
 	}
 }
 
-/* Reverse the botton placing */
+/* Fix the botton order */
 
-#titlebar .titlebar-buttonbox {
-	flex-direction: row-reverse !important;
+#titlebar .titlebar-button.titlebar-close {
+	order: -1 !important;
 }
 
 /* Remove default symbols in the button & resize & relocate */
