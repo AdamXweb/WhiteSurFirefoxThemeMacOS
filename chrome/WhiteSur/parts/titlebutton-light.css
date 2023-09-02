@@ -68,6 +68,8 @@
 :root[tabsintitlebar][sizemode="maximized"] #titlebar #titlebar-max:hover {
 	background: url("../titlebuttons/titlebutton-unmaximize-hover.svg") no-repeat;
 	background-size: contain;
+	padding-inline: 1px !important;
+	margin-top: 1px !important;
 }
 
 :root[tabsintitlebar] #titlebar .titlebar-buttonbox:hover .titlebar-close:active,
@@ -93,6 +95,8 @@
 :root[tabsintitlebar][sizemode="maximized"] #titlebar #titlebar-max:active {
 	background: url("../titlebuttons/titlebutton-unmaximize-active.svg") no-repeat;
 	background-size: contain;
+	padding-inline: 1px !important;
+	margin-top: 1px !important;
 }
 
 :root[tabsintitlebar] #titlebar:-moz-window-inactive .titlebar-buttonbox .titlebar-close,
@@ -153,11 +157,16 @@
 :root[tabsintitlebar][inFullscreen] #window-controls #restore-button:hover {
 	background: url("../titlebuttons/titlebutton-unmaximize-hover.svg") no-repeat;
 	background-size: contain;
+	padding-inline: 1px !important;
+	margin-top: 1px !important;
 }
 
 :root[tabsintitlebar][inFullscreen] #window-controls #restore-button:active {
 	background: url("../titlebuttons/titlebutton-unmaximize-active.svg") no-repeat;
 	background-size: contain;
+	padding-inline: 1px !important;
+	margin-top: 1px !important;
+	
 }
 
 :root[tabsintitlebar][inFullscreen] #window-controls:-moz-window-inactive #restore-button {
