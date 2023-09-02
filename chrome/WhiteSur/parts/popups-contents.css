@@ -4,10 +4,6 @@
 
 /* Style main context menu & buttons */
 
-#context-navigation {
-	padding: 2px 6px 6px;
-}
-
 #context-navigation > menuitem > .menu-iconic-left {
 	margin: auto !important;
 }
