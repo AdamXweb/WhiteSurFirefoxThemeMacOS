@@ -40,7 +40,7 @@
     }
 
 
-    .titlebar-close {
+    #titlebar .titlebar-button.titlebar-close {
         order: -1;
     }
 
