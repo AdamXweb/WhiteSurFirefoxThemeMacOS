@@ -1,0 +1,65 @@
+@namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+
+/* Place the close buttons on the right hand side*/
+:root[tabsintitlebar] #titlebar .titlebar-buttonbox-container, :root[tabsintitlebar] #titlebar-buttonbox-container {
+    left:auto !important;
+    right: 8px;
+
+}
+
+/* Add adjustments to buttons for windows buttons that fit theme (by size)*/
+.titlebar-button{
+    border: none;
+    margin: 0 !important;
+    padding: 3px 3px !important;
+    -moz-content-properties: stroke !important;
+    stroke: currentColor !important;
+    background: transparent !important;
+}
+.titlebar-button:hover{
+    background: hsla(0,0%,0%,.12) !important
+}
+
+@media not (prefers-contrast){
+    toolbar[brighttext] .titlebar-button:not(.titlebar-close):hover{
+        background-color: hsla(0,0%,100%,.22) !important;
+    }
+}
+@media not (prefers-contrast){
+    .titlebar-close:hover{
+        stroke:white;
+        background-color: hsl(355,86%,49%) !important;
+    }
+}
+
+ :root[tabsintitlebar][inFullscreen] #window-controls{
+    right: 2px !important;
+    top: 18px !important;
+ }
+/* Give padding to the close bar */
+#nav-bar {
+    padding-left: 10px !important;
+    padding-right: 75px !important;
+}
+/* If arrangement of close is to be Min Max Close*/
+.titlebar-close {
+    order: 1 !important;
+}
+
+/* fix fullscreen issue on window TBCs*/
+:root[tabsintitlebar][inFullscreen] #window-controls .minimize-button, :root[tabsintitlebar][inFullscreen] #window-controls .close-button{
+    display:none !important;
+}
+
+/* adjust positioning of exit fullscreen button */
+:root[tabsintitlebar][inFullscreen] #window-controls {
+    right: 2px !important;
+    top: 18px !important;
+}
+:root[tabsintitlebar][inFullscreen] #nav-bar {
+    padding-right: 70px !important;
+  }
+
+  :root[tabsintitlebar][inFullscreen]  #titlebar .titlebar-buttonbox-container{
+    order: 1000 !important;
+    }
