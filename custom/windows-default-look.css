@@ -6,7 +6,6 @@
     right: 8px;
 
 }
-
 /* Add adjustments to buttons for windows buttons that fit theme (by size)*/
 .titlebar-button{
     border: none;
@@ -19,7 +18,7 @@
 .titlebar-button:hover{
     background: hsla(0,0%,0%,.12) !important
 }
-
+/* reminder, this shouldn't be hard coded as FF may change values */
 @media not (prefers-contrast){
     toolbar[brighttext] .titlebar-button:not(.titlebar-close):hover{
         background-color: hsla(0,0%,100%,.22) !important;
@@ -60,6 +59,6 @@
     padding-right: 70px !important;
   }
 
-  :root[tabsintitlebar][inFullscreen]  #titlebar .titlebar-buttonbox-container{
+:root[tabsintitlebar][inFullscreen]  #titlebar .titlebar-buttonbox-container{
     order: 1000 !important;
-    }
+}
