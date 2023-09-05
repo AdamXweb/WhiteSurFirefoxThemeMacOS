@@ -55,7 +55,6 @@ GNOME CSD styles for headerbar on Firefox [tabsintitlebar] @namespace xul url("h
 }
 
 
-
 /* Left window buttons */
 @media (-moz-gtk-csd-reversed-placement) {
 	:root[tabsintitlebar]:not([inFullscreen]) #nav-bar {
