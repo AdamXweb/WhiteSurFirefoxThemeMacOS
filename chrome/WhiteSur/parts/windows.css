@@ -2,7 +2,7 @@
 
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
-@media screen and (-moz-windows-compositor) {
+@media screen and (-moz-platform: windows) {
 	#titlebar .titlebar-buttonbox .titlebar-button {
 		list-style-image: none !important;
 		padding: 2px !important;
@@ -15,9 +15,10 @@
 	}
 
 	:root[tabsintitlebar]:not([sizemode="maximized"]) #titlebar .titlebar-buttonbox-container {
-		top: 17px !important;
+		top: 15px !important;
 		padding: 2px 0 0 8px !important;
 	}
+
 	:root[tabsintitlebar][inFullscreen] #titlebar .titlebar-buttonbox-container {
 		margin-top: -34px;
 		margin-bottom: 44px !important;
@@ -47,7 +48,7 @@
 	}
 
 	#nav-bar {
-		padding-left: 75px !important;
+		padding-left: 80px !important;
 	}
 
 	.PanelUI-subView {
