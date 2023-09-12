@@ -3,12 +3,11 @@
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
 @media screen and (-moz-windows-compositor) {
-	.titlebar-button {
-		border: none;
-		margin: 0 !important;
-		padding: 1px 3px !important;
-		-moz-content-properties: none !important;
-		stroke: none !important;
+	#titlebar .titlebar-buttonbox .titlebar-button {
+		list-style-image: none !important;
+		padding: 2px !important;
+		margin: 0 4px !important;
+		background-color: transparent !important;
 	}
 
 	:root[tabsintitlebar][sizemode="maximized"] #titlebar {
@@ -39,8 +38,8 @@
 		padding-top: 0 !important;
 	}
 
-	.titlebar-close {
-		order: -1;
+	#titlebar .titlebar-button.titlebar-close {
+		order: -1 !important;
 	}
 
 	.titlebar-button {
