@@ -365,7 +365,7 @@ toolbarbutton.bookmark-item[open="true"] {
 	padding: 0 !important;
 	background: transparent !important;
 	border: 0 !important;
-	max-width: fit-content !important;
+	max-width: 100% !important;
 }
 
 /* Update close button styling */
