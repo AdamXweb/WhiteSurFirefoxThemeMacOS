@@ -84,7 +84,7 @@ tab:hover {
 }
 
 tab[selected] {
-	font-weight: 600;
+	font-weight: 600 !important;
 	color: var(--macos-tabbar-tab-active-color) !important;
 }
 
