@@ -1,6 +1,6 @@
 /* Minimalist style extension menu */
 
-/* By u/It_Was_The_Other_Guy */
+/* Based on u/It_Was_The_Other_Guy */
 
 #unified-extensions-view {
 	width: fit-content !important;
@@ -44,6 +44,7 @@
 #widget-overflow-list > .toolbarbutton-1,
 #widget-overflow-fixed-list > .toolbarbutton-1,
 #widget-overflow-fixed-list > .toolbaritem-combined-buttons,
+#widget-overflow-fixed-list > toolbarpaletteitem,
 #unified-extensions-panel .unified-extensions-item {
 	width: 60.6px !important;
 	height: 60.6px !important;
@@ -51,6 +52,14 @@
 	max-height: none !important;
 	padding: 0 !important;
 	margin: 0 !important;
+}
+
+#widget-overflow-fixed-list > toolbarpaletteitem#wrapper-edit-controls,
+#widget-overflow-fixed-list > toolbarpaletteitem#wrapper-zoom-controls,
+#widget-overflow-fixed-list > .toolbaritem-combined-buttons#zoom-controls,
+#widget-overflow-fixed-list > .toolbaritem-combined-buttons#edit-controls {
+	grid-column: span 3;
+	width: 181.8px !important;
 }
 
 .widget-overflow-list .toolbarbutton-1,
@@ -80,8 +89,8 @@
 }
 
 .widget-overflow-list .subviewbutton-nav::after,
-#widget-overflow-list .toolbarbutton-text,
-#widget-overflow-fixed-list .toolbarbutton-text,
+#widget-overflow-list toolbarbutton:not(#zoom-reset-button) > .toolbarbutton-text,
+#widget-overflow-fixed-list toolbarbutton:not(#zoom-reset-button) > .toolbarbutton-text,
 .unified-extensions-item-menu-button,
 .unified-extensions-item-contents {
 	display: none !important;

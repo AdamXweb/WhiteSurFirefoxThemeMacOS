@@ -182,7 +182,7 @@ menulist {
 }
 
 #appMenu-protonMainView .toolbarbutton-text {
-	margin: 2px !important;
+	margin: 0 !important;
 }
 
 #appMenu-popup .toolbaritem-combined-buttons toolbarbutton:not(#appMenu-fxa-label) {

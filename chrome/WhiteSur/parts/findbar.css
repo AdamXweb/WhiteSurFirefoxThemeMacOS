@@ -23,10 +23,6 @@ hbox[anonid="findbar-textbox-wrapper"] {
 	display: flex !important;
 }
 
-.findbar-textbox {
-	box-shadow: inset 0 0 0 1px var(--macos-hover-urlbar-border-color) !important;
-}
-
 .findbar-find-status,
 .found-matches {
 	order: -1;

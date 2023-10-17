@@ -19,7 +19,7 @@
 	fill: var(--macos-toolbar-color);
 }
 
-#nav-bar toolbarbutton > * {
+#nav-bar toolbarbutton > *:not(menupopup) {
 	background-color: transparent !important;
 }
 

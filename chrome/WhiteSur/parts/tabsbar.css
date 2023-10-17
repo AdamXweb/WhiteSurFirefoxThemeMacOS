@@ -266,7 +266,7 @@ stack[soundplaying="true"] + .tab-label-container[textoverflow] {
 .tab-background {
 	background-color: var(--macos-tabbar-tab-background) !important;
 	outline: none !important;
-	transition: all 200ms;
+	/* transition: all 200ms; */
 }
 
 toolbar .toolbarbutton-1 {
@@ -509,6 +509,7 @@ toolbar .toolbarbutton-1 {
 .all-tabs-item:hover:active,
 #allTabsMenu-searchTabs:hover,
 #allTabsMenu-searchTabs:hover:active {
+	color: var(--macos-menu-item-hover-color) !important;
 	background-color: var(--macos-menu-item-hover) !important;
 }
 
@@ -521,6 +522,7 @@ toolbar .toolbarbutton-1 {
 
 .all-tabs-item:hover:active,
 #allTabsMenu-searchTabs:hover:active {
+	color: var(--macos-menu-item-hover-color) !important;
 	background-color: var(--macos-menu-item-hover) !important;
 }
 

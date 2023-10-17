@@ -7,7 +7,7 @@
 	--macos-menu-outline: 0.5px solid var(--macos-menu-outline-color);
 	--macos-menu-padding: 4px;
 	--macos-menu-item-border-radius: 4px;
-	--macos-menu-item-padding: 2px 8px;
+	--macos-menu-item-padding: 4px 8px;
 	--macos-menu-item-margin: 0;
 	--macos-menu-border-radius: 6px;
 	--macos-toolbar-border-radius: 8px;
@@ -47,7 +47,7 @@ menupopup {
 }
 
 menupopup menupopup {
-	margin: -5px 0 0 -4px;
+	margin: -5px 0 0 0 !important;
 }
 
 menubar > menu > menupopup {
@@ -72,7 +72,8 @@ menupopup menu[disabled="true"]:hover {
 	background: transparent !important;
 }
 
-.menu-right, .menu-accel-container {
+.menu-right,
+.menu-accel-container {
 	margin-inline: auto !important;
 }
 
@@ -81,6 +82,10 @@ menupopup menu[disabled="true"]:hover {
 #widget-overflow panelview {
 	min-width: fit-content !important;
 	max-width: max-content !important;
+}
+
+.panel-viewcontainer {
+	min-height: min-content !important;
 }
 
 /* Adjust popovers position, includes background colour with transparency */
@@ -100,22 +105,11 @@ panel[type="arrow"] {
 	margin-top: 9px !important;
 }
 
-#customizationui-widget-panel {
-	margin-top: 15px !important;
-}
-
 /* Panel padding */
 
-panel[type="arrow"].panel-no-padding:not(#customizationui-widget-panel) > * {
-	margin-inline: var(--panel-padding) !important;
-}
-
-panel[type="arrow"].panel-no-padding:not(#customizationui-widget-panel) > *:first-of-type {
-	margin-block-start: var(--panel-padding) !important;
-}
-
-panel[type="arrow"].panel-no-padding:not(#customizationui-widget-panel) > *:last-of-type {
-	margin-block-end: var(--panel-padding) !important;
+panel#notification-popup popupnotification,
+panel[type="arrow"].panel-no-padding:not([viewId^="PanelUI-webext"]) > panelmultiview {
+	margin: var(--panel-padding) !important;
 }
 
 /* Style popovers */
@@ -162,7 +156,8 @@ panelview {
 	background-color: transparent !important;
 	display: flex;
 	justify-content: flex-end;
-	padding-top: 0px !important;
+	padding: 0 !important;
+	margin: 0 !important;
 }
 
 .panel-footer toolbarseparator {
@@ -188,11 +183,12 @@ panelview {
 .protections-popup-category[disabled],
 .identity-popup-content-blocking-category {
 	border-radius: var(--macos-menu-item-border-radius) !important;
-	color: inherit !important;
-	font: menu !important;
+	color: inherit;
+	font: menu;
 }
 
-.subviewbutton:not(.subviewbutton-back):not(.toolbarbutton-1),
+.all-tabs-item,
+.subviewbutton:not(.subviewbutton-back):not(.toolbarbutton-1):not(.all-tabs-button):not(.all-tabs-close-button),
 .protections-popup-category,
 .identity-popup-content-blocking-category {
 	padding: var(--macos-menu-item-padding) !important;
@@ -220,18 +216,44 @@ panelview {
 	opacity: 0.5 !important;
 }
 
+/* Popover items on hover */
+
 .bookmark-item:hover,
+.bookmark-item:hover:active,
+#nav-bar .panel-subview-body toolbarbutton:hover,
+#nav-bar .panel-subview-body toolbarbutton:hover:active,
 .panel-subview-body .toolbarbutton-1:not(.subviewbutton):hover,
+.panel-subview-body .toolbarbutton-1:not(.subviewbutton):hover:active,
 .subviewbutton.identity-popup-security-connection:hover,
+.subviewbutton.identity-popup-security-connection:hover:active,
 .subviewbutton.sendToDevice-device:hover,
+.subviewbutton.sendToDevice-device:hover:active,
 #protections-popup-show-report-stack:hover > .protections-popup-footer-button,
+#protections-popup-show-report-stack:hover:active > .protections-popup-footer-button,
 .subviewbutton:not(.nav-bar-overflow-button):not(#appMenu-fxa-label2):not(.subviewbutton-iconic):not(.panel-subview-footer-button):hover,
+.subviewbutton:not(.nav-bar-overflow-button):not(#appMenu-fxa-label2):not(.subviewbutton-iconic):not(.panel-subview-footer-button):hover:active,
 menupopup > menuitem:hover,
+menupopup > menuitem:hover:active,
 menupopup > menuitem[_moz-menuactive="true"]:hover,
+menupopup > menuitem[_moz-menuactive="true"]:hover:active,
 menupopup > menu:where([_moz-menuactive="true"]:not([disabled="true"])),
 menupopup > menuitem:where([_moz-menuactive="true"]:not([disabled="true"])) {
-	background: var(--macos-menu-item-hover) !important;
-	color: #fff !important;
+	color: var(--macos-menu-item-hover-color) !important;
+	background-color: var(--macos-menu-item-hover) !important;
+	--macos-headerbar-button-hover-background: var(--macos-menu-item-hover) !important;
+	--macos-headerbar-button-active-background: var(--macos-menu-item-hover) !important;
+}
+
+.bookmark-item:active,
+#nav-bar .panel-subview-body toolbarbutton:active,
+.panel-subview-body .toolbarbutton-1:not(.subviewbutton):active,
+.subviewbutton.sendToDevice-device:active,
+#protections-popup-show-report-stack:active > .protections-popup-footer-button,
+.subviewbutton:not(.nav-bar-overflow-button):not(#appMenu-fxa-label2):not(.subviewbutton-iconic):not(.panel-subview-footer-button):active,
+menupopup > menuitem:active,
+menupopup > menuitem[_moz-menuactive="true"]:active {
+	background-color: transparent !important;
+	--macos-headerbar-button-active-background: transparent !important;
 }
 
 /* Right click menu */
@@ -256,6 +278,7 @@ menupopup > menuitem:where([_moz-menuactive="true"]:not([disabled="true"])) {
 
 .protections-popup-category:not([disabled]):hover,
 .identity-popup-content-blocking-category:not([disabled]):hover {
+	color: var(--macos-menu-item-hover-color) !important;
 	background: var(--macos-menu-item-hover) !important;
 }
 
@@ -421,6 +444,18 @@ checkbox:not([disabled="true"]):hover > .checkbox-check[checked] {
 
 /* Bookmark editor */
 
+#editBookmarkPanel > :first-child {
+	margin-block-start: var(--panel-padding) !important;
+}
+
+#editBookmarkPanel > * {
+	margin-inline: var(--panel-padding) !important;
+}
+
+#editBookmarkPanel > :last-child {
+	margin-block-end: var(--panel-padding) !important;
+}
+
 #editBookmarkPanelBottomButtons {
 	padding: 0 var(--arrowpanel-padding) calc(var(--arrowpanel-padding) / 2);
 }
@@ -475,8 +510,8 @@ richlistbox.autocomplete-richlistbox {
 }
 
 #PopupAutoComplete > richlistbox > richlistitem:hover {
-	background-color: var(--macos-menu-item-hover) !important;
 	color: var(--macos-menu-item-hover-color) !important;
+	background-color: var(--macos-menu-item-hover) !important;
 }
 
 .autocomplete-richlistitem[originaltype="loginsFooter"] {

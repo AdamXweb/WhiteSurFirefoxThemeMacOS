@@ -58,7 +58,7 @@
 	--macos-button-active-background-alt: #707070 !important;
 	--macos-button-active-background-alt-border: #737373 !important;
 	--macos-button-active-background-alt-hover: #9b9b9b !important;
-	--macos-button-active-background: #464646;
+	--macos-button-active-background: linear-gradient(to top, #464646 0%, #464646 100%);
 	--macos-button-active-border-color: #1b1b1b;
 	--macos-button-active-border-accent-color: #1b1b1b;
 	--macos-button-active-box-shadow: inset 0 1px #ffffff1a;
@@ -81,7 +81,7 @@
 	--macos-button-destructive-action-border-accent-color: #570b0e;
 	--macos-button-destructive-action-box-shadow: inset 0 1px #ffffff05, 0 1px 2px #00000012;
 	--macos-button-destructive-action-hover-background: linear-gradient(to top, #ae151c, #b7161d 1px);
-	--macos-button-destructive-action-active-background: #8a1116;
+	--macos-button-destructive-action-active-background: linear-gradient(to top, #8a1116 2px, #8a1116);
 	--macos-button-destructive-action-active-border-color: #851015;
 	--macos-button-destructive-action-active-box-shadow: inset 0 1px #ffffff00;
 	--macos-button-menulist-color: #fff;

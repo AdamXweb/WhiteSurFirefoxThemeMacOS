@@ -37,11 +37,15 @@
 	transition: background 200ms;
 }
 
+#nav-bar panel toolbarbutton:not(#urlbar-zoom-button):not(.subviewbutton):not(.toolbarbutton-1) {
+	padding: 0 !important;
+}
+
 /* Hover headerbar buttons */
 
 #nav-bar toolbarbutton:not(#allTabsMenu-searchTabs):not(.all-tabs-button):not(.all-tabs-secondary-button):not([checked]):not([disabled]):hover {
 	outline: 0 !important;
-	background: var(--macos-headerbar-button-hover-background) !important;
+	background-color: var(--macos-headerbar-button-hover-background) !important;
 }
 
 /* Active headerbar buttons */
@@ -56,13 +60,17 @@
 	toolbarbutton:not(#allTabsMenu-searchTabs):not(.all-tabs-button):not(.all-tabs-secondary-button):not(#urlbar-zoom-button):not(
 		[disabled]
 	)[checked] {
-	background: var(--macos-headerbar-button-active-background) !important;
+	background-color: var(--macos-headerbar-button-active-background) !important;
 }
 
 /* Buttons with margins */
 
 #nav-bar toolbarbutton:not(#urlbar-zoom-button):not(#allTabsMenu-searchTabs) {
 	margin: 0 2px !important;
+}
+
+#nav-bar panel toolbarbutton:not(#urlbar-zoom-button):not(#allTabsMenu-searchTabs) {
+	margin: 0 !important;
 }
 
 #nav-bar #back-button:not(#hack),

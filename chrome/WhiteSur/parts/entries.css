@@ -14,10 +14,9 @@
 	border-radius: var(--macos-menu-border-radius) !important;
 	box-shadow: none !important;
 	color: var(--macos-urlbar-color) !important;
-	height: 28px !important;
+	height: auto !important;
 	max-height: 28px !important;
-	margin: 0 !important;
-	padding: 6px !important;
+	padding: 2px 6px !important;
 	box-sizing: border-box;
 	transition: all 100ms;
 }
@@ -40,6 +39,12 @@
 	outline-color: transparent !important;
 	outline-width: 12px !important;
 	transition: outline-color 0s, outline-width 0s !important;
+}
+
+.findbar-textbox,
+menulist,
+[type="text"] {
+	padding: 2px 6px !important;
 }
 
 #urlbar:not([focused]) *,
@@ -70,19 +75,6 @@
 #search-box:-moz-window-inactive,
 .findbar-textbox:-moz-window-inactive {
 	color: var(--macos-inactive-urlbar-color) !important;
-}
-
-/* Entries combined */
-
-.findbar-textbox:not(.minimal) {
-	border-top-right-radius: 0 !important;
-	border-bottom-right-radius: 0 !important;
-	border-right-width: 0 !important;
-}
-
-.findbar-textbox:not(.minimal)[focused],
-.findbar-textbox:not(.minimal):focus {
-	-moz-outline-radius: 8px 0 0 8px !important;
 }
 
 /* Entries fixes */

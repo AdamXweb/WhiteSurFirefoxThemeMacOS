@@ -58,31 +58,58 @@
 
 /* Tab view items */
 
+.all-tabs-button.subviewbutton.subviewbutton-iconic,
+.all-tabs-close-button.all-tabs-secondary-button.subviewbutton {
+	min-height: min-content !important;
+	padding: 0 !important;
+}
+
 .all-tabs-item > .all-tabs-secondary-button label {
 	margin: 0 !important;
 }
 
 .all-tabs-item[selected] .toolbarbutton-text {
 	font: menu !important;
-	font-weight: 900 !important;
+	font-weight: 600 !important;
+}
+
+#nav-bar #allTabsMenu-allTabsView .panel-subview-body .all-tabs-item toolbarbutton.all-tabs-close-button:hover,
+#nav-bar #allTabsMenu-hiddenTabsView-tabs .panel-subview-body .all-tabs-item toolbarbutton.all-tabs-close-button:hover {
+	background-color: var(--macos-button-hover-color) !important;
+}
+
+#nav-bar #allTabsMenu-allTabsView .panel-subview-body .all-tabs-item toolbarbutton.all-tabs-close-button:active,
+#nav-bar #allTabsMenu-hiddenTabsView-tabs .panel-subview-body .all-tabs-item toolbarbutton.all-tabs-close-button:active {
+	background-color: var(--macos-button-active-color) !important;
+}
+
+/* "History, bookmarks, and more" popover */
+
+#PanelUI-bookmarks,
+#PanelUI-history {
+	min-width: min-content !important;
+	max-width: max-content !important;
 }
 
 /* Downloads popover */
 
+#downloadsPanel-blockedSubview,
+#downloadsPanel-mainView {
+	padding: 0 !important;
+}
+
 #downloadsPanel-mainView .download-state {
-	padding: 8px !important;
-	border: 0 !important;
-	border-radius: 5px !important;
+	padding: var(--macos-menu-item-padding) !important;
+	margin: 0 !important;
+	border: var(--macos) !important;
+	border-radius: var(--macos-menu-item-border-radius) !important;
 	display: flex;
 	align-items: center;
 }
 
 #downloadsPanel-mainView .download-state:hover {
-	background-color: var(--macos-menu-button-hover-background) !important;
-}
-
-#downloadsPanel-mainView .download-state:last-child {
-	margin-bottom: 8px !important;
+	color: var(--macos-menu-item-hover-color) !important;
+	background-color: var(--macos-menu-item-hover) !important;
 }
 
 #downloadsPanel-mainView .downloadMainArea {
@@ -113,6 +140,10 @@
 
 #downloadsPanel-mainView .download-state toolbarseparator {
 	display: none;
+}
+
+#emptyDownloads {
+	padding: 1.5em 8px !important;
 }
 
 /* Customization overflow menu position */
@@ -291,6 +322,14 @@
 	padding: 0 !important;
 }
 
+.panel-info-button:hover {
+	background-color: var(--macos-menu-button-hover-background) !important;
+}
+
+.panel-info-button:active {
+	background-color: var(--macos-menu-button-active-background) !important;
+}
+
 /* Fix popup display*/
 
 #protections-popup-footer {
@@ -318,6 +357,10 @@
 
 #protections-popup-multiView toolbarbutton {
 	margin: 0 !important;
+}
+
+#customizationui-widget-panel[viewId="PanelUI-profiler"] {
+	--panel-width: initial !important;
 }
 
 /* Feature recommendation notification, fix width */

@@ -44,12 +44,12 @@
 	box-shadow: var(--macos-button-box-shadow) !important;
 	border: 1px solid var(--macos-button-border-color) !important;
 	border-bottom-color: var(--macos-button-border-accent-color) !important;
-	border-radius: 5px !important;
-	padding: 0 4px !important;
-	height: 28px !important;
-	max-height: 28px !important;
-	min-height: 28px !important;
-	min-width: 28px !important;
+	border-radius: 6px !important;
+	padding: 2px 6px !important;
+	height: 22px !important;
+	max-height: 22px !important;
+	min-height: 22px !important;
+	min-width: 22px !important;
 	color: inherit;
 	transition: all 200ms;
 }
@@ -130,7 +130,6 @@ menulist:hover .menulist-label-box,
 .expander-down:hover,
 .expander-up:hover,
 .notification-button:hover,
-.protections-popup-footer-button:hover,
 .identity-popup-permission-remove-button:hover,
 #identity-popup-security-expander:hover,
 .tracking-protection-button:hover,
@@ -161,7 +160,6 @@ menulist[open] .menulist-label-box,
 .expander-down:active,
 .expander-up:active,
 .notification-button:active,
-.protections-popup-footer-button:not(#hack):active,
 .identity-popup-permission-remove-button:active,
 #identity-popup-security-expander:active,
 .tracking-protection-button:active,
@@ -326,7 +324,6 @@ menupopup > menuitem[_moz-menuactive="true"]:not(:hover) {
 .panel-footer button:not(:only-of-type):not(:first-of-type),
 #appMenu-popup .toolbaritem-combined-buttons toolbarbutton:not(:first-of-type):not(#appMenu-fullscreen-button),
 #context-navigation menuitem:not(:first-of-type),
-.findbar-container toolbarbutton.findbar-find-previous,
 .findbar-container toolbarbutton.findbar-find-next,
 .findbar-button:not(:first-of-type) {
 	border-top-left-radius: 0 !important;
@@ -341,8 +338,8 @@ menupopup > menuitem[_moz-menuactive="true"]:not(:hover) {
 
 /* Buttons with suggested action */
 
+.panel-footer-button.popup-notification-primary-button,
 #appMenu-popup .panel-banner-item[notificationid="update-restart"],
-button.popup-notification-primary-button,
 #editBookmarkPanelDoneButton,
 #tracking-action-block {
 	color: #ffffff !important;
@@ -353,12 +350,14 @@ button.popup-notification-primary-button,
 	text-shadow: 0 -1px #0000008f !important;
 }
 
+.panel-footer-button.popup-notification-primary-button:hover,
 #appMenu-popup .panel-banner-item[notificationid="update-restart"]:hover,
 button.popup-notification-primary-button.popup-notification-button:hover,
 #editBookmarkPanelDoneButton:hover {
 	background: var(--macos-button-suggested-action-hover-background) !important;
 }
 
+.panel-footer-button.popup-notification-primary-button:active,
 #appMenu-popup .panel-banner-item[notificationid="update-restart"]:active,
 button.popup-notification-primary-button.popup-notification-button:active,
 #editBookmarkPanelDoneButton:active {
