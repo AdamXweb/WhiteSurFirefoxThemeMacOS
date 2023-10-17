@@ -37,11 +37,11 @@ These are some examples:
 
 -   Configuations in `userChrome.css`
 
-    -   `extension-menu-in-grid.css` <br>
+    -   `extension-menu-in-grid.css` (On by default) <br>
 
     <img width="50%" src="https://raw.githubusercontent.com/easonwong-de/WhiteSurFirefoxThemeMacOS/master/githubpreview/extension-menu-in-grid.png"><br>
 
-    -   `hide-single-tab.css` <br>
+    -   `hide-single-tab.css` (Remove buttons from the tab bar to take effect) <br>
 
     <img width="50%" src="https://raw.githubusercontent.com/easonwong-de/WhiteSurFirefoxThemeMacOS/master/githubpreview/hide-single-tab.png"><br>
 
