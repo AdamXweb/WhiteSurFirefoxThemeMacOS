@@ -84,7 +84,6 @@ tab:hover {
 }
 
 tab[selected] {
-	font-weight: 600 !important;
 	color: var(--macos-tabbar-tab-active-color) !important;
 }
 
@@ -286,7 +285,7 @@ toolbar .toolbarbutton-1 {
 
 /* Active tab */
 
-.tab-background[selected="true"] {
+.tab-background[selected] {
 	background-color: var(--macos-tabbar-tab-active-background) !important;
 	background-image: none !important;
 	border: none !important;
@@ -296,14 +295,14 @@ toolbar .toolbarbutton-1 {
 	box-shadow: none !important;
 }
 
-.tab-background[selected="true"]:-moz-window-inactive {
+.tab-background[selected]:-moz-window-inactive {
 	background-color: var(--macos-inactive-tabbar-tab-active-background) !important;
 	border-image: none !important;
 }
 
 /* Tab hover */
 
-#TabsToolbar .tabbrowser-tab:hover > .tab-stack > .tab-background:not([selected="true"]) {
+#TabsToolbar .tabbrowser-tab:hover > .tab-stack > .tab-background:not([selected]) {
 	background-color: var(--macos-tabbar-tab-active-hover-background) !important;
 	border-image: none !important;
 	box-shadow: none !important;
