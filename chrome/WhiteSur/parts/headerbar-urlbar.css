@@ -176,6 +176,13 @@ toolbarspring {
 	width: 16px !important;
 	margin:auto !important;
 }
+.search-go-button:hover, #urlbar-go-button.urlbar-icon:hover{
+	background-color: var(--urlbar-box-hover-bgcolor) !important;
+}
+/* fix size of search arrow */
+.urlbar-page-action, #urlbar-go-button, .search-go-button {
+	padding: 1px !important;
+  }
 /* Fix for firefox v92 onwards that changed icon size on MacOS*/
 .urlbar-page-action {
 padding: inherit !important;

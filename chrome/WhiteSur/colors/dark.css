@@ -148,5 +148,9 @@
 		--safari-safe-color: rgb(1,203,67) !important;
 		--toolbar-field-focus-color: transparent !important;
 		--focus-outline-color: transparent !important;
+		/* fix new styles added in v119 - */
+		--toolbar-field-focus-color: var(--gnome-urlbar-color) !important;
+		--toolbar-field-focus-background-color: transparent !important;
+		--arrowpanel-border-color: transparent !important; 
 	}
 }
