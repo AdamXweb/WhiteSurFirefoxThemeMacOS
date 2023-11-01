@@ -21,11 +21,11 @@ tab>stack {
 }
 
 /* Extra margin for the first and last tabs */
-.tabbrowser-tab[first-tab]:not([pinned=true]) {
+.tabbrowser-tab[first-tab]:not([pinned]) {
 	margin-left: 8px !important;
 }
 
-.tabbrowser-tab[last-tab]:not([pinned=true]) {
+.tabbrowser-tab[last-tab]:not([pinned]) {
 	margin-right: 8px !important;
 }
 
@@ -68,7 +68,7 @@ tab>stack {
 }
 
 /* Space between tabs */
-.tabbrowser-tab:not([pinned=true]) {
+.tabbrowser-tab:not([pinned]) {
 	margin: 0 0 !important;
 }
 
