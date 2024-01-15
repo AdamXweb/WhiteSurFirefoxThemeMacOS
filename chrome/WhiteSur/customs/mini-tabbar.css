@@ -124,7 +124,7 @@ tab > stack {
 	> .tabbrowser-tab
 	> .tab-stack
 	> .tab-content
-	> .tab-icon-stack:not([selected="true"]) {
+	> .tab-icon-stack:not([selected]) {
 	margin-left: auto !important;
 }
 
@@ -139,16 +139,16 @@ tab > stack {
 	min-height: 0 !important;
 }
 
-.tabbrowser-tab[selected="true"] > .tab-stack > .tab-background {
+.tabbrowser-tab[selected] > .tab-stack > .tab-background {
 	margin-inline: 2px !important;
 }
 
-.tabbrowser-tab > .tab-stack > .tab-background:not([selected="true"]) {
+.tabbrowser-tab > .tab-stack > .tab-background:not([selected]) {
 	border: 0 !important;
 	transition: none !important;
 }
 
-.tabbrowser-tab:hover > .tab-stack > .tab-background:not([selected="true"]) {
+.tabbrowser-tab:hover > .tab-stack > .tab-background:not([selected]) {
 	transition: none !important;
 }
 
