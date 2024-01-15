@@ -84,6 +84,7 @@ tab:hover {
 }
 
 tab[selected] {
+	font-weight: 600 !important;
 	color: var(--macos-tabbar-tab-active-color) !important;
 }
 
@@ -162,11 +163,11 @@ tab[selected]:-moz-window-inactive {
 
 /* If tab close button is not present, don't force favicon to the center */
 
-#tabbrowser-tabs[closebuttons="activetab"] .tabbrowser-tab:not([selected="true"]) .tab-throbber,
-#tabbrowser-tabs[closebuttons="activetab"] .tabbrowser-tab:not([selected="true"]) .tab-throbber-fallback,
-#tabbrowser-tabs[closebuttons="activetab"] .tabbrowser-tab:not([selected="true"]):not([busy]) .tab-icon-image,
-#tabbrowser-tabs[closebuttons="activetab"] .tabbrowser-tab:not([selected="true"]):not([image]) .tab-label-container,
-#tabbrowser-tabs[closebuttons="activetab"] .tabbrowser-tab:not([selected="true"]) .tab-icon-stack {
+#tabbrowser-tabs[closebuttons="activetab"] .tabbrowser-tab:not([selected]) .tab-throbber,
+#tabbrowser-tabs[closebuttons="activetab"] .tabbrowser-tab:not([selected]) .tab-throbber-fallback,
+#tabbrowser-tabs[closebuttons="activetab"] .tabbrowser-tab:not([selected]):not([busy]) .tab-icon-image,
+#tabbrowser-tabs[closebuttons="activetab"] .tabbrowser-tab:not([selected]):not([image]) .tab-label-container,
+#tabbrowser-tabs[closebuttons="activetab"] .tabbrowser-tab:not([selected]) .tab-icon-stack {
 	margin-left: 0 !important;
 }
 
@@ -394,7 +395,7 @@ toolbar .toolbarbutton-1 {
 	> .tabbrowser-tab
 	> .tab-stack
 	> .tab-content
-	> .tab-icon-stack:not([selected="true"]) {
+	> .tab-icon-stack:not([selected]) {
 	margin-left: 0 !important;
 }
 
@@ -404,7 +405,7 @@ toolbar .toolbarbutton-1 {
 	> .tabbrowser-tab
 	> .tab-stack
 	> .tab-content
-	> .tab-icon-stack[selected="true"] {
+	> .tab-icon-stack[selected] {
 	margin-left: auto !important;
 }
 
@@ -452,7 +453,7 @@ toolbar .toolbarbutton-1 {
 	padding-inline: 0px !important;
 }
 
-.tabbrowser-tab[selected="true"] > .tab-stack > .tab-background {
+.tabbrowser-tab[selected] > .tab-stack > .tab-background {
 	margin-left: 0px !important;
 	margin-right: 0px !important;
 }
@@ -473,13 +474,13 @@ toolbar .toolbarbutton-1 {
 
 /* transition fade on hover to emulate safari & top border of tab content */
 
-.tabbrowser-tab > .tab-stack > .tab-background:not([selected="true"]),
+.tabbrowser-tab > .tab-stack > .tab-background:not([selected]),
 #TabsToolbar-customization-target > toolbarbutton.toolbarbutton-1 {
 	border-top: 1px solid var(--macos-toolbar-border-color) !important;
 	transition: background-color 80ms !important;
 }
 
-.tabbrowser-tab:hover > .tab-stack > .tab-background:not([selected="true"]) {
+.tabbrowser-tab:hover > .tab-stack > .tab-background:not([selected]) {
 	transition: background-color 150ms ease-in !important;
 }
 
@@ -527,7 +528,7 @@ toolbar .toolbarbutton-1 {
 
 /*Inactive tab title*/
 
-.tab-label-container:not([selected="true"], [multiselected]) {
+.tab-label-container:not([selected], [multiselected]) {
 	opacity: 0.5 !important;
 }
 
