@@ -2,11 +2,15 @@
 
 /* Use with Tab Preview On Hover add-on: https://addons.mozilla.org/firefox/addon/tab-preview-on-hover/ */
 
-/* Version 2023-06-28 */
+/* Version 2024-03-01 */
 
 #navigator-toolbox:-moz-lwtheme,
 .browserContainer > findbar:-moz-lwtheme {
 	background-image: none !important;
+}
+
+#titlebar {
+	z-index: 10 !important;
 }
 
 #tabbrowser-tab-tooltip {
