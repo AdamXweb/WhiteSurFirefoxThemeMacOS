@@ -5,6 +5,8 @@ To skip to the original `README.md`, please click [here](#firefox-whitesur-theme
 
 <p align="center"><img width="45%" src="https://raw.githubusercontent.com/easonwong-de/WhiteSurFirefoxThemeMacOS/master/githubpreview/White_Sur_%26_ATBC_3.png"><img width="45%" src="https://raw.githubusercontent.com/easonwong-de/WhiteSurFirefoxThemeMacOS/master/githubpreview/White_Sur_%26_ATBC_2.png"></p>
 
+This CSS theme is optimised for the release version of Firefox.
+
 ### Quick Link
 
 [Installation](#installation-macos)  
