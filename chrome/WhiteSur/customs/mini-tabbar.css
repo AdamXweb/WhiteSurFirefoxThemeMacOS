@@ -32,6 +32,8 @@
 .scrollbox-clip scrollbox:not(:has(scrollbar)) {
 	display: var(--scrollbox-display, flex, -moz-box) !important;
 	justify-content: var(--scrollbox-justify-content) !important;
+	/* Uncomment to enable multi-line tab bar */
+	/* flex-wrap: wrap !important; */
 }
 
 #tabbrowser-tabs {
