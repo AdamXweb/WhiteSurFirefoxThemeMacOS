@@ -36,6 +36,10 @@ url("about:newtab") {
 		background: transparent !important;
 	}
 
+	.top-site-outer .top-site-inner > a {
+		padding: 0 !important;
+	}
+
 	.top-site-outer .tile {
 		width: 60px !important;
 		height: 60px !important;
