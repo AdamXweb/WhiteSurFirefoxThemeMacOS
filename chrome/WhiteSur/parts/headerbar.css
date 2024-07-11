@@ -91,7 +91,7 @@
 /* Headerbar entries */
 
 #nav-bar #searchbar,
-#nav-bar #urlbar #urlbar-input-container {
+#nav-bar #urlbar .urlbar-input-container {
 	appearance: none;
 	-moz-appearance: none !important;
 	background: var(--macos-urlbar-background) !important;
@@ -112,14 +112,14 @@
 	box-shadow: none !important;
 }
 
-#nav-bar #urlbar[breakout][breakout-extend] #urlbar-input-container,
-#nav-bar #urlbar[breakout][breakout-extend] #urlbar-input-container:hover {
+#nav-bar #urlbar[breakout][breakout-extend] .urlbar-input-container,
+#nav-bar #urlbar[breakout][breakout-extend] .urlbar-input-container:hover {
 	box-shadow: none !important;
 	padding: 0 6px !important;
 }
 
 #nav-bar #searchbar:focus-within,
-#urlbar[focused] #urlbar-input-container {
+#urlbar[focused] .urlbar-input-container {
 	border: none !important;
 	background: var(--macos-urlbar-background) !important;
 	box-shadow: inset 0 0 0 2px var(--macos-focused-urlbar-highlight-color) !important;

@@ -28,7 +28,7 @@
 
 /* Entries not focused */
 
-#urlbar > #urlbar-input-container,
+#urlbar > .urlbar-input-container,
 #searchbar,
 #search-box,
 .findbar-textbox,
@@ -58,7 +58,7 @@ menulist,
 
 /* Entries focused */
 
-#urlbar[focused] > #urlbar-input-container,
+#urlbar[focused] > .urlbar-input-container,
 #searchbar:focus-within,
 #search-box[focused],
 .findbar-textbox[focused],
@@ -85,7 +85,7 @@ menulist,
 	margin: 0 3px !important;
 }
 
-#urlbar-input-container {
+.urlbar-input-container {
 	background: transparent !important;
 	border: 0 !important;
 }

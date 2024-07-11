@@ -180,7 +180,7 @@ tab > stack {
 }
 
 #nav-bar #searchbar,
-#nav-bar #urlbar #urlbar-input-container {
+#nav-bar #urlbar .urlbar-input-container {
 	box-shadow: inset 0 0 0 1px var(--macos-hover-urlbar-border-color) !important;
 }
 

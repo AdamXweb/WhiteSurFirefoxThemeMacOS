@@ -141,7 +141,7 @@ toolbarspring {
 	max-height: unset !important;
 }
 
-#urlbar[breakout][breakout-extend] #urlbar-input-container {
+#urlbar[breakout][breakout-extend] .urlbar-input-container {
 	height: 32px !important;
 	max-height: 32px !important;
 	padding: 0 !important;
@@ -151,7 +151,7 @@ toolbarspring {
 	box-shadow: var(--macos-urlbar-box-shadow) !important;
 }
 
-#urlbar:not([focused]) > #urlbar-input-container > .urlbar-input-box > #urlbar-input {
+#urlbar:not([focused]) > .urlbar-input-container > .urlbar-input-box > #urlbar-input {
 	mask-image: linear-gradient(to left, transparent, black 3ch);
 }
 
