@@ -57,7 +57,7 @@
 	margin: 0 3px !important;
 	min-height: 36px;
 }
-#urlbar-input-container {
+.urlbar-input-container {
 	background: transparent !important;
 	border: 0 !important;
 }
