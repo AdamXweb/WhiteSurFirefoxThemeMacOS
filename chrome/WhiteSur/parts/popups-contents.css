@@ -210,6 +210,8 @@
 	border: 1px solid var(--gnome-button-suggested-action-border-color) !important;
 	border-radius: 5px 5px 0 0;
 	min-height: 34px !important;
+	
+	& + toolbarseparator { display: none !important; }
 }
 #protections-popup[toast] #protections-popup-mainView-panel-header {
 	border-radius: 5px !important;
@@ -221,12 +223,6 @@
 	border-radius: 0 !important;
 }
 
-#protections-popup-tp-switch-section {
-	background: var(--gnome-button-background) !important;
-	border: 1px solid var(--gnome-button-border-color) !important;
-	border-top: 0 !important;
-	border-radius: 0 0 5px 5px;
-}
 #protections-popup[hasException] #protections-popup-tp-switch-section {
 	margin-bottom: 10px !important;
 	color: white !important;
@@ -236,10 +232,6 @@
 #protections-popup[hasException] #protections-popup-mainView-panel-header{
 	background: var(--gnome-button-destructive-action-background) !important;
 	border-color: var(--gnome-button-destructive-action-border-color) !important;
-}
-
-#protections-popup-no-trackers-found-description {
-	margin: 10px 0 !important;
 }
 
 #protections-popup-blocking-section-header,
@@ -291,18 +283,6 @@
 }
 #protections-popup-tp-switch:not([enabled])[showdotindicator]::after {
 	display: none !important;
-}
-#protections-popup-tp-switch {
-	background: var(--gnome-switch-background) !important;
-	border: 1px solid var(--gnome-switch-border-color) !important;
-	border-radius: 24px !important;
-	min-width: 50px !important;
-	width: 50px !important;
-	min-height: 26px !important;
-	padding: 0 !important;
-	position: relative !important;
-	display: block !important;
-	margin: 0 !important;
 }
 #protections-popup-tp-switch:hover {
 	border-color: var(--gnome-switch-border-color) !important;
