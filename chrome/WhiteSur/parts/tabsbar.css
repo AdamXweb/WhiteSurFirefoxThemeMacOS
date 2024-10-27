@@ -147,11 +147,21 @@ tab[selected]:-moz-window-inactive {
 .tabbrowser-tab[class*="identity-color-"]>.tab-stack>.tab-content>.tab-icon-stack {
 	margin-left:auto !important;
 }
+/* add ellipsis similar to safari*/
+.tab-label{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 100%;
+}
 
 /* If tab favicon is not present, force tab label to the center - magic sauce for v113 centre favicon in tabs*/
 .tabbrowser-tab .tab-label-container {
 	margin-left: 0 !important;
 	max-width: fit-content;
+	flex-direction: column;
+	display: flex;
+	justify-content: center;
+	mask-image: none !important;
 }
 
 .tabbrowser-tab:not([image]):not([busy]):not([progress]) .tab-label-container {
