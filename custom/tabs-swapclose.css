@@ -1,28 +1,35 @@
 /* Left hand side tab close */
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
-.tab-content:not([pinned])::before,
-.tab-content:not([pinned])::after {
-    display: flex;
-    content: "";
-    flex-grow: 2
-}
 
-.tab-content:not([pinned])::after {
-    flex-grow: 1;
-}
 /* Place close button on left side */
 .tab-content {
     display: flex !important;
 }
 
 .tab-close-button {
-    order: 0
+    order: -1;
+    margin-inline-end: 5px auto !important;
+    margin-left: -4.5px !important;
+    margin-right: 2px !important;
 }
 
 .tab-icon-stack{
     padding-left: 1px !important;
+    margin-inline-start: 6px !important;
 }
 .tabbrowser-tab[class*="identity-color-"][pinned] .tab-content{
     display:flex !important;
+}
+/* Keeps tab close to left */
+.tabbrowser-tab:not([soundplaying]):not([muted]):not([activemedia-blocked]) .tab-close-button, .tabbrowser-tab[soundplaying-scheduledremoval="true"] .tab-icon-stack, .tabbrowser-tab .tab-icon-stack[muted]:not([soundplaying-scheduledremoval="true"]) {
+  margin-left: 0 !important;
+}
+
+.tab-label-container{
+    margin-right: auto !important;
+
+}
+.tab-icon-stack{
+    margin-left: auto !important;
 }
