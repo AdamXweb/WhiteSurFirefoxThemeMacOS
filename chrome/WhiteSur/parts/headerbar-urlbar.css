@@ -34,7 +34,7 @@ toolbarspring {
 }
 
 /* URL bar */
-#urlbar {
+#urlbar, #PopupSearchAutoComplete {
 	box-shadow: none !important;
 	background: var(--gnome-popover-background) !important;
 	border-radius: 8px !important;
@@ -43,7 +43,8 @@ toolbarspring {
 	transition: opacity 0.4s !important;
 }
 #urlbar:hover,
-#urlbar[focused]{
+#urlbar[focused],
+#PopupSearchAutoComplete {
 	opacity: 1 !important;
 	filter: saturate(100%) !important;
 
