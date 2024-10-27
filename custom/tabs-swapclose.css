@@ -17,7 +17,7 @@
 }
 
 .tab-close-button {
-    order: 0
+    order: -1;
 }
 
 .tab-icon-stack{
