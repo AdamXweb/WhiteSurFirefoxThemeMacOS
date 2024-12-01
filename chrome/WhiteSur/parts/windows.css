@@ -11,16 +11,16 @@
         stroke: none !important;
     }
 
-    :root[tabsintitlebar][sizemode="maximized"] #titlebar {
+    :root[tabsintitlebar][sizemode="maximized"] #TabsToolbar {
         appearance: none !important;
     }
 
-    :root[tabsintitlebar]:not([sizemode="maximized"]) #titlebar .titlebar-buttonbox-container {
+    :root[tabsintitlebar]:not([sizemode="maximized"]) #TabsToolbar .titlebar-buttonbox-container {
         top: 17px !important;
         padding: 2px 0 0 8px !important;
        
     }
-    :root[tabsintitlebar][inFullscreen]  #titlebar .titlebar-buttonbox-container{
+    :root[tabsintitlebar][inFullscreen]  #TabsToolbar .titlebar-buttonbox-container{
     margin-top: -34px;
     margin-bottom: 44px !important;
     order: 0 !important;
@@ -40,7 +40,7 @@
     }
 
 
-    #titlebar .titlebar-button.titlebar-close {
+    #TabsToolbar .titlebar-button.titlebar-close {
         order: -1;
     }
 

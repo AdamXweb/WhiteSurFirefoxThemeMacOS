@@ -1,7 +1,7 @@
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
 /* Place the close buttons on the right hand side*/
-:root[tabsintitlebar] #titlebar .titlebar-buttonbox-container, :root[tabsintitlebar] #titlebar-buttonbox-container {
+:root[tabsintitlebar] #TabsToolbar .titlebar-buttonbox-container, :root[tabsintitlebar] #TabsToolbar-buttonbox-container {
     left:auto !important;
     right: 8px;
 
@@ -35,6 +35,6 @@
     padding-right: 70px !important;
   }
 
-  :root[tabsintitlebar][inFullscreen]  #titlebar .titlebar-buttonbox-container{
+  :root[tabsintitlebar][inFullscreen]  #TabsToolbar .titlebar-buttonbox-container{
     order: 1000 !important;
     }

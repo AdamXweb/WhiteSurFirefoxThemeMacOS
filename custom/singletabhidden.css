@@ -11,7 +11,7 @@
   
   #tabbrowser-tabs tab[first-visible-tab="true"][last-visible-tab="true"]:not([pinned]),
   .tabbrowser-tab:only-of-type,
-  #tabbrowser-tab[first-visible-tab="true"][last-visible-tab="true"]:not([pinned]) ~ #titlebar {
+  #tabbrowser-tab[first-visible-tab="true"][last-visible-tab="true"]:not([pinned]) ~ #TabsToolbar {
     visibility: collapse !important;
     min-height: 0 !important;
     height: 0;

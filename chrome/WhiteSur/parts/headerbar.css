@@ -91,12 +91,7 @@ toolbar .toolbarbutton-1{
 	max-height: 29px !important;
 	transition: box-shadow 200ms;
 }
-#urlbar[breakout]{
-	top: 3.5px !important;
-}
-#urlbar[breakout][breakout-extend]{
-	top: 2px !important;
-}
+
 #nav-bar-customization-target{
 	max-height: 36px !important;
 }
