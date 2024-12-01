@@ -23,6 +23,7 @@
 @import "custom/noidentity.css";
 @import "custom/standard-urlbar.css";
 @import "custom/windows-swapclose.css";
+@import "custom/compact-tabs.css";
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
 /* Set theme version text in customization panel */

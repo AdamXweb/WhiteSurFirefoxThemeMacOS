@@ -1,0 +1,13 @@
+/* Compact tab-bar to match safari */
+@namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+
+tab > stack {
+  height: 28px !important;
+}
+.tab-background {
+  min-height: 0 !important;
+  }
+  
+.tabbrowser-tab {
+	min-height: 28px !important;
+ }
