@@ -461,3 +461,12 @@ transition: all 150ms ease-in !important;
 #alltabs-button.toolbarbutton-1 {
     visibility: collapse !important;
 }
+/* no icon align label to centre */
+#tabbrowser-tabs[closebuttons="activetab"] .tabbrowser-tab:not([selected]):not([image]) .tab-label-container{
+	margin-left: auto !important;
+}
+/* too many tabs still show close button */
+.tab-close-button {
+  &[pinned], #tabbrowser-tabs[closebuttons="activetab"][orient="horizontal"] &:not([selected]) {
+display: flex !important;
+	}}
