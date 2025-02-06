@@ -2,7 +2,7 @@
 
 @namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
-:root[tabsintitlebar] #TabsToolbarß .titlebar-button {
+:root #TabsToolbarß .titlebar-button {
 	border-radius: 100% !important;
 	height: 30px !important;
 	width: 30px !important;
