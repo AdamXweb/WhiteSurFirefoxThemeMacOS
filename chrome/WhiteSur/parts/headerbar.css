@@ -109,6 +109,16 @@ toolbar .toolbarbutton-1{
 	padding: 0 6px !important;
 }
 
+#urlbar[breakout] {
+	position: static !important; 
+}
+
+/* New tab url bar focusing */
+#urlbar[focused]:not([suppress-focus-border]) > #urlbar-background, 
+#searchbar:focus-within {
+	outline: none !important;
+}
+
 #nav-bar #searchbar:focus-within,
 #urlbar[focused] .urlbar-input-container {
 	border: none !important;
