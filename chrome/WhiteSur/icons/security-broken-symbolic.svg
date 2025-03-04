@@ -1,8 +1,12 @@
-<svg width="16" height="16" version="1.1" xmlns="http://www.w3.org/2000/svg">
+<?xml version="1.0"?>
+<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" version="1.1">
  <defs>
   <style id="current-color-scheme" type="text/css">.ColorScheme-Text { color:#363636; }</style>
  </defs>
- <path class="ColorScheme-Text" d="m8 0c-2.216 0-4 1.784-4 4v2h1v-2c0-1.662 1.338-3 3-3s3 1.338 3 3v2h1v-2c0-2.216-1.784-4-4-4z" fill="currentColor" opacity=".35"/>
- <path class="ColorScheme-Text" d="m4 6c-1.108 0-2 0.892-2 2v5c0 1.108 0.892 2 2 2h8c1.108 0 2-0.892 2-2v-5c0-1.108-0.892-2-2-2h-8zm0 1h8c0.554 0 1 0.446 1 1v5c0 0.554-0.446 1-1 1h-8c-0.554 0-1-0.446-1-1v-5c0-0.554 0.446-1 1-1z" fill="currentColor" opacity=".35"/>
- <rect transform="rotate(45)" x="1.3137" y="-.5" width="20" height="1" rx="0" ry="0" class="ColorScheme-Text" fill="currentColor"/>
+ <g class="layer">
+  <title>Layer 1</title>
+  <path class="ColorScheme-Text" d="m8,0c-2.22,0 -4,1.78 -4,4l0,2l1,0l0,-2c0,-1.66 1.34,-3 3,-3s3,1.34 3,3l0,2l1,0l0,-2c0,-2.22 -1.78,-4 -4,-4z" fill="#000000" id="svg_1" opacity="0.65" transform="matrix(1, 0, 0, 1, 0, 0)"/>
+  <path class="ColorScheme-Text" d="m4,6c-1.11,0 -2,0.89 -2,2l0,5c0,1.11 0.89,2 2,2l8,0c1.11,0 2,-0.89 2,-2l0,-5c0,-1.11 -0.89,-2 -2,-2l-8,0zm0,1l8,0c0.55,0 1,0.45 1,1l0,5c0,0.55 -0.45,1 -1,1l-8,0c-0.55,0 -1,-0.45 -1,-1l0,-5c0,-0.55 0.45,-1 1,-1z" fill="#000000" id="svg_2" opacity="0.65"/>
+  <rect class="ColorScheme-Text" fill="currentColor" height="1" id="svg_3" transform="rotate(45)" width="20" x="1.31" y="-0.5"/>
+ </g>
 </svg>
