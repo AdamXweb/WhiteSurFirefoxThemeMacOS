@@ -82,6 +82,7 @@ fi
     echo "user_pref(\"browser.uidensity\", 0);" >>                                      "${d}/prefs.js"
     echo "user_pref(\"layers.acceleration.force-enabled\", true);" >>                   "${d}/prefs.js"
     echo "user_pref(\"security.insecure_connection_text.enabled\", false);" >>          "${d}/prefs.js"
+    echo "user_pref(\"security.insecure_connection_text.pbmode.enabled\", false);" >>   "${d}/prefs.js"
     echo "user_pref(\"mozilla.widget.use-argb-visuals\", true);" >>                     "${d}/prefs.js"
   done
 }
