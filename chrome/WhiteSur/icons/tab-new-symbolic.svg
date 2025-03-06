@@ -1,4 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="context-fill" fill-opacity="context-fill-opacity">
- <rect x="1" y="8" width="13" height="1" ry="0"/>
- <rect transform="rotate(90)" x="2" y="-8" width="13" height="1" ry="0"/>
+<?xml version="1.0"?>
+<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+
+ <g class="layer">
+  <title>Layer 1</title>
+  <rect height="1" id="svg_1" width="13" x="1" y="8"/>
+  <rect height="1" id="svg_2" transform="rotate(90)" width="13" x="2" y="-8"/>
+  <rect height="1" id="svg_4" width="13" x="1" y="8.19"/>
+  <rect height="1" id="svg_3" transform="matrix(6.12323e-17, 1, -1, 6.12323e-17, -4.25, -4.5625)" width="13" x="6.56" y="-12.44"/>
+ </g>
 </svg>
