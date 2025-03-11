@@ -350,6 +350,9 @@ menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
 .bookmark-item[container] {
 	list-style-image: url("../icons/folder-symbolic.svg") !important;
 }
+.bookmark-item image{
+	filter: invert(1);
+}
 
 /* Invert icons color in dark variant */
 @media (prefers-color-scheme: dark) {
