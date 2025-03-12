@@ -1,4 +1,4 @@
-MY_USERNAME="$(logname 2> /dev/null || echo ${SUDO_USER:-${USER}})"
+MY_USERNAME="$(whoami 2> /dev/null || echo ${SUDO_USER:-${USER}})"
 FIREFOX_DIR_HOME="/Users/${MY_USERNAME}/Library/Application Support/Firefox/Profiles"
 FIREFOX_O_HOME=/Users/${MY_USERNAME}/Library/'Application Support'/Firefox/Profiles/
 FIREFOX_THEME_HOME="/Users/${MY_USERNAME}/Library/Application\ Support/Firefox/Profiles"
