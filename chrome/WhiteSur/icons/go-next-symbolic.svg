@@ -1,8 +1,9 @@
 <?xml version="1.0"?>
 <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" version="1.1">
-
  <g class="layer">
   <title>Layer 1</title>
-  <path d="m4.84,1.84c-0.13,0 -0.34,0.11 -0.44,0.21c-0.2,0.19 -0.29,0.56 -0.09,0.76l5.13,5.19l-5.1,5.21c-0.2,0.2 -0.12,0.55 0.08,0.74c0.19,0.2 0.59,0.26 0.79,0.06l5.65,-5.66c0.2,-0.19 0.2,-0.51 0,-0.7l-5.65,-5.66c-0.1,-0.1 -0.23,-0.15 -0.36,-0.15z" fill="#333" id="svg_1" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.81"/>
+  <g id="surface1">
+   <path d="m8,4l8,8l-8,8" fill="none" id="svg_1" stroke="#363636" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke-width="2" transform="matrix(0.666667,0,0,0.666667,0,0)"/>
+  </g>
  </g>
 </svg>
