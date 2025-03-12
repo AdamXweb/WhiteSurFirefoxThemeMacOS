@@ -10,4 +10,3 @@ user_pref("browser.tabs.drawInTitlebar", true);
 
 // Set UI density to normal
 user_pref("browser.uidensity", 0);
-
