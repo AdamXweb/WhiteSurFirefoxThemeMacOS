@@ -49,6 +49,7 @@
 	width: 16px !important;
 	height: 16px !important;
 }
+
 menu[disabled] > .menu-right {
 	opacity: 0.3;
 }
@@ -75,6 +76,13 @@ menu:not([disabled]):hover > .menu-right {
 	list-style-image: url("../icons/pan-up-symbolic.svg") !important;
 	width: 16px !important;
 	height: 16px !important;
+}
+
+/*Translations-button*/
+#translations-button-icon {
+	list-style-image: url("../icons/translations.svg") !important;
+	filter: invert(0) brightness(160%);
+	/*;margin-right: 0 !important;*/
 }
 
 /* Search entries */
@@ -111,7 +119,6 @@ treechildren::-moz-tree-twisty(selected, focus, open) {
 .sidebar-panel[lwt-sidebar-brighttext] .sidebar-placesTreechildren::-moz-tree-twisty(open) {
 	list-style-image: url("../icons/pan-end-symbolic-light.svg") !important;
 }
-
 /* Sidebar: History: clock icon */
 #historyTree treechildren::-moz-tree-image {
 	list-style-image: url("../icons/preferences-system-time-symbolic.svg") !important;
@@ -130,7 +137,6 @@ menuitem[type="checkbox"][checked="true"] {
 menuitem[type="checkbox"][disabled="true"] .menu-iconic-icon {
 	opacity: 0.5;
 }
-
 menuitem[type="checkbox"]:not([disabled="true"]):hover .menu-iconic-icon {
 	filter: invert(100%) brightness(200%);
 }
@@ -354,7 +360,11 @@ menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
 	filter: invert(40%) brightness(150%);
 }
 
-/*.bookmark-item .menu-iconic-icon{
+/*.bookmark-item .menu-iconic-icon {
+	filter: invert(1);
+}*/
+
+/*.bookmark-item image{
 	filter: invert(1);
 }*/
 
@@ -445,9 +455,9 @@ menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
 	}
 
 	/*.bookmark-item .menu-iconic-icon {
-		filter: invert(1);
+		filter: invert(0);
 	}*/
-	
+
 	#pocket-button,
 	#pageAction-panel-pocket {
 		list-style-image: url("../icons/save-to-pocket-light.svg") !important;
@@ -464,6 +474,11 @@ menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
 		list-style-image: url("../icons/preferences-system-time-symbolic-light.svg") !important;
 	}
 
+	/* Fix icon color */
+	#sidebar-icon {
+		opacity: 1 !important;
+	}
+	
 	/* Fix for extensions icons */
 	.webextension-browser-action {
 		list-style-image: var(--webextension-menupanel-image-light, inherit) !important;
