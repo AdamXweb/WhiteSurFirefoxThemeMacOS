@@ -444,9 +444,9 @@ menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
 		filter: invert(60%) brightness(150%);
 	}
 
-	.bookmark-item .menu-iconic-icon {
+	/*.bookmark-item .menu-iconic-icon {
 		filter: invert(1);
-	}
+	}*/
 	
 	#pocket-button,
 	#pageAction-panel-pocket {
