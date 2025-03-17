@@ -111,6 +111,7 @@ treechildren::-moz-tree-twisty(selected, focus, open) {
 .sidebar-panel[lwt-sidebar-brighttext] .sidebar-placesTreechildren::-moz-tree-twisty(open) {
 	list-style-image: url("../icons/pan-end-symbolic-light.svg") !important;
 }
+
 /* Sidebar: History: clock icon */
 #historyTree treechildren::-moz-tree-image {
 	list-style-image: url("../icons/preferences-system-time-symbolic.svg") !important;
@@ -129,6 +130,7 @@ menuitem[type="checkbox"][checked="true"] {
 menuitem[type="checkbox"][disabled="true"] .menu-iconic-icon {
 	opacity: 0.5;
 }
+
 menuitem[type="checkbox"]:not([disabled="true"]):hover .menu-iconic-icon {
 	filter: invert(100%) brightness(200%);
 }
