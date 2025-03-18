@@ -81,7 +81,7 @@ menu:not([disabled]):hover > .menu-right {
 /*Translations-button*/
 #translations-button-icon {
 	list-style-image: url("../icons/translations.svg") !important;
-	filter: invert(40) /*brightness(160%)*/;
+	filter: invert(30) /*brightness(160%)*/;
 	/*;margin-right: 0 !important;*/
 }
 
