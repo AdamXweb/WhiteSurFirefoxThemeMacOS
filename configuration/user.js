@@ -1,13 +1,15 @@
 /* user.js
- * https://github.com/rafaelmardojai/firefox-gnome-theme/
+ * https://github.com/a1ex-ak/firefox-esr-gnome-theme/
  */
 
 // Enable customChrome.css
 user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 
-// Enable CSD
-user_pref("browser.tabs.drawInTitlebar", true);
-
 // Set UI density to normal
 user_pref("browser.uidensity", 0);
 
+// Enable SVG context-propertes
+user_pref("svg.context-properties.content.enabled", true);
+
+// Enable CSD
+user_pref("browser.tabs.drawInTitlebar", true);

@@ -1,3 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
-    <path d="M13 10L8 5l-5 5z" fill="#2e3436"/>
+<?xml version="1.0"?>
+<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" version="1.1">
+ <g class="layer">
+  <title>Layer 1</title>
+  <g id="surface1">
+   <path d="m4.94,10.27l3.06,-3.05l3.06,3.05l0.94,-0.94l-4,-4l-4,4l0.94,0.94zm0,0" fill="#363636" fill-rule="nonzero" id="svg_1"/>
+  </g>
+ </g>
 </svg>

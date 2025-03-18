@@ -49,6 +49,7 @@
 	width: 16px !important;
 	height: 16px !important;
 }
+
 menu[disabled] > .menu-right {
 	opacity: 0.3;
 }
@@ -75,6 +76,13 @@ menu:not([disabled]):hover > .menu-right {
 	list-style-image: url("../icons/pan-up-symbolic.svg") !important;
 	width: 16px !important;
 	height: 16px !important;
+}
+
+/*Translations-button*/
+#translations-button-icon {
+	list-style-image: url("../icons/translations.svg") !important;
+	filter: invert(30) /*brightness(160%)*/;
+	/*;margin-right: 0 !important;*/
 }
 
 /* Search entries */
@@ -349,10 +357,16 @@ menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
 
 .bookmark-item[container] {
 	list-style-image: url("../icons/folder-symbolic.svg") !important;
+	filter: invert(40%) brightness(180%);
 }
-.bookmark-item .menu-iconic-icon{
+
+/*.bookmark-item .menu-iconic-icon {
 	filter: invert(1);
-}
+}*/
+
+/*.bookmark-item image{
+	filter: invert(1);
+}*/
 
 /* Invert icons color in dark variant */
 @media (prefers-color-scheme: dark) {
@@ -440,6 +454,10 @@ menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
 		filter: invert(60%) brightness(150%);
 	}
 
+	/*.bookmark-item .menu-iconic-icon {
+		filter: invert(0);
+	}*/
+
 	#pocket-button,
 	#pageAction-panel-pocket {
 		list-style-image: url("../icons/save-to-pocket-light.svg") !important;
@@ -456,6 +474,11 @@ menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
 		list-style-image: url("../icons/preferences-system-time-symbolic-light.svg") !important;
 	}
 
+	/* Fix icon color */
+	#sidebar-icon {
+		opacity: 1 !important;
+	}
+	
 	/* Fix for extensions icons */
 	.webextension-browser-action {
 		list-style-image: var(--webextension-menupanel-image-light, inherit) !important;
