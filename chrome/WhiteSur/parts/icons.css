@@ -445,10 +445,6 @@ menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
 		filter: invert(60%) brightness(150%);
 	}
 
-	/*.bookmark-item .menu-iconic-icon {
-		filter: invert(0);
-	}*/
-
 	#pocket-button,
 	#pageAction-panel-pocket {
 		list-style-image: url("../icons/save-to-pocket-light.svg") !important;
