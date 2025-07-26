@@ -24,7 +24,7 @@ Follow the prompts
 
 The script supports the following flags
 - `-c` Left hand side tab close button
-- `-w` Left hand side window close button
+- `-w` Right hand side window close button
 - `-p` Makes tabs height compact like current Safari
 - `-f` To specify the default firefox folder (it will try to find the profile folder to place the theme within)
 - `-l` Default location of most Linux installations
