@@ -3,7 +3,7 @@
 /* Place the close buttons on the right hand side*/
 :root:not([inFullscreen]) #TabsToolbar .titlebar-buttonbox-container,
 :root:not([inFullscreen]) #TabsToolbar-buttonbox-container {
-	right: 2px !important;
+	right: 8px !important;
     left: auto !important;
 }
 
