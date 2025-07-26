@@ -4,17 +4,25 @@
     .titlebar-button {
         border: none;
         margin: 0 !important;
-        /*		padding: 3px 6px !important;
-*/
         padding: 1px 3px !important;
-        -moz-content-properties: none !important;
         stroke: none !important;
     }
-
+    .titlebar-button { 
+        & > .toolbarbutton-icon { 
+            list-style-image: none !important; 
+            display: inline-flex !important;
+            width: 12px !important;
+            height: 12px !important;
+        } 
+    }
+    .titlebar-button { 
+        &::before { 
+            display: none !important; 
+        } 
+    }
     :root[sizemode="maximized"] #TabsToolbar {
         appearance: none !important;
     }
-
     :root:not([sizemode="maximized"]) #TabsToolbar .titlebar-buttonbox-container {
         top: 17px !important;
         padding: 2px 0 0 8px !important;
@@ -54,5 +62,10 @@
     
     .PanelUI-subView{
         background: var(--gnome-menu-background) !important;
+    }
+    #nav-bar-customization-target {
+      & > :is(toolbarbutton, toolbaritem):first-child, & > toolbarpaletteitem:first-child > :is(toolbarbutton, toolbaritem) {
+        padding-inline-start: none !important;
+      }
     }
 }
