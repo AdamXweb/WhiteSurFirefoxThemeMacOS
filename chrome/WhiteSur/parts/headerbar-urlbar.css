@@ -11,11 +11,14 @@
 	min-height: 28px !important;
 }
 /* Centre URL bar text input*/
+.urlbar-input-box {
+	margin-top: -15px !important;
+}
 #urlbar-input {
 	transition: transform .1s linear;
 	transform: translateX(50%);
 	position: absolute;
-	height:100%;
+	height:auto;
 	width: 50%;
 	text-align: center !important;
 }
