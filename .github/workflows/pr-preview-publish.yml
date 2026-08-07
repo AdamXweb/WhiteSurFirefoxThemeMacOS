@@ -1,0 +1,286 @@
+name: PR preview publish
+
+# Second half of the PR preview. pr-preview.yml runs the pull request's code
+# with no permissions and no secrets; this workflow holds the write access and
+# never runs any code from the pull request.
+#
+# Everything arriving in the artifact is treated as untrusted input:
+#   * the PR number is checked against the triggering run's head SHA, so a
+#     fork cannot aim a comment at an unrelated pull request
+#   * only file names matching a strict allowlist are republished
+#   * the comment text is built here from validated values, never from
+#     free-form strings inside the artifact
+#
+# workflow_run only ever runs the copy of this file on the default branch, so
+# changes to it take effect after merging, not from a pull request.
+
+on:
+  workflow_run:
+    workflows: ["PR preview"]
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: 'Run ID of a PR preview run to publish'
+        required: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  publish:
+    name: Publish preview comment
+    runs-on: ubuntu-latest
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      github.event.workflow_run.conclusion == 'success'
+    timeout-minutes: 15
+
+    steps:
+      - name: Check out default branch
+        uses: actions/checkout@v4
+
+      - name: Resolve source run
+        id: src
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "run_id=${{ inputs.run_id }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "run_id=${{ github.event.workflow_run.id }}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Download preview artifacts
+        uses: actions/download-artifact@v4
+        with:
+          run-id: ${{ steps.src.outputs.run_id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: artifacts
+          pattern: preview-*
+          merge-multiple: false
+
+      - name: Validate artifact and resolve pull request
+        id: check
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+
+            const root = 'artifacts';
+            if (!fs.existsSync(root)) { core.setFailed('no artifacts downloaded'); return; }
+            const platforms = fs.readdirSync(root).filter(d => d.startsWith('preview-'));
+            if (!platforms.length) { core.setFailed('no preview-* artifacts'); return; }
+
+            // --- PR number, cross-checked against the run that produced it ---
+            let prNumber = null, headSha = null;
+            for (const p of platforms) {
+              const f = path.join(root, p, 'pr-number.txt');
+              const s = path.join(root, p, 'head-sha.txt');
+              if (fs.existsSync(f)) prNumber = fs.readFileSync(f, 'utf8').trim();
+              if (fs.existsSync(s)) headSha = fs.readFileSync(s, 'utf8').trim();
+            }
+            if (!/^[0-9]{1,7}$/.test(prNumber || '')) {
+              core.setFailed(`refusing to continue: bad PR number ${JSON.stringify(prNumber)}`);
+              return;
+            }
+            if (!/^[0-9a-f]{40}$/.test(headSha || '')) {
+              core.setFailed(`refusing to continue: bad head SHA ${JSON.stringify(headSha)}`);
+              return;
+            }
+
+            const { data: pr } = await github.rest.pulls.get({
+              owner: context.repo.owner, repo: context.repo.repo,
+              pull_number: Number(prNumber),
+            });
+
+            // The artifact says which PR it belongs to. Verify that claim
+            // against the SHA the workflow actually ran on.
+            const runSha = context.eventName === 'workflow_dispatch'
+              ? headSha : context.payload.workflow_run.head_sha;
+            if (pr.head.sha !== headSha || headSha !== runSha) {
+              core.setFailed(
+                `artifact/PR mismatch: pr.head.sha=${pr.head.sha} ` +
+                `artifact=${headSha} run=${runSha}`);
+              return;
+            }
+            if (pr.state !== 'open') {
+              core.notice(`PR #${prNumber} is ${pr.state}; skipping`);
+              core.setOutput('skip', 'true');
+              return;
+            }
+
+            // --- copy only files whose names we recognise ---
+            const NAME = /^(light|dark)-(01-window|02-urlbar|03-findbar)\.png$/;
+            const staged = 'staged';
+            fs.mkdirSync(staged, { recursive: true });
+
+            const report = [];
+            for (const p of platforms) {
+              const label = p.replace(/^preview-/, '');
+              if (!/^[a-z]{3,10}$/.test(label)) continue;
+              const dir = path.join(root, p, label);
+              if (!fs.existsSync(dir)) continue;
+
+              const outDir = path.join(staged, label);
+              fs.mkdirSync(path.join(outDir, 'full'), { recursive: true });
+
+              const changed = [];
+              for (const f of fs.readdirSync(dir)) {
+                if (NAME.test(f)) {
+                  fs.copyFileSync(path.join(dir, f), path.join(outDir, f));
+                  changed.push(f);
+                }
+              }
+              const fullDir = path.join(dir, 'full');
+              const fulls = [];
+              if (fs.existsSync(fullDir)) {
+                for (const f of fs.readdirSync(fullDir)) {
+                  if (NAME.test(f)) {
+                    fs.copyFileSync(path.join(fullDir, f), path.join(outDir, 'full', f));
+                    fulls.push(f);
+                  }
+                }
+              }
+
+              // Numbers only -- no strings from the artifact reach the comment.
+              let pct = {};
+              try {
+                const s = JSON.parse(fs.readFileSync(path.join(dir, 'summary.json'), 'utf8'));
+                for (const v of (Array.isArray(s.views) ? s.views : [])) {
+                  if (typeof v.view === 'string' && NAME.test(v.view + '.png')
+                      && typeof v.percent === 'number' && isFinite(v.percent)) {
+                    pct[v.view] = Math.max(0, Math.min(100, v.percent));
+                  }
+                }
+              } catch (e) { core.warning(`unreadable summary.json for ${label}: ${e}`); }
+
+              report.push({ label, changed: changed.sort(), full: fulls.sort(), pct });
+            }
+
+            core.setOutput('skip', 'false');
+            core.setOutput('pr', prNumber);
+            core.setOutput('sha', headSha);
+            core.setOutput('report', JSON.stringify(report));
+
+      - name: Publish images to ci-previews branch
+        if: steps.check.outputs.skip == 'false'
+        env:
+          PR: ${{ steps.check.outputs.pr }}
+          SHA: ${{ steps.check.outputs.sha }}
+        run: |
+          set -euo pipefail
+          if [ -z "$(find staged -name '*.png' -print -quit)" ]; then
+            echo "no images to publish"; exit 0
+          fi
+          git config user.name  'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git fetch origin ci-previews --depth=1 || true
+          if git rev-parse --verify origin/ci-previews >/dev/null 2>&1; then
+            git checkout -B ci-previews origin/ci-previews
+          else
+            git checkout --orphan ci-previews
+            git rm -rf --cached . >/dev/null 2>&1 || true
+            find . -maxdepth 1 -mindepth 1 \
+              ! -name .git ! -name staged ! -name artifacts -exec rm -rf {} +
+            printf '%s\n' \
+              '# CI preview images' '' \
+              'Screenshots posted by the PR preview workflow. Safe to delete;' \
+              'they are regenerated on the next run.' > README.md
+          fi
+          # Keep only the newest set per PR so this branch cannot grow forever.
+          rm -rf "pr-${PR}"
+          mkdir -p "pr-${PR}/${SHA}"
+          cp -R staged/. "pr-${PR}/${SHA}/"
+          git add -A "pr-${PR}" README.md 2>/dev/null || git add -A "pr-${PR}"
+          if git diff --cached --quiet; then
+            echo "nothing to commit"
+          else
+            git commit -m "preview: PR #${PR} @ ${SHA}"
+            git push origin ci-previews
+          fi
+
+      - name: Upsert pull request comment
+        if: steps.check.outputs.skip == 'false'
+        uses: actions/github-script@v7
+        env:
+          PR: ${{ steps.check.outputs.pr }}
+          SHA: ${{ steps.check.outputs.sha }}
+          REPORT: ${{ steps.check.outputs.report }}
+          RUN_ID: ${{ steps.src.outputs.run_id }}
+        with:
+          script: |
+            const MARKER = '<!-- whitesur-pr-preview -->';
+            const TITLES = {
+              '01-window': 'Browser window',
+              '02-urlbar': 'Address bar focused',
+              '03-findbar': 'Find bar',
+            };
+            const PLATFORM = { macos: 'macOS', windows: 'Windows' };
+
+            const pr = Number(process.env.PR);
+            const sha = process.env.SHA;
+            const report = JSON.parse(process.env.REPORT);
+            const { owner, repo } = context.repo;
+            const base = `https://raw.githubusercontent.com/${owner}/${repo}/ci-previews/pr-${pr}/${sha}`;
+
+            const pretty = (f) => {
+              const [mode, ...rest] = f.replace(/\.png$/, '').split('-');
+              const key = rest.join('-');
+              return `${TITLES[key] || key} — ${mode}`;
+            };
+
+            let body = `${MARKER}\n### Theme preview\n\n`;
+            body += `Rendered from \`${sha.slice(0, 7)}\` against the base branch.\n\n`;
+
+            const anyChange = report.some(r => r.changed.length);
+
+            for (const r of report) {
+              const name = PLATFORM[r.label] || r.label;
+              body += `<details${r.changed.length ? ' open' : ''}>`;
+              body += `<summary><b>${name}</b> — `;
+              body += r.changed.length
+                ? `${r.changed.length} view${r.changed.length > 1 ? 's' : ''} changed`
+                : 'no visual change';
+              body += `</summary>\n\n`;
+
+              for (const f of r.changed) {
+                const p = r.pct[f.replace(/\.png$/, '')];
+                const amount = typeof p === 'number' ? ` (${p.toFixed(2)}% of pixels)` : '';
+                body += `**${pretty(f)}**${amount}\n\n`;
+                body += `<img src="${base}/${r.label}/${f}" width="900">\n\n`;
+              }
+
+              if (!r.changed.length && r.full.length) {
+                body += `Nothing rendered differently. Current appearance:\n\n`;
+                body += `<img src="${base}/${r.label}/full/${r.full[0]}" width="900">\n\n`;
+              }
+              body += `</details>\n\n`;
+            }
+
+            if (!anyChange) {
+              body += `No pixel differences on any platform — this PR does not change ` +
+                      `how the browser chrome renders in these views.\n\n`;
+            }
+
+            body += `<sub>Views: browser window, focused address bar, find bar — each in ` +
+                    `light and dark. Native popups (app menu, context menus) are OS-level ` +
+                    `windows and cannot be captured. ` +
+                    `[Workflow run](https://github.com/${owner}/${repo}/actions/runs/${process.env.RUN_ID})</sub>`;
+
+            const { data: comments } = await github.rest.issues.listComments({
+              owner, repo, issue_number: pr, per_page: 100,
+            });
+            const existing = comments.find(c => c.body && c.body.includes(MARKER));
+
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner, repo, comment_id: existing.id, body,
+              });
+              core.info(`updated comment ${existing.id}`);
+            } else {
+              await github.rest.issues.createComment({
+                owner, repo, issue_number: pr, body,
+              });
+              core.info('created comment');
+            }

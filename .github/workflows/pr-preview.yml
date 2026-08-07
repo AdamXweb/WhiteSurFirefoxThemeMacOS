@@ -1,0 +1,118 @@
+name: PR preview
+
+# Renders the theme's browser chrome before and after a pull request so the
+# visual effect of a CSS change can be reviewed without installing anything.
+#
+# This workflow runs untrusted pull request code, so it deliberately has NO
+# write permissions and NO access to secrets. It only produces an artifact.
+# The companion pr-preview-publish.yml workflow picks that artifact up and
+# posts the comment with the permissions this one is not allowed to have.
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - 'chrome/**'
+      - 'custom/**'
+      - 'configuration/**'
+      - '.github/preview/**'
+      - '.github/workflows/pr-preview.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pr-preview-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  render:
+    name: Render (${{ matrix.label }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-latest
+            label: macos
+          - os: windows-latest
+            label: windows
+
+    steps:
+      - name: Check out base revision
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          path: base
+          persist-credentials: false
+
+      - name: Check out pull request revision
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          path: head
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Pillow
+        run: python -m pip install --disable-pip-version-check --quiet "pillow>=10.1"
+
+      - name: Install Firefox (macOS)
+        if: runner.os == 'macOS'
+        run: |
+          set -euo pipefail
+          curl -sSL -o firefox.dmg \
+            "https://download.mozilla.org/?product=firefox-latest-ssl&os=osx&lang=en-US"
+          hdiutil attach -nobrowse -quiet -mountpoint /Volumes/ffci firefox.dmg
+          cp -R /Volumes/ffci/Firefox.app "$RUNNER_TEMP/Firefox.app"
+          hdiutil detach /Volumes/ffci -quiet
+          echo "FIREFOX_BIN=$RUNNER_TEMP/Firefox.app/Contents/MacOS/firefox" >> "$GITHUB_ENV"
+          "$RUNNER_TEMP/Firefox.app/Contents/MacOS/firefox" --version
+
+      - name: Install Firefox (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $installer = Join-Path $env:RUNNER_TEMP 'firefox-setup.exe'
+          Invoke-WebRequest -Uri 'https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=en-US' -OutFile $installer
+          Start-Process -FilePath $installer -ArgumentList '/S' -Wait
+          $bin = 'C:\Program Files\Mozilla Firefox\firefox.exe'
+          if (-not (Test-Path $bin)) { throw "Firefox not found at $bin after install" }
+          "FIREFOX_BIN=$bin" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+          & $bin --version
+
+      # The renderer lives on the PR revision so that changes to it can be
+      # reviewed by this very workflow. It is run against each checkout in turn.
+      - name: Render base revision
+        run: python head/.github/preview/render.py --repo base --firefox "$FIREFOX_BIN" --out shots/base
+        shell: bash
+
+      - name: Render pull request revision
+        run: python head/.github/preview/render.py --repo head --firefox "$FIREFOX_BIN" --out shots/head
+        shell: bash
+
+      - name: Compare
+        shell: bash
+        run: |
+          python head/.github/preview/compose.py \
+            --base shots/base --head shots/head \
+            --out out/${{ matrix.label }} --platform ${{ matrix.label }}
+
+      - name: Record pull request number
+        shell: bash
+        run: |
+          echo "${{ github.event.pull_request.number }}" > out/pr-number.txt
+          echo "${{ github.event.pull_request.head.sha }}" > out/head-sha.txt
+
+      - name: Upload preview
+        uses: actions/upload-artifact@v4
+        with:
+          name: preview-${{ matrix.label }}
+          path: out/
+          retention-days: 14
+          if-no-files-found: error
