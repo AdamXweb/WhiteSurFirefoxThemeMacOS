@@ -122,7 +122,7 @@ def cmd_catalogue(args):
     firefox = core.find_firefox(args.firefox)
     out = args.out.resolve()
     with core.Session(repo, firefox, native_menus=args.native_menus) as session:
-        result = catalogue.build(session, repo, out)
+        result = catalogue.build(session, repo, out, self_contained=args.self_contained)
     found = sum(1 for e in result["entries"]
                 if any(m["found"] for m in e["modes"].values()))
     print(f"\n{found}/{len(result['entries'])} landmarks resolved")
@@ -207,6 +207,8 @@ def main(argv=None):
     _add_common(g)
     g.add_argument("--out", type=Path, default=Path("fxcss-catalogue"))
     g.add_argument("--open", action="store_true", help="open the result when done")
+    g.add_argument("--self-contained", dest="self_contained", action="store_true",
+                   help="also write catalogue.html with images inlined, as one shareable file")
     g.add_argument("--native-menus", dest="native_menus", default=None,
                    type=lambda v: v.lower() not in ("false", "0", "no"), metavar="BOOL")
     g.set_defaults(func=cmd_catalogue)

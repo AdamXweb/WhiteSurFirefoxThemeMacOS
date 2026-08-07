@@ -171,7 +171,7 @@ def crop(overview: Image.Image, rect, dpr, pad=8):
     return piece
 
 
-def build(session, repo: Path, outdir: Path):
+def build(session, repo: Path, outdir: Path, self_contained=False):
     from core import capture_views  # noqa: F401  (kept import-light)
 
     outdir.mkdir(parents=True, exist_ok=True)
@@ -229,8 +229,26 @@ def build(session, repo: Path, outdir: Path):
 
     catalogue = {"info": info, "entries": list(entries.values())}
     (outdir / "catalogue.json").write_text(json.dumps(catalogue, indent=2), encoding="utf-8")
-    (outdir / "index.html").write_text(render_html(catalogue), encoding="utf-8")
+    page = render_html(catalogue)
+    (outdir / "index.html").write_text(page, encoding="utf-8")
+    if self_contained:
+        (outdir / "catalogue.html").write_text(inline_images(page, outdir), encoding="utf-8")
     return catalogue
+
+
+def inline_images(page: str, base: Path):
+    """Rewrite image references as data URIs so the page is one shareable file."""
+    import base64
+
+    def repl(match):
+        rel = match.group(1)
+        path = base / rel
+        if not path.exists():
+            return match.group(0)
+        data = base64.b64encode(path.read_bytes()).decode("ascii")
+        return f"src='data:image/png;base64,{data}'"
+
+    return re.sub(r"src='([^']+\.png)'", repl, page)
 
 
 PAGE_CSS = """
