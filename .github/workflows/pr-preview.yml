@@ -15,7 +15,7 @@ on:
       - 'chrome/**'
       - 'custom/**'
       - 'configuration/**'
-      - '.github/preview/**'
+      - 'tools/fxcss/**'
       - '.github/workflows/pr-preview.yml'
 
 permissions:
@@ -86,20 +86,20 @@ jobs:
           "FIREFOX_BIN=$bin" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
           & $bin --version
 
-      # The renderer lives on the PR revision so that changes to it can be
+      # The toolkit lives on the PR revision so that changes to it can be
       # reviewed by this very workflow. It is run against each checkout in turn.
       - name: Render base revision
-        run: python head/.github/preview/render.py --repo base --firefox "$FIREFOX_BIN" --out shots/base
+        run: python head/tools/fxcss/fxcss.py shot --repo base --firefox "$FIREFOX_BIN" --out shots/base
         shell: bash
 
       - name: Render pull request revision
-        run: python head/.github/preview/render.py --repo head --firefox "$FIREFOX_BIN" --out shots/head
+        run: python head/tools/fxcss/fxcss.py shot --repo head --firefox "$FIREFOX_BIN" --out shots/head
         shell: bash
 
       - name: Compare
         shell: bash
         run: |
-          python head/.github/preview/compose.py \
+          python head/tools/fxcss/fxcss.py compare \
             --base shots/base --head shots/head \
             --out out/${{ matrix.label }} --platform ${{ matrix.label }}
 

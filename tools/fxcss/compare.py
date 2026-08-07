@@ -136,36 +136,29 @@ def compare_view(name, base_path, head_path, outdir):
     return result
 
 
-def main():
-    ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("--base", required=True, type=Path)
-    ap.add_argument("--head", required=True, type=Path)
-    ap.add_argument("--out", required=True, type=Path)
-    ap.add_argument("--platform", required=True)
-    args = ap.parse_args()
+def run(base_dir: Path, head_dir: Path, out: Path, platform: str):
+    out.mkdir(parents=True, exist_ok=True)
 
-    args.out.mkdir(parents=True, exist_ok=True)
-
-    base_shots = {p.stem: p for p in sorted(args.base.glob("*.png"))}
-    head_shots = {p.stem: p for p in sorted(args.head.glob("*.png"))}
+    base_shots = {p.stem: p for p in sorted(base_dir.glob("*.png"))}
+    head_shots = {p.stem: p for p in sorted(head_dir.glob("*.png"))}
     shared = sorted(set(base_shots) & set(head_shots))
 
     summary = {
-        "platform": args.platform,
+        "platform": platform,
         "views": [],
         "only_in_base": sorted(set(base_shots) - set(head_shots)),
         "only_in_head": sorted(set(head_shots) - set(base_shots)),
     }
 
     for name in shared:
-        result = compare_view(name, base_shots[name], head_shots[name], args.out)
+        result = compare_view(name, base_shots[name], head_shots[name], out)
         summary["views"].append(result)
         state = "changed" if result["changed_pixels"] else "identical"
         print(f"  {name}: {state} ({result['percent']:.3f}%)", flush=True)
 
     # Always ship the head screenshots too, so a reviewer can see the whole UI
     # even when a change is subtle or when nothing differs at all.
-    full_dir = args.out / "full"
+    full_dir = out / "full"
     full_dir.mkdir(exist_ok=True)
     for name, path in head_shots.items():
         normalise(Image.open(path)).save(full_dir / f"{name}.png", optimize=True)
@@ -173,14 +166,23 @@ def main():
     summary["changed_views"] = [v for v in summary["views"] if v["changed_pixels"]]
     summary["any_change"] = bool(summary["changed_views"])
 
-    for info_name in ("render-info.json",):
-        src = args.head / info_name
-        if src.exists():
-            summary["render_info"] = json.loads(src.read_text(encoding="utf-8"))
+    src = head_dir / "render-info.json"
+    if src.exists():
+        summary["render_info"] = json.loads(src.read_text(encoding="utf-8"))
 
-    (args.out / "summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
-    print(f"\n{len(summary['changed_views'])} of {len(shared)} views changed on {args.platform}")
+    (out / "summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
+    print(f"\n{len(summary['changed_views'])} of {len(shared)} views changed on {platform}")
     return 0
+
+
+def main():
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--base", required=True, type=Path)
+    ap.add_argument("--head", required=True, type=Path)
+    ap.add_argument("--out", required=True, type=Path)
+    ap.add_argument("--platform", required=True)
+    args = ap.parse_args()
+    return run(args.base, args.head, args.out, args.platform)
 
 
 if __name__ == "__main__":
