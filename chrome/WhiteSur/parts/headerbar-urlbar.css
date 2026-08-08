@@ -13,16 +13,18 @@
 /* Centre URL bar text input*/
 #urlbar-input {
 	transition: transform .1s linear;
-	transform: translateX(50%);
+	transform: translateX(50%) translateY(-50%);
 	position: absolute;
-	height:100%;
+	top: 50%;
+	height: auto;
 	width: 50%;
 	text-align: center !important;
 }
 /* Unless text input is selected like safari*/
 #urlbar[focused] #urlbar-input {
 	position: absolute;
-	transform: translateX(0);
+	top: 50%;
+	transform: translateX(0) translateY(-50%);
 	transition: all .2s ease;
 	width: 100%;
 	text-align: left !important;

@@ -456,8 +456,4 @@ menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
 		list-style-image: url("../icons/preferences-system-time-symbolic-light.svg") !important;
 	}
 
-	/* Fix for extensions icons */
-	.webextension-browser-action {
-		list-style-image: var(--webextension-menupanel-image-light, inherit) !important;
-	}
 }
