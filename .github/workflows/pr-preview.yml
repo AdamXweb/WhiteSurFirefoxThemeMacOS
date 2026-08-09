@@ -4,7 +4,7 @@ name: PR preview
 # visual effect of a CSS change can be reviewed without installing anything.
 #
 # The rendering itself is done by fxcss, pinned to a tag:
-#   https://github.com/adamXbot/fxcss
+#   https://github.com/AdamXweb/fxcss
 # Pinned rather than tracking a branch so a change over there can never alter
 # what this repo's CI does without a commit here.
 #
@@ -32,7 +32,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  FXCSS_VERSION: v0.4.1
+  FXCSS_VERSION: v0.6.1
 
 jobs:
   render:
@@ -70,7 +70,7 @@ jobs:
       - name: Install fxcss
         run: >-
           python -m pip install --disable-pip-version-check
-          "fxcss[images] @ git+https://github.com/adamXbot/fxcss@${{ env.FXCSS_VERSION }}"
+          "fxcss[images] @ git+https://github.com/AdamXweb/fxcss@${{ env.FXCSS_VERSION }}"
 
       - name: Install Firefox (macOS)
         if: runner.os == 'macOS'

@@ -116,7 +116,7 @@ To get the same feedback while you work, without restarting Firefox after every
 edit:
 
 ```bash
-pip install "fxcss[images] @ git+https://github.com/adamXbot/fxcss@v0.4.1"
+pip install "fxcss[images] @ git+https://github.com/AdamXweb/fxcss@v0.6.1"
 fxcss watch          # edit CSS and see it live, in a throwaway profile
 fxcss pick           # click any part of the UI to get its CSS selector
 ```
@@ -124,7 +124,7 @@ fxcss pick           # click any part of the UI to get its CSS selector
 `fxcss watch` never touches your real Firefox profile. `fxcss pick` also tells
 you which files in this repo already style the element you clicked, which is
 usually the fastest way to find where a rule belongs. See
-[adamXbot/fxcss](https://github.com/adamXbot/fxcss) for the rest.
+[AdamXweb/fxcss](https://github.com/AdamXweb/fxcss) for the rest.
 
 Two things that catch people out when theming Firefox:
 

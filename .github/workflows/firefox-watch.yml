@@ -28,7 +28,7 @@ permissions:
   issues: write
 
 env:
-  FXCSS_VERSION: v0.4.1
+  FXCSS_VERSION: v0.6.1
 
 jobs:
   check:
@@ -50,7 +50,7 @@ jobs:
       - name: Install fxcss
         run: >-
           python -m pip install --disable-pip-version-check
-          "fxcss[images] @ git+https://github.com/adamXbot/fxcss@${{ env.FXCSS_VERSION }}"
+          "fxcss[images] @ git+https://github.com/AdamXweb/fxcss@${{ env.FXCSS_VERSION }}"
 
       - name: Install Firefox (${{ matrix.channel }})
         if: ${{ github.event.inputs.channel == '' || github.event.inputs.channel == matrix.channel }}
