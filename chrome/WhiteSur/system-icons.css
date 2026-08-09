@@ -148,15 +148,15 @@
 }
 
 /* Main menu buttons icons */
-#appMenu-zoomReduce-button .toolbarbutton-icon {
+#appMenu-zoomReduce-button2 .toolbarbutton-icon {
 	filter: var(--gnome-icons-hack-filter);
 	list-style-image: url("moz-icon://stock/zoom-out-symbolic?size=dialog") !important;
 }
-#appMenu-zoomEnlarge-button .toolbarbutton-icon {
+#appMenu-zoomEnlarge-button2 .toolbarbutton-icon {
 	filter: var(--gnome-icons-hack-filter);
 	list-style-image: url("moz-icon://stock/zoom-in-symbolic?size=dialog") !important;
 }
-#appMenu-fullscreen-button .toolbarbutton-icon {
+#appMenu-fullscreen-button2 .toolbarbutton-icon {
 	filter: var(--gnome-icons-hack-filter);
 	list-style-image: url("moz-icon://stock/view-fullscreen-symbolic?size=dialog") !important;
 }

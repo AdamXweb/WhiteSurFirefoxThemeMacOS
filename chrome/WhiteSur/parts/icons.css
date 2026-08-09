@@ -180,7 +180,7 @@ menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
 }
 /* New tab button */
 #new-tab-button,
-.tabs-newtab-button,
+#tabs-newtab-button,
 #tabs-newtab-button,
 #TabsToolbar {
 	list-style-image: url("../icons/tab-new-symbolic.svg") !important;
@@ -195,17 +195,17 @@ menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
 }
 /* Fullscreen button */
 #fullscreen-button,
-#appMenu-fullscreen-button {
+#appMenu-fullscreen-button2 {
 	list-style-image: url("../icons/view-fullscreen-symbolic.svg") !important;
 }
 /* Zoom out button */
 #zoom-out-button,
-#appMenu-zoomReduce-button {
+#appMenu-zoomReduce-button2 {
 	list-style-image: url("../icons/zoom-out-symbolic.svg") !important;
 }
 /* Zoom in button */
 #zoom-in-button,
-#appMenu-zoomEnlarge-button {
+#appMenu-zoomEnlarge-button2 {
 	list-style-image: url("../icons/zoom-in-symbolic.svg") !important;
 }
 /* Developer button */
@@ -398,17 +398,17 @@ menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
 	#context-forward .menu-iconic-icon,
 	#PanelUI-menu-button .toolbarbutton-icon,
 	#new-tab-button .toolbarbutton-icon,
-	.tabs-newtab-button .toolbarbutton-icon,
+	#tabs-newtab-button .toolbarbutton-icon,
 	#tabs-newtab-button .toolbarbutton-icon,
 	#TabsToolbar .toolbarbutton-icon,
 	#home-button .toolbarbutton-icon,
 	#preferences-button .toolbarbutton-icon,
 	#fullscreen-button .toolbarbutton-icon,
-	#appMenu-fullscreen-button .toolbarbutton-icon,
+	#appMenu-fullscreen-button2 .toolbarbutton-icon,
 	#zoom-out-button .toolbarbutton-icon,
-	#appMenu-zoomReduce-button .toolbarbutton-icon,
+	#appMenu-zoomReduce-button2 .toolbarbutton-icon,
 	#zoom-in-button .toolbarbutton-icon,
-	#appMenu-zoomEnlarge-button .toolbarbutton-icon,
+	#appMenu-zoomEnlarge-button2 .toolbarbutton-icon,
 	#developer-button .toolbarbutton-icon,
 	#email-link-button .toolbarbutton-icon,
 	#print-button .toolbarbutton-icon,

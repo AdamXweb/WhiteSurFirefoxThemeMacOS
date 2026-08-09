@@ -34,8 +34,8 @@
 #appMenu-popup .toolbaritem-combined-buttons .before-label {
 	width: 5px !important;
 }
-#appMenu-fxa-status[fxastatus="signedin"] > #appMenu-fxa-label,
-#appMenu-fxa-container[fxastatus="signedin"] > #appMenu-fxa-status > #appMenu-fxa-label {
+#appMenu-fxa-status2[fxastatus="signedin"] > #appMenu-fxa-label2,
+#appMenu-fxa-container[fxastatus="signedin"] > #appMenu-fxa-status2 > #appMenu-fxa-label2 {
 	padding-left: 28px !important;
 }
 
