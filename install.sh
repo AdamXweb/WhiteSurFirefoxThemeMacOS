@@ -8,7 +8,7 @@ readonly REPO_DIR="$(pwd)"
 source "${REPO_DIR}/lib-install.sh"
 
 # Get options.
-while getopts 'c,w,p,u,n,v,e,s,r:f:l' flag; do
+while getopts 'c,w,p,u,n,v,e,s,r,f:l' flag; do
 	case "${flag}" in
         c ) TABSWAP=true;;
         w ) WINDOWSWAP=true;;
