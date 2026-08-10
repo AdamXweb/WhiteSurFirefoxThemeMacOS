@@ -32,7 +32,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  FXCSS_VERSION: v0.6.1
+  FXCSS_VERSION: v0.7.0
 
 jobs:
   render:
@@ -47,6 +47,8 @@ jobs:
             label: macos
           - os: windows-latest
             label: windows
+          - os: ubuntu-latest
+            label: linux
 
     steps:
       - name: Check out base revision
@@ -83,6 +85,28 @@ jobs:
           hdiutil detach /Volumes/ffci -quiet
           echo "FIREFOX_BIN=$RUNNER_TEMP/Firefox.app/Contents/MacOS/firefox" >> "$GITHUB_ENV"
 
+      - name: Install Firefox (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq xvfb libdbus-glib-1-2 >/dev/null
+          curl -sSL -o firefox.tar "https://download.mozilla.org/?product=firefox-latest-ssl&os=linux64&lang=en-US"
+          mkdir -p "$RUNNER_TEMP/ff"
+          tar -xf firefox.tar -C "$RUNNER_TEMP/ff"
+          echo "FIREFOX_BIN=$RUNNER_TEMP/ff/firefox/firefox" >> "$GITHUB_ENV"
+
+      - name: Start Xvfb (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          set -euo pipefail
+          Xvfb :99 -screen 0 1600x1200x24 -nolisten tcp >/dev/null 2>&1 &
+          for _ in $(seq 1 20); do
+            if xdpyinfo -display :99 >/dev/null 2>&1; then break; fi
+            sleep 0.5
+          done
+          echo "DISPLAY=:99" >> "$GITHUB_ENV"
+
       - name: Install Firefox (Windows)
         if: runner.os == 'Windows'
         shell: pwsh
@@ -99,10 +123,10 @@ jobs:
         run: fxcss doctor --theme head
 
       - name: Render base revision
-        run: fxcss shot --theme base --out shots/base
+        run: fxcss shot --theme base --out shots/base --variants all
 
       - name: Render pull request revision
-        run: fxcss shot --theme head --out shots/head
+        run: fxcss shot --theme head --out shots/head --variants all
 
       - name: Compare
         run: >-
