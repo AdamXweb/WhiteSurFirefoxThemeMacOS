@@ -111,7 +111,10 @@ jobs:
             }
 
             // --- copy only files whose names we recognise ---
-            const NAME = /^(light|dark)-(01-window|02-urlbar|03-findbar)\.png$/;
+            // Enumerated rather than wildcarded on purpose: this is an allowlist
+            // over an untrusted artifact, so a new view must be added here before
+            // it can be published.
+            const NAME = /^(?:(?:light|dark)-(?:01-window|02-urlbar|03-findbar)|extra-(?:04-audio|05-muted|06-containers|07-many-tabs|08-private))\.png$/;
             const staged = 'staged';
             fs.mkdirSync(staged, { recursive: true });
 
@@ -215,8 +218,13 @@ jobs:
               '01-window': 'Browser window',
               '02-urlbar': 'Address bar focused',
               '03-findbar': 'Find bar',
+              '04-audio': 'Tab playing audio',
+              '05-muted': 'Tab muted',
+              '06-containers': 'Container tabs',
+              '07-many-tabs': 'Tab strip overflowing',
+              '08-private': 'Private window',
             };
-            const PLATFORM = { macos: 'macOS', windows: 'Windows' };
+            const PLATFORM = { macos: 'macOS', windows: 'Windows', linux: 'Linux' };
 
             const pr = Number(process.env.PR);
             const sha = process.env.SHA;
@@ -227,7 +235,10 @@ jobs:
             const pretty = (f) => {
               const [mode, ...rest] = f.replace(/\.png$/, '').split('-');
               const key = rest.join('-');
-              return `${TITLES[key] || key} — ${mode}`;
+              const title = TITLES[key] || key;
+              // The extra-* views are captured once, not per colour scheme, so
+              // a mode suffix would be noise.
+              return mode === 'extra' ? title : `${title} — ${mode}`;
             };
 
             let body = `${MARKER}\n### Theme preview\n\n`;
