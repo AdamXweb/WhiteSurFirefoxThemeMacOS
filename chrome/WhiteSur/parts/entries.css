@@ -4,7 +4,6 @@
 
 /* Entries */
 #searchbar,
-#search-box,
 .findbar-textbox {
 	-moz-appearance: none !important;
 	background: var(--gnome-urlbar-background) !important;
@@ -23,7 +22,6 @@
 /* Entries focused */
 #urlbar[breakout][breakout-extend],
 #searchbar:focus-within,
-#search-box[focused],
 .findbar-textbox[focused],
 .findbar-textbox:focus,
 #PopupSearchAutoComplete {
@@ -35,7 +33,6 @@
 
 /* Inactive window entries */
 #searchbar:-moz-window-inactive,
-#search-box:-moz-window-inactive,
 .findbar-textbox:-moz-window-inactive {
 	background: var(--gnome-inactive-urlbar-background) !important;
 	border-color: var(--gnome-inactive-urlbar-border-color) !important;
@@ -74,4 +71,19 @@
 }
 #searchbar > .searchbar-textbox[focused] .searchbar-search-button:not(#hack) {
 	margin: 0 !important;
+}
+
+/* The sidebar search field is a <moz-input-search>, whose real <input> lives in
+   a shadow root -- so the rules above styled the wrapper while Firefox styled
+   the field, drawing two rounded boxes 7px out of register, the inner one 4px
+   taller than the outer. CSS selectors do not cross a shadow boundary; custom
+   properties do, and these are the ones moz-input-text.css reads. The
+   [focused] attribute that used to drive the focus ring is gone too, which is
+   why the accent outline above never appeared on this element. */
+#search-box {
+	--input-text-background-color: var(--gnome-urlbar-background);
+	--input-text-border: 1px solid var(--gnome-urlbar-border-color);
+	--input-text-border-radius: 8px;
+	--input-text-color: var(--gnome-urlbar-color);
+	--input-text-min-height: 28px;
 }

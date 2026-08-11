@@ -76,6 +76,17 @@
 	padding: 2px 16px !important;
 	position: relative;
 }
+/* Both of these sit inside a fixed-width sidebar, where 16px of side padding
+   costs more than there is to spend: the switcher shrank to exactly its own
+   padding, hiding the panel name, and the History panel's View button crowded
+   the search field down to a clipped "S...". */
+#sidebar-switcher-target {
+	min-width: max-content !important;
+}
+#viewButton {
+	padding: 2px 8px !important;
+	font-size: 0.9em !important;
+}
 #sidebar-switcher-arrow,
 #viewButton .button-menu-dropmarker { /* Arrow position, type b */
 	transform: translate(6px, 0)
