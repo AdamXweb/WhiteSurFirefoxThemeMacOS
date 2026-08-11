@@ -13,16 +13,18 @@
 /* Centre URL bar text input*/
 #urlbar-input {
 	transition: transform .1s linear;
-	transform: translateX(50%);
+	transform: translateX(50%) translateY(-50%);
 	position: absolute;
-	height:100%;
+	top: 50%;
+	height: auto;
 	width: 50%;
 	text-align: center !important;
 }
 /* Unless text input is selected like safari*/
 #urlbar[focused] #urlbar-input {
 	position: absolute;
-	transform: translateX(0);
+	top: 50%;
+	transform: translateX(0) translateY(-50%);
 	transition: all .2s ease;
 	width: 100%;
 	text-align: left !important;
@@ -49,7 +51,7 @@ toolbarspring {
 	filter: saturate(100%) !important;
 
 }
-#urlbar-background {
+.urlbar-background {
 	box-shadow: none !important;
 	border: 0 !important;
 	background: transparent !important;
@@ -72,7 +74,7 @@ toolbarspring {
 	padding: 0 !important;
 }
 
-#urlbar[breakout][breakout-extend][open] #urlbar-background {
+#urlbar[breakout][breakout-extend][open] .urlbar-background {
 	box-shadow: var(--gnome-urlbar-box-shadow) !important;
 }
 
@@ -176,11 +178,11 @@ toolbarspring {
 	width: 16px !important;
 	margin:auto !important;
 }
-.search-go-button:hover, #urlbar-go-button.urlbar-icon:hover{
+.search-go-button:hover, .urlbar-go-button.urlbar-icon:hover{
 	background-color: var(--urlbar-box-hover-bgcolor) !important;
 }
 /* fix size of search arrow */
-.urlbar-page-action, #urlbar-go-button, .search-go-button {
+.urlbar-page-action, .urlbar-go-button, .search-go-button {
 	padding: 1px !important;
   }
 /* Fix for firefox v92 onwards that changed icon size on MacOS*/
@@ -193,8 +195,8 @@ padding: inherit !important;
 	height: 32px;
 	bottom: 2px;
 }
-.searchbar-search-button[open] #idenity-box.extensionPage #identity-permission-box,
-.searchbar-search-button:hover:active #idenity-box.extensionPage #identity-permission-box,
+.searchbar-search-button[open] #identity-box.extensionPage #identity-permission-box,
+.searchbar-search-button:hover:active #identity-box.extensionPage #identity-permission-box,
  #identity-box.extensionPage #identity-permission-box,
 #urlbar[usertyping] #identity-box.extensionPage #identity-permission-box,
 #urlbar:is([focused], [open])  #identity-box.extensionPage #identity-permission-box{
