@@ -25,6 +25,7 @@
 	--gnome-inactive-toolbar-border-color: #dadada;
 
 	/* Sidebar */
+	--gnome-sidebar-color: rgb(46, 52, 54);
 	--gnome-sidebar-background: #f5f5f5;
 	--gnome-inactive-sidebar-background: #f9f9f8;
 
