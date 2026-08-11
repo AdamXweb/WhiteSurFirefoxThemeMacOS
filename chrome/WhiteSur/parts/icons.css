@@ -457,7 +457,7 @@ menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
 	}
 
 	/* Fix for extensions icons */
-	.webextension-browser-action {
+	.webextension-browser-action .toolbaricon-icon {
 		list-style-image: var(--webextension-menupanel-image-light, inherit) !important;
 	}
 }
