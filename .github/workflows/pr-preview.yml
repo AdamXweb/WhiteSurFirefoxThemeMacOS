@@ -1,0 +1,148 @@
+name: PR preview
+
+# Renders the theme's browser chrome before and after a pull request so the
+# visual effect of a CSS change can be reviewed without installing anything.
+#
+# The rendering itself is done by fxcss, pinned to a tag:
+#   https://github.com/AdamXweb/fxcss
+# Pinned rather than tracking a branch so a change over there can never alter
+# what this repo's CI does without a commit here.
+#
+# This workflow checks out pull request code but deliberately has NO write
+# permissions and NO access to secrets; it only produces an artifact. The
+# companion pr-preview-publish.yml picks that artifact up and posts the comment
+# with the permissions this one is not allowed to have. Because the renderer
+# now comes from a pinned release rather than from the pull request, a pull
+# request cannot change how it behaves either.
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - 'chrome/**'
+      - 'custom/**'
+      - 'configuration/**'
+      - '.github/workflows/pr-preview.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pr-preview-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+env:
+  FXCSS_VERSION: v0.9.0
+
+jobs:
+  render:
+    name: Render (${{ matrix.label }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-latest
+            label: macos
+          - os: windows-latest
+            label: windows
+          - os: ubuntu-latest
+            label: linux
+
+    steps:
+      - name: Check out base revision
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          path: base
+          persist-credentials: false
+
+      - name: Check out pull request revision
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          path: head
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install fxcss
+        run: >-
+          python -m pip install --disable-pip-version-check
+          "fxcss[images] @ git+https://github.com/AdamXweb/fxcss@${{ env.FXCSS_VERSION }}"
+
+      - name: Install Firefox (macOS)
+        if: runner.os == 'macOS'
+        run: |
+          set -euo pipefail
+          curl -sSL -o firefox.dmg \
+            "https://download.mozilla.org/?product=firefox-latest-ssl&os=osx&lang=en-US"
+          hdiutil attach -nobrowse -quiet -mountpoint /Volumes/ffci firefox.dmg
+          cp -R /Volumes/ffci/Firefox.app "$RUNNER_TEMP/Firefox.app"
+          hdiutil detach /Volumes/ffci -quiet
+          echo "FIREFOX_BIN=$RUNNER_TEMP/Firefox.app/Contents/MacOS/firefox" >> "$GITHUB_ENV"
+
+      - name: Install Firefox (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq xvfb libdbus-glib-1-2 >/dev/null
+          curl -sSL -o firefox.tar "https://download.mozilla.org/?product=firefox-latest-ssl&os=linux64&lang=en-US"
+          mkdir -p "$RUNNER_TEMP/ff"
+          tar -xf firefox.tar -C "$RUNNER_TEMP/ff"
+          echo "FIREFOX_BIN=$RUNNER_TEMP/ff/firefox/firefox" >> "$GITHUB_ENV"
+
+      - name: Start Xvfb (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          set -euo pipefail
+          Xvfb :99 -screen 0 1600x1200x24 -nolisten tcp >/dev/null 2>&1 &
+          for _ in $(seq 1 20); do
+            if xdpyinfo -display :99 >/dev/null 2>&1; then break; fi
+            sleep 0.5
+          done
+          echo "DISPLAY=:99" >> "$GITHUB_ENV"
+
+      - name: Install Firefox (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $installer = Join-Path $env:RUNNER_TEMP 'firefox-setup.exe'
+          Invoke-WebRequest -Uri 'https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=en-US' -OutFile $installer
+          Start-Process -FilePath $installer -ArgumentList '/S' -Wait
+          $bin = 'C:\Program Files\Mozilla Firefox\firefox.exe'
+          if (-not (Test-Path $bin)) { throw "Firefox not found at $bin after install" }
+          "FIREFOX_BIN=$bin" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+
+      - name: Environment
+        run: fxcss doctor --theme head
+
+      - name: Render base revision
+        run: fxcss shot --theme base --out shots/base --variants all
+
+      - name: Render pull request revision
+        run: fxcss shot --theme head --out shots/head --variants all
+
+      - name: Compare
+        run: >-
+          fxcss compare --base shots/base --head shots/head
+          --out out/${{ matrix.label }} --platform ${{ matrix.label }}
+
+      - name: Record pull request number
+        shell: bash
+        run: |
+          echo "${{ github.event.pull_request.number }}" > out/pr-number.txt
+          echo "${{ github.event.pull_request.head.sha }}" > out/head-sha.txt
+
+      - name: Upload preview
+        uses: actions/upload-artifact@v4
+        with:
+          name: preview-${{ matrix.label }}
+          path: out/
+          retention-days: 14
+          if-no-files-found: error

@@ -1,0 +1,180 @@
+name: Firefox watch
+
+# Firefox ships every few weeks and quietly renames parts of its UI. A theme
+# does not break loudly when that happens -- the rule simply stops matching and
+# that piece of styling disappears, with nothing logged anywhere.
+#
+# This runs fxcss audit against each Firefox channel on a schedule. Beta and
+# Nightly are the point of the exercise: they show what is coming weeks before
+# it reaches the people using the theme.
+#
+# When there are confident fixes it opens a pull request with them. When there
+# are findings it cannot fix for you, it opens (or updates) one issue per
+# channel instead, and closes it again once the channel comes back clean.
+
+on:
+  schedule:
+    # Mondays, 06:20 UTC. Off the hour because scheduled jobs bunch there.
+    - cron: '20 6 * * 1'
+  workflow_dispatch:
+    inputs:
+      channel:
+        description: 'Single channel to check (blank = all)'
+        required: false
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+env:
+  FXCSS_VERSION: v0.9.0
+
+jobs:
+  check:
+    name: ${{ matrix.channel }}
+    runs-on: macos-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        channel: [release, beta, nightly]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install fxcss
+        run: >-
+          python -m pip install --disable-pip-version-check
+          "fxcss[images] @ git+https://github.com/AdamXweb/fxcss@${{ env.FXCSS_VERSION }}"
+
+      - name: Install Firefox (${{ matrix.channel }})
+        if: ${{ github.event.inputs.channel == '' || github.event.inputs.channel == matrix.channel }}
+        run: |
+          set -euo pipefail
+          case "${{ matrix.channel }}" in
+            release) product=firefox-latest-ssl ;;
+            beta)    product=firefox-beta-latest-ssl ;;
+            nightly) product=firefox-nightly-latest-ssl ;;
+            esr)     product=firefox-esr-latest-ssl ;;
+            *) echo "unknown channel"; exit 1 ;;
+          esac
+          curl -sSL -o firefox.dmg \
+            "https://download.mozilla.org/?product=${product}&os=osx&lang=en-US"
+          hdiutil attach -nobrowse -quiet -mountpoint /Volumes/ffwatch firefox.dmg
+          cp -R /Volumes/ffwatch/*.app "$RUNNER_TEMP/Firefox.app"
+          hdiutil detach /Volumes/ffwatch -quiet
+          echo "FIREFOX_BIN=$RUNNER_TEMP/Firefox.app/Contents/MacOS/firefox" >> "$GITHUB_ENV"
+
+      - name: Audit
+        id: audit
+        if: ${{ github.event.inputs.channel == '' || github.event.inputs.channel == matrix.channel }}
+        run: |
+          set +e
+          # Note the redirect rather than a pipe into tee: after a pipeline $?
+          # is tee's status, which is always 0, so findings would never be seen.
+          fxcss audit --no-colour --no-unused --strict --patch fxcss-fix.patch > audit.txt 2>&1
+          status=$?
+          cat audit.txt
+          echo "status=$status" >> "$GITHUB_OUTPUT"
+
+          version=$(fxcss doctor 2>/dev/null \
+            | sed -n 's/^version: *\([0-9][^ ]*\).*/\1/p' | head -1)
+          echo "version=${version:-unknown}" >> "$GITHUB_OUTPUT"
+          if [ -s fxcss-fix.patch ]; then echo "patch=yes" >> "$GITHUB_OUTPUT"; fi
+
+      - name: Open a pull request with the confident fixes
+        if: steps.audit.outputs.status != '0' && steps.audit.outputs.patch == 'yes'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CHANNEL: ${{ matrix.channel }}
+          VERSION: ${{ steps.audit.outputs.version }}
+        run: |
+          set -euo pipefail
+          branch="fxcss/firefox-${CHANNEL}-${VERSION}"
+          if git ls-remote --exit-code --heads origin "$branch" >/dev/null 2>&1; then
+            echo "branch $branch already exists; nothing new to open"
+            exit 0
+          fi
+          git config user.name  'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git checkout -b "$branch"
+          git apply fxcss-fix.patch
+          git add -A ':!audit.txt' ':!fxcss-fix.patch'
+          git commit -m "fix(css): update selectors renamed in Firefox ${VERSION}"
+          git push origin "$branch"
+          {
+            echo "Firefox **${CHANNEL}** is now **${VERSION}**, and some selectors this"
+            echo "theme uses no longer match anything in it."
+            echo
+            echo "The changes here are the ones fxcss is certain about — a name that moved"
+            echo "between an id and a class. Anything it was less sure of is listed below"
+            echo "but **not** changed."
+            echo
+            echo '```'
+            cat audit.txt
+            echo '```'
+            echo
+            echo "Worth previewing before merging: the PR preview workflow will render"
+            echo "before and after on this pull request."
+          } > body.md
+          gh pr create --base "${GITHUB_REF_NAME}" --head "$branch" \
+            --title "Firefox ${CHANNEL} ${VERSION}: update renamed selectors" \
+            --body-file body.md
+
+      - name: Open or update the heads-up issue
+        if: steps.audit.outputs.status != '0' && steps.audit.outputs.patch != 'yes'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CHANNEL: ${{ matrix.channel }}
+          VERSION: ${{ steps.audit.outputs.version }}
+        run: |
+          set -euo pipefail
+          title="Firefox ${CHANNEL}: selectors need attention"
+          {
+            echo "Firefox **${CHANNEL}** is now **${VERSION}**. Some selectors this theme"
+            echo "uses no longer match anything, and fxcss was not confident enough to"
+            echo "propose a replacement automatically."
+            echo
+            echo '```'
+            cat audit.txt
+            echo '```'
+            echo
+            echo "_Updated automatically. This closes itself when the channel is clean._"
+          } > body.md
+          existing=$(gh issue list --state open --search "$title in:title" \
+            --json number,title --jq "[.[] | select(.title == \"$title\")][0].number")
+          if [ -n "$existing" ] && [ "$existing" != "null" ]; then
+            gh issue edit "$existing" --body-file body.md
+          else
+            gh issue create --title "$title" --body-file body.md
+          fi
+
+      - name: Close the issue if this channel is clean again
+        if: steps.audit.outputs.status == '0'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CHANNEL: ${{ matrix.channel }}
+        run: |
+          set -euo pipefail
+          title="Firefox ${CHANNEL}: selectors need attention"
+          existing=$(gh issue list --state open --search "$title in:title" \
+            --json number,title --jq "[.[] | select(.title == \"$title\")][0].number")
+          if [ -n "$existing" ] && [ "$existing" != "null" ]; then
+            gh issue close "$existing" \
+              --comment "Firefox ${CHANNEL} audits clean again — closing."
+          fi
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: audit-${{ matrix.channel }}
+          path: |
+            audit.txt
+            fxcss-fix.patch
+          if-no-files-found: ignore
+          retention-days: 30

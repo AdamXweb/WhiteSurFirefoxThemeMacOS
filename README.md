@@ -104,6 +104,37 @@ If you've found a new bug, please report it as a new issue with the templates pr
 
 Thanks!
 
+## Contributing a CSS change
+
+Every pull request that touches `chrome/`, `custom/` or `configuration/` gets a
+comment showing the browser chrome **before** and **after** your change, with
+the changed pixels highlighted — on macOS and Windows, in light and dark. If a
+change turns out to alter nothing on current Firefox, the comment says that too,
+which is worth knowing before anyone spends time reviewing it.
+
+To get the same feedback while you work, without restarting Firefox after every
+edit:
+
+```bash
+pipx install "fxcss[images]"   # no pipx? brew install pipx — plain pip hits PEP 668 on Homebrew/Debian Python
+fxcss watch          # edit CSS and see it live, in a throwaway profile
+fxcss pick           # click any part of the UI to get its CSS selector
+```
+
+`fxcss watch` never touches your real Firefox profile. `fxcss pick` also tells
+you which files in this repo already style the element you clicked, which is
+usually the fastest way to find where a rule belongs. See
+[AdamXweb/fxcss](https://github.com/AdamXweb/fxcss) for the rest.
+
+Two things that catch people out when theming Firefox:
+
+- **On macOS, right-click menus are drawn by the OS**, so the `menupopup` rules
+  in `parts/popups.css` have no effect there. They do apply on Windows and
+  Linux. `fxcss watch --native-menus=false` switches Firefox to themeable menus
+  if you need to work on them from a Mac.
+- **Selectors change between Firefox releases.** `fxcss inspect '#some-id'` will
+  tell you when a rule targets something that no longer exists.
+
 ## Screenshots
 
 ### Windows
