@@ -116,7 +116,7 @@ To get the same feedback while you work, without restarting Firefox after every
 edit:
 
 ```bash
-pip install "fxcss[images] @ git+https://github.com/AdamXweb/fxcss@v0.6.1"
+pipx install "fxcss[images]"   # or: pip install "fxcss[images]"
 fxcss watch          # edit CSS and see it live, in a throwaway profile
 fxcss pick           # click any part of the UI to get its CSS selector
 ```
