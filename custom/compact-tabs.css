@@ -10,4 +10,23 @@ tab > stack {
   
 .tabbrowser-tab {
 	min-height: 28px !important;
+	/* Without an explicit height the tab is stretched back to 36px by the
+	   taller items sharing the strip, so the row never gets any shorter. */
+	height: 28px !important;
  }
+
+/* The strip only shrinks if everything holding it open shrinks too.
+   #TabsToolbar itself needs no rule: it is a flex item with flex-basis 0, so
+   its own height is ignored and it simply tracks its content.
+   Horizontal only -- with vertical tabs #tabbrowser-tabs is the full-height
+   sidebar strip and must not be pinned to one tab's height. */
+#tabbrowser-tabs[orient="horizontal"],
+#tabbrowser-tabs[orient="horizontal"] arrowscrollbox {
+	height: 28px !important;
+	min-height: 0 !important;
+}
+
+/* parts/buttons.css pins these to 36px; that is what was propping the row up */
+#TabsToolbar .toolbarbutton-1 {
+	height: 28px !important;
+}
