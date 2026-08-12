@@ -3,6 +3,10 @@ FIREFOX_DIR_HOME="/Users/${MY_USERNAME}/Library/Application Support/Firefox/Prof
 FIREFOX_O_HOME=/Users/${MY_USERNAME}/Library/'Application Support'/Firefox/Profiles/
 FIREFOX_THEME_HOME="/Users/${MY_USERNAME}/Library/Application\ Support/Firefox/Profiles"
 FIREFOX_SRC_DIR="${REPO_DIR}"
+# Single source of truth for which profiles the theme touches. Install and
+# remove must use the SAME glob, otherwise we delete out of profiles we never
+# installed to (e.g. dev-edition-default / default-esr).
+PROFILE_GLOB="*default-release"
 LOC=""
 
 # Colors
