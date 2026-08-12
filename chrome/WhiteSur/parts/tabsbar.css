@@ -470,3 +470,9 @@ transition: all 150ms ease-in !important;
   &[pinned], #tabbrowser-tabs[closebuttons="activetab"][orient="horizontal"] &:not([selected]) {
 display: flex !important;
 	}}
+
+/* Fix background color inconsistency caused by spacing
+ * between pinned tabs and normal tabs */
+#pinned-tabs-container[orient="horizontal"] {
+	margin-inline-end: 0px !important;
+}
