@@ -67,6 +67,16 @@ tab>stack {
 	border-image: none !important;
 }
 
+/* Draw the tab separator ourselves (#117). Firefox stopped rendering the
+ * ::before/::after separators the rule above was written to neutralise, so
+ * every unselected tab now blends into its neighbour. Not drawn beside the
+ * selected tab or straight after a pinned tab -- those already draw their own
+ * edges -- nor in vertical tabs, where it would run down the side of the strip
+ * instead of between the tabs. */
+#tabbrowser-tabs:not([orient="vertical"]) .tabbrowser-tab:not([pinned]):not([selected]) + .tabbrowser-tab:not([selected]) > .tab-stack > .tab-background {
+	border-inline-start: 1px solid var(--gnome-toolbar-border-color) !important;
+}
+
 /* Space between tabs */
 .tabbrowser-tab:not([pinned]) {
 	margin: 0 0 !important;
