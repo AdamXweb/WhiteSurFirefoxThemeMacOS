@@ -67,7 +67,8 @@ To manually add a custom override, copy the `*.css` from the `custom` folder of 
 That's it, the theme should load your overriden settings
 
 #### Swap navbar close buttons on Windows:
-`windows-swapclose.css` contains the styles required to swap the close buttons, as well as to re-order the close button from MacOS styling to Windows.
+`windows-swapclose.css` moves the window buttons to the right hand side of the title bar and re-orders them into the Windows sequence (minimise, maximise, close) instead of the MacOS one.
+This changes their **position and order only**. The buttons keep the theme's MacOS-style WhiteSur icons — the sheet contains no icon rules, and restoring Firefox's native Windows control glyphs is deliberately out of scope, since the MacOS look is the point of the theme.
 Follow the directions above for the manual theme override to activate.
 Can be installed with the `-w` command on the install script
 #### Swap tab close button side
