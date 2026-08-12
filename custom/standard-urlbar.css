@@ -1,5 +1,10 @@
 #urlbar-input {
     transition: transform .1s linear;
-    transform: none !important;
+    /* Not `none`: the base rule centres the input with position:absolute
+       + top:50% + translateY(-50%), so removing the transform outright
+       leaves top:50% standing and drops the text below the box, clipping
+       its descenders. Keep the vertical half-step, drop only the
+       horizontal one this override exists to cancel. */
+    transform: translateY(-50%) !important;
     width: 100% !important;
 }
