@@ -467,6 +467,12 @@ transition: all 150ms ease-in !important;
 }
 /* too many tabs still show close button */
 .tab-close-button {
-  &[pinned], #tabbrowser-tabs[closebuttons="activetab"][orient="horizontal"] &:not([selected]) {
+  #tabbrowser-tabs[closebuttons="activetab"][orient="horizontal"] &:not([selected]):not([pinned]) {
 display: flex !important;
 	}}
+
+/* ...but never on a pinned tab: it is only ~46px wide, so the close button is
+   crammed in next to the favicon and shoves it off centre (#137) */
+.tabbrowser-tab[pinned] .tab-close-button {
+	display: none !important;
+}
