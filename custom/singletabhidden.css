@@ -1,18 +1,16 @@
 /* From user @luan https://github.com/AdamXweb/WhiteSurFirefoxThemeMacOS/issues/52#issuecomment-1120470140 */
 
-#tabbrowser-tabs, #tabbrowser-tabs arrowscrollbox {
-    height: auto !important;
-    padding: 0 !important;
-  }
-  
-  #TabsToolbar {
+/* Collapsing the tab itself only ever emptied the row, it never removed it, so
+   a 36px band was left behind: #TabsToolbar has to be collapsed instead.
+   The old trigger no longer works either -- Firefox dropped the
+   first-visible-tab/last-visible-tab attributes, and it now keeps pinned tabs
+   in a separate #pinned-tabs-container, which made a bare
+   .tabbrowser-tab:only-of-type match a lone pinned tab and blank it out even
+   with several tabs open. So match on the toolbar and require that the strip
+   really does hold one single unpinned tab: none pinned, and no tab group
+   (whose tabs are nested and so do not count as siblings). */
+#TabsToolbar:has(#tabbrowser-arrowscrollbox > .tabbrowser-tab:only-of-type:not([pinned])):not(:has(#pinned-tabs-container > .tabbrowser-tab)):not(:has(tab-group)) {
+    height: 0 !important;
     min-height: 0 !important;
-  }
-  
-  #tabbrowser-tabs tab[first-visible-tab="true"][last-visible-tab="true"]:not([pinned]),
-  .tabbrowser-tab:only-of-type,
-  #tabbrowser-tab[first-visible-tab="true"][last-visible-tab="true"]:not([pinned]) ~ #TabsToolbar {
     visibility: collapse !important;
-    min-height: 0 !important;
-    height: 0;
-  }
+}
