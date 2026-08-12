@@ -39,8 +39,11 @@ menupopup menu[disabled="true"]:hover {
 	background: transparent !important;
 }
 
-/* Adjust popovers position, includes background colour with transparency */
-panel[type=arrow] {
+/* Adjust popovers position, includes background colour with transparency.
+   Skip .tooltip-xul-wrapper: devtools builds its dropdowns (e.g. the Responsive
+   Design Mode device list) as type=arrow panels inside short devtools iframes,
+   so 80vh re-resolves against ~30px and clips the menu shut. See #96, #162. */
+panel[type=arrow]:not(.tooltip-xul-wrapper) {
 	margin-top: 9px !important;
 	max-height: 80vh !important;
 	--panel-background: var(--gnome-popover-background) !important;
@@ -178,8 +181,8 @@ toolbarseparator[orient="vertical"] {
 	padding-left: 0px !important;
 }
 /* Fix alignment of menu*/
-panel[type="arrow"][side="top"],
-panel[type="arrow"][side="bottom"] {
+panel[type="arrow"][side="top"]:not(.tooltip-xul-wrapper),
+panel[type="arrow"][side="bottom"]:not(.tooltip-xul-wrapper) {
 	margin-inline: -20px !important;
 }
 
