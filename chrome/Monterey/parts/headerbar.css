@@ -80,7 +80,7 @@ toolbar .toolbaritem-combined-buttons > .toolbarbutton-1 {
 
 /* Headerbar entries */
 #nav-bar #searchbar,
-#urlbar #urlbar-input-container,
+#urlbar .urlbar-input-container,
 #urlbar .urlbar-input-container {
 	-moz-appearance: none !important;
 	background: var(--gnome-urlbar-background) !important;
@@ -95,13 +95,13 @@ toolbar .toolbaritem-combined-buttons > .toolbarbutton-1 {
 }
 
 :root:-moz-window-inactive #nav-bar #searchbar,
-:root:-moz-window-inactive #urlbar #urlbar-input-container,
+:root:-moz-window-inactive #urlbar .urlbar-input-container,
 :root:-moz-window-inactive #urlbar .urlbar-input-container {
 	background: var(--gnome-inactive-urlbar-background) !important;
 }
 
 #nav-bar #searchbar:hover,
-#urlbar #urlbar-input-container:hover,
+#urlbar .urlbar-input-container:hover,
 #urlbar .urlbar-input-container:hover {
 	box-shadow: inset 0 0 0 1px var(--gnome-hover-urlbar-border-color) !important;
 	transition-duration: 100ms;
@@ -111,8 +111,8 @@ toolbar .toolbaritem-combined-buttons > .toolbarbutton-1 {
 	position: static !important; 
 }
 
-#urlbar[breakout][breakout-extend] #urlbar-input-container,
-#urlbar[breakout][breakout-extend] #urlbar-input-container:hover,
+#urlbar[breakout][breakout-extend] .urlbar-input-container,
+#urlbar[breakout][breakout-extend] .urlbar-input-container:hover,
 #urlbar[breakout][breakout-extend] .urlbar-input-container,
 #urlbar[breakout][breakout-extend] .urlbar-input-container:hover {
 	background: none !important;
@@ -121,7 +121,7 @@ toolbar .toolbaritem-combined-buttons > .toolbarbutton-1 {
 }
 
 /* New tab url bar focusing */
-#urlbar[focused]:not([suppress-focus-border]) > #urlbar-background, 
+#urlbar[focused]:not([suppress-focus-border]) > .urlbar-background, 
 #searchbar:focus-within {
 	outline: none !important;
 }

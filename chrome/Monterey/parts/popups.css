@@ -332,7 +332,7 @@ menupopup menu[disabled="true"][_moz-menuactive],
 /* Menu buttons hover */
 menuitem:not([disabled="true"]):is(:hover, [_moz-menuactive]),
 menupopup menu:not([disabled="true"]):is(:hover, [_moz-menuactive]),
-.subviewbutton:not([disabled="true"], #appMenu-zoom-controls2, #appMenu-fxa-label2, #downloadsHistory):hover,
+.subviewbutton:not([disabled="true"], #appMenu-zoom-controls, #appMenu-fxa-label2, #downloadsHistory):hover,
 .protections-popup-footer-button:not([disabled="true"]):hover,
 #protections-popup-show-report-stack:hover .protections-popup-footer-button,
 .protections-popup-category:not([disabled="true"]):hover,
@@ -344,7 +344,7 @@ menupopup menu:not([disabled="true"]):is(:hover, [_moz-menuactive]),
 }
 
 /* Menu buttons active */
-.subviewbutton:not([disabled="true"], #appMenu-zoom-controls2, #appMenu-fxa-label2, #downloadsHistory):active,
+.subviewbutton:not([disabled="true"], #appMenu-zoom-controls, #appMenu-fxa-label2, #downloadsHistory):active,
 .protections-popup-footer-button:not([disabled="true"]):active,
 #protections-popup-show-report-stack:active .protections-popup-footer-button,
 .protections-popup-category:not([disabled="true"]):active,

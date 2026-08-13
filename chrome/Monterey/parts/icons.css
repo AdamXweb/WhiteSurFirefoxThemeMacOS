@@ -30,7 +30,7 @@ menuitem:not([class*='identity']) .menu-iconic-left .menu-iconic-icon,
 #viewButton .button-menu-dropmarker,
 .menulist-label-box:after,
 .expander-up > .button-box,
-#urlbar:not(.searchButton) > #urlbar-input-container > #identity-box[pageproxystate="invalid"] > #identity-icon,
+#urlbar:not(.searchButton) > .urlbar-input-container > #identity-box[pageproxystate="invalid"] > #identity-icon,
 .searchbar-search-icon,
 .textbox-search-sign,
 treechildren::-moz-tree-twisty,
@@ -157,7 +157,7 @@ arrowscrollbox[orient="horizontal"] {
 
 /* Search entries */
 #urlbar[pageproxystate="invalid"] > #identity-box > #identity-icon,
-#urlbar:not(.searchButton) > #urlbar-input-container > #identity-box[pageproxystate="invalid"] #identity-icon,
+#urlbar:not(.searchButton) > .urlbar-input-container > #identity-box[pageproxystate="invalid"] #identity-icon,
 .searchbar-search-icon,
 #search-box .textbox-search-sign {
 	list-style-image: url("../icons/edit-find-symbolic.svg") !important;
@@ -324,7 +324,7 @@ menu[disabled] > .menu-right {
 /* Forward button */
 #forward-button,
 #context-forward,
-#urlbar-go-button,
+.urlbar-go-button,
 .urlbar-go-button,
 .search-go-button {
 	list-style-image: url("../icons/go-next-symbolic.svg") !important;
@@ -338,7 +338,7 @@ menu[disabled] > .menu-right {
 }
 /* New tab button */
 #new-tab-button,
-.tabs-newtab-button,
+#tabs-newtab-button,
 #tabs-newtab-button,
 #TabsToolbar {
 	list-style-image: url("../icons/tab-new-symbolic.svg") !important;
@@ -354,17 +354,17 @@ menu[disabled] > .menu-right {
 }
 /* Fullscreen button */
 #fullscreen-button,
-#appMenu-fullscreen-button {
+#appMenu-fullscreen-button2 {
 	list-style-image: url("../icons/view-fullscreen-symbolic.svg") !important;
 }
 /* Zoom out button */
 #zoom-out-button,
-#appMenu-zoomReduce-button {
+#appMenu-zoomReduce-button2 {
 	list-style-image: url("../icons/zoom-out-symbolic.svg") !important;
 }
 /* Zoom in button */
 #zoom-in-button,
-#appMenu-zoomEnlarge-button {
+#appMenu-zoomEnlarge-button2 {
 	list-style-image: url("../icons/zoom-in-symbolic.svg") !important;
 }
 /* Developer button */
@@ -819,7 +819,7 @@ treechildren::-moz-tree-image {
 }
 
 /* Fix main menu zoom controls icons */
-#appMenu-zoom-controls2 .toolbarbutton-icon {
+#appMenu-zoom-controls .toolbarbutton-icon {
 	padding: 0 !important;
 	padding-block: 0 !important;
 	padding-inline: 0 !important;

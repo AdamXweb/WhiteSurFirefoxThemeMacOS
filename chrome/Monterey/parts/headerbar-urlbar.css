@@ -19,7 +19,7 @@ toolbarspring {
 	min-width: 360px !important;
 }
 
-#urlbar[focused="true"]:not([suppress-focus-border]) > #urlbar-background,
+#urlbar[focused="true"]:not([suppress-focus-border]) > .urlbar-background,
 #urlbar[focused="true"]:not([suppress-focus-border]) > .urlbar-background {
 	outline-color: transparent !important;
 }
@@ -28,7 +28,7 @@ toolbarspring {
 .urlbar-container,
 #wrapper-urlbar-container,
 .wrapper-urlbar-container,
-#urlbar #urlbar-input-container,
+#urlbar .urlbar-input-container,
 #urlbar .urlbar-input-container {
 	padding: 0 !important;
 	width: 360px !important;
@@ -44,7 +44,7 @@ toolbarspring {
 	min-width: 360px !important;
 }
 
-#urlbar-background,
+.urlbar-background,
 .urlbar-background {
 	box-shadow: var(--gnome-urlbar-box-shadow) !important;
 	border: 1px solid var(--gnome-urlbar-border-color) !important;
@@ -52,7 +52,7 @@ toolbarspring {
 	border-radius: 8px !important;
 }
 
-#urlbar:hover > #urlbar-background,
+#urlbar:hover > .urlbar-background,
 #urlbar:hover > .urlbar-background {
 	border-color: var(--gnome-hover-urlbar-border-color) !important;
 }
@@ -73,14 +73,14 @@ toolbarspring {
 	max-height: unset !important;
 }
 
-#urlbar[breakout][breakout-extend] #urlbar-input-container,
+#urlbar[breakout][breakout-extend] .urlbar-input-container,
 #urlbar[breakout][breakout-extend] .urlbar-input-container {
 	height: 32px !important;
 	max-height: 32px !important;
 	padding: 0 !important;
 }
 
-#urlbar:-moz-window-inactive > #urlbar-background,
+#urlbar:-moz-window-inactive > .urlbar-background,
 #urlbar:-moz-window-inactive > .urlbar-background {
 	background: var(--gnome-inactive-urlbar-background) !important;
 	border-color: var(--gnome-inactive-urlbar-border-color) !important;
@@ -173,7 +173,7 @@ toolbarspring {
 }
 
 #identity-box[pageproxystate="invalid"] > .identity-box-button,
-#urlbar:not(.searchButton) > #urlbar-input-container > #identity-box[pageproxystate="invalid"] > .identity-box-button {
+#urlbar:not(.searchButton) > .urlbar-input-container > #identity-box[pageproxystate="invalid"] > .identity-box-button {
 	padding-inline: 6px !important;
 }
 
@@ -213,7 +213,7 @@ toolbarspring {
 }
 
 .urlbar-page-action,
-#urlbar-go-button,
+.urlbar-go-button,
 .urlbar-go-button:not(.urlbar-icon),
 .search-go-button,
 #notification-popup-box,
@@ -241,7 +241,7 @@ toolbarspring {
 
 #tracking-protection-icon-container:hover,
 .urlbar-page-action:hover,
-#urlbar-go-button:hover,
+.urlbar-go-button:hover,
 .urlbar-go-button:hover,
 .search-go-button:hover,
 #identity-box:hover {
@@ -251,7 +251,7 @@ toolbarspring {
 #tracking-protection-icon-container:active,
 #tracking-protection-icon-container[open="true"],
 .urlbar-page-action:active,
-#urlbar-go-button:active,
+.urlbar-go-button:active,
 .urlbar-go-button:active,
 .search-go-button:active,
 #identity-box:active {
@@ -358,7 +358,7 @@ toolbarspring {
 	margin-bottom: 3px;
 }
 
-#urlbar-search-mode-indicator-close, #searchmode-switcher-close {
+#urlbar-search-mode-indicator-close, .searchmode-switcher-close {
 	margin-left: 6px !important;
 }
 

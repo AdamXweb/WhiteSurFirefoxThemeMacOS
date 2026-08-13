@@ -46,8 +46,7 @@
 
 #nav-bar, #titlebar {
 	/* Window buttons box */
-	.titlebar-buttonbox-container,
-	#titlebar-buttonbox-container {
+	.titlebar-buttonbox-container {
 		-moz-appearance: none !important;
 		padding: 0 3px 0 4px;
 		position: absolute !important;
@@ -101,7 +100,7 @@
 	}
 
 	/* Remove close and minimize buttons from fullscreen buttons */
-	#window-controls #close-button,
+	#window-controls .close-button,
 	#window-controls #minimize-button,
 	#titlebar .titlebar-buttonbox .titlebar-close,
 	#titlebar .titlebar-buttonbox .titlebar-min,

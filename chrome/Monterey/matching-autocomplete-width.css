@@ -29,7 +29,7 @@ panel#urlbar-results {
 }
 
 /* Results box */
-#urlbarView-results {
+.urlbarView-results {
 	--item-padding-start: 0 !important;
 	--item-padding-end: 0 !important;
 	max-height: 35vh !important;
