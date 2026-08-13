@@ -1,0 +1,17 @@
+#TabsToolbar {
+	margin-left: 552px !important;
+}
+
+/* Left window titlebuttons mode */
+@media (-moz-gtk-csd-reversed-placement) {
+	#TabsToolbar {
+		margin-left: 632px !important;
+	}
+}
+
+/* macOS: window buttons are always on the left (this repo's adaptation) */
+@media (-moz-platform: macos) {
+	#TabsToolbar {
+		margin-left: 632px !important;
+	}
+}

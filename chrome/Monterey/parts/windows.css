@@ -1,0 +1,43 @@
+/* Windows specific -- best effort, mirrors chrome/WhiteSur/parts/windows.css.
+ * On Windows the window controls are DOM .titlebar-button elements on the
+ * RIGHT of the titlebar; the GTK -moz-gtk-csd-* media queries in csd.css
+ * never match there, so reserve the space by hand.
+ *
+ * TODO(windows): verify on a real Windows build -- the paddings below are
+ * derived from the GTK 3-button case, not measured.
+ * TODO(windows): the one-line layout puts tabs in the same row as the
+ * headerbar; if tabs collide with the window controls, raise the
+ * right_header_button_* margins rather than shrinking the buttons. */
+@namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+@media (-moz-platform: windows) {
+	:root:not([inFullscreen]) #nav-bar {
+		padding-right: 96px !important;
+	}
+
+	.titlebar-button {
+		border: none;
+		margin: 0 !important;
+		padding: 1px 3px !important;
+		stroke: none !important;
+		background-color: transparent !important;
+	}
+
+	.titlebar-button > .toolbarbutton-icon {
+		list-style-image: none !important;
+		display: inline-flex !important;
+		width: 12px !important;
+		height: 12px !important;
+	}
+
+	.titlebar-button::before {
+		display: none !important;
+	}
+
+	:root[sizemode="maximized"] #TabsToolbar {
+		appearance: none !important;
+	}
+
+	tab {
+		font-weight: normal !important;
+	}
+}
