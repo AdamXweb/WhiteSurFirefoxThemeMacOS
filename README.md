@@ -29,7 +29,22 @@ profile untouched. Add `--dark` for dark mode, or
 `--with compact-tabs,tabs-swapclose` to try the optional stylesheets described
 below. Quit the browser and nothing is left behind.
 
-## Installation (MacOS)
+## Installation
+
+The default way, on macOS, Windows and Linux — [fxcss](https://github.com/AdamXweb/fxcss) 0.12 or newer:
+
+```bash
+pipx install "fxcss[images]"     # no pipx? brew install pipx
+fxcss install AdamXweb/WhiteSurFirefoxThemeMacOS
+```
+
+It installs into the Firefox profile you actually use, found the same way Firefox finds it. Your existing `chrome/` folder is backed up first, and optional stylesheets from `custom/` load with `--with`, e.g. `--with compact-tabs,tabs-swapclose`. To put everything back the way it was:
+
+```bash
+fxcss uninstall AdamXweb/WhiteSurFirefoxThemeMacOS
+```
+
+### With the install script (macOS & Linux)
 
 Download the [latest release](https://github.com/AdamXweb/WhiteSurFirefoxThemeMacOS/releases/), or clone the repo above.\
 A script has been added to streamline the installation process.\
