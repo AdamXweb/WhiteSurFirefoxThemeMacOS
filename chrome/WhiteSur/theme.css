@@ -24,6 +24,18 @@
 @import "custom/standard-urlbar.css";
 @import "custom/windows-swapclose.css";
 @import "custom/compact-tabs.css";
+/* Colour themes (-t flag installs exactly one of these) */
+@import "custom/theme-dracula.css";
+@import "custom/theme-catppuccin-latte.css";
+@import "custom/theme-catppuccin-frappe.css";
+@import "custom/theme-catppuccin-macchiato.css";
+@import "custom/theme-catppuccin-mocha.css";
+@import "custom/theme-nord.css";
+@import "custom/theme-gruvbox-dark.css";
+@import "custom/theme-gruvbox-light.css";
+@import "custom/theme-solarized-dark.css";
+@import "custom/theme-solarized-light.css";
+@import "custom/theme-tokyonight.css";
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
 /* Set theme version text in customization panel */

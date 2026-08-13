@@ -88,6 +88,21 @@ if [ "$NOTABSINGLE" = true ] ; then
       cp -rf "${REPO_DIR}/custom/singletabhidden.css"                     "${FIREFOX_DIR_HOME}/"${PROFILE_GLOB}"/chrome/WhiteSur/custom"
   echo "Single tab minimal view enabled"
 fi
+# If a colour theme is wanted (-t <name>, e.g. -t dracula)
+if [ -n "$COLOURTHEME" ] ; then
+  cd "${REPO_DIR}"
+  if [ -f "${REPO_DIR}/custom/theme-${COLOURTHEME}.css" ] ; then
+	echo "Enabling ${COLOURTHEME} colour theme"
+      cp -rf "${REPO_DIR}/custom/theme-${COLOURTHEME}.css"                "${FIREFOX_DIR_HOME}/"${PROFILE_GLOB}"/chrome/WhiteSur/custom"
+  echo "${COLOURTHEME} colour theme configured"
+  else
+    echo "Unknown colour theme: ${COLOURTHEME}. Available themes:"
+    for f in "${REPO_DIR}"/custom/theme-*.css; do
+      basename "${f}" .css | sed 's/^theme-/    /'
+    done
+    exit 1
+  fi
+fi
 
 # Copy settings to enable stylesheets in firefox automatically.
   for d in "${FIREFOX_DIR_HOME}/"${PROFILE_GLOB}; do
