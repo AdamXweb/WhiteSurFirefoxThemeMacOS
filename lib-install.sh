@@ -6,7 +6,7 @@ source "${REPO_DIR}/lib-core.sh"
 
 # Files/dirs this theme writes into a profile's chrome/ directory. Only these
 # may be deleted -- anything else in chrome/ belongs to the user.
-FIREFOX_THEME_PATHS=("WhiteSur" "userChrome.css" "userContent.css")
+FIREFOX_THEME_PATHS=("WhiteSur" "Monterey" "userChrome.css" "userContent.css")
 
 remove_firefox_theme() {
   killall "firefox" &> /dev/null
@@ -34,6 +34,17 @@ install_firefox_theme() {
 
 config_firefox() {
     cp -rf "${REPO_DIR}/configuration"                             "${FIREFOX_DIR_HOME}/"${PROFILE_GLOB}
+# If the Monterey variant (one-line compact layout) is wanted.
+# Note: the WhiteSur-specific custom flags (-c -w -p -u -n -v -e -s) only
+# restyle chrome/WhiteSur and have no effect on the Monterey variant yet.
+if [ "$MONTEREY" = true ] ; then
+	echo "Switching userChrome.css to the Monterey variant"
+	for d in "${FIREFOX_DIR_HOME}/"${PROFILE_GLOB}; do
+		sed -i.bak 's|WhiteSur/theme.css|Monterey/theme.css|' "${d}/chrome/userChrome.css"
+		rm -f "${d}/chrome/userChrome.css.bak"
+	done
+  echo "Monterey variant enabled"
+fi
 # If LeftHandSide Tab close button is wanted
 if [ "$TABSWAP" = true ] ; then
   cd "${REPO_DIR}"

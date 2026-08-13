@@ -3,14 +3,16 @@ LHSCLOSE=false
 URLBAR=false
 REMOVE=false
 NOLINE=false
+MONTEREY=false
 readonly REPO_DIR="$(pwd)"
 # readonly REPO_DIR="$(dirname "$(readlink "${0}")")"
 source "${REPO_DIR}/lib-install.sh"
 
 # Get options.
-while getopts 'c,w,p,u,n,v,e,s,r,f:l' flag; do
+while getopts 'c,w,p,u,n,v,e,s,m,r,f:l' flag; do
 	case "${flag}" in
         c ) TABSWAP=true;;
+        m ) MONTEREY=true;;
         w ) WINDOWSWAP=true;;
         p ) COMPACTTAB=true;;
         f ) FIREFOX_DIR_HOME="${OPTARG}";;
