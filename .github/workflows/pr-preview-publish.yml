@@ -165,7 +165,6 @@ jobs:
                 // this PR adds, say -- have no base image to diff against, so
                 // compare lists them here instead of in views[]. Surface them:
                 // a brand-new view IS a visual change worth reviewing.
-                // (Ahead of the fxcss template; keep when regenerating.)
                 for (const n of (Array.isArray(s.only_in_head) ? s.only_in_head : [])) {
                   if (typeof n === 'string' && NAME.test(n + '.png')
                       && fulls.includes(n + '.png')) {
