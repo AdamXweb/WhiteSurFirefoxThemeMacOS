@@ -146,3 +146,12 @@
 	--toolbar-field-focus-background-color: transparent !important;
 	--arrowpanel-border-color: transparent !important;
 }
+
+/* WhiteSur dims and fully desaturates the idle URL bar
+ * (parts/headerbar-urlbar.css: opacity 0.8, filter saturate(0%), colour back
+ * on hover/focus) — that would grey this scheme's URL bar tint out. This sheet
+ * loads after the parts, so a same-specificity override keeps it visible. */
+#urlbar {
+	filter: none !important;
+	opacity: 1 !important;
+}

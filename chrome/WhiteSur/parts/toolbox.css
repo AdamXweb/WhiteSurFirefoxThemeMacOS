@@ -23,7 +23,10 @@
 #PersonalToolbar,
 #toolbar-menubar {
 	border: 0 !important;
-	color: var(--gnome-toolbar-color);
+	/* !important: Firefox's own toolbar colour is author-origin, which beats a
+	 * plain user-sheet declaration — bookmark labels went near-black whenever
+	 * the OS mode and the palette disagreed (e.g. dark colour theme, light OS). */
+	color: var(--gnome-toolbar-color) !important;
 	background: var(--gnome-toolbar-background) !important;
 	border-bottom: none !important;
 }
