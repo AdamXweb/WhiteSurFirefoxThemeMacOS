@@ -31,7 +31,7 @@ below. Quit the browser and nothing is left behind.
 
 ## Installation
 
-The default way, on macOS, Windows and Linux — [fxcss](https://github.com/AdamXweb/fxcss) 0.12 or newer:
+The default way, on macOS, Windows and Linux — [fxcss](https://github.com/AdamXweb/fxcss) 0.13 or newer:
 
 ```bash
 pipx install "fxcss[images]"     # no pipx? brew install pipx
