@@ -114,7 +114,9 @@ jobs:
             // Enumerated rather than wildcarded on purpose: this is an allowlist
             // over an untrusted artifact, so a new view must be added here before
             // it can be published.
-                        const NAME = /^(?:(?:light|dark)-(?:01-window|02-urlbar|03-findbar)|extra-(?:04-audio|05-muted|06-containers|07-many-tabs|08-private|09-compact|10-sidebar|11-rtl|12-customize)|variant-(?:compact-tabs|enabletabview|hideextension|noidentity|singletabhidden|standard-urlbar|tabs-swapclose|windows-swapclose))\.png$/;
+                        // Enumerated on purpose: this is an allowlist over an untrusted
+            // artifact. `fxcss init` regenerates it from the theme's variants.
+            const NAME = /^(?:(?:light|dark)-(?:01-window|02-urlbar|03-findbar)|extra-(?:04-audio|05-muted|06-containers|07-many-tabs|08-private|09-compact|10-sidebar-bookmarks|11-sidebar-history|12-rtl|13-customize|14-vertical-tabs|15-toolbar)|variant-(?:compact-tabs|enabletabview|hideextension|noidentity|singletabhidden|standard-urlbar|tabs-swapclose|theme-catppuccin-frappe|theme-catppuccin-latte|theme-catppuccin-macchiato|theme-catppuccin-mocha|theme-dracula|theme-gruvbox-dark|theme-gruvbox-light|theme-nord|theme-solarized-dark|theme-solarized-light|theme-tokyonight|windows-swapclose))\.png$/;
             const staged = 'staged';
             fs.mkdirSync(staged, { recursive: true });
 
@@ -147,7 +149,10 @@ jobs:
               }
 
               // Numbers only -- no strings from the artifact reach the comment.
+              // Exception: only_in_head names, each re-validated against the
+              // NAME allowlist and required to exist in full/ before use.
               let pct = {};
+              const fresh = [];
               try {
                 const s = JSON.parse(fs.readFileSync(path.join(dir, 'summary.json'), 'utf8'));
                 for (const v of (Array.isArray(s.views) ? s.views : [])) {
@@ -156,9 +161,21 @@ jobs:
                     pct[v.view] = Math.max(0, Math.min(100, v.percent));
                   }
                 }
+                // Views that exist only on the head side -- a variant stylesheet
+                // this PR adds, say -- have no base image to diff against, so
+                // compare lists them here instead of in views[]. Surface them:
+                // a brand-new view IS a visual change worth reviewing.
+                // (Ahead of the fxcss template; keep when regenerating.)
+                for (const n of (Array.isArray(s.only_in_head) ? s.only_in_head : [])) {
+                  if (typeof n === 'string' && NAME.test(n + '.png')
+                      && fulls.includes(n + '.png')) {
+                    fresh.push(n + '.png');
+                  }
+                }
               } catch (e) { core.warning(`unreadable summary.json for ${label}: ${e}`); }
 
-              report.push({ label, changed: changed.sort(), full: fulls.sort(), pct });
+              report.push({ label, changed: changed.sort(), full: fulls.sort(),
+                            fresh: fresh.sort(), pct });
             }
 
             core.setOutput('skip', 'false');
@@ -224,9 +241,12 @@ jobs:
               '07-many-tabs': 'Tab strip overflowing',
               '08-private': 'Private window',
               '09-compact': 'Compact density',
-              '10-sidebar': 'Sidebar open',
-              '11-rtl': 'Right-to-left UI',
-              '12-customize': 'Customize mode',
+              '10-sidebar-bookmarks': 'Sidebar — bookmarks',
+              '11-sidebar-history': 'Sidebar — history',
+              '12-rtl': 'Right-to-left UI',
+              '13-customize': 'Customize mode',
+              '14-vertical-tabs': 'Vertical tabs',
+              '15-toolbar': 'Customised toolbar',
             };
             const PLATFORM = { macos: 'macOS', windows: 'Windows', linux: 'Linux' };
 
@@ -250,15 +270,21 @@ jobs:
             let body = `${MARKER}\n### Theme preview\n\n`;
             body += `Rendered from \`${sha.slice(0, 7)}\` against the base branch.\n\n`;
 
-            const anyChange = report.some(r => r.changed.length);
+            const anyChange = report.some(r => r.changed.length || (r.fresh || []).length);
 
             for (const r of report) {
               const name = PLATFORM[r.label] || r.label;
-              body += `<details${r.changed.length ? ' open' : ''}>`;
+              const fresh = r.fresh || [];
+              const parts = [];
+              if (r.changed.length) {
+                parts.push(`${r.changed.length} view${r.changed.length > 1 ? 's' : ''} changed`);
+              }
+              if (fresh.length) {
+                parts.push(`${fresh.length} new view${fresh.length > 1 ? 's' : ''}`);
+              }
+              body += `<details${parts.length ? ' open' : ''}>`;
               body += `<summary><b>${name}</b> — `;
-              body += r.changed.length
-                ? `${r.changed.length} view${r.changed.length > 1 ? 's' : ''} changed`
-                : 'no visual change';
+              body += parts.length ? parts.join(' · ') : 'no visual change';
               body += `</summary>\n\n`;
 
               for (const f of r.changed) {
@@ -268,7 +294,14 @@ jobs:
                 body += `<img src="${base}/${r.label}/${f}" width="900">\n\n`;
               }
 
-              if (!r.changed.length && r.full.length) {
+              // Views with no counterpart on the base branch (a variant sheet
+              // this PR adds): nothing to diff, so show the capture itself.
+              for (const f of fresh) {
+                body += `**${pretty(f)}** — new in this PR\n\n`;
+                body += `<img src="${base}/${r.label}/full/${f}" width="900">\n\n`;
+              }
+
+              if (!r.changed.length && !fresh.length && r.full.length) {
                 body += `Nothing rendered differently. Current appearance:\n\n`;
                 body += `<img src="${base}/${r.label}/full/${r.full[0]}" width="900">\n\n`;
               }
