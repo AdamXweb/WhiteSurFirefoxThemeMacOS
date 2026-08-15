@@ -13,7 +13,37 @@ This is a CSS theme adapted to work on MacOS from the Linux GTK theme.\
 Based on https://github.com/vinceliuice/WhiteSur-gtk-theme/tree/master/src/other/firefox \
 (This is a quick modification, and is not written from scratch.)
 
-## Installation (MacOS)
+
+## Try it without installing
+
+To see the theme before applying to your own Firefox profile:
+
+```bash
+pipx install "fxcss[images]"     # no pipx? see pipx.pypa.io (brew install pipx on macOS)
+fxcss try AdamXweb/WhiteSurFirefoxThemeMacOS
+```
+
+That opens a throwaway Firefox with the theme applied and leaves your main
+profile untouched. Add `--dark` for dark mode, or
+`--with compact-tabs,tabs-swapclose` to try the optional stylesheets described
+below. Quit the browser and everything gets reset.
+
+## Installation
+
+The default way, on macOS, Windows and Linux — [fxcss](https://github.com/AdamXweb/fxcss) 0.13 or newer:
+
+```bash
+pipx install "fxcss[images]"     # no pipx? see pipx.pypa.io (brew install pipx on macOS)
+fxcss install AdamXweb/WhiteSurFirefoxThemeMacOS
+```
+
+It installs into your Firefox profile all on macOS, Windows and Linux, including snap and flatpak Firefoxes on Linux. A Firefox in an unusual place is reachable via `FXCSS_PROFILE_ROOTS`; when more than one installed Firefox has profiles, fxcss asks which one to update. Your existing `chrome/` folder is backed up first, and optional stylesheets from `custom/` load with `--with`, e.g. `--with compact-tabs,tabs-swapclose`. To put everything back the way it was:
+
+```bash
+fxcss uninstall AdamXweb/WhiteSurFirefoxThemeMacOS
+```
+
+### With the install script (macOS & Linux)
 
 Download the [latest release](https://github.com/AdamXweb/WhiteSurFirefoxThemeMacOS/releases/), or clone the repo above.\
 A script has been added to streamline the installation process.\
@@ -61,7 +91,7 @@ Install with the following modifications for Safari-like experience
 ` bash ./install.sh -c -n -s -e -p`
 
 This will give you a look like this:
-![Preview](https://private-user-images.githubusercontent.com/6800453/391326706-1bb5ffe4-3320-4a8a-8702-648ce3b9f23c.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzMwNTE0OTcsIm5iZiI6MTczMzA1MTE5NywicGF0aCI6Ii82ODAwNDUzLzM5MTMyNjcwNi0xYmI1ZmZlNC0zMzIwLTRhOGEtODcwMi02NDhjZTNiOWYyM2MucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI0MTIwMSUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNDEyMDFUMTEwNjM3WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9MTZjMzgyM2Y0NzMzZmY2NjE5ZmU4MDhiYzc2OGQyYzcwZjE2NWIwNzhmNmM2ZmQ1MTMyZWFhYWI1YzRkNWI0MyZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.4pM0PJgYSjpWUnJRiIYVphkyIMKA1wnGDALqaIHXgk8)
+![Compact tabs below the address bar, tab close button on the left, no identity colour, extension button hidden, and the new tab button moved up into the toolbar](githubpreview/optimal-experience.png?raw=true)
 
 ### Manual installation (MacOS & Windows)
 
@@ -79,7 +109,7 @@ To find your Firefox Profile Directory you can:
 6. Done!
 
 #### Manual theme overrides:
-To manually add a custom override, copy the `*.css` from the `custom` folder of whichever option you are after. Place it in the `chrome/WhiteSur/custom` foder within the profile directory you opened above.\
+To manually add a custom override, copy the `*.css` from the `custom` folder of whichever option you are after. Place it in the `chrome/WhiteSur/custom` folder within the profile directory you opened above.
 
 That's it, the theme should load your overriden settings
 
@@ -104,12 +134,12 @@ Please note, you won't be able to change the System UI colour if you are using `
 If it is a fresh install of Firefox, the script for MacOS should enable the settings automatically, however users who have toggled settings may need to do the `about:config` in step 4 above.\
 If for any reason the WhiteSur theme doesn't activate after using the script, follow steps 4.1 and 4.2 to toggle the stylesheets from within the Firefox settings.
 
-The tab background colour can be overwritten by themes installed through firefox extentions.
+The tab background colour can be overwritten by themes installed through firefox extensions.
 e.g. if you are using a dark theme in light mode, tab backgrounds that are inactive are affected.
 Fix: Change the installed theme to appropriate colour scheme to avoid issues.
 
 If you're looking to change the directory to run the script, you can always type `bash` then drag the file into terminal. You can also type `cd` and then drag the folder and press enter to navigate to the directory.\
-Alternatively, if you're running Catalina, the default teminal is zsh, meaning you can change folders by typing the name to enter the folder e.g. `WhiteSurFirefoxThemeMacOS`
+Alternatively, if you're running Catalina, the default terminal is zsh, meaning you can change folders by typing the name to enter the folder e.g. `WhiteSurFirefoxThemeMacOS`
 
 
 Q: "Why bother doing this, and not just use safari?" \
@@ -160,4 +190,3 @@ Two things that catch people out when theming Firefox:
 
 ### MacOS
 ![Preview](githubpreview/whitesur.gif?raw=true)
-
