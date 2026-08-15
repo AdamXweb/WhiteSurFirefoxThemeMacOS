@@ -88,12 +88,20 @@ if [ "$NOTABSINGLE" = true ] ; then
       cp -rf "${REPO_DIR}/custom/singletabhidden.css"                     "${FIREFOX_DIR_HOME}/"${PROFILE_GLOB}"/chrome/WhiteSur/custom"
   echo "Single tab minimal view enabled"
 fi
-# If a colour theme is wanted (-t <name>, e.g. -t dracula)
+# If a colour theme is wanted (-t <name>, e.g. -t dracula).
+# The sheet lands in every installed layout's custom/ — WhiteSur always,
+# Monterey when that variant exists in the profile — so -t and -m compose
+# in either order; each theme.css only reads its own custom/ folder.
 if [ -n "$COLOURTHEME" ] ; then
   cd "${REPO_DIR}"
   if [ -f "${REPO_DIR}/custom/theme-${COLOURTHEME}.css" ] ; then
 	echo "Enabling ${COLOURTHEME} colour theme"
-      cp -rf "${REPO_DIR}/custom/theme-${COLOURTHEME}.css"                "${FIREFOX_DIR_HOME}/"${PROFILE_GLOB}"/chrome/WhiteSur/custom"
+      for layout_dir in "${FIREFOX_DIR_HOME}/"${PROFILE_GLOB}"/chrome/WhiteSur/custom" \
+                        "${FIREFOX_DIR_HOME}/"${PROFILE_GLOB}"/chrome/Monterey/custom"; do
+        [ -d "$(dirname "${layout_dir}")" ] || continue
+        mkdir -p "${layout_dir}"
+        cp -rf "${REPO_DIR}/custom/theme-${COLOURTHEME}.css"                "${layout_dir}"
+      done
   echo "${COLOURTHEME} colour theme configured"
   else
     echo "Unknown colour theme: ${COLOURTHEME}. Available themes:"

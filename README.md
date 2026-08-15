@@ -52,7 +52,7 @@ To preview one without touching your profile:
 fxcss try AdamXweb/WhiteSurFirefoxThemeMacOS --with theme-dracula --dark
 ```
 
-Manual install: copy `custom/theme-<name>.css` into `chrome/WhiteSur/custom` within your profile, like any other override. One colour theme at a time.
+Manual install: copy `custom/theme-<name>.css` into `chrome/WhiteSur/custom` (or `chrome/Monterey/custom` if you use the Monterey variant) within your profile, like any other override. One colour theme at a time.
 
 #### Optimal experience:
 Make sure to right click and Customize Toolbar. From here, drag the new tab button up to the toolbar out of the tab section.
