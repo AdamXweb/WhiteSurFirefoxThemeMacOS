@@ -95,6 +95,11 @@ sidebar-main {
  * pinned tabs stay icon-only like Firefox intends. */
 #tabbrowser-tabs[orient="vertical"] .tabbrowser-tab:not([pinned]) .tab-label-container {
 	flex: 1 !important;
+	/* tabsbar's horizontal max-width: fit-content resolves circularly against
+	 * the label's max-width: 100% and collapses to the floor — lift it so the
+	 * label fills the row before ellipsising */
+	max-width: none !important;
+	width: 100% !important;
 	min-width: 3em !important;
 	min-height: 1.2em !important;
 	margin-inline-start: 8px !important;
