@@ -33,6 +33,7 @@ The script supports the following flags
 - `-v` Re-enables the tabview button
 - `-e` Hides the extension button
 - `-s` Single tab view (Tabs hidden when only one tab)
+- `-m` Install the Monterey variant (one-line compact layout, tabs beside the URL bar). Note: the WhiteSur-specific custom flags (`-c` `-n` `-s` etc.) don't apply to the Monterey variant yet
 - `-r` Remove the theme
 
 e.g. To install with script, with the tab close button left hand side: `bash install.sh -c` 
