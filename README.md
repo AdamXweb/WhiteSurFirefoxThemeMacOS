@@ -68,11 +68,167 @@ The script supports the following flags
 
 e.g. To install with script, with the tab close button left hand side: `bash install.sh -c` 
 
+#### What each option looks like
+
+Rendered by CI with [fxcss](https://github.com/AdamXweb/fxcss) from the current theme; they refresh automatically when the theme changes.
+
+<details>
+<summary><code>-c</code> Left-hand tab close button</summary>
+
+<img src="https://raw.githubusercontent.com/AdamXweb/WhiteSurFirefoxThemeMacOS/previews/variant-tabs-swapclose.png" alt="Tabs with the close button on the left" width="830">
+
+</details>
+<details>
+<summary><code>-w</code> Left-hand window buttons</summary>
+
+<img src="https://raw.githubusercontent.com/AdamXweb/WhiteSurFirefoxThemeMacOS/previews/variant-windows-swapclose.png" alt="Window controls on the left" width="830">
+
+</details>
+<details>
+<summary><code>-p</code> Compact Safari-style tabs</summary>
+
+<img src="https://raw.githubusercontent.com/AdamXweb/WhiteSurFirefoxThemeMacOS/previews/variant-compact-tabs.png" alt="Compact tab height" width="830">
+
+</details>
+<details>
+<summary><code>-u</code> Standard URL bar</summary>
+
+<img src="https://raw.githubusercontent.com/AdamXweb/WhiteSurFirefoxThemeMacOS/previews/variant-standard-urlbar.png" alt="URL bar without the click animation" width="830">
+
+*May render identically to the default on current Firefox — the selectors this sheet touches have moved.*
+
+</details>
+<details>
+<summary><code>-n</code> No identity colour on tabs</summary>
+
+<img src="https://raw.githubusercontent.com/AdamXweb/WhiteSurFirefoxThemeMacOS/previews/variant-noidentity.png" alt="Tabs without identity colour" width="830">
+
+*May render identically to the default on current Firefox — the selectors this sheet touches have moved.*
+
+</details>
+<details>
+<summary><code>-v</code> Tab view button re-enabled</summary>
+
+<img src="https://raw.githubusercontent.com/AdamXweb/WhiteSurFirefoxThemeMacOS/previews/variant-enabletabview.png" alt="Tab view button visible" width="830">
+
+</details>
+<details>
+<summary><code>-e</code> Extension button hidden</summary>
+
+<img src="https://raw.githubusercontent.com/AdamXweb/WhiteSurFirefoxThemeMacOS/previews/variant-hideextension.png" alt="Toolbar without the extension button" width="830">
+
+</details>
+<details>
+<summary><code>-s</code> Single tab hidden</summary>
+
+<img src="https://raw.githubusercontent.com/AdamXweb/WhiteSurFirefoxThemeMacOS/previews/variant-singletabhidden.png" alt="Tab strip hidden with one tab open" width="830">
+
+</details>
+
 ### Colour themes
 
 The Safari layout, with another palette on top. Install with `-t <name>`, e.g. `bash install.sh -t dracula`
 
 Available themes: `dracula`, `catppuccin-latte`, `catppuccin-frappe`, `catppuccin-macchiato`, `catppuccin-mocha`, `nord`, `gruvbox-dark`, `gruvbox-light`, `solarized-dark`, `solarized-light`, `tokyonight`, `material-ocean`, `material-palenight`, `one-dark`, `rose-pine`, `everforest-dark`, `ayu-mirage`, `night-owl`, `github-dark`, `monokai-pro`
+
+#### Previews
+
+<details>
+<summary>Ayu</summary>
+
+<img src="https://raw.githubusercontent.com/AdamXweb/WhiteSurFirefoxThemeMacOS/previews/variant-theme-ayu-mirage.png" alt="Ayu Mirage" width="830">
+
+</details>
+<details>
+<summary>Catppuccin (4)</summary>
+
+<img src="https://raw.githubusercontent.com/AdamXweb/WhiteSurFirefoxThemeMacOS/previews/variant-theme-catppuccin-latte.png" alt="Catppuccin Latte" width="830">
+
+<img src="https://raw.githubusercontent.com/AdamXweb/WhiteSurFirefoxThemeMacOS/previews/variant-theme-catppuccin-frappe.png" alt="Catppuccin Frappé" width="830">
+
+<img src="https://raw.githubusercontent.com/AdamXweb/WhiteSurFirefoxThemeMacOS/previews/variant-theme-catppuccin-macchiato.png" alt="Catppuccin Macchiato" width="830">
+
+<img src="https://raw.githubusercontent.com/AdamXweb/WhiteSurFirefoxThemeMacOS/previews/variant-theme-catppuccin-mocha.png" alt="Catppuccin Mocha" width="830">
+
+</details>
+<details>
+<summary>Dracula</summary>
+
+<img src="https://raw.githubusercontent.com/AdamXweb/WhiteSurFirefoxThemeMacOS/previews/variant-theme-dracula.png" alt="Dracula" width="830">
+
+</details>
+<details>
+<summary>Everforest</summary>
+
+<img src="https://raw.githubusercontent.com/AdamXweb/WhiteSurFirefoxThemeMacOS/previews/variant-theme-everforest-dark.png" alt="Everforest Dark" width="830">
+
+</details>
+<details>
+<summary>GitHub</summary>
+
+<img src="https://raw.githubusercontent.com/AdamXweb/WhiteSurFirefoxThemeMacOS/previews/variant-theme-github-dark.png" alt="GitHub Dark" width="830">
+
+</details>
+<details>
+<summary>Gruvbox (2)</summary>
+
+<img src="https://raw.githubusercontent.com/AdamXweb/WhiteSurFirefoxThemeMacOS/previews/variant-theme-gruvbox-light.png" alt="Gruvbox Light" width="830">
+
+<img src="https://raw.githubusercontent.com/AdamXweb/WhiteSurFirefoxThemeMacOS/previews/variant-theme-gruvbox-dark.png" alt="Gruvbox Dark" width="830">
+
+</details>
+<details>
+<summary>Material (2)</summary>
+
+<img src="https://raw.githubusercontent.com/AdamXweb/WhiteSurFirefoxThemeMacOS/previews/variant-theme-material-ocean.png" alt="Material Ocean" width="830">
+
+<img src="https://raw.githubusercontent.com/AdamXweb/WhiteSurFirefoxThemeMacOS/previews/variant-theme-material-palenight.png" alt="Material Palenight" width="830">
+
+</details>
+<details>
+<summary>Monokai</summary>
+
+<img src="https://raw.githubusercontent.com/AdamXweb/WhiteSurFirefoxThemeMacOS/previews/variant-theme-monokai-pro.png" alt="Monokai Pro" width="830">
+
+</details>
+<details>
+<summary>Night Owl</summary>
+
+<img src="https://raw.githubusercontent.com/AdamXweb/WhiteSurFirefoxThemeMacOS/previews/variant-theme-night-owl.png" alt="Night Owl" width="830">
+
+</details>
+<details>
+<summary>Nord</summary>
+
+<img src="https://raw.githubusercontent.com/AdamXweb/WhiteSurFirefoxThemeMacOS/previews/variant-theme-nord.png" alt="Nord" width="830">
+
+</details>
+<details>
+<summary>One Dark</summary>
+
+<img src="https://raw.githubusercontent.com/AdamXweb/WhiteSurFirefoxThemeMacOS/previews/variant-theme-one-dark.png" alt="One Dark Pro" width="830">
+
+</details>
+<details>
+<summary>Rosé Pine</summary>
+
+<img src="https://raw.githubusercontent.com/AdamXweb/WhiteSurFirefoxThemeMacOS/previews/variant-theme-rose-pine.png" alt="Rosé Pine" width="830">
+
+</details>
+<details>
+<summary>Solarized (2)</summary>
+
+<img src="https://raw.githubusercontent.com/AdamXweb/WhiteSurFirefoxThemeMacOS/previews/variant-theme-solarized-light.png" alt="Solarized Light" width="830">
+
+<img src="https://raw.githubusercontent.com/AdamXweb/WhiteSurFirefoxThemeMacOS/previews/variant-theme-solarized-dark.png" alt="Solarized Dark" width="830">
+
+</details>
+<details>
+<summary>Tokyo Night</summary>
+
+<img src="https://raw.githubusercontent.com/AdamXweb/WhiteSurFirefoxThemeMacOS/previews/variant-theme-tokyonight.png" alt="Tokyo Night" width="830">
+
+</details>
 
 A colour theme applies its palette in both light and dark OS modes. The dark palettes pair best with Firefox's dark appearance (or `ui.systemUsesDarkTheme` — see Manual colour override below) so menus and about: pages match the chrome.
 
