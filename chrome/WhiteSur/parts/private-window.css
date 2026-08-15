@@ -1,0 +1,112 @@
+/* Private browsing windows (#148)
+ *
+ * Tint the whole window chrome -- headerbar, tab strip, bookmarks/menu bars,
+ * findbar and the entries sitting on them -- toward the private accent, the
+ * way GNOME (and Safari) mark private windows, instead of relying on the
+ * private-browsing label the theme hides.
+ *
+ * Every colour below is DERIVED with color-mix() from variables the palette
+ * sheets already define (--gnome-private-urlbar-background is the accent), so
+ * optional colour themes that redefine the --gnome-* palette get a matching
+ * private tint for free. Do not introduce hard-coded colours or new
+ * --gnome-* palette variables here. */
+
+@namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+
+:root[privatebrowsingmode="temporary"] {
+	/* Chrome surfaces: 75% base + 25% accent reads clearly as "private" in
+	 * both schemes without shouting -- in light mode the accent is a pale
+	 * lilac so the cast stays subtle, in dark mode it is a deep purple that
+	 * shifts hue without crushing contrast. */
+	--whitesur-private-headerbar-background: color-mix(in srgb, var(--gnome-headerbar-background) 75%, var(--gnome-private-urlbar-background));
+	--whitesur-private-toolbar-background: color-mix(in srgb, var(--gnome-toolbar-background) 75%, var(--gnome-private-urlbar-background));
+	--whitesur-private-tabstoolbar-background: color-mix(in srgb, var(--gnome-tabstoolbar-background) 75%, var(--gnome-private-urlbar-background));
+	--whitesur-private-findbar-background: color-mix(in srgb, var(--gnome-findbar-background) 75%, var(--gnome-private-urlbar-background));
+	--whitesur-private-urlbar-background: color-mix(in srgb, var(--gnome-urlbar-background) 75%, var(--gnome-private-urlbar-background));
+	--whitesur-private-inactive-headerbar-background: color-mix(in srgb, var(--gnome-inactive-headerbar-background) 75%, var(--gnome-private-urlbar-background));
+	--whitesur-private-inactive-toolbar-background: color-mix(in srgb, var(--gnome-inactive-toolbar-background) 75%, var(--gnome-private-urlbar-background));
+	--whitesur-private-tab-background: color-mix(in srgb, var(--gnome-tabbar-tab-background) 75%, var(--gnome-private-urlbar-background));
+	--whitesur-private-tab-hover-background: color-mix(in srgb, var(--gnome-tabbar-tab-hover-background) 75%, var(--gnome-private-urlbar-background));
+	--whitesur-private-tab-active-hover-background: color-mix(in srgb, var(--gnome-tabbar-tab-active-hover-background) 75%, var(--gnome-private-urlbar-background));
+	/* The selected tab uses the same ratio: mixing every surface with the
+	 * same accent preserves the palette's own tab-vs-strip contrast, and a
+	 * lone tab is full-width in this theme, so a weaker mix here would leave
+	 * the most prominent band of chrome looking untinted. */
+	--whitesur-private-tab-active-background: color-mix(in srgb, var(--gnome-tabbar-tab-active-background) 75%, var(--gnome-private-urlbar-background));
+	--whitesur-private-inactive-tab-active-background: color-mix(in srgb, var(--gnome-inactive-tabbar-tab-active-background) 75%, var(--gnome-private-urlbar-background));
+}
+
+/* Toolbars (mirrors parts/toolbox.css) */
+:root[privatebrowsingmode="temporary"] #nav-bar,
+:root[privatebrowsingmode="temporary"] #PersonalToolbar,
+:root[privatebrowsingmode="temporary"] #toolbar-menubar {
+	background: var(--whitesur-private-toolbar-background) !important;
+}
+
+:root[privatebrowsingmode="temporary"] #TabsToolbar {
+	background: var(--whitesur-private-tabstoolbar-background) !important;
+}
+
+:root[privatebrowsingmode="temporary"] findbar {
+	background: var(--whitesur-private-findbar-background) !important;
+}
+
+:root[privatebrowsingmode="temporary"] #nav-bar:-moz-window-inactive,
+:root[privatebrowsingmode="temporary"] #PersonalToolbar:-moz-window-inactive,
+:root[privatebrowsingmode="temporary"] #toolbar-menubar:-moz-window-inactive,
+:root[privatebrowsingmode="temporary"] #TabsToolbar:-moz-window-inactive,
+:root[privatebrowsingmode="temporary"] findbar:-moz-window-inactive {
+	background: var(--whitesur-private-inactive-toolbar-background) !important;
+}
+
+/* Headerbar CSD colors (mirrors parts/headerbar.css) */
+:root[privatebrowsingmode="temporary"][tabsintitlebar] #nav-bar {
+	background: var(--whitesur-private-headerbar-background) !important;
+}
+
+:root[privatebrowsingmode="temporary"][tabsintitlebar] #nav-bar:-moz-window-inactive {
+	background: var(--whitesur-private-inactive-headerbar-background) !important;
+}
+
+/* Tabs (mirrors parts/tabsbar.css) */
+:root[privatebrowsingmode="temporary"] .tab-background {
+	background-color: var(--whitesur-private-tab-background) !important;
+}
+
+:root[privatebrowsingmode="temporary"] #TabsToolbar .toolbarbutton-1 {
+	background: var(--whitesur-private-tab-background) !important;
+	background-color: var(--whitesur-private-tab-background) !important;
+}
+
+:root[privatebrowsingmode="temporary"] #TabsToolbar .toolbarbutton-1:hover {
+	background: var(--whitesur-private-tab-hover-background) !important;
+	background-color: var(--whitesur-private-tab-hover-background) !important;
+}
+
+:root[privatebrowsingmode="temporary"] .tab-background[selected] {
+	background-color: var(--whitesur-private-tab-active-background) !important;
+}
+
+:root[privatebrowsingmode="temporary"] .tab-background[selected]:-moz-window-inactive {
+	background-color: var(--whitesur-private-inactive-tab-active-background) !important;
+}
+
+:root[privatebrowsingmode="temporary"] #TabsToolbar .tabbrowser-tab:hover>.tab-stack>.tab-background:not([selected]) {
+	background-color: var(--whitesur-private-tab-active-hover-background) !important;
+}
+
+:root[privatebrowsingmode="temporary"] #TabsToolbar .scrollbutton-up:not([disabled]):hover,
+:root[privatebrowsingmode="temporary"] #TabsToolbar .scrollbutton-down:not([disabled]):hover {
+	background-color: var(--whitesur-private-tab-active-hover-background) !important;
+}
+
+/* URL bar, search bar and findbar entries -- the job
+ * --gnome-private-urlbar-background was created for, mixed at the same
+ * ratio so the fields stay readable and keep contrast with the toolbar.
+ * The [breakout-extend] state is excluded: the expanded URL bar draws its
+ * own popover background (see parts/headerbar.css). */
+:root[privatebrowsingmode="temporary"] #nav-bar #searchbar,
+:root[privatebrowsingmode="temporary"] #urlbar:not([breakout-extend]) .urlbar-input-container,
+:root[privatebrowsingmode="temporary"] .findbar-textbox {
+	background: var(--whitesur-private-urlbar-background) !important;
+}
