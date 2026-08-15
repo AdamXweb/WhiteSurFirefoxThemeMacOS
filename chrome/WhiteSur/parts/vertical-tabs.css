@@ -91,6 +91,27 @@
 	text-align: start;
 }
 
+/* Firefox hides vertical tab labels in the icons-only state, keyed on an
+ * expanded attribute — which lives on #sidebar-main or on #tabbrowser-tabs
+ * depending on how the state was reached (a programmatic pref flip can set
+ * one without the other). Show labels when EITHER says expanded... */
+#sidebar-main[expanded] #tabbrowser-tabs[orient="vertical"] .tab-label-container,
+#tabbrowser-tabs[orient="vertical"][expanded] .tab-label-container {
+	display: flex !important;
+}
+
+/* ...and when NEITHER does, treat it as icons-only and centre the favicon in
+ * its row, like Safari's collapsed sidebar — instead of a left-pinned icon
+ * floating in an empty row. */
+#sidebar-main:not([expanded]) #tabbrowser-tabs[orient="vertical"]:not([expanded]) .tab-content {
+	justify-content: center;
+	padding: 0 !important;
+}
+
+#sidebar-main:not([expanded]) #tabbrowser-tabs[orient="vertical"]:not([expanded]) .tab-close-button {
+	display: none !important;
+}
+
 /* The container identity line runs down the row's edge, not across its top */
 #tabbrowser-tabs[orient="vertical"] .tabbrowser-tab[usercontextid] > .tab-stack > .tab-background {
 	border-top: none !important;
