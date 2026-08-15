@@ -395,9 +395,11 @@ tab[selected]:-moz-window-inactive {
 #tabbrowser-tabs[closebuttons="activetab"]>#tabbrowser-arrowscrollbox>.tabbrowser-tab>.tab-stack>.tab-content>.tab-icon-stack[selected] {
 	margin-left: auto !important;
 }
-/* Fix too many tabs scrollbox height increasing with pinned tabs #39 */
-#tabbrowser-tabs,
-#tabbrowser-tabs arrowscrollbox {
+/* Fix too many tabs scrollbox height increasing with pinned tabs #39.
+ * Horizontal only: clamping the vertical strip to 36px crushes the whole
+ * tab column (vertical-tabs.css owns that orientation). */
+#tabbrowser-tabs:not([orient="vertical"]),
+#tabbrowser-tabs:not([orient="vertical"]) arrowscrollbox {
 	height: 36px !important;
 }
 /* Fix proton padding with moving tab (dragging) #45 */

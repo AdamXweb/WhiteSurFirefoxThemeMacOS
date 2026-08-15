@@ -1,0 +1,122 @@
+/* Vertical tabs (Firefox 133+)
+ *
+ * When vertical tabs are enabled, Firefox MOVES the tab strip: #tabbrowser-tabs
+ * leaves #TabsToolbar and is reparented into #vertical-tabs inside #sidebar-main.
+ * Every #TabsToolbar rule silently stops matching, while the shared
+ * .tabbrowser-tab rules in tabsbar.css keep applying horizontal geometry to a
+ * vertical column. This sheet is scoped to the vertical orientation: it first
+ * unwinds those leaks, then styles the strip like Safari's sidebar using the
+ * same --gnome-* variables every colour scheme already defines.
+ *
+ * All selectors carry the #tabbrowser-tabs (or #sidebar-main) id, so they
+ * out-rank tabsbar.css's class-based !important rules regardless of order. */
+@namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+/* The strip itself */
+#sidebar-main {
+	background: var(--gnome-sidebar-background) !important;
+	color: var(--gnome-sidebar-color) !important;
+}
+
+#vertical-tabs {
+	background: transparent !important;
+}
+
+/* Unwind horizontal geometry: the 36px scrollbox clamp, per-tab stack height,
+ * and the first/last-tab end margins */
+#tabbrowser-tabs[orient="vertical"],
+#tabbrowser-tabs[orient="vertical"] arrowscrollbox {
+	height: auto !important;
+	min-height: 0 !important;
+}
+
+#tabbrowser-tabs[orient="vertical"] tab > stack {
+	height: auto !important;
+	min-height: 36px !important;
+}
+
+#tabbrowser-tabs[orient="vertical"] .tabbrowser-tab[first-tab]:not([pinned]) {
+	margin-left: 0 !important;
+}
+
+#tabbrowser-tabs[orient="vertical"] .tabbrowser-tab[last-tab]:not([pinned]) {
+	margin-right: 0 !important;
+}
+
+/* Rows: quiet on the sidebar, rounded like Safari's sidebar entries */
+#tabbrowser-tabs[orient="vertical"] .tabbrowser-tab {
+	margin: 1px 6px !important;
+	padding-inline: 0 !important;
+}
+
+#tabbrowser-tabs[orient="vertical"] .tab-background {
+	background-color: transparent !important;
+	border-radius: 8px !important;
+	border: none !important;
+	box-shadow: none !important;
+	margin: 0 !important;
+}
+
+#tabbrowser-tabs[orient="vertical"] .tabbrowser-tab:hover > .tab-stack > .tab-background:not([selected]) {
+	background-color: var(--gnome-tabbar-tab-hover-background) !important;
+	box-shadow: none !important;
+}
+
+#tabbrowser-tabs[orient="vertical"] .tab-background[selected] {
+	background-color: var(--gnome-tabbar-tab-active-background) !important;
+	box-shadow: none !important;
+	margin: 0 !important;
+}
+
+/* Favicon and label sit left, not centred: undo the centring margins the
+ * horizontal Safari-style tabs use */
+#tabbrowser-tabs[orient="vertical"] .tab-content {
+	justify-content: flex-start;
+	padding: 0 10px !important;
+}
+
+#tabbrowser-tabs[orient="vertical"] .tab-throbber,
+#tabbrowser-tabs[orient="vertical"] .tab-throbber-fallback,
+#tabbrowser-tabs[orient="vertical"] .tab-icon-image,
+#tabbrowser-tabs[orient="vertical"] .tab-icon-stack,
+#tabbrowser-tabs[orient="vertical"] .tab-label-container {
+	margin-left: 0 !important;
+}
+
+#tabbrowser-tabs[orient="vertical"] .tab-label-container {
+	margin-inline-start: 8px !important;
+}
+
+#tabbrowser-tabs[orient="vertical"] .tab-label {
+	text-align: start;
+}
+
+/* The container identity line runs down the row's edge, not across its top */
+#tabbrowser-tabs[orient="vertical"] .tabbrowser-tab[usercontextid] > .tab-stack > .tab-background {
+	border-top: none !important;
+	border-inline-start: 3px solid var(--identity-tab-color) !important;
+}
+
+/* Close button keeps the hover-only Safari behaviour; pin it to the row end */
+#tabbrowser-tabs[orient="vertical"] .tab-close-button {
+	margin-inline-start: auto !important;
+	margin-inline-end: 2px !important;
+}
+
+/* Pinned tabs sit in their own grid above the list */
+#vertical-pinned-tabs-container {
+	background: transparent !important;
+	border-bottom: 1px solid var(--gnome-toolbar-border-color) !important;
+}
+
+/* New Tab button styled like an (empty) row */
+#vertical-tabs-newtab-button {
+	background: transparent !important;
+	color: inherit !important;
+	border-radius: 8px !important;
+	margin: 1px 6px !important;
+}
+
+#vertical-tabs-newtab-button:hover {
+	background: var(--gnome-tabbar-tab-hover-background) !important;
+}
