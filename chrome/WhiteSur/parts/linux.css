@@ -1,0 +1,35 @@
+/* Linux specific */
+@namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+@media (-moz-platform: linux) {
+	/*
+	 * On Linux CSD Firefox draws the native window control on the button's
+	 * inner icon: `.titlebar-button > .toolbarbutton-icon` gets
+	 * `appearance: auto` with `-moz-default-appearance:
+	 * -moz-window-button-{minimize,maximize,restore,close}` plus a
+	 * chrome://browser/skin/window-controls/*.svg background-image
+	 * (browser/themes/linux/browser.css). That GTK circle + glyph gets
+	 * painted on top of the WhiteSur circles, which titlebutton-light.css /
+	 * titlebutton-dark.css draw as the button's own background (issue #140).
+	 * Suppress the native rendering so only the WhiteSur buttons show; the
+	 * hover/active/backdrop swaps live on the button element itself and are
+	 * unaffected.
+	 *
+	 * Scoped to #TabsToolbar: that is the only copy of the buttonbox the
+	 * theme paints circles on, so the menubar copy keeps its native buttons.
+	 */
+	#TabsToolbar .titlebar-button {
+		appearance: none !important;
+		border: none !important;
+		margin: 0 !important;
+		padding: 1px 3px !important;
+		background-color: transparent !important;
+	}
+	#TabsToolbar .titlebar-button > .toolbarbutton-icon {
+		appearance: none !important;
+		background-image: none !important;
+		list-style-image: none !important;
+		display: inline-flex !important;
+		width: 12px !important;
+		height: 12px !important;
+	}
+}

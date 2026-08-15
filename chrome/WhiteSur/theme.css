@@ -16,6 +16,7 @@
 @import "colors/dark.css";
 @import "parts/windows.css";
 @import "parts/private-window.css";
+@import "parts/linux.css";
 /* Add Custom themes so user only needs to copy items*/
 @import "custom/tabs-swapclose.css";
 @import "custom/singletabhidden.css";

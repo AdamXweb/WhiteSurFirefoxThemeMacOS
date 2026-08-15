@@ -3,10 +3,10 @@ name: PR preview
 # Renders the theme's browser chrome before and after a pull request so the
 # visual effect of a CSS change can be reviewed without installing anything.
 #
-# The rendering itself is done by fxcss, pinned to a tag:
-#   https://github.com/AdamXweb/fxcss
-# Pinned rather than tracking a branch so a change over there can never alter
-# what this repo's CI does without a commit here.
+# The rendering itself is done by fxcss, installed from PyPI at a pinned
+# release: https://github.com/AdamXweb/fxcss
+# Pinned rather than floating so a change over there can never alter what
+# this repo's CI does without a commit here.
 #
 # This workflow checks out pull request code but deliberately has NO write
 # permissions and NO access to secrets; it only produces an artifact. The
@@ -32,7 +32,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  FXCSS_VERSION: v0.9.0
+  FXCSS_VERSION: 0.13.0
 
 jobs:
   render:
@@ -72,7 +72,7 @@ jobs:
       - name: Install fxcss
         run: >-
           python -m pip install --disable-pip-version-check
-          "fxcss[images] @ git+https://github.com/AdamXweb/fxcss@${{ env.FXCSS_VERSION }}"
+          "fxcss[images]==${{ env.FXCSS_VERSION }}"
 
       - name: Install Firefox (macOS)
         if: runner.os == 'macOS'
