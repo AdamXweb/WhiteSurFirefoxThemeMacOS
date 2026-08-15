@@ -95,12 +95,24 @@ sidebar-main {
  * pinned tabs stay icon-only like Firefox intends. */
 #tabbrowser-tabs[orient="vertical"] .tabbrowser-tab:not([pinned]) .tab-label-container {
 	flex: 1 !important;
-	min-width: 0 !important;
+	min-width: 3em !important;
+	min-height: 1.2em !important;
 	margin-inline-start: 8px !important;
 }
 
+/* Force the whole label chain: Firefox lays .tab-content out as a grid in
+ * newer versions, so a flex basis alone is not enough — the inner label
+ * element needs its display and a height floor too (probe-verified: this
+ * exact bundle rendered the text, flex alone did not). */
 sidebar-main[expanded] #tabbrowser-tabs[orient="vertical"] .tabbrowser-tab:not([pinned]) .tab-label-container {
 	display: flex !important;
+	visibility: visible !important;
+}
+
+sidebar-main[expanded] #tabbrowser-tabs[orient="vertical"] .tabbrowser-tab:not([pinned]) .tab-label {
+	display: block !important;
+	visibility: visible !important;
+	min-height: 1em !important;
 }
 
 /* Unselected rows read in the sidebar's text colour; the selected row keeps
