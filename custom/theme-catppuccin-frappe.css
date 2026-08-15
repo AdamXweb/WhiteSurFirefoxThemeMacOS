@@ -1,0 +1,157 @@
+/* Colour theme: Catppuccin Frappé — https://catppuccin.com/palette
+ * Redefines the --gnome-* palette after colors/light.css and colors/dark.css,
+ * so this look applies in BOTH light and dark OS modes. Dark palettes pair
+ * best with Firefox's dark appearance (Settings > Appearance, or
+ * ui.systemUsesDarkTheme=1) so menus and about: pages match the chrome. */
+@namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+:root {
+	/* Browser area before a page starts loading */
+	--gnome-browser-before-load-background: #303446;
+	--theme-primary-color: #ca9ee6 !important;
+	--theme-primary-color-hover: #d5b3ec;
+	--theme-alt-color: #c6d0f5;
+	--in-content-link-color: var(--theme-primary-color) !important;
+	--in-content-link-color-hover: var(--theme-primary-color-hover) !important;
+
+	/* Toolbars */
+	--gnome-toolbar-background: #303446;
+	--gnome-tabstoolbar-background: #232634;
+	--gnome-findbar-background: #303446;
+	--gnome-toolbar-color: #c6d0f5;
+	--gnome-toolbar-border-color: #232634;
+	--gnome-inactive-toolbar-color: rgba(198, 208, 245, 0.35);
+	--gnome-inactive-toolbar-background: #292c3c;
+	--gnome-inactive-toolbar-border-color: #232634;
+
+	/* Sidebar */
+	--gnome-sidebar-color: #c6d0f5;
+	--gnome-sidebar-background: #292c3c;
+	--gnome-inactive-sidebar-background: #2c3040;
+
+	/* Popups */
+	--gnome-menu-background: rgba(48, 52, 70, 0.95);
+	--gnome-menu-border-color: #232634;
+	--gnome-popover-background: rgba(48, 52, 70, 0.95);
+	--gnome-popover-border-color: #232634;
+	--gnome-popover-shadow: 0 5px 8px rgba(0, 0, 0, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+	--gnome-popover-button-hover-background: rgba(255, 255, 255, 0.1);
+	--gnome-popover-button-active-background: rgba(255, 255, 255, 0.15);
+	--gnome-popover-separator-color: rgba(115, 121, 148, 0.3);
+
+	/* Header bar */
+	--gnome-headerbar-background: #303446;
+	--gnome-headerbar-border-color: #232634;
+	--gnome-headerbar-box-shadow: inset 0 1px rgba(255, 255, 255, 0.08);
+	--gnome-inactive-headerbar-background: #292c3c;
+	--gnome-inactive-headerbar-border-color: #232634;
+	--gnome-inactive-headerbar-box-shadow: inset 0 1px rgba(255, 255, 255, 0.04);
+
+	/* Buttons */
+	--gnome-button-background: linear-gradient(to top, #414559 0%, #484c62 100%);
+	--gnome-button-border-color: #232634;
+	--gnome-button-border-accent-color: #232634;
+	--gnome-button-box-shadow: inset 0 1px rgba(255, 255, 255, 0.08);
+	--gnome-button-hover-color: rgba(255, 255, 255, 0.1);
+	--gnome-button-active-color: rgba(255, 255, 255, 0.2);
+	--gnome-button-hover-background: linear-gradient(to top, #51576d 0%, #575d74 100%);
+	--gnome-button-active-background-alt: #51576d !important;
+	--gnome-button-active-background-alt-border: #575d74 !important;
+	--gnome-button-active-background-alt-hover: #626880 !important;
+	--gnome-button-active-background: #3b3f55;
+	--gnome-button-active-border-color: #232634;
+	--gnome-button-active-border-accent-color: #232634;
+	--gnome-button-active-box-shadow: inset 0 1px rgba(255, 255, 255, 0.08);
+	--gnome-button-disabled-background: #383c51;
+	--gnome-button-disabled-border-color: #292c3c;
+	--gnome-button-disabled-box-shadow: inset 0 1px rgba(255, 255, 255, 0.03);
+	--gnome-inactive-button-background: linear-gradient(#33374a, #33374a);
+	--gnome-inactive-button-border-color: #292c3c;
+	--gnome-inactive-button-box-shadow: inset 0 1px rgba(255, 255, 255, 0);
+	--gnome-button-suggested-action-background: #8250ac;
+	--gnome-button-suggested-action-border-color: #6f4494;
+	--gnome-button-suggested-action-border-accent-color: #5b3879;
+	--gnome-button-suggested-action-box-shadow: inset 0 1px rgba(255, 255, 255, 0.08);
+	--gnome-button-suggested-action-hover-background: #9161bd;
+	--gnome-button-suggested-action-active-background: #6f4494;
+	--gnome-button-suggested-action-active-border-color: #5b3879;
+	--gnome-button-suggested-action-active-box-shadow: inset 0 1px rgba(255, 255, 255, 0.05);
+	--gnome-button-destructive-action-background: linear-gradient(to top, #c25158 2px, #d05f67);
+	--gnome-button-destructive-action-border-color: #b04850;
+	--gnome-button-destructive-action-border-accent-color: #933a41;
+	--gnome-button-destructive-action-box-shadow: inset 0 1px rgba(255, 255, 255, 0.02), 0 1px 2px rgba(0, 0, 0, 0.07);
+	--gnome-button-destructive-action-hover-background: linear-gradient(to top, #d05f67, #d96e75 1px);
+	--gnome-button-destructive-action-active-background: #b04850;
+	--gnome-button-destructive-action-active-border-color: #933a41;
+	--gnome-button-destructive-action-active-box-shadow: inset 0 1px rgba(255, 255, 255, 0);
+	--gnome-button-menulist-color: #c6d0f5;
+	--gnome-headerbar-button-hover-background: rgba(255, 255, 255, 0.1);
+	--gnome-headerbar-button-active-background: rgba(255, 255, 255, 0.15);
+
+	/* URL bar */
+	--gnome-urlbar-background: #414559;
+	--gnome-urlbar-border-color: #3b3f55;
+	--gnome-urlbar-box-shadow: inset 0 0 0 1px rgba(202, 158, 230, 0);
+	--gnome-urlbar-color: #c6d0f5;
+	--gnome-hover-urlbar-border-color: #51576d;
+	--gnome-inactive-urlbar-background: #292c3c;
+	--gnome-inactive-urlbar-border-color: #232634;
+	--gnome-inactive-urlbar-box-shadow: none;
+	--gnome-inactive-urlbar-color: #a5adce;
+	--gnome-focused-urlbar-border-color: #ca9ee6;
+	--gnome-focused-urlbar-highlight-color: #b57edc;
+	--gnome-private-urlbar-background: #443154;
+
+	/* Tabs */
+	--gnome-tabbar-tab-background: #292c3c;
+	--gnome-tabbar-tab-color: #737994;
+	--gnome-tabbar-tab-hover-background: #33374a;
+	--gnome-tabbar-tab-hover-border-bottom-color: #232634;
+	--gnome-tabbar-tab-hover-color: #b5bfe2;
+	--gnome-tabbar-tab-active-background: #303446;
+	--gnome-tabbar-tab-active-border-bottom-color: #ca9ee6;
+	--gnome-tabbar-tab-active-color: #c6d0f5;
+	--gnome-tabbar-tab-active-hover-background: #353a4e;
+	--gnome-inactive-tabbar-tab-color: #737994;
+	--gnome-inactive-tabbar-tab-active-background: #292c3c;
+	--gnome-inactive-tabbar-tab-active-border-bottom-color: #a37fc0;
+	--gnome-inactive-tabbar-tab-active-color: #737994;
+
+	/* Switch */
+	--gnome-switch-background: #292c3c;
+	--gnome-switch-border-color: #232634;
+	--gnome-switch-slider-background: linear-gradient(to bottom, #51576d 20%, #484c62 90%);
+	--gnome-switch-slider-border-color: #232634;
+	--gnome-switch-slider-box-shadow: inset 0 1px rgba(255, 255, 255, 0.02), 0 1px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.07);
+	--gnome-switch-active-background: #ca9ee6;
+	--gnome-switch-active-border-color: #9a72c2;
+	--gnome-switch-active-slider-border-color: #9a72c2;
+
+	/* Icon filters (dark palette: make symbolic icons light) */
+	--gnome-convert-icon-to-symbolic-hack-filter: invert(100%) sepia(100%) grayscale(100%) brightness(200%) brightness(85%);
+	--gnome-icons-hack-filter: invert(100%) sepia(100%) grayscale(100%) brightness(200%) brightness(200%);
+	--gnome-window-icons-hack-filter: invert(90%);
+
+	/* colors to override with theme */
+	--new-tab-background: rgb(48, 52, 70) !important;
+	--urlbar-box-bgcolor: var(--theme-primary-color) !important;
+	--in-content-primary-button-background-hover: var(--theme-primary-color-hover) !important;
+	--in-content-page-background: var(--new-tab-background) !important;
+	--in-content-primary-button-background: var(--theme-primary-color) !important;
+	--in-content-danger-button-background-active: var(--theme-primary-color-hover) !important;
+	--safari-warning-security: rgb(231, 130, 132) !important;
+	--safari-safe-color: rgb(166, 209, 137) !important;
+	--focus-outline-color: transparent !important;
+	--toolbar-field-focus-color: var(--gnome-urlbar-color) !important;
+	--toolbar-field-focus-background-color: transparent !important;
+	--arrowpanel-border-color: transparent !important;
+}
+
+/* WhiteSur dims and fully desaturates the idle URL bar
+ * (parts/headerbar-urlbar.css: opacity 0.8, filter saturate(0%), colour back
+ * on hover/focus) — that would grey this scheme's URL bar tint out. This sheet
+ * loads after the parts, so a same-specificity override keeps it visible. */
+#urlbar {
+	filter: none !important;
+	opacity: 1 !important;
+}

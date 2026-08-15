@@ -33,9 +33,26 @@ The script supports the following flags
 - `-v` Re-enables the tabview button
 - `-e` Hides the extension button
 - `-s` Single tab view (Tabs hidden when only one tab)
+- `-t <name>` Colour theme (see Colour themes below)
 - `-r` Remove the theme
 
 e.g. To install with script, with the tab close button left hand side: `bash install.sh -c` 
+
+### Colour themes
+
+The Safari layout, with another palette on top. Install with `-t <name>`, e.g. `bash install.sh -t dracula`
+
+Available themes: `dracula`, `catppuccin-latte`, `catppuccin-frappe`, `catppuccin-macchiato`, `catppuccin-mocha`, `nord`, `gruvbox-dark`, `gruvbox-light`, `solarized-dark`, `solarized-light`, `tokyonight`, `material-ocean`, `material-palenight`, `one-dark`, `rose-pine`, `everforest-dark`, `ayu-mirage`, `night-owl`, `github-dark`, `monokai-pro`
+
+A colour theme applies its palette in both light and dark OS modes. The dark palettes pair best with Firefox's dark appearance (or `ui.systemUsesDarkTheme` — see Manual colour override below) so menus and about: pages match the chrome.
+
+To preview one without touching your profile:
+
+```bash
+fxcss try AdamXweb/WhiteSurFirefoxThemeMacOS --with theme-dracula --dark
+```
+
+Manual install: copy `custom/theme-<name>.css` into `chrome/WhiteSur/custom` (or `chrome/Monterey/custom` if you use the Monterey variant) within your profile, like any other override. One colour theme at a time.
 
 #### Optimal experience:
 Make sure to right click and Customize Toolbar. From here, drag the new tab button up to the toolbar out of the tab section.
