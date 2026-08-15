@@ -30,6 +30,29 @@
  * Swap 3 for 4 or 5 if you keep more buttons on your toolbar. */
 @import "left_header_button_3.css";
 @import "right_header_button_3.css";
+/* Colour themes (-t flag installs exactly one; the palette sheets redefine
+ * the shared --gnome-* variables, so they restyle Monterey the same way
+ * they restyle WhiteSur). Imports of files not installed are inert. */
+@import "custom/theme-dracula.css";
+@import "custom/theme-catppuccin-latte.css";
+@import "custom/theme-catppuccin-frappe.css";
+@import "custom/theme-catppuccin-macchiato.css";
+@import "custom/theme-catppuccin-mocha.css";
+@import "custom/theme-nord.css";
+@import "custom/theme-gruvbox-dark.css";
+@import "custom/theme-gruvbox-light.css";
+@import "custom/theme-solarized-dark.css";
+@import "custom/theme-solarized-light.css";
+@import "custom/theme-tokyonight.css";
+@import "custom/theme-material-ocean.css";
+@import "custom/theme-material-palenight.css";
+@import "custom/theme-one-dark.css";
+@import "custom/theme-rose-pine.css";
+@import "custom/theme-everforest-dark.css";
+@import "custom/theme-ayu-mirage.css";
+@import "custom/theme-night-owl.css";
+@import "custom/theme-github-dark.css";
+@import "custom/theme-monokai-pro.css";
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
 /* Set theme version text in customization panel */
