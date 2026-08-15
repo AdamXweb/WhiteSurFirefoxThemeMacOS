@@ -129,20 +129,23 @@ tab[selected]:-moz-window-inactive {
 	min-width: 0 !important;
 }
 
-/* Put tab close button and icon sound to the right */
-.tab-icon-sound[soundplaying="true"],
-.tab-icon-sound[activemedia-blocked="true"] {
-	margin-left: auto !important;
+/* Put the tab close button and the audio indicator to the right. Since
+ * Firefox 133 the indicator is an in-flow button (.tab-audio-button) wedged
+ * between the favicon and the label -- the .tab-icon-sound these rules used
+ * to target no longer exists -- and left there it pushes the label off
+ * centre (#159). Send it past the label's balancing auto margin instead,
+ * where the old sound icon sat; .tab-content is flex, so order applies. */
+#tabbrowser-tabs:not([orient="vertical"]) .tab-audio-button {
+	order: 1 !important;
 }
-/* In case firefox changes, muted icon fix can be changed here */
-.tabbrowser-tab:not([soundplaying]):not([muted]):not([activemedia-blocked]) .tab-close-button,
-.tabbrowser-tab[soundplaying-scheduledremoval="true"] .tab-icon-stack,
-.tabbrowser-tab .tab-icon-stack[muted]:not([soundplaying-scheduledremoval="true"]) {
-	margin-left: auto !important;
+#tabbrowser-tabs:not([orient="vertical"]) .tabbrowser-tab:is([soundplaying], [muted], [activemedia-blocked]) .tab-close-button {
+	order: 2 !important;
 }
-
-.tab-icon-sound {
-	margin-right: 6px;
+/* On silent tabs the right-hand auto margin lives on the close button; on
+ * tabs with a sound state the label carries it instead (see the centring
+ * rule further down), keeping the indicator and close button at the edge. */
+.tabbrowser-tab:not([soundplaying]):not([muted]):not([activemedia-blocked]) .tab-close-button {
+	margin-left: auto !important;
 }
 
 /* Force tab favicon to the center */
@@ -177,12 +180,14 @@ tab[selected]:-moz-window-inactive {
 	margin-left: auto !important;
 }
 
-/* If tab close button is not present, don't force favicon to the center */
+/* If tab close button is not present, don't force favicon to the center
+ * (tabs with a sound state keep the auto margin: it balances the label's
+ * right one so the favicon+label cluster stays centred, #159) */
 #tabbrowser-tabs[closebuttons="activetab"] .tabbrowser-tab:not([selected]) .tab-throbber,
 #tabbrowser-tabs[closebuttons="activetab"] .tabbrowser-tab:not([selected]) .tab-throbber-fallback,
 #tabbrowser-tabs[closebuttons="activetab"] .tabbrowser-tab:not([selected]):not([busy]) .tab-icon-image,
 #tabbrowser-tabs[closebuttons="activetab"] .tabbrowser-tab:not([selected]):not([image]) .tab-label-container,
-#tabbrowser-tabs[closebuttons="activetab"] .tabbrowser-tab:not([selected]) .tab-icon-stack
+#tabbrowser-tabs[closebuttons="activetab"] .tabbrowser-tab:not([selected]):not([soundplaying]):not([muted]):not([activemedia-blocked]) .tab-icon-stack
 {
 	margin-left: 0 !important;
 }
@@ -386,9 +391,10 @@ tab[selected]:-moz-window-inactive {
 	margin-inline-start: 4px !important;
 }
 
-/* Fix too many tabs text align */
+/* Fix too many tabs text align (sound-state tabs keep the auto margin,
+ * matching the exclusion above, #159) */
 .tab-close-button[pinned],
-#tabbrowser-tabs[closebuttons="activetab"]>#tabbrowser-arrowscrollbox>.tabbrowser-tab>.tab-stack>.tab-content>.tab-icon-stack:not([selected]){
+#tabbrowser-tabs[closebuttons="activetab"]>#tabbrowser-arrowscrollbox>.tabbrowser-tab:not([soundplaying]):not([muted]):not([activemedia-blocked])>.tab-stack>.tab-content>.tab-icon-stack:not([selected]){
 	margin-left: 0 !important;
 }
 .tab-close-button[pinned],
@@ -434,9 +440,10 @@ tab[selected]:-moz-window-inactive {
 		margin-left: 0px !important;
 		margin-right: 0px !important;
 	}
-	/* centre text when audio is playing & muted*/
-	.tabbrowser-tab:is([soundplaying]) .tab-label-container,
-	.tabbrowser-tab[muted] .tab-label-container{
+	/* centre text when audio is playing & muted: this right auto margin
+	   balances the favicon's left one, and pushes the audio button and the
+	   close button (order 1 and 2, see further up) to the right edge #159 */
+	.tabbrowser-tab:is([soundplaying], [muted], [activemedia-blocked]) .tab-label-container {
 		margin-left: 0 !important;
 		margin-right: auto !important
 	}
