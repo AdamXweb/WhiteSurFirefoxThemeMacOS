@@ -13,14 +13,14 @@ This is a CSS theme adapted to work on MacOS from the Linux GTK theme.\
 Based on https://github.com/vinceliuice/WhiteSur-gtk-theme/tree/master/src/other/firefox \
 (This is a quick modification, and is not written from scratch.)
 
-On Linux, use [vinceliuice/WhiteSur-firefox-theme](https://github.com/vinceliuice/WhiteSur-firefox-theme) instead — it is the upstream this theme is adapted from, and it targets Linux properly.
+On Linux, [vinceliuice/WhiteSur-firefox-theme](https://github.com/vinceliuice/WhiteSur-firefox-theme) — the upstream this theme is adapted from — integrates with GTK properly and is usually the better pick. fxcss will happily install this theme on Linux too, if the macOS look is what you want.
 
 ## Try it without installing
 
 To see the theme before it goes anywhere near your own Firefox profile:
 
 ```bash
-pipx install "fxcss[images]"     # no pipx? brew install pipx
+pipx install "fxcss[images]"     # no pipx? see pipx.pypa.io (brew install pipx on macOS)
 fxcss try AdamXweb/WhiteSurFirefoxThemeMacOS
 ```
 
@@ -34,11 +34,11 @@ below. Quit the browser and nothing is left behind.
 The default way, on macOS, Windows and Linux — [fxcss](https://github.com/AdamXweb/fxcss) 0.13 or newer:
 
 ```bash
-pipx install "fxcss[images]"     # no pipx? brew install pipx
+pipx install "fxcss[images]"     # no pipx? see pipx.pypa.io (brew install pipx on macOS)
 fxcss install AdamXweb/WhiteSurFirefoxThemeMacOS
 ```
 
-It installs into the Firefox profile you actually use, found the same way Firefox finds it. Your existing `chrome/` folder is backed up first, and optional stylesheets from `custom/` load with `--with`, e.g. `--with compact-tabs,tabs-swapclose`. To put everything back the way it was:
+It installs into the Firefox profile you actually use, found the same way Firefox finds it — on macOS, Windows and Linux alike, including snap and flatpak Firefoxes on Linux. A Firefox in an unusual place is reachable via `FXCSS_PROFILE_ROOTS`; when more than one installed Firefox has profiles, fxcss asks instead of guessing. Your existing `chrome/` folder is backed up first, and optional stylesheets from `custom/` load with `--with`, e.g. `--with compact-tabs,tabs-swapclose`. To put everything back the way it was:
 
 ```bash
 fxcss uninstall AdamXweb/WhiteSurFirefoxThemeMacOS
