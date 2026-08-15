@@ -1,19 +1,21 @@
 /* Vertical tabs (Firefox 133+)
  *
  * When vertical tabs are enabled, Firefox MOVES the tab strip: #tabbrowser-tabs
- * leaves #TabsToolbar and is reparented into #vertical-tabs inside #sidebar-main.
+ * leaves #TabsToolbar and is reparented into #vertical-tabs inside the sidebar-main element.
  * Every #TabsToolbar rule silently stops matching, while the shared
  * .tabbrowser-tab rules in tabsbar.css keep applying horizontal geometry to a
  * vertical column. This sheet is scoped to the vertical orientation: it first
  * unwinds those leaks, then styles the strip like Safari's sidebar using the
  * same --gnome-* variables every colour scheme already defines.
  *
- * All selectors carry the #tabbrowser-tabs (or #sidebar-main) id, so they
- * out-rank tabsbar.css's class-based !important rules regardless of order. */
+ * All selectors carry the #tabbrowser-tabs id (or the sidebar-main tag), so
+ * they out-rank tabsbar.css's class-based !important rules. */
 @namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
-/* The strip itself */
-#sidebar-main {
+/* The strip itself. sidebar-main is a custom element TAG, not an id, and it
+ * carries the [expanded] attribute (verified by rendering DOM probes on CI:
+ * the tag matched, the id form never did). */
+sidebar-main {
 	background: var(--gnome-sidebar-background) !important;
 	color: var(--gnome-sidebar-color) !important;
 }
@@ -83,32 +85,42 @@
 	margin-left: 0 !important;
 }
 
-#tabbrowser-tabs[orient="vertical"] .tab-label-container {
-	margin-inline-start: 8px !important;
-}
-
 #tabbrowser-tabs[orient="vertical"] .tab-label {
 	text-align: start;
 }
 
-/* Firefox hides vertical tab labels in the icons-only state, keyed on an
- * expanded attribute — which lives on #sidebar-main or on #tabbrowser-tabs
- * depending on how the state was reached (a programmatic pref flip can set
- * one without the other). Show labels when EITHER says expanded... */
-#sidebar-main[expanded] #tabbrowser-tabs[orient="vertical"] .tab-label-container,
-#tabbrowser-tabs[orient="vertical"][expanded] .tab-label-container {
+/* Labels rendered at ZERO WIDTH: the horizontal rules' min-width: 0 lets the
+ * container shrink to nothing in the vertical flex row (probe-verified — the
+ * text was there all along once given a flex basis). Grow it to fill the row;
+ * pinned tabs stay icon-only like Firefox intends. */
+#tabbrowser-tabs[orient="vertical"] .tabbrowser-tab:not([pinned]) .tab-label-container {
+	flex: 1 !important;
+	min-width: 0 !important;
+	margin-inline-start: 8px !important;
+}
+
+sidebar-main[expanded] #tabbrowser-tabs[orient="vertical"] .tabbrowser-tab:not([pinned]) .tab-label-container {
 	display: flex !important;
 }
 
-/* ...and when NEITHER does, treat it as icons-only and centre the favicon in
- * its row, like Safari's collapsed sidebar — instead of a left-pinned icon
- * floating in an empty row. */
-#sidebar-main:not([expanded]) #tabbrowser-tabs[orient="vertical"]:not([expanded]) .tab-content {
+/* Unselected rows read in the sidebar's text colour; the selected row keeps
+ * the active-tab colour against its lifted background */
+#tabbrowser-tabs[orient="vertical"] tab {
+	color: var(--gnome-sidebar-color) !important;
+}
+
+#tabbrowser-tabs[orient="vertical"] tab[selected] {
+	color: var(--gnome-tabbar-tab-active-color) !important;
+}
+
+/* Icons-only (collapsed launcher): centre the favicon in its row, like
+ * Safari's collapsed sidebar, and drop the hover close button */
+sidebar-main:not([expanded]) #tabbrowser-tabs[orient="vertical"] .tab-content {
 	justify-content: center;
 	padding: 0 !important;
 }
 
-#sidebar-main:not([expanded]) #tabbrowser-tabs[orient="vertical"]:not([expanded]) .tab-close-button {
+sidebar-main:not([expanded]) #tabbrowser-tabs[orient="vertical"] .tab-close-button {
 	display: none !important;
 }
 
@@ -124,13 +136,17 @@
 	margin-inline-end: 2px !important;
 }
 
-/* Pinned tabs sit in their own grid above the list */
+/* Pinned tabs sit in their own grid above the list (id verified by probe;
+ * the older #vertical-pinned-tabs-container kept for version drift) */
+#vertical-tabs #pinned-tabs-container,
 #vertical-pinned-tabs-container {
 	background: transparent !important;
 	border-bottom: 1px solid var(--gnome-toolbar-border-color) !important;
 }
 
-/* New Tab button styled like an (empty) row */
+/* New Tab button styled like an (empty) row — #tabs-newtab-button, scoped to
+ * the vertical container so the horizontal strip's + button keeps its look */
+#vertical-tabs #tabs-newtab-button,
 #vertical-tabs-newtab-button {
 	background: transparent !important;
 	color: inherit !important;
@@ -138,6 +154,7 @@
 	margin: 1px 6px !important;
 }
 
+#vertical-tabs #tabs-newtab-button:hover,
 #vertical-tabs-newtab-button:hover {
 	background: var(--gnome-tabbar-tab-hover-background) !important;
 }
