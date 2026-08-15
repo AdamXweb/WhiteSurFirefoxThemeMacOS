@@ -42,7 +42,7 @@ e.g. To install with script, with the tab close button left hand side: `bash ins
 
 The Safari layout, with another palette on top. Install with `-t <name>`, e.g. `bash install.sh -t dracula`
 
-Available themes: `dracula`, `catppuccin-latte`, `catppuccin-frappe`, `catppuccin-macchiato`, `catppuccin-mocha`, `nord`, `gruvbox-dark`, `gruvbox-light`, `solarized-dark`, `solarized-light`, `tokyonight`
+Available themes: `dracula`, `catppuccin-latte`, `catppuccin-frappe`, `catppuccin-macchiato`, `catppuccin-mocha`, `nord`, `gruvbox-dark`, `gruvbox-light`, `solarized-dark`, `solarized-light`, `tokyonight`, `material-ocean`, `material-palenight`, `one-dark`, `rose-pine`, `everforest-dark`, `ayu-mirage`, `night-owl`, `github-dark`, `monokai-pro`
 
 A colour theme applies its palette in both light and dark OS modes. The dark palettes pair best with Firefox's dark appearance (or `ui.systemUsesDarkTheme` — see Manual colour override below) so menus and about: pages match the chrome.
 
