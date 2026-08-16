@@ -57,27 +57,34 @@ jobs:
       - name: Publish to previews branch
         run: |
           set -euo pipefail
+          # `shot` writes its captures FLAT into --out. (The full/ subdirectory
+          # in the PR-preview artifacts is made by `compare`, from the head
+          # screenshots it normalises -- a different command, different layout.)
+          count=$(find shots -maxdepth 1 -name '*.png' | wc -l | tr -d ' ')
+          if [ "$count" -eq 0 ]; then
+            echo "::error::no captures in shots/ -- fxcss shot wrote nothing"
+            exit 1
+          fi
+          echo "publishing ${count} captures"
+
           git config user.name  'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git fetch origin previews --depth=1 || true
-          if git rev-parse --verify origin/previews >/dev/null 2>&1; then
-            git checkout -B previews origin/previews
-          else
-            git checkout --orphan previews
-            git rm -rf --cached . >/dev/null 2>&1 || true
-            find . -maxdepth 1 -mindepth 1 \
-              ! -name .git ! -name shots -exec rm -rf {} +
-            printf '%s\n' \
-              '# README preview images' '' \
-              'Rendered by the README previews workflow. Safe to delete;' \
-              'regenerated on the next theme change on master.' > README.md
-          fi
-          rm -f ./*.png
-          cp shots/full/*.png .
-          git add -A ':!shots' README.md 2>/dev/null || git add -A ':!shots'
-          if git diff --cached --quiet; then
-            echo "previews unchanged"
-          else
-            git commit -m "previews: ${GITHUB_SHA}"
-            git push origin previews
-          fi
+
+          # Always a fresh orphan, force-pushed: this branch is a snapshot of
+          # the current theme, never a history. Keeping history here would add
+          # ~1MB of PNG blobs to the repo on every theme change, forever.
+          git checkout --orphan previews
+          git rm -rf --cached . >/dev/null 2>&1 || true
+          find . -maxdepth 1 -mindepth 1 \
+            ! -name .git ! -name shots -exec rm -rf {} +
+          printf '%s\n' \
+            '# README preview images' '' \
+            'Rendered by the README previews workflow, from the theme as it is' \
+            'on master. Safe to delete; regenerated on the next theme change.' \
+            '' \
+            'This branch carries no history by design -- each run replaces it.' > README.md
+          cp shots/*.png .
+          rm -rf shots
+          git add -A
+          git commit -q -m "previews: ${GITHUB_SHA}"
+          git push --force origin previews
