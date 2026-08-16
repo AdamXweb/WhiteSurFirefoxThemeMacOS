@@ -1,0 +1,80 @@
+/* DevTools toolbox: inspector, console, debugger, network, and the panels
+ * docked at the bottom or side of the window.
+ *
+ * The toolbox is its own document, not part of browser.xhtml, and it paints
+ * from its own variable set (devtools/client/themes/variables.css) rather than
+ * from anything in colors/. userChrome.css reaches it because it applies to
+ * every chrome document -- the same reason the Responsive Design Mode dropdown
+ * needed the .tooltip-xul-wrapper exception in parts/popups.css.
+ *
+ * Only the surfaces are mapped: backgrounds, splitters, selection, body text.
+ * Syntax highlighting (--theme-highlight-*), error and warning colours are
+ * left alone -- they carry meaning, and reducing them to a two-colour palette
+ * would cost more than it gains.
+ *
+ * The pairing of media query and class is deliberate. DevTools picks its own
+ * light or dark theme from devtools.theme, which does not have to agree with
+ * the browser: someone can run DevTools dark inside a light Firefox. When they
+ * disagree, none of the blocks below match and DevTools keeps its own colours,
+ * which is the right failure -- painting a dark background under DevTools'
+ * light syntax colours would leave the console unreadable. This is the same
+ * pairing the README already asks for with dark palettes: set Firefox's
+ * appearance to match the palette and everything lines up. */
+
+@-moz-document url-prefix("chrome://devtools/"), url("about:devtools-toolbox") {
+	@media (prefers-color-scheme: dark) {
+		:root.theme-dark {
+			--theme-body-background: var(--gnome-toolbar-background) !important;
+			--theme-body-emphasized-background: var(--gnome-tabstoolbar-background) !important;
+			--theme-sidebar-background: var(--gnome-sidebar-background) !important;
+			--theme-toolbar-background: var(--gnome-tabstoolbar-background) !important;
+			--theme-toolbar-alternate-background: var(--gnome-toolbar-background) !important;
+			--theme-tab-toolbar-background: var(--gnome-tabstoolbar-background) !important;
+			--theme-toolbar-background-hover: var(--gnome-headerbar-button-hover-background) !important;
+			--theme-toolbar-hover: var(--gnome-headerbar-button-hover-background) !important;
+			--theme-toolbar-color: var(--gnome-toolbar-color) !important;
+			--theme-toolbar-separator: var(--gnome-popover-separator-color) !important;
+			--theme-body-color: var(--gnome-toolbar-color) !important;
+			--theme-text-color-strong: var(--gnome-toolbar-color) !important;
+			--theme-splitter-color: var(--gnome-toolbar-border-color) !important;
+			--theme-emphasized-splitter-color: var(--gnome-toolbar-border-color) !important;
+			--theme-selection-background: var(--theme-primary-color) !important;
+			--theme-selection-color: var(--theme-alt-color) !important;
+			--theme-selection-focus-background: var(--gnome-popover-button-hover-background) !important;
+			--theme-icon-color: var(--gnome-toolbar-color) !important;
+			--theme-icon-checked-color: var(--theme-primary-color) !important;
+			--theme-link-color: var(--theme-primary-color) !important;
+			--theme-button-background: var(--gnome-popover-button-hover-background) !important;
+			--theme-button-active-background: var(--gnome-popover-button-active-background) !important;
+			--theme-focus-outline-color: var(--theme-primary-color) !important;
+		}
+	}
+
+	@media (prefers-color-scheme: light) {
+		:root.theme-light {
+			--theme-body-background: var(--gnome-toolbar-background) !important;
+			--theme-body-emphasized-background: var(--gnome-tabstoolbar-background) !important;
+			--theme-sidebar-background: var(--gnome-sidebar-background) !important;
+			--theme-toolbar-background: var(--gnome-tabstoolbar-background) !important;
+			--theme-toolbar-alternate-background: var(--gnome-toolbar-background) !important;
+			--theme-tab-toolbar-background: var(--gnome-tabstoolbar-background) !important;
+			--theme-toolbar-background-hover: var(--gnome-headerbar-button-hover-background) !important;
+			--theme-toolbar-hover: var(--gnome-headerbar-button-hover-background) !important;
+			--theme-toolbar-color: var(--gnome-toolbar-color) !important;
+			--theme-toolbar-separator: var(--gnome-popover-separator-color) !important;
+			--theme-body-color: var(--gnome-toolbar-color) !important;
+			--theme-text-color-strong: var(--gnome-toolbar-color) !important;
+			--theme-splitter-color: var(--gnome-toolbar-border-color) !important;
+			--theme-emphasized-splitter-color: var(--gnome-toolbar-border-color) !important;
+			--theme-selection-background: var(--theme-primary-color) !important;
+			--theme-selection-color: var(--theme-alt-color) !important;
+			--theme-selection-focus-background: var(--gnome-popover-button-hover-background) !important;
+			--theme-icon-color: var(--gnome-toolbar-color) !important;
+			--theme-icon-checked-color: var(--theme-primary-color) !important;
+			--theme-link-color: var(--theme-primary-color) !important;
+			--theme-button-background: var(--gnome-popover-button-hover-background) !important;
+			--theme-button-active-background: var(--gnome-popover-button-active-background) !important;
+			--theme-focus-outline-color: var(--theme-primary-color) !important;
+		}
+	}
+}
