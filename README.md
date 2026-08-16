@@ -37,9 +37,9 @@ pipx install "fxcss[images]"     # no pipx? see pipx.pypa.io (brew install pipx 
 fxcss install AdamXweb/WhiteSurFirefoxThemeMacOS
 ```
 
-It installs into the Firefox profile you actually use, on macOS, Windows and Linux alike, including snap and flatpak Firefoxes on Linux. A Firefox in an unusual place is reachable via `FXCSS_PROFILE_ROOTS`; when more than one installed Firefox has profiles, fxcss asks which one to update. Your existing `chrome/` folder is backed up first, and optional stylesheets from `custom/` load with `--with`, e.g. `--with compact-tabs,tabs-swapclose`.
+It installs into your Firefox profile all on macOS, Windows and Linux, including snap and flatpak Firefoxes on Linux. A Firefox in an unusual place is reachable via `FXCSS_PROFILE_ROOTS`; when more than one installed Firefox has profiles, fxcss asks which one to update. Your existing `chrome/` folder is backed up first, and optional stylesheets from `custom/` load with `--with`, e.g. `--with compact-tabs,tabs-swapclose`.
 
-Run it without `--with` and it asks instead of assuming — offering the optional stylesheets below, and telling you which Firefox each profile belongs to (`[Release]`, `[Developer Edition]`, `[ESR]`) so a theme does not quietly land in the profile you were not using. To put everything back the way it was:
+Run it without `--with` and it asks which optional stylesheets to include. It also labels each profile with the Firefox it belongs to (`[Release]`, `[Developer Edition]`, `[ESR]`), so you can pick the right one. To put everything back the way it was:
 
 ```bash
 fxcss uninstall AdamXweb/WhiteSurFirefoxThemeMacOS
@@ -60,7 +60,7 @@ The script supports the following flags
 - `-p` Makes tabs height compact like current Safari
 - `-f` To specify the default firefox folder (it will try to find the profile folder to place the theme within)
 - `-l` Default location of most Linux installations
-- Firefox ESR profiles (`*.default-esr`) are installed to as well as release ones
+- The script installs to ESR profiles (`*.default-esr`) as well as release ones
 - `-u` Remove the animation on URL bar to be clickable throughout
 - `-n` Removes the identity colour from tabs
 - `-v` Re-enables the tabview button
@@ -73,7 +73,7 @@ e.g. To install with script, with the tab close button left hand side: `bash ins
 
 #### What each option looks like
 
-Rendered by CI with [fxcss](https://github.com/AdamXweb/fxcss) from the current theme, and refreshed automatically when it changes. Each one is cropped to the part of the window the option actually alters — a whole browser window never showed which button moved.
+Rendered by CI with [fxcss](https://github.com/AdamXweb/fxcss) from the current theme; they refresh automatically when the theme changes. Each one is cropped to the part of the window the option changes.
 
 <details>
 <summary><code>-c</code> Left-hand tab close button</summary>
@@ -104,7 +104,7 @@ Rendered by CI with [fxcss](https://github.com/AdamXweb/fxcss) from the current 
 
 <img src="https://raw.githubusercontent.com/AdamXweb/WhiteSurFirefoxThemeMacOS/previews/variant-standard-urlbar.png" alt="URL bar without the click animation" width="830">
 
-*No before/after crop for this one: it changes nothing measurable on current Firefox, so there is no region to crop to. The selectors it targets have moved — worth fixing or retiring.*
+*No crop for this one: it changes nothing measurable on current Firefox, so there is no region to crop to. The selectors this sheet touches have moved.*
 
 </details>
 <details>
@@ -112,7 +112,7 @@ Rendered by CI with [fxcss](https://github.com/AdamXweb/fxcss) from the current 
 
 <img src="https://raw.githubusercontent.com/AdamXweb/WhiteSurFirefoxThemeMacOS/previews/variant-noidentity.png" alt="Tabs without identity colour" width="830">
 
-*No before/after crop for this one: it changes nothing measurable on current Firefox, so there is no region to crop to. The selectors it targets have moved — worth fixing or retiring.*
+*No crop for this one: it changes nothing measurable on current Firefox, so there is no region to crop to. The selectors this sheet touches have moved.*
 
 </details>
 <details>
@@ -257,12 +257,10 @@ Manual install: copy `custom/theme-<name>.css` into `chrome/WhiteSur/custom` wit
 
 ### Vertical tabs
 
-Firefox's own vertical tabs (Settings → Browser layout, Firefox 133+) are
-styled: the strip picks up the sidebar colours, rows get Safari-style rounded
-highlights, and container tabs mark the edge of the row rather than the top.
-Every colour theme applies there too, since it is the same variables
-underneath. Nothing to enable — turn vertical tabs on in Firefox and the theme
-follows.
+Firefox's vertical tabs (Settings → Browser layout, Firefox 133+) are styled.
+The strip uses the sidebar colours, rows have rounded highlights like Safari,
+and container tabs mark the edge of the row instead of the top. Colour themes
+apply there too. Turn vertical tabs on in Firefox and the theme follows.
 
 #### Optimal experience:
 Make sure to right click and Customize Toolbar. From here, drag the new tab button up to the toolbar out of the tab section.
