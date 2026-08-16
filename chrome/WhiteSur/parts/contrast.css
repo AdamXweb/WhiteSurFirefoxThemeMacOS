@@ -1,0 +1,14 @@
+/* Increase contrast, automatically.
+ *
+ * A media query on an @import is what makes one copy of the rules serve both
+ * triggers: this file applies them when the OS asks for more contrast, and
+ * custom/increase-contrast.css applies the same file unconditionally when
+ * install.sh -i put it in the profile.
+ *
+ * "more" rather than a bare (prefers-contrast) on purpose: the bare form also
+ * matches prefers-contrast: less, and turning the contrast up for someone who
+ * asked for less would be the wrong way round. forced-colors is excluded
+ * because the OS is already substituting its own palette there, and layering
+ * this on top would fight it. */
+
+@import "contrast-rules.css" (prefers-contrast: more) and (forced-colors: none);

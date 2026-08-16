@@ -8,12 +8,13 @@ readonly REPO_DIR="$(pwd)"
 source "${REPO_DIR}/lib-install.sh"
 
 # Get options.
-while getopts 'c,w,p,u,n,v,e,s,r,f:lt:' flag; do
+while getopts 'c,w,p,u,n,v,e,s,r,f:lt:i' flag; do
 	case "${flag}" in
         c ) TABSWAP=true;;
         w ) WINDOWSWAP=true;;
         p ) COMPACTTAB=true;;
         t ) COLOURTHEME="${OPTARG}";;
+        i ) CONTRAST=true;;
         f ) FIREFOX_DIR_HOME="${OPTARG}";;
         l ) FIREFOX_DIR_HOME=~/.mozilla/firefox/;;
         u ) URLBAR=true;;

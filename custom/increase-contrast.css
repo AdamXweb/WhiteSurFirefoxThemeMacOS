@@ -1,0 +1,19 @@
+/* Increase contrast, on purpose rather than on the OS setting.
+ *
+ * Installed with:  bash install.sh -i
+ * (and it composes with a colour theme: bash install.sh -t nord -i)
+ *
+ * The rules live in parts/contrast-rules.css so that this sheet and the
+ * automatic (prefers-contrast: more) path in parts/contrast.css stay the same
+ * thing. Nothing else belongs in this file.
+ *
+ * Two imports for one file because this sheet is read from two different
+ * places. Installed, it sits in chrome/WhiteSur/custom/ next to the palettes,
+ * and the rules are one directory up. Loaded straight out of a checkout --
+ * which is what fxcss does for `--with increase-contrast` and for the CI
+ * preview captures -- it sits in custom/ at the top of the repo, and the rules
+ * are under chrome/WhiteSur/. Whichever path does not exist is ignored, the
+ * way every optional sheet listed in theme.css already is. */
+
+@import "../parts/contrast-rules.css";
+@import "../chrome/WhiteSur/parts/contrast-rules.css";
