@@ -21,6 +21,10 @@
 		--gnome-findbar-background: #333333;
 		--gnome-toolbar-color: #ffffff;
 		--gnome-toolbar-border-color: #070707;
+		/* Dimmed toolbar text (disabled menu entries, an unfocused window).
+		 * Only light.css had it, so in dark mode every rule reading it fell
+		 * back to inheriting the full-strength colour. */
+		--gnome-inactive-toolbar-color: rgba(255, 255, 255, 0.35);
 		--gnome-inactive-toolbar-background: #313131;
 		--gnome-inactive-toolbar-border-color: #121212;
 
@@ -141,7 +145,9 @@
 		--new-tab-background: rgb(30,30,30) !important;
 		--urlbar-box-bgcolor: var(--theme-primary-color) !important;
 		--in-content-primary-button-background-hover:var(--theme-primary-color-hover) !important;
-		--in-content-page-background:(var(--new-tab-background)) !important;
+		/* The parentheses that used to wrap this value made it invalid at
+		 * computed-value time, so the dark page background never applied. */
+		--in-content-page-background: var(--new-tab-background) !important;
 		--in-content-primary-button-background: var(--theme-primary-color) !important;
 		--in-content-danger-button-background-active: var(--theme-primary-color-hover) !important;
 		--safari-warning-security: rgb(202,49,66) !important;
@@ -151,6 +157,6 @@
 		/* fix new styles added in v119 - */
 		--toolbar-field-focus-color: var(--gnome-urlbar-color) !important;
 		--toolbar-field-focus-background-color: transparent !important;
-		--arrowpanel-border-color: transparent !important; 
+		--arrowpanel-border-color: transparent !important;
 	}
 }
