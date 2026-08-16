@@ -138,13 +138,16 @@
 	outline: 0 !important;
 }
 
-/* Sidebar header button reset font size */
+/* Sidebar header button reset font size.
+ * .sidebar-placesTree is the class on both sidebar trees (#bookmarks-view and
+ * #historyTree). It replaces #bookmarks-view-children, which named an element
+ * that does not exist: the bookmarks treechildren carries a class, not an id,
+ * so that half of the selector has never matched anything. */
 #sidebar-header,
 #sidebar-search-container,
 #bookmarksPanel,
 #history-panel,
-#bookmarks-view-children,
-#historyTree {
+.sidebar-placesTree {
 	font-size: 0.9em !important;
 	background-color: var(--gnome-sidebar-background) !important;
 	color: var(--gnome-sidebar-color) !important;
