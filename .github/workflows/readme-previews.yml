@@ -52,7 +52,12 @@ jobs:
           echo "FIREFOX_BIN=$RUNNER_TEMP/Firefox.app/Contents/MacOS/firefox" >> "$GITHUB_ENV"
 
       - name: Render
-        run: fxcss shot --theme . --out shots --variants all
+        run: |
+          set -euo pipefail
+          fxcss shot --theme . --out shots --variants all
+          # Before/after crops of what each optional stylesheet changes: a full
+          # window does not show that a 16px close button moved.
+          fxcss tweaks --theme . --out crops
 
       - name: Publish to previews branch
         run: |
@@ -60,7 +65,7 @@ jobs:
           # `shot` writes its captures FLAT into --out. (The full/ subdirectory
           # in the PR-preview artifacts is made by `compare`, from the head
           # screenshots it normalises -- a different command, different layout.)
-          count=$(find shots -maxdepth 1 -name '*.png' | wc -l | tr -d ' ')
+          count=$(find shots crops -maxdepth 1 -name '*.png' 2>/dev/null | wc -l | tr -d ' ')
           if [ "$count" -eq 0 ]; then
             echo "::error::no captures in shots/ -- fxcss shot wrote nothing"
             exit 1
@@ -84,7 +89,8 @@ jobs:
             '' \
             'This branch carries no history by design -- each run replaces it.' > README.md
           cp shots/*.png .
-          rm -rf shots
+          cp crops/*-diff.png . 2>/dev/null || echo "no crops rendered"
+          rm -rf shots crops
           git add -A
           git commit -q -m "previews: ${GITHUB_SHA}"
           git push --force origin previews
