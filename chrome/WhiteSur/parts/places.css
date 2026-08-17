@@ -1,0 +1,172 @@
+/* Places UI: the bookmarks and history sidebars, and the Library window
+ * (Bookmarks > Manage bookmarks, Cmd/Ctrl+Shift+O).
+ *
+ * parts/buttons-fixes.css already paints the sidebar header and the two panel
+ * bodies. What it could not reach:
+ *  - the sidebar container itself, which Firefox draws from --sidebar-*
+ *    tokens, so the strip around the panel stayed Firefox-coloured;
+ *  - the rows. A XUL tree paints through ::-moz-tree-* pseudo-elements, and
+ *    an ordinary background-color on the <tree> never touches them, so every
+ *    bookmark row kept Firefox's own selection blue under every palette;
+ *  - the Library window, which is a separate XUL document and had no rules at
+ *    all.
+ *
+ * userChrome.css applies to every chrome document, which is what lets a rule
+ * here reach places.xhtml and the sidebar panel documents. */
+
+@namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+
+/* ---- Sidebar container ------------------------------------------------- */
+
+/* The tokens Firefox paints the sidebar from. sidebar-main is the launcher
+ * rail of the revamped sidebar and is a custom element TAG, not an id --
+ * #sidebar-main matches nothing. parts/vertical-tabs.css relies on the same
+ * fact. */
+#sidebar-box,
+#sidebar,
+sidebar-main {
+	--sidebar-background-color: var(--gnome-sidebar-background) !important;
+	--sidebar-text-color: var(--gnome-sidebar-color) !important;
+	--sidebar-border-color: var(--gnome-toolbar-border-color) !important;
+	/* Panel cards in the revamped sidebar (history groups, bookmark folders). */
+	--sidebar-box-background: var(--gnome-popover-button-hover-background) !important;
+	--sidebar-box-border-color: var(--gnome-popover-border-color) !important;
+	--sidebar-box-color: var(--gnome-sidebar-color) !important;
+}
+
+#sidebar-box,
+#sidebar {
+	background-color: var(--gnome-sidebar-background) !important;
+	color: var(--gnome-sidebar-color) !important;
+}
+
+/* Panel documents loaded into #sidebar. .sidebar-panel is deliberately
+ * transparent in Firefox ("background color comes from the embedder"), so this
+ * is about the text and the search field above the tree. */
+.sidebar-panel {
+	color: var(--gnome-sidebar-color) !important;
+}
+
+#sidebar-panel-header,
+#sidebar-search-container > .sidebar-panel-header {
+	color: var(--gnome-sidebar-color) !important;
+}
+
+#sidebar-splitter,
+#sidebar-launcher-splitter {
+	border-color: var(--gnome-toolbar-border-color) !important;
+}
+
+/* ---- Trees: sidebar and Library ---------------------------------------- */
+
+/* Two selectors cover every places tree: .sidebar-placesTreechildren is the
+ * treechildren in both bookmarksSidebar.xhtml and historySidebar.xhtml, and
+ * .placesTree is the class on both Library trees. Rows are pseudo-elements, so
+ * an ordinary rule on the tree cannot reach them; the unfocused selection
+ * stays quiet (the popover hover wash) and the focused one takes the accent,
+ * which is how the platform behaves. */
+.sidebar-placesTreechildren::-moz-tree-row,
+.placesTree > treechildren::-moz-tree-row {
+	background-color: transparent !important;
+}
+
+.sidebar-placesTreechildren::-moz-tree-row(hover),
+.placesTree > treechildren::-moz-tree-row(hover) {
+	background-color: var(--gnome-popover-button-hover-background) !important;
+}
+
+.sidebar-placesTreechildren::-moz-tree-row(selected),
+.placesTree > treechildren::-moz-tree-row(selected) {
+	background-color: var(--gnome-popover-button-active-background) !important;
+}
+
+.sidebar-placesTreechildren::-moz-tree-row(selected, focus),
+.placesTree > treechildren::-moz-tree-row(selected, focus) {
+	background-color: var(--theme-primary-color) !important;
+}
+
+.sidebar-placesTreechildren::-moz-tree-cell-text,
+.sidebar-placesTreechildren::-moz-tree-twisty,
+.placesTree > treechildren::-moz-tree-cell-text,
+.placesTree > treechildren::-moz-tree-twisty {
+	color: var(--gnome-sidebar-color) !important;
+}
+
+.sidebar-placesTreechildren::-moz-tree-cell-text(selected, focus),
+.sidebar-placesTreechildren::-moz-tree-twisty(selected, focus),
+.placesTree > treechildren::-moz-tree-cell-text(selected, focus),
+.placesTree > treechildren::-moz-tree-twisty(selected, focus) {
+	color: var(--theme-alt-color) !important;
+}
+
+/* ---- Library window ---------------------------------------------------- */
+
+/* Scoped: places.xhtml and browser.xhtml share ids (#back-button,
+ * #forward-button, #searchFilter), so an unscoped rule here would reach into
+ * the browser window. */
+@-moz-document url("chrome://browser/content/places/places.xhtml") {
+	:root,
+	#placesView,
+	#placesViewsBox,
+	#contentView {
+		background-color: var(--gnome-toolbar-background) !important;
+		color: var(--gnome-toolbar-color) !important;
+	}
+
+	#placesToolbar {
+		background: var(--gnome-headerbar-background) !important;
+		color: var(--gnome-toolbar-color) !important;
+		border-bottom: 1px solid var(--gnome-toolbar-border-color) !important;
+	}
+
+	#placesToolbar toolbarbutton,
+	#placesMenu > menu {
+		color: var(--gnome-toolbar-color) !important;
+	}
+
+	#placesToolbar toolbarbutton:not([disabled]):hover,
+	#placesMenu > menu:hover {
+		background-color: var(--gnome-headerbar-button-hover-background) !important;
+	}
+
+	/* The left pane keeps the sidebar's colour, the results pane the toolbar's,
+	 * which is the same split the window has by default. */
+	#placesList {
+		background-color: var(--gnome-sidebar-background) !important;
+		color: var(--gnome-sidebar-color) !important;
+		border-inline-end: 1px solid var(--gnome-toolbar-border-color) !important;
+	}
+
+	#placeContent {
+		background-color: var(--gnome-toolbar-background) !important;
+		color: var(--gnome-toolbar-color) !important;
+	}
+
+	/* Column headers */
+	#placeContent > treecols,
+	#placeContent treecol {
+		background-color: var(--gnome-tabstoolbar-background) !important;
+		color: var(--gnome-toolbar-color) !important;
+		border-color: var(--gnome-toolbar-border-color) !important;
+	}
+
+	/* Detail pane at the bottom, shown while editing a bookmark. */
+	#detailsPane,
+	#infoBox,
+	#editBookmarkPanelContent {
+		background-color: var(--gnome-toolbar-background) !important;
+		color: var(--gnome-toolbar-color) !important;
+		border-color: var(--gnome-toolbar-border-color) !important;
+	}
+
+	#searchFilter {
+		background-color: var(--gnome-urlbar-background) !important;
+		color: var(--gnome-urlbar-color) !important;
+		border: 1px solid var(--gnome-urlbar-border-color) !important;
+		border-radius: 6px !important;
+	}
+
+	#searchFilter:focus-within {
+		border-color: var(--gnome-focused-urlbar-border-color) !important;
+	}
+}

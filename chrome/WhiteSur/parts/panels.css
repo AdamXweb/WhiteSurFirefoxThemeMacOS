@@ -1,0 +1,181 @@
+/* Panel colours: the app menu, the extensions panel, the site information
+ * ("trust") and permissions popups, the unified search button's engine list.
+ *
+ * parts/popups.css already lays these out; what it could not do any more was
+ * colour them. Firefox moved panel painting into the panel's shadow DOM:
+ *
+ *   panel::part(content) {
+ *     background: var(--panel-background-color);
+ *     color: var(--panel-text-color);
+ *     border: 1px solid var(--panel-border-color);
+ *   }                       -- toolkit/themes/shared/popup.css
+ *
+ * The theme was still setting --panel-background and styling
+ * .panel-arrowcontent. Both are gone: .panel-arrowcontent survives only in
+ * customizeMode.css, and --panel-background is read by exactly one consumer
+ * left in the tree (the search-mode switcher's list). So every panel fell back
+ * to Firefox's own light-dark() default no matter which palette was installed.
+ *
+ * Panels also re-map the in-content design tokens onto themselves
+ * (--background-color-canvas: var(--panel-background-color) in popup.css), and
+ * Firefox builds panel contents out of those tokens -- the extensions rows are
+ * "ghost" buttons, the app menu's update banner is a plain button -- so the
+ * token block below is what actually recolours the insides.
+ *
+ * Not covered on macOS: right-click menus. widget.macos.native-context-menus
+ * defaults to true, so the OS draws them and no CSS applies. Panels are
+ * unaffected -- widget.macos.native-popovers defaults to false. */
+
+@namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+
+/* Every arrow panel: app menu, extensions, downloads, identity, permissions,
+ * protections, the bookmark star. .tooltip-xul-wrapper stays excluded for the
+ * same reason as in popups.css -- devtools builds dropdowns out of it. */
+panel[type="arrow"]:not(.tooltip-xul-wrapper),
+.searchmode-switcher-panel {
+	--panel-background-color: var(--gnome-popover-background) !important;
+	--panel-text-color: var(--gnome-toolbar-color) !important;
+	--panel-border-color: var(--gnome-popover-border-color) !important;
+	--panel-separator-color: var(--gnome-popover-separator-color) !important;
+}
+
+/* Design tokens as they resolve inside a panel. Without these the panel is
+ * themed and its contents are not: the extensions rows, the app menu's update
+ * banner and every panel button keep Firefox's greys. */
+panel[type="arrow"]:not(.tooltip-xul-wrapper) {
+	--background-color-canvas: var(--gnome-popover-background) !important;
+	--background-color-box: var(--gnome-popover-background) !important;
+	--text-color: var(--gnome-toolbar-color) !important;
+	--border-color: var(--gnome-popover-border-color) !important;
+
+	/* Ghost buttons -- what the extensions rows and most panel entries are. */
+	--button-background-color-ghost-hover: var(--gnome-popover-button-hover-background) !important;
+	--button-background-color-ghost-active: var(--gnome-popover-button-active-background) !important;
+	--button-text-color-ghost: var(--gnome-toolbar-color) !important;
+	--button-text-color-ghost-hover: var(--gnome-toolbar-color) !important;
+	--button-text-color-ghost-active: var(--gnome-toolbar-color) !important;
+
+	/* Solid buttons inside a panel, e.g. "Manage extensions". */
+	--button-background-color: var(--gnome-button-active-background-alt) !important;
+	--button-background-color-hover: var(--gnome-button-active-background-alt-hover) !important;
+	--button-background-color-active: var(--gnome-button-active-background) !important;
+	--button-text-color: var(--gnome-button-menulist-color) !important;
+	--button-border-color: var(--gnome-button-active-background-alt-border) !important;
+
+	--color-accent-primary: var(--theme-primary-color) !important;
+	--color-accent-primary-hover: var(--theme-primary-color-hover) !important;
+	--color-accent-primary-active: var(--theme-primary-color-hover) !important;
+	--button-background-color-primary: var(--theme-primary-color) !important;
+	--button-text-color-primary: var(--theme-alt-color) !important;
+	--link-color: var(--theme-primary-color) !important;
+	--link-color-hover: var(--theme-primary-color-hover) !important;
+}
+
+/* App menu (the hamburger "settings" menu) and its subviews. panelview and
+ * .panel-subview-body are transparent already (popups.css); the header and
+ * footer are the parts that carried their own colour. */
+#appMenu-popup {
+	--panel-banner-item-background-color: var(--gnome-button-active-background-alt) !important;
+	--panel-banner-item-hover-bgcolor: var(--gnome-button-active-background-alt-hover) !important;
+	--panel-banner-item-active-bgcolor: var(--gnome-button-active-background) !important;
+	--panel-banner-item-color: var(--gnome-button-menulist-color) !important;
+}
+
+#appMenu-popup .panel-header,
+#unified-extensions-panel .panel-header,
+#protections-popup .panel-header {
+	color: var(--gnome-toolbar-color) !important;
+}
+
+/* Extensions panel. The rows are .unified-extensions-item; each is an action
+ * button plus a menu button, both drawn from --uei-* which resolve to the
+ * ghost button tokens above. They are re-stated here because a row in the
+ * overflow (widget) area resolves them outside the panel. */
+#unified-extensions-panel,
+#widget-overflow {
+	--uei-button-bgcolor: transparent !important;
+	--uei-button-color: var(--gnome-toolbar-color) !important;
+	--uei-button-hover-bgcolor: var(--gnome-popover-button-hover-background) !important;
+	--uei-button-hover-color: var(--gnome-toolbar-color) !important;
+	--uei-button-active-bgcolor: var(--gnome-popover-button-active-background) !important;
+	--uei-button-active-color: var(--gnome-toolbar-color) !important;
+	--uei-button-attention-dot-color: var(--theme-primary-color) !important;
+}
+
+#unified-extensions-panel .unified-extensions-item-action-button:not([disabled]),
+#unified-extensions-panel .unified-extensions-item-menu-button > .toolbarbutton-icon {
+	color: var(--gnome-toolbar-color) !important;
+}
+
+/* The "extension can't run here" / attention message and the panel footer. */
+#unified-extensions-panel .unified-extensions-item-message-deck,
+#unified-extensions-panel #unified-extensions-messages-container {
+	color: var(--gnome-inactive-toolbar-color) !important;
+}
+
+/* Site information ("trust"), permissions and protections popups.
+ * #trustpanel-popup is the newer site-information panel; the ids that are not
+ * in a given Firefox simply match nothing. */
+#identity-popup,
+#permission-popup,
+#protections-popup,
+#trustpanel-popup {
+	--background-color-information: var(--gnome-popover-button-hover-background) !important;
+	--background-color-box-info: var(--gnome-popover-button-hover-background) !important;
+	--trustpanel-graphic-bg: var(--gnome-popover-button-hover-background) !important;
+	--trustpanel-highlight-bg: var(--gnome-popover-button-hover-background) !important;
+	--trustpanel-warning-bg: var(--gnome-button-destructive-action-active-background) !important;
+	--trustpanel-card-border-color: var(--gnome-popover-border-color) !important;
+	--trustpanel-card-divider-color: var(--gnome-popover-separator-color) !important;
+	--trustpanel-inner-border: 1px solid var(--gnome-popover-border-color) !important;
+}
+
+/* Permission rows carry their own surface (see popups-contents.css, which
+ * gives them --gnome-menu-background); the labels beside them were left to
+ * Firefox. */
+#permission-popup-mainView .permission-popup-permission-label,
+#trustpanel-popup :is(description, label) {
+	color: var(--gnome-toolbar-color) !important;
+}
+
+/* Unified search button: the engine list that drops out of the magnifier in
+ * the address bar, and the first-run "Search with" heading on it.
+ *
+ * The list is an html:panel-list custom element, so its background comes from
+ * --panel-list-* inside a shadow tree rather than from the panel. Custom
+ * properties inherit through shadow boundaries, which is why setting them on
+ * the host is enough. */
+.searchmode-switcher-panel-list {
+	--panel-list-background-color: var(--gnome-popover-background) !important;
+	--panel-list-text-color: var(--gnome-toolbar-color) !important;
+	--panel-list-border-color: var(--gnome-popover-border-color) !important;
+	--panel-separator-color: var(--gnome-popover-separator-color) !important;
+	/* Each engine row is a panel-item, which draws itself from the "menu"
+	 * button tokens rather than from the panel's own variables. */
+	--button-background-color-menu-hover: var(--gnome-popover-button-hover-background) !important;
+	--button-background-color-menu-active: var(--gnome-popover-button-active-background) !important;
+	--button-text-color-menu-hover: var(--gnome-toolbar-color) !important;
+	--button-text-color-menu-active: var(--gnome-toolbar-color) !important;
+	color: var(--gnome-toolbar-color) !important;
+}
+
+.searchmode-switcher-panel-description {
+	color: var(--gnome-inactive-toolbar-color) !important;
+}
+
+/* ...and the button itself in the address bar: the magnifier, the chevron and
+ * the engine name once a search mode is picked. Both icons are drawn with
+ * fill: currentColor, so the colour is the whole fix. */
+.searchmode-switcher,
+.searchmode-switcher-title {
+	color: var(--gnome-urlbar-color) !important;
+}
+
+.searchmode-switcher:hover {
+	background-color: var(--gnome-popover-button-hover-background) !important;
+}
+
+.searchmode-switcher-dropmarker,
+.searchmode-switcher-close {
+	fill: var(--gnome-urlbar-color) !important;
+}

@@ -67,6 +67,7 @@ The script supports the following flags
 - `-e` Hides the extension button
 - `-s` Single tab view (Tabs hidden when only one tab)
 - `-t <name>` Colour theme (see Colour themes below)
+- `-i` Increase contrast (see Colour themes below)
 - `-r` Remove the theme
 
 e.g. To install with script, with the tab close button left hand side: `bash install.sh -c` 
@@ -145,6 +146,20 @@ Rendered by CI with [fxcss](https://github.com/AdamXweb/fxcss) from the current 
 The Safari layout, with another palette on top. Install with `-t <name>`, e.g. `bash install.sh -t dracula`
 
 Available themes: `dracula`, `catppuccin-latte`, `catppuccin-frappe`, `catppuccin-macchiato`, `catppuccin-mocha`, `nord`, `gruvbox-dark`, `gruvbox-light`, `solarized-dark`, `solarized-light`, `tokyonight`, `material-ocean`, `material-palenight`, `one-dark`, `rose-pine`, `everforest-dark`, `ayu-mirage`, `night-owl`, `github-dark`, `monokai-pro`
+
+A palette covers the window chrome, the panels (app menu, extensions, site information and permissions, the address bar's search-engine list), the bookmarks and history sidebars, the Library window, the DevTools toolbox, and the `about:` pages — `about:preferences`, `about:addons`, `about:newtab`.
+
+DevTools follows the palette only when its own theme agrees with Firefox's appearance, since DevTools has a separate light/dark setting of its own (Settings > Themes in the toolbox). If they disagree, DevTools keeps its own colours rather than mixing the two.
+
+#### Increase contrast
+
+```bash
+bash install.sh -t nord -i
+```
+
+`-i` pushes text to full strength, makes borders and separators visible, turns off the dimming on the idle address bar, and brings back the focus ring the palettes hide. It works with any palette, and on the base theme with no `-t` at all.
+
+You do not need the flag if you already ask for more contrast at the OS level — macOS System Settings > Accessibility > Display > Increase contrast, or its Windows and GNOME equivalents. The theme responds to that on its own; `-i` is for turning it on regardless.
 
 #### Previews
 

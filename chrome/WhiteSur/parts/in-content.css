@@ -1,0 +1,105 @@
+/* In-content pages: about:preferences, about:addons, about:newtab,
+ * about:protections, the Firefox View page, ...
+ *
+ * These are content documents, so they are reached from userContent.css, not
+ * from theme.css. Firefox paints them from its design-system tokens
+ * (toolkit/themes/shared/design-system/dist/tokens-shared.css), which nothing
+ * in colors/ or custom/theme-*.css touched: install a colour theme and the
+ * chrome changed while about:preferences stayed Firefox-default. This maps the
+ * tokens onto the palette, so every -t theme reaches content for free.
+ *
+ * Two things make the !important on every line load-bearing:
+ *  - Firefox declares the tokens inside @layer tokens-foundation, but layers
+ *    only sort declarations within one origin. Those are author sheets and
+ *    this is a user sheet, so author-normal beats user-normal; only
+ *    user-important wins.
+ *  - about:preferences re-declares --background-color-canvas for itself
+ *    (browser/themes/shared/preferences/preferences.css), so a plain override
+ *    on :root would lose there in particular.
+ *
+ * Scoped to about: pages. The tokens use generic names (--text-color,
+ * --border-color, --button-background-color) that an ordinary website may also
+ * define, and userContent.css applies to every document, so an unscoped :root
+ * block here would repaint the web.
+ *
+ * Names were checked against both mozilla-central and mozilla-esr140; where
+ * the two disagree both spellings are set, and the dead one is inert. */
+
+@-moz-document url-prefix("about:") {
+	:root {
+		/* Page background, and the surfaces drawn on top of it: group boxes,
+		 * moz-card (--card-background-color falls back to
+		 * --background-color-box), the about:addons list, the search box at the
+		 * top of about:preferences. */
+		--background-color-canvas: var(--new-tab-background) !important;
+		--background-color-box: var(--gnome-toolbar-background) !important;
+		--background-color-box-info: var(--gnome-toolbar-background) !important;
+		--card-background-color: var(--gnome-toolbar-background) !important;
+		--background-color-list-item-hover: var(--gnome-popover-button-hover-background) !important;
+
+		/* Text */
+		--text-color: var(--gnome-toolbar-color) !important;
+
+		/* Borders. --gnome-toolbar-border-color is white in the light palette
+		 * (it is a highlight line, not an outline), so cards and inputs take the
+		 * popover border instead -- the one border colour every palette defines
+		 * as a real edge. */
+		--border-color: var(--gnome-popover-border-color) !important;
+		--card-border-color: var(--gnome-popover-border-color) !important;
+
+		/* Accent: primary buttons (moz-button[type="primary"] reads
+		 * --button-background-color-primary, which falls back to
+		 * --color-accent-primary), checked checkboxes and radios, toggles,
+		 * selected rows, the focus ring. */
+		--color-accent-primary: var(--theme-primary-color) !important;
+		--color-accent-primary-hover: var(--theme-primary-color-hover) !important;
+		--color-accent-primary-active: var(--theme-primary-color-hover) !important;
+		--button-background-color-primary: var(--theme-primary-color) !important;
+		--button-background-color-primary-hover: var(--theme-primary-color-hover) !important;
+		--button-background-color-primary-active: var(--theme-primary-color-hover) !important;
+		--button-text-color-primary: var(--theme-alt-color) !important;
+		--border-color-interactive: var(--theme-primary-color) !important;
+		--toggle-background-color-pressed: var(--theme-primary-color) !important;
+		--toggle-background-color-pressed-hover: var(--theme-primary-color-hover) !important;
+		--toggle-background-color-pressed-active: var(--theme-primary-color-hover) !important;
+
+		/* Ordinary (non-primary) buttons. Same variables the dialog buttons in
+		 * parts/popups.css use, so a dialog button and a preferences button
+		 * agree. */
+		--button-background-color: var(--gnome-button-active-background-alt) !important;
+		--button-background-color-hover: var(--gnome-button-active-background-alt-hover) !important;
+		--button-background-color-active: var(--gnome-button-active-background) !important;
+		--button-text-color: var(--gnome-button-menulist-color) !important;
+		--button-border-color: var(--gnome-button-active-background-alt-border) !important;
+
+		/* Links */
+		--link-color: var(--theme-primary-color) !important;
+		--link-color-hover: var(--theme-primary-color-hover) !important;
+		--link-color-visited: var(--theme-primary-color) !important;
+
+		/* about:newtab and Firefox View. Most of the page already follows the
+		 * tokens above (--newtab-text-primary-color is var(--text-color), the
+		 * card buttons are var(--button-background-color)); these three come
+		 * from build-time constants instead, so they need naming. */
+		--newtab-background-color: var(--new-tab-background) !important;
+		--newtab-background-color-secondary: var(--gnome-toolbar-background) !important;
+		--newtab-background-card: var(--gnome-toolbar-background) !important;
+
+		/* ESR 140 spellings, dropped from current Firefox. */
+		--in-content-page-background: var(--new-tab-background) !important;
+		--in-content-page-color: var(--gnome-toolbar-color) !important;
+		--in-content-box-border-color: var(--gnome-popover-border-color) !important;
+		--in-content-button-background: var(--gnome-button-active-background-alt) !important;
+		--in-content-button-background-hover: var(--gnome-button-active-background-alt-hover) !important;
+		--in-content-button-background-active: var(--gnome-button-active-background) !important;
+		--in-content-button-text-color: var(--gnome-button-menulist-color) !important;
+	}
+
+	/* The preferences category list. It sits on the page background, so only
+	 * the selected row needs saying -- otherwise it keeps Firefox's blue tint
+	 * under every palette. */
+	#categories > .category[selected] {
+		background-color: var(--gnome-popover-button-hover-background) !important;
+		color: var(--gnome-toolbar-color) !important;
+	}
+}

@@ -1,0 +1,105 @@
+/* Increase contrast: the rules themselves.
+ *
+ * Nothing imports this file directly. It is pulled in twice:
+ *  - parts/contrast.css, behind (prefers-contrast: more), so macOS System
+ *    Settings > Accessibility > Display > Increase contrast (and the Windows
+ *    and GNOME equivalents) turn it on by itself;
+ *  - custom/increase-contrast.css, unconditionally, which install.sh -i copies
+ *    into the profile for people who want it regardless of the OS setting.
+ *
+ * It works on top of any palette because it never redefines a variable in
+ * terms of itself -- that would be a cycle, and the whole declaration would be
+ * dropped. Everything is derived from the two seeds each palette declares,
+ * --whitesur-ink (the direction text moves in: white on a dark palette, black
+ * on a light one) and --whitesur-paper (the direction surfaces move in). The
+ * seeds are computed from the palette's own toolbar colours, so a palette with
+ * weak text -- Solarized Dark's #93a1a1, One Dark's #abb2bf -- gains the most.
+ *
+ * Content pages need no separate treatment: parts/in-content.css maps the
+ * design tokens onto these same variables, so about:preferences follows. */
+
+@namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+
+:root {
+	/* Text to full strength. */
+	--gnome-toolbar-color: var(--whitesur-ink) !important;
+	--gnome-sidebar-color: var(--whitesur-ink) !important;
+	--gnome-urlbar-color: var(--whitesur-ink) !important;
+	--gnome-button-menulist-color: var(--whitesur-ink) !important;
+	--gnome-tabbar-tab-active-color: var(--whitesur-ink) !important;
+	--gnome-tabbar-tab-hover-color: var(--whitesur-ink) !important;
+
+	/* Text that is meant to read as secondary stays secondary, but at 70%
+	 * rather than the 35% the palettes use. */
+	--gnome-tabbar-tab-color: color-mix(in srgb, var(--whitesur-ink) 70%, transparent) !important;
+	--gnome-inactive-toolbar-color: color-mix(in srgb, var(--whitesur-ink) 70%, transparent) !important;
+	--gnome-inactive-urlbar-color: color-mix(in srgb, var(--whitesur-ink) 70%, transparent) !important;
+	--gnome-inactive-tabbar-tab-color: color-mix(in srgb, var(--whitesur-ink) 60%, transparent) !important;
+	--gnome-inactive-tabbar-tab-active-color: color-mix(in srgb, var(--whitesur-ink) 70%, transparent) !important;
+
+	/* Edges. Every palette draws borders close to its own background, which is
+	 * what makes the flat look; contrast mode wants them visible instead. */
+	--gnome-toolbar-border-color: color-mix(in srgb, var(--whitesur-ink) 45%, transparent) !important;
+	--gnome-headerbar-border-color: color-mix(in srgb, var(--whitesur-ink) 45%, transparent) !important;
+	--gnome-popover-border-color: color-mix(in srgb, var(--whitesur-ink) 50%, transparent) !important;
+	--gnome-menu-border-color: color-mix(in srgb, var(--whitesur-ink) 50%, transparent) !important;
+	--gnome-popover-separator-color: color-mix(in srgb, var(--whitesur-ink) 40%, transparent) !important;
+	--gnome-urlbar-border-color: color-mix(in srgb, var(--whitesur-ink) 55%, transparent) !important;
+	--gnome-button-border-color: color-mix(in srgb, var(--whitesur-ink) 55%, transparent) !important;
+	--gnome-button-active-background-alt-border: color-mix(in srgb, var(--whitesur-ink) 55%, transparent) !important;
+
+	/* Hover and pressed states, roughly doubled from the palettes' 10%/15%. */
+	--gnome-popover-button-hover-background: color-mix(in srgb, var(--whitesur-ink) 22%, transparent) !important;
+	--gnome-popover-button-active-background: color-mix(in srgb, var(--whitesur-ink) 32%, transparent) !important;
+	--gnome-headerbar-button-hover-background: color-mix(in srgb, var(--whitesur-ink) 22%, transparent) !important;
+	--gnome-headerbar-button-active-background: color-mix(in srgb, var(--whitesur-ink) 32%, transparent) !important;
+
+	/* Menus and panels stop being translucent. Every palette sets these to
+	 * 0.95 alpha, which lets whatever is behind the window bleed through the
+	 * text; --gnome-toolbar-background is the same surface, fully opaque. */
+	--gnome-menu-background: var(--gnome-toolbar-background) !important;
+	--gnome-popover-background: var(--gnome-toolbar-background) !important;
+
+	/* The active tab's indicator, and the focus ring the palettes switch off.
+	 * A keyboard user with contrast turned up is exactly who needs it. */
+	--gnome-tabbar-tab-active-border-bottom-color: var(--theme-primary-color) !important;
+	--focus-outline-color: var(--theme-primary-color) !important;
+
+	/* In-content deemphasised text (about:preferences descriptions) is
+	 * currentColor at 69% by default. */
+	--text-color-deemphasized: color-mix(in srgb, var(--whitesur-ink) 80%, transparent) !important;
+}
+
+/* WhiteSur dims and desaturates the idle URL bar (parts/headerbar-urlbar.css:
+ * filter: saturate(0%), opacity: 0.8, restored on hover and focus). At higher
+ * contrast the address is worth reading without hovering first. */
+#urlbar {
+	filter: none !important;
+	opacity: 1 !important;
+}
+
+/* Dimmed-out states the theme sets by opacity rather than by colour. Halved
+ * dimming keeps the "this is unavailable" signal while leaving the label
+ * legible. */
+.subviewbutton[disabled],
+.toolbarbutton-1[disabled],
+.identity-popup-content-blocking-category[disabled],
+menuitem[disabled="true"],
+menu[disabled="true"] {
+	opacity: 0.75 !important;
+}
+
+#navigator-toolbox:-moz-window-inactive label,
+#navigator-toolbox:-moz-window-inactive image,
+#downloads-indicator-anchor:-moz-window-inactive,
+findbar:-moz-window-inactive image:not(#hack),
+findbar:-moz-window-inactive label,
+#viewButton:-moz-window-inactive dropmarker {
+	opacity: 0.9 !important;
+}
+
+/* The keyboard focus ring comes back through --focus-outline-color above,
+ * which is the variable Firefox itself draws it from. A blanket
+ * :focus-visible rule would have been simpler and is deliberately not here:
+ * this sheet is also loaded from userContent.css, where it would outline
+ * every focusable element on every website. */

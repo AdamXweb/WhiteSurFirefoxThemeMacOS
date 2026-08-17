@@ -146,6 +146,13 @@
 	--toolbar-field-focus-color: var(--gnome-urlbar-color) !important;
 	--toolbar-field-focus-background-color: transparent !important;
 	--arrowpanel-border-color: transparent !important;
+
+	/* Increase-contrast seeds, read by parts/contrast-rules.css: the
+	 * two extremes this palette moves text and surfaces toward.
+	 * Derived from --gnome-toolbar-color and
+	 * --gnome-toolbar-background above. */
+	--whitesur-ink: #f6ffff;
+	--whitesur-paper: #1f222e;
 }
 
 /* WhiteSur dims and fully desaturates the idle URL bar

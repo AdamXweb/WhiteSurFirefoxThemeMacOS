@@ -128,6 +128,22 @@ if [ -n "$COLOURTHEME" ] ; then
   fi
 fi
 
+# If increased contrast is wanted (-i). Composes with -t: the sheet reads the
+# palette's own --whitesur-ink / --whitesur-paper seeds, so it works on top of
+# whichever theme is installed, or on the base theme. Without -i the same rules
+# still apply whenever the OS asks for more contrast -- see parts/contrast.css.
+if [ "$CONTRAST" = true ] ; then
+  cd "${REPO_DIR}"
+	echo "Enabling increased contrast"
+      for layout_dir in "${FIREFOX_DIR_HOME}/"${PROFILE_GLOB}"/chrome/WhiteSur/custom" \
+                        "${FIREFOX_DIR_HOME}/"${PROFILE_GLOB}"/chrome/Monterey/custom"; do
+        [ -d "$(dirname "${layout_dir}")" ] || continue
+        mkdir -p "${layout_dir}"
+        cp -rf "${REPO_DIR}/custom/increase-contrast.css"                  "${layout_dir}"
+      done
+  echo "Increased contrast configured"
+fi
+
 # Copy settings to enable stylesheets in firefox automatically.
   for d in "${FIREFOX_DIR_HOME}/"${PROFILE_GLOB}; do
     echo "user_pref(\"toolkit.legacyUserProfileCustomizations.stylesheets\", true);" >> "${d}/prefs.js"

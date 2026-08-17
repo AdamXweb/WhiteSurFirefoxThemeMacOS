@@ -1,14 +1,56 @@
-@import "Whitesur/colors/light.css";
-@import "Whitesur/colors/dark.css";
+/* Content documents: about: pages and the web.
+ * The chrome half of the theme is userChrome.css -> WhiteSur/theme.css.
+ *
+ * The directory is WhiteSur with a capital S. These used to read "Whitesur",
+ * which resolves on macOS and Windows and silently fails on a case-sensitive
+ * filesystem, leaving Linux users with no content colours at all. */
+@import "WhiteSur/colors/light.css";
+@import "WhiteSur/colors/dark.css";
+/* Colour themes. install.sh -t copies exactly one of these into the profile;
+ * the others are absent and their @import is ignored, which is how theme.css
+ * lists them too. Without this the palette reached the chrome and stopped at
+ * the content edge, so about:preferences kept the base theme's colours.
+ *
+ * A palette is variables plus one chrome-only rule -- #urlbar, opting out of
+ * the idle desaturation in parts/headerbar-urlbar.css -- which from here also
+ * reaches a web page that happens to use that id. It only unsets a filter and
+ * an opacity, and colors/light.css has always pushed rather more than that at
+ * every page (--focus-outline-color, --in-content-*), so this is not new
+ * ground; worth knowing about all the same. */
+@import "WhiteSur/custom/theme-ayu-mirage.css";
+@import "WhiteSur/custom/theme-catppuccin-frappe.css";
+@import "WhiteSur/custom/theme-catppuccin-latte.css";
+@import "WhiteSur/custom/theme-catppuccin-macchiato.css";
+@import "WhiteSur/custom/theme-catppuccin-mocha.css";
+@import "WhiteSur/custom/theme-dracula.css";
+@import "WhiteSur/custom/theme-everforest-dark.css";
+@import "WhiteSur/custom/theme-github-dark.css";
+@import "WhiteSur/custom/theme-gruvbox-dark.css";
+@import "WhiteSur/custom/theme-gruvbox-light.css";
+@import "WhiteSur/custom/theme-material-ocean.css";
+@import "WhiteSur/custom/theme-material-palenight.css";
+@import "WhiteSur/custom/theme-monokai-pro.css";
+@import "WhiteSur/custom/theme-night-owl.css";
+@import "WhiteSur/custom/theme-nord.css";
+@import "WhiteSur/custom/theme-one-dark.css";
+@import "WhiteSur/custom/theme-rose-pine.css";
+@import "WhiteSur/custom/theme-solarized-dark.css";
+@import "WhiteSur/custom/theme-solarized-light.css";
+@import "WhiteSur/custom/theme-tokyonight.css";
+/* Maps the palette onto Firefox's in-content design tokens. */
+@import "WhiteSur/parts/in-content.css";
+/* Increase contrast: automatic under the OS setting, and unconditional when
+ * install.sh -i put the opt-in sheet in the profile. */
+@import "WhiteSur/parts/contrast.css";
+@import "WhiteSur/custom/increase-contrast.css";
+
 /* test to change the session restore page */
 #main-window[sessionrestored="true"] browser>#document>html{
 	background-color: var(--new-tab-background) !important;
 }
 
-@-moz-document url(about:session-restore), url-prefix(about:sessionrestore), url(about:addons), url(about:preferences){ 
-	body { 
+@-moz-document url(about:session-restore), url-prefix(about:sessionrestore), url(about:addons), url(about:preferences){
+	body {
 		background-color: var(--new-tab-background) !important;
-	} 
+	}
 }
-
-
