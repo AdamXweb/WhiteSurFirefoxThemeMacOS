@@ -179,7 +179,7 @@ The Safari layout, with another palette on top. Install with `-t <name>`, e.g. `
 
 Available themes: `dracula`, `catppuccin-latte`, `catppuccin-frappe`, `catppuccin-macchiato`, `catppuccin-mocha`, `nord`, `gruvbox-dark`, `gruvbox-light`, `solarized-dark`, `solarized-light`, `tokyonight`, `material-ocean`, `material-palenight`, `one-dark`, `rose-pine`, `everforest-dark`, `ayu-mirage`, `night-owl`, `github-dark`, `monokai-pro`
 
-A palette covers the window chrome, the panels (app menu, extensions, site information and permissions, the address bar's search-engine list), the bookmarks and history sidebars, the Library window, the DevTools toolbox, and the `about:` pages — `about:preferences`, `about:addons`, `about:newtab`.
+A palette covers the window chrome, the panels (app menu, extensions, downloads, site information and permissions, the address bar's search-engine list), the bookmarks and history sidebars, the Library window, the DevTools toolbox, and the `about:` pages — `about:preferences`, `about:addons`, `about:newtab`.
 
 **One palette at a time.** Every colour theme redefines the same set of variables, so installing two means whichever loads last silently replaces the other — the result looks like neither. `install.sh -t` takes a single name, and fxcss 0.16 or newer refuses two of them outright, naming the pair:
 
@@ -191,6 +191,8 @@ $ fxcss install AdamXweb/WhiteSurFirefoxThemeMacOS --with theme-nord,theme-dracu
 ```
 
 Palettes combine freely with the layout options (`compact-tabs`, `tabs-swapclose` and the rest) — those touch different declarations, and fxcss says nothing about them.
+
+In the downloads panel that includes the progress bars, which took the palette's accent colour rather than Firefox's blue, and the red and amber of a blocked download, which are mixed against the palette so they stay legible on a dark palette under a light desktop.
 
 DevTools follows the palette only when its own theme agrees with Firefox's appearance, since DevTools has a separate light/dark setting of its own (Settings > Themes in the toolbox). If they disagree, DevTools keeps its own colours rather than mixing the two.
 
