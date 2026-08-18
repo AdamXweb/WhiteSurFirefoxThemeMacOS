@@ -68,6 +68,14 @@
 	/* In-content deemphasised text (about:preferences descriptions) is
 	 * currentColor at 69% by default. */
 	--text-color-deemphasized: color-mix(in srgb, var(--whitesur-ink) 80%, transparent) !important;
+
+	/* The blocked-download reds and ambers of parts/downloads.css, mixed
+	 * further toward the ink -- 45% of the hue against that sheet's 55% -- so
+	 * the badge and its warning line separate from the popover as clearly as
+	 * the rest of the panel does. */
+	--whitesur-download-critical: color-mix(in srgb, #e01b24 45%, var(--whitesur-ink)) !important;
+	--whitesur-download-warning: color-mix(in srgb, #f5a623 45%, var(--whitesur-ink)) !important;
+	--whitesur-download-information: color-mix(in srgb, #0a84ff 45%, var(--whitesur-ink)) !important;
 }
 
 /* WhiteSur dims and desaturates the idle URL bar (parts/headerbar-urlbar.css:

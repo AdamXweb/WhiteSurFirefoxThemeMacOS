@@ -28,6 +28,24 @@
 
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
+/* Secondary text inside a panel: the "search with" heading, the extensions
+ * "can't run here" message, the blocked-download explanation.
+ *
+ * --gnome-inactive-toolbar-color is the obvious candidate and the wrong one.
+ * Every palette sets it to 35% ink because it means "this window is not
+ * focused" -- at that strength a label measures about 3:1 on the popover,
+ * against the 8:1 Firefox gets from --text-color-deemphasized (currentColor at
+ * 69%). Measured on Firefox 153: it made those three labels harder to read
+ * than leaving them alone would have.
+ *
+ * 70% of the panel's own text colour matches what Firefox was doing. It needs
+ * no contrast-mode variant: parts/contrast-rules.css already promotes
+ * --gnome-toolbar-color to the full --whitesur-ink, so this strengthens with
+ * everything else under -i. */
+:root {
+	--whitesur-panel-secondary-text: color-mix(in srgb, var(--gnome-toolbar-color) 70%, transparent);
+}
+
 /* Every arrow panel: app menu, extensions, downloads, identity, permissions,
  * protections, the bookmark star. .tooltip-xul-wrapper stays excluded for the
  * same reason as in popups.css -- devtools builds dropdowns out of it. */
@@ -110,7 +128,7 @@ panel[type="arrow"]:not(.tooltip-xul-wrapper) {
 /* The "extension can't run here" / attention message and the panel footer. */
 #unified-extensions-panel .unified-extensions-item-message-deck,
 #unified-extensions-panel #unified-extensions-messages-container {
-	color: var(--gnome-inactive-toolbar-color) !important;
+	color: var(--whitesur-panel-secondary-text) !important;
 }
 
 /* Site information ("trust"), permissions and protections popups.
@@ -160,7 +178,7 @@ panel[type="arrow"]:not(.tooltip-xul-wrapper) {
 }
 
 .searchmode-switcher-panel-description {
-	color: var(--gnome-inactive-toolbar-color) !important;
+	color: var(--whitesur-panel-secondary-text) !important;
 }
 
 /* ...and the button itself in the address bar: the magnifier, the chevron and
