@@ -1,4 +1,5 @@
-GNOME CSD styles for headerbar on Firefox  @namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+/* GNOME CSD styles for headerbar on Firefox */
+@namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
 #main-window {
 	-moz-appearance: -moz-window-titlebar !important;
@@ -89,4 +90,4 @@ GNOME CSD styles for headerbar on Firefox  @namespace xul url("http://www.mozill
 	:root #navigator-toolbox[movingtab] #TabsToolbar {
 		padding-bottom: 0 !important;
 	}
-	
+}
