@@ -7,6 +7,32 @@
 
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
+/* Firefox's "attention" accent. It paints the matching substring in the
+ * address-bar results (the <strong> in each row), the attention dot on a
+ * toolbar button, and -- via --download-progress-fill-color -- the downloads
+ * progress bar. Its default is light-dark(oklch(55% 0.24 260), ...), a blue
+ * that no palette ever changed, so every theme highlighted search matches in
+ * Firefox blue. parts/downloads.css sets the progress bar directly because it
+ * also has to reach the Library and about:downloads; this is the root token
+ * everything else reads. */
+:root {
+	--toolbarbutton-icon-fill-attention: var(--theme-primary-color) !important;
+
+	/* Links in the chrome window. Found with the Browser Toolbox's own engine
+	 * (InspectorUtils.getMatchingCSSRules): the matching substring in an
+	 * address-bar result is painted by
+	 *   .urlbarView-row:not([selected]) & { color: var(--link-color) }
+	 * at view-proton.css:849 -- not by any accent token, which is why setting
+	 * those changed nothing. --link-color defaults to --color-blue-60, measured
+	 * 2.3:1 against a dark palette's result row. The same token colours
+	 * "Manage bookmarks..." on the empty bookmarks toolbar.
+	 *
+	 * parts/panels.css already sets this inside panels and parts/in-content.css
+	 * for about: pages; this is the window itself, so all three agree. */
+	--link-color: var(--theme-primary-color) !important;
+	--link-color-hover: var(--theme-primary-color-hover) !important;
+}
+
 /* Toolbox colors */
 #navigator-toolbox {
 	border: 0 !important;
