@@ -86,6 +86,34 @@ toolbarspring {
 	width: 100% !important;
 }
 
+/* ...and the colours Firefox paints the results from, which the rule above
+ * cannot reach. The row highlight, the separator and the chip inside the bar
+ * all come from --urlbarview-* / --urlbar-box-* on :root, every one of them a
+ * light-dark() pair. The palettes in custom/ are unconditional, so on a light
+ * desktop a dark palette got the light branch: a #e0e0e6 row and a white
+ * "Search with Google" chip sitting on a dark dropdown.
+ *
+ * Note the spelling. The colour tokens are --urlbarview-* with a lowercase v,
+ * while the metrics beside them are --urlbarView-* with a capital one. Custom
+ * properties are case-sensitive, so the two are unrelated names and only the
+ * lowercase set matters here. Read off Firefox 153 itself. */
+:root {
+	--urlbarview-background-color-selected: var(--gnome-popover-button-active-background) !important;
+	--urlbarview-background-color-hover: var(--gnome-popover-button-hover-background) !important;
+	--urlbarview-text-color-selected: var(--gnome-toolbar-color) !important;
+	--urlbarview-text-color-action: var(--whitesur-panel-secondary-text) !important;
+	--urlbarview-separator-color: var(--gnome-popover-separator-color) !important;
+
+	/* The pill inside the address bar -- "Search with Google", a search-mode
+	 * chip. Its resting colour is light-dark(white, ...), so it was a white
+	 * lozenge on a dark bar. */
+	--urlbar-box-background-color: var(--gnome-popover-button-hover-background) !important;
+	--urlbar-box-background-color-hover: var(--gnome-popover-button-active-background) !important;
+	--urlbar-box-background-color-active: var(--gnome-popover-button-active-background) !important;
+	--urlbar-box-background-color-focus: var(--gnome-popover-button-active-background) !important;
+	--urlbar-box-text-color-hover: var(--gnome-toolbar-color) !important;
+}
+
 .urlbarView-body-outer {
 	--item-padding-start: 0 !important;
 	--item-padding-end: 0 !important;
@@ -112,7 +140,10 @@ toolbarspring {
 	margin-bottom: 2px !important;
 	padding: 8px !important;
 	background: var(--gnome-popover-background) !important;
-	border-top: 1px solid var(--gnome-entry-border-color) !important;
+	/* --gnome-entry-border-color was never defined anywhere in the tree, so
+	 * this border was dropped as invalid. --gnome-popover-border-color is
+	 * the edge colour every palette actually declares. */
+	border-top: 1px solid var(--gnome-popover-border-color) !important;
 	border-radius: 0 0 5px 5px !important;
 }
 
