@@ -30,7 +30,7 @@ below. Quit the browser and everything gets reset.
 
 ## Installation
 
-The default way, on macOS, Windows and Linux — [fxcss](https://github.com/AdamXweb/fxcss) 0.14 or newer:
+The default way, on macOS, Windows and Linux — [fxcss](https://github.com/AdamXweb/fxcss) 0.16 or newer:
 
 ```bash
 pipx install "fxcss[images]"     # no pipx? see pipx.pypa.io (brew install pipx on macOS)
@@ -39,10 +39,42 @@ fxcss install AdamXweb/WhiteSurFirefoxThemeMacOS
 
 It installs into your Firefox profile all on macOS, Windows and Linux, including snap and flatpak Firefoxes on Linux. A Firefox in an unusual place is reachable via `FXCSS_PROFILE_ROOTS`; when more than one installed Firefox has profiles, fxcss asks which one to update. Your existing `chrome/` folder is backed up first, and optional stylesheets from `custom/` load with `--with`, e.g. `--with compact-tabs,tabs-swapclose`.
 
-Run it without `--with` and it asks which optional stylesheets to include. It also labels each profile with the Firefox it belongs to (`[Release]`, `[Developer Edition]`, `[ESR]`), so you can pick the right one. To put everything back the way it was:
+Run it without `--with` and it asks which optional stylesheets to include. It also labels each profile with the Firefox it belongs to (`[Release]`, `[Developer Edition]`, `[ESR]`), so you can pick the right one.
+
+### Keeping it up to date
 
 ```bash
-fxcss uninstall AdamXweb/WhiteSurFirefoxThemeMacOS
+fxcss profiles --check     # what is installed where, and whether it is current
+fxcss upgrade              # take the newest release, keeping a way back
+fxcss rollback             # …and that is the way back
+```
+
+`fxcss upgrade` fetches the newest release and re-installs it, keeping the
+version it replaced as a `chrome.backup-*` so `fxcss rollback` can undo it.
+It refuses to overwrite files you have edited yourself — the install records
+a hash per file, so it knows which ones those are — and stops if an optional
+stylesheet you had chosen was renamed or dropped, rather than letting that
+option quietly switch itself off.
+
+`fxcss upgrade --check` changes nothing and answers through its exit code
+(0 up to date, 1 an upgrade is available), which is what to point a cron job at.
+
+**Already installed the theme another way?** `fxcss adopt` identifies what you
+have by hashing every file in your `chrome/` folder and matching it against
+this repository's own releases, then records it so the commands above work:
+
+```bash
+fxcss adopt AdamXweb/WhiteSurFirefoxThemeMacOS
+```
+
+It copies your existing `chrome/` to a backup rather than replacing anything,
+and reports any files that already differ from the release it matched — an
+upgrade will not overwrite those without being told.
+
+To put everything back the way it was:
+
+```bash
+fxcss uninstall
 ```
 
 ### With the install script (macOS & Linux)
@@ -148,6 +180,17 @@ The Safari layout, with another palette on top. Install with `-t <name>`, e.g. `
 Available themes: `dracula`, `catppuccin-latte`, `catppuccin-frappe`, `catppuccin-macchiato`, `catppuccin-mocha`, `nord`, `gruvbox-dark`, `gruvbox-light`, `solarized-dark`, `solarized-light`, `tokyonight`, `material-ocean`, `material-palenight`, `one-dark`, `rose-pine`, `everforest-dark`, `ayu-mirage`, `night-owl`, `github-dark`, `monokai-pro`
 
 A palette covers the window chrome, the panels (app menu, extensions, site information and permissions, the address bar's search-engine list), the bookmarks and history sidebars, the Library window, the DevTools toolbox, and the `about:` pages — `about:preferences`, `about:addons`, `about:newtab`.
+
+**One palette at a time.** Every colour theme redefines the same set of variables, so installing two means whichever loads last silently replaces the other — the result looks like neither. `install.sh -t` takes a single name, and fxcss 0.16 or newer refuses two of them outright, naming the pair:
+
+```console
+$ fxcss install AdamXweb/WhiteSurFirefoxThemeMacOS --with theme-nord,theme-dracula
+
+  theme-dracula and theme-nord are alternatives, not additions: both set the
+  same 122 declaration(s), so whichever loads last replaces the other entirely
+```
+
+Palettes combine freely with the layout options (`compact-tabs`, `tabs-swapclose` and the rest) — those touch different declarations, and fxcss says nothing about them.
 
 DevTools follows the palette only when its own theme agrees with Firefox's appearance, since DevTools has a separate light/dark setting of its own (Settings > Themes in the toolbox). If they disagree, DevTools keeps its own colours rather than mixing the two.
 
