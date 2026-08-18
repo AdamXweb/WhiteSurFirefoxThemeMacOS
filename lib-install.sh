@@ -144,6 +144,21 @@ if [ "$CONTRAST" = true ] ; then
   echo "Increased contrast configured"
 fi
 
+# If a highlighted selected tab is wanted (-a). Composes with -t and -i: the
+# sheet is built from the palette's own --theme-primary-color and
+# --whitesur-ink, so it follows whichever theme is installed.
+if [ "$HIGHLIGHTTAB" = true ] ; then
+  cd "${REPO_DIR}"
+	echo "Enabling highlighted selected tab"
+      for layout_dir in "${FIREFOX_DIR_HOME}/"${PROFILE_GLOB}"/chrome/WhiteSur/custom" \
+                        "${FIREFOX_DIR_HOME}/"${PROFILE_GLOB}"/chrome/Monterey/custom"; do
+        [ -d "$(dirname "${layout_dir}")" ] || continue
+        mkdir -p "${layout_dir}"
+        cp -rf "${REPO_DIR}/custom/highlight-tab.css"                      "${layout_dir}"
+      done
+  echo "Highlighted selected tab configured"
+fi
+
 # Copy settings to enable stylesheets in firefox automatically.
   for d in "${FIREFOX_DIR_HOME}/"${PROFILE_GLOB}; do
     echo "user_pref(\"toolkit.legacyUserProfileCustomizations.stylesheets\", true);" >> "${d}/prefs.js"

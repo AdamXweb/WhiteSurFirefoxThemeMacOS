@@ -30,6 +30,7 @@
 @import "custom/standard-urlbar.css";
 @import "custom/windows-swapclose.css";
 @import "custom/compact-tabs.css";
+@import "custom/highlight-tab.css";
 /* Colour themes (-t flag installs exactly one of these) */
 @import "custom/theme-dracula.css";
 @import "custom/theme-catppuccin-latte.css";
