@@ -15,8 +15,9 @@
  * lighter, raised one. Nothing in CSS can branch on which case it is in, and
  * light-dark() cannot help because the palettes are unconditional (that is the
  * same trap parts/downloads.css documents). An accent marker has no direction
- * to get wrong: it holds a median 6:1 against the tab it sits on, and drops
- * below 3:1 in none of the 22 palettes once mixed toward the ink.
+ * to get wrong: measured across all 22 palettes it holds a median 8.7:1
+ * against the tab it sits on, with a floor of 5.0:1 -- Solarized Light and the
+ * base dark theme, whose accents are closest to their own tab colour.
  *
  * An accent tint on the tab itself was tried and removed. On paper it looked
  * worth having (1.14 -> 1.41 median against the bar); measured in the browser
@@ -32,8 +33,15 @@
 	 * directions at once -- lighter on a dark palette, darker on a light one --
 	 * because ink is itself the palette's "opposite of the surface" seed. It is
 	 * what lifts the base dark theme's #315bef off its dark tab (2.2 -> 3.4).
-	 * currentColor is the fallback, as in parts/downloads.css. */
-	--whitesur-tab-highlight-accent: color-mix(in srgb, var(--theme-primary-color) 75%, var(--whitesur-ink, currentColor));
+	 * currentColor is the fallback, as in parts/downloads.css.
+	 *
+	 * 55% is the point where every palette clears 4.5:1. At 75% the accent
+	 * keeps more of its saturation but two palettes stay weak -- the base dark
+	 * theme's #315bef manages only 3.5:1 on its own tab, and Solarized Light
+	 * 4.4:1. At 55% the median is 8.7:1 and the floor is 5.0:1, and the mix is
+	 * still majority accent, so the marker reads as the palette's colour
+	 * rather than as a grey line. */
+	--whitesur-tab-highlight-accent: color-mix(in srgb, var(--theme-primary-color) 55%, var(--whitesur-ink, currentColor));
 }
 
 /* The tab's painted surface is .tab-background, a sibling of the label's
@@ -45,7 +53,7 @@
 .tabbrowser-tab[selected] > .tab-stack > .tab-background {
 	box-shadow:
 		inset 0 -2px 0 0 var(--whitesur-tab-highlight-accent),
-		inset 0 0 0 1px color-mix(in srgb, var(--whitesur-tab-highlight-accent) 55%, transparent) !important;
+		inset 0 0 0 1px color-mix(in srgb, var(--whitesur-tab-highlight-accent) 70%, transparent) !important;
 }
 
 /* Vertical tabs: the strip runs down the side, so the marker moves to the
@@ -54,7 +62,7 @@
 #tabbrowser-tabs[orient="vertical"] .tabbrowser-tab[selected] > .tab-stack > .tab-background {
 	box-shadow:
 		inset 2px 0 0 0 var(--whitesur-tab-highlight-accent),
-		inset 0 0 0 1px color-mix(in srgb, var(--whitesur-tab-highlight-accent) 55%, transparent) !important;
+		inset 0 0 0 1px color-mix(in srgb, var(--whitesur-tab-highlight-accent) 70%, transparent) !important;
 }
 
 /* Container tabs draw their identity colour along the top of the same element
