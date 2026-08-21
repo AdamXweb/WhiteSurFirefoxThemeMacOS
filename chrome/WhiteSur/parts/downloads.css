@@ -1,0 +1,138 @@
+/* Downloads: the popup under the downloads arrow, and the same rows where they
+ * appear again in the Library window and about:downloads.
+ *
+ * parts/panels.css already hands every panel[type="arrow"] the palette's
+ * popover surface, and parts/popups-contents.css lays the rows out. Neither
+ * reaches the panel's own furniture, because none of it is painted from the
+ * panel variables:
+ *
+ *  - The progress bar. Its fill is
+ *      --download-progress-fill-color: var(--toolbarbutton-icon-fill-attention)
+ *    declared on :root in browser/themes/shared/downloads/progressmeter.css.
+ *    The theme never set that variable, so a download in flight drew a
+ *    Firefox-blue bar under every palette; a paused one drew GrayText, a
+ *    system colour that ignores the palette entirely.
+ *
+ *  - The blocked and insecure states, which are light-dark() pairs
+ *    (--text-color-error, --icon-color-critical, and hardcoded light-dark()
+ *    fills on ESR). light-dark() resolves against the *system* colour scheme,
+ *    while the twenty palettes in custom/ are unconditional -- theme-nord.css
+ *    is dark whatever macOS is set to. A dark palette on a light desktop
+ *    therefore got the light-mode red, on a dark popover.
+ *
+ *  - The summary strip along the bottom, which is a dimmed panel surface
+ *    (--panel-background-color-dimmed, --arrowpanel-dimmed on ESR).
+ *
+ * Only the strip and the panel text are scoped to #downloadsPanel. The rest is
+ * deliberately unscoped: the same rows appear in the Library window and in
+ * about:downloads, and a progress bar or a warning badge is the same colour in
+ * all three. The class names are downloads-specific, so nothing else in a
+ * chrome document can match them.
+ *
+ * Selectors and variables checked against mozilla-central and mozilla-esr140.
+ * Where the two disagree both spellings are set; the absent one is inert. */
+
+@namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+
+/* Palette-aware state colours.
+ *
+ * A blocked download has to stay red and a warning amber -- that is the whole
+ * message -- so these are not palette hues. What they need is to be legible on
+ * the palette's surface, which is what Firefox's light-dark() pairs are for and
+ * what they get wrong here. Mixing a fixed hue toward --whitesur-ink does the
+ * same job from the palette itself: ink is near-white on a dark palette and
+ * near-black on a light one, so the mix lightens or darkens in the direction
+ * that surface needs. Every palette declares the seed (it was added for the -i
+ * contrast rules); currentColor is the fallback, which fills the same role.
+ *
+ * 55% is the point where the weakest palette still clears its threshold. The
+ * binding cases are Catppuccin Latte, whose ink is a soft slate (#4c4f69)
+ * rather than near-black so the mix darkens least, and Nord, whose popover is
+ * the lightest of the dark surfaces. At 55% the critical colour holds 4.6:1 or
+ * better everywhere -- it is read as text, not only as an icon -- and the amber
+ * holds 3.2:1, which is the threshold for the badge it fills. */
+:root {
+	--whitesur-download-critical: color-mix(in srgb, #e01b24 55%, var(--whitesur-ink, currentColor));
+	--whitesur-download-warning: color-mix(in srgb, #f5a623 55%, var(--whitesur-ink, currentColor));
+	--whitesur-download-information: color-mix(in srgb, #0a84ff 55%, var(--whitesur-ink, currentColor));
+}
+
+/* ---- Progress bars ----------------------------------------------------- */
+
+/* Both the per-download bar and #downloadsSummaryProgress. The variables are
+ * set on the element rather than on :root so the Library and about:downloads
+ * get them too; ::-moz-progress-bar inherits them from here.
+ *
+ * The track is restated because current Firefox paints it from
+ * --background-color-canvas behind browser.nova.enabled, declared on this very
+ * element -- a canvas override on the panel cannot reach it. currentColor is
+ * the panel text, so the wash follows the palette on every version. */
+.downloadProgress {
+	--download-progress-fill-color: var(--theme-primary-color) !important;
+	--download-progress-paused-color: var(--gnome-inactive-toolbar-color) !important;
+	background-color: color-mix(in srgb, currentColor 15%, transparent) !important;
+}
+
+/* ---- Blocked and insecure downloads ------------------------------------ */
+
+/* The badge on a blocked row, and the larger image on the subview it opens.
+ * Current Firefox fills both from --icon-color-*; ESR 140 hardcodes
+ * light-dark() values with no variable to override, so the fill is set on the
+ * elements as well -- that spelling covers both. */
+#downloadsPanel,
+#downloadsListBox {
+	--icon-color-critical: var(--whitesur-download-critical) !important;
+	--icon-color-warning: var(--whitesur-download-warning) !important;
+	--icon-color-information: var(--whitesur-download-information) !important;
+	--text-color-error: var(--whitesur-download-critical) !important;
+}
+
+#downloadsListBox > richlistitem[verdict="Insecure"] .downloadBlockedBadge,
+#downloadsListBox > richlistitem[verdict="Malware"] .downloadBlockedBadge,
+#downloadsPanel-blockedSubview[verdict="Insecure"] .downloadsPanel-blockedSubview-image,
+#downloadsPanel-blockedSubview[verdict="Malware"] .downloadsPanel-blockedSubview-image {
+	fill: var(--whitesur-download-critical) !important;
+}
+
+#downloadsListBox > richlistitem[verdict="PotentiallyUnwanted"] .downloadBlockedBadge,
+#downloadsListBox > richlistitem[verdict="DownloadSpam"] .downloadBlockedBadge,
+#downloadsPanel-blockedSubview[verdict="PotentiallyUnwanted"] .downloadsPanel-blockedSubview-image,
+#downloadsPanel-blockedSubview[verdict="DownloadSpam"] .downloadsPanel-blockedSubview-image {
+	fill: var(--whitesur-download-warning) !important;
+}
+
+#downloadsListBox > richlistitem[verdict="Uncommon"] .downloadBlockedBadge,
+#downloadsPanel-blockedSubview[verdict="Uncommon"] .downloadsPanel-blockedSubview-image {
+	fill: var(--whitesur-download-information) !important;
+}
+
+/* The row's own warning text ("file was blocked"), which Firefox deliberately
+ * exempts from the details opacity so it keeps its contrast. */
+#downloadsListBox > richlistitem[verdict="Insecure"] .downloadDetails,
+#downloadsListBox > richlistitem[verdict="Malware"] .downloadDetails {
+	color: var(--whitesur-download-critical) !important;
+}
+
+/* ---- Panel furniture --------------------------------------------------- */
+
+/* The summary strip along the bottom -- shown while downloads are in progress,
+ * in place of "Show all downloads". It sits on the popover, so it takes the
+ * same wash the panel gives a hovered row; its top border already follows
+ * --panel-separator-color from parts/panels.css. */
+#downloadsPanel {
+	--panel-background-color-dimmed: var(--gnome-popover-button-hover-background) !important;
+	--arrowpanel-dimmed: var(--gnome-popover-button-hover-background) !important;
+}
+
+/* Text inside the panel that Firefox colours itself: the private-browsing
+ * header, and the two explanatory lines of the blocked subview, which are
+ * deemphasized body text -- the same treatment parts/panels.css gives the
+ * extensions panel's messages, and the same variable, so all three agree. */
+#downloadsPanel .panel-header {
+	color: var(--gnome-toolbar-color) !important;
+}
+
+#downloadsPanel-blockedSubview-details1,
+#downloadsPanel-blockedSubview-details2 {
+	color: var(--whitesur-panel-secondary-text) !important;
+}

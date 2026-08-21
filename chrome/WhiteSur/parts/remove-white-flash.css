@@ -3,7 +3,14 @@
 
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
-/* Overrides: Change the flash color */
+/* Overrides: Change the flash color.
+ *
+ * #browser and .browserContainer are the boxes around the tab panels. They
+ * were measured still holding Firefox's own #f9f9fb with a dark palette
+ * installed, which is the same flash this sheet exists to remove -- it just
+ * showed through a different element. */
+#browser,
+.browserContainer,
 #tabbrowser-tabpanels,
 #tabbrowser-tabpanels[pendingpaint],
 browser {

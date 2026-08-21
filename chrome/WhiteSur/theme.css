@@ -7,6 +7,7 @@
 @import "parts/titlebutton-dark.css";
 @import "parts/popups.css";
 @import "parts/panels.css";
+@import "parts/downloads.css";
 @import "parts/places.css";
 @import "parts/devtools.css";
 @import "parts/tabsbar.css";
@@ -51,6 +52,10 @@
 @import "custom/theme-night-owl.css";
 @import "custom/theme-github-dark.css";
 @import "custom/theme-monokai-pro.css";
+
+/* After every palette: it re-derives two inactive-window colours the palettes
+ * all set too faint, so it has to come later than they do. */
+@import "parts/inactive-window.css";
 /* Increase contrast. Last, so it can override the palette that was just
  * loaded: automatic under the OS setting, and unconditional when install.sh -i
  * copied the opt-in sheet into the profile. */

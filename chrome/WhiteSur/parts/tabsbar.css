@@ -82,7 +82,22 @@ tab>stack {
 	margin: 0 0 !important;
 }
 
-/* Tab labels */
+/* Tab labels.
+ *
+ * The rules below set `color` on `tab`, which only ever reaches the label by
+ * inheritance -- and Firefox declares a colour on .tab-content itself, from
+ * --tab-selected-textcolor. An element's own declaration beats an inherited
+ * value whatever its origin or importance, so the !important here never
+ * applied to the selected tab's label. The token is a light-dark() pair
+ * (rgb(21, 20, 26) / #ffffff), and the palettes in custom/ are unconditional,
+ * so a dark palette on a light desktop rendered the selected tab's title
+ * near-black on a dark tab: measured at 1.1:1 on Firefox 153.
+ *
+ * Setting the token is what actually reaches the label. */
+:root {
+	--tab-selected-textcolor: var(--gnome-tabbar-tab-active-color) !important;
+}
+
 tab {
 	color: var(--gnome-tabbar-tab-color) !important;
 	font-family: SF Pro, inherit;
