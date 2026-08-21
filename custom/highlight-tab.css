@@ -1,0 +1,79 @@
+/* Highlight the selected tab.  install.sh -a
+ *
+ * WhiteSur follows Safari, where the selected tab is separated from its
+ * neighbours by a very slight change of shade. That reads well in the palette
+ * it was designed for and badly in most of the others: measured across all 22
+ * palettes, the selected tab sits a median 1.14:1 from the tab bar, and in
+ * Night Owl, Material Ocean and Rose Pine it is 1.04-1.05 -- no visible
+ * difference at all. This sheet makes the selection obvious without repainting
+ * the rest of the theme.
+ *
+ * Why the marker and not just a lighter tab: the direction a background has to
+ * move is not the same on every palette. Mixing toward --whitesur-ink lifts a
+ * dark palette nicely (1.14 -> 1.8-2.4) but *darkens* the four light ones,
+ * which is backwards -- on a light theme the selected tab should read as the
+ * lighter, raised one. Nothing in CSS can branch on which case it is in, and
+ * light-dark() cannot help because the palettes are unconditional (that is the
+ * same trap parts/downloads.css documents). An accent marker has no direction
+ * to get wrong: measured across all 22 palettes it holds a median 8.7:1
+ * against the tab it sits on, with a floor of 5.0:1 -- Solarized Light and the
+ * base dark theme, whose accents are closest to their own tab colour.
+ *
+ * An accent tint on the tab itself was tried and removed. On paper it looked
+ * worth having (1.14 -> 1.41 median against the bar); measured in the browser
+ * it made two of the three palettes checked *worse*, because tinting moves the
+ * tab toward the accent's luminance, which in Gruvbox Light sits right on the
+ * tab bar's (1.21 -> 1.03) and in Night Owl right on the unselected tabs'
+ * (1.23 -> 1.03). The tab keeps the colour the palette gives it. */
+
+@namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+
+:root {
+	/* Mixing the accent toward the ink raises it away from the tab in both
+	 * directions at once -- lighter on a dark palette, darker on a light one --
+	 * because ink is itself the palette's "opposite of the surface" seed. It is
+	 * what lifts the base dark theme's #315bef off its dark tab (2.2 -> 3.4).
+	 * currentColor is the fallback, as in parts/downloads.css.
+	 *
+	 * 55% is the point where every palette clears 4.5:1. At 75% the accent
+	 * keeps more of its saturation but two palettes stay weak -- the base dark
+	 * theme's #315bef manages only 3.5:1 on its own tab, and Solarized Light
+	 * 4.4:1. At 55% the median is 8.7:1 and the floor is 5.0:1, and the mix is
+	 * still majority accent, so the marker reads as the palette's colour
+	 * rather than as a grey line. */
+	--whitesur-tab-highlight-accent: color-mix(in srgb, var(--theme-primary-color) 55%, var(--whitesur-ink, currentColor));
+}
+
+/* The tab's painted surface is .tab-background, a sibling of the label's
+ * .tab-content rather than an ancestor of it, so this cannot affect the text.
+ *
+ * Both marks are inset box-shadows rather than borders or a pseudo-element:
+ * a border would change the tab's box and shift the label, and .tab-background
+ * is not a positioned element, so an ::after would need one adding. */
+.tabbrowser-tab[selected] > .tab-stack > .tab-background {
+	box-shadow:
+		inset 0 -2px 0 0 var(--whitesur-tab-highlight-accent),
+		inset 0 0 0 1px color-mix(in srgb, var(--whitesur-tab-highlight-accent) 70%, transparent) !important;
+}
+
+/* Vertical tabs: the strip runs down the side, so the marker moves to the
+ * inline start. Guarded on orient rather than on a container id -- the same
+ * #tabbrowser-tabs serves both layouts (see parts/vertical-tabs.css). */
+#tabbrowser-tabs[orient="vertical"] .tabbrowser-tab[selected] > .tab-stack > .tab-background {
+	box-shadow:
+		inset 2px 0 0 0 var(--whitesur-tab-highlight-accent),
+		inset 0 0 0 1px color-mix(in srgb, var(--whitesur-tab-highlight-accent) 70%, transparent) !important;
+}
+
+/* Container tabs draw their identity colour along the top of the same element
+ * (parts/tabsbar.css). Keeping the marker on the bottom edge leaves that line
+ * intact, so a container tab still shows both which container it is in and
+ * that it is the selected one. */
+
+/* The title at full strength, against the dimmed one every unselected tab
+ * gets. parts/tabsbar.css sets --tab-selected-textcolor for this; restating it
+ * here keeps the sheet working if it is dropped into an older install. */
+.tabbrowser-tab[selected] .tab-label {
+	color: var(--gnome-tabbar-tab-active-color) !important;
+	font-weight: 600 !important;
+}

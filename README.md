@@ -100,6 +100,7 @@ The script supports the following flags
 - `-s` Single tab view (Tabs hidden when only one tab)
 - `-t <name>` Colour theme (see Colour themes below)
 - `-i` Increase contrast (see Colour themes below)
+- `-a` Highlight the selected tab (see Colour themes below)
 - `-r` Remove the theme
 
 e.g. To install with script, with the tab close button left hand side: `bash install.sh -c` 
@@ -205,6 +206,18 @@ bash install.sh -t nord -i
 `-i` pushes text to full strength, makes borders and separators visible, turns off the dimming on the idle address bar, and brings back the focus ring the palettes hide. It works with any palette, and on the base theme with no `-t` at all.
 
 You do not need the flag if you already ask for more contrast at the OS level — macOS System Settings > Accessibility > Display > Increase contrast, or its Windows and GNOME equivalents. The theme responds to that on its own; `-i` is for turning it on regardless.
+
+#### Highlight the selected tab
+
+```bash
+bash install.sh -t night-owl -a
+```
+
+WhiteSur follows Safari, where the selected tab differs from its neighbours by a slight change of shade. That reads well in the palette it was designed for and faintly in most others — across the 22 palettes the selected tab sits a median 1.14:1 from the tab bar, and in Night Owl, Material Ocean and Rose Pine it is 1.04, which is no visible difference at all.
+
+`-a` marks the selected tab with a bar in the palette's accent colour along its bottom edge — its inline edge with vertical tabs — and a faint outline in the same colour. The tab's own background is left exactly as the palette sets it, so no palette is made worse: the marker carries the signal on its own, because a background alone cannot. A dark palette wants the selected tab lighter, a light palette wants it lighter still against a light bar, and no single mix moves both the right way. Container tabs keep their identity line, which runs along the top edge.
+
+It works with any palette, with `-i`, and with vertical tabs.
 
 #### Previews
 
