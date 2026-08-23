@@ -1,15 +1,32 @@
 name: README previews
 
-# Renders the theme's optional stylesheets and colour themes with fxcss and
-# publishes the captures to a `previews` branch, so the README can embed
-# stable raw URLs that refresh themselves whenever the theme changes on
-# master. Same branch-publishing pattern as ci-previews; images are for
-# looking at — the pass/fail check remains pr-preview.yml.
+# Renders the theme -- the standard views, one capture per optional stylesheet,
+# and a before/after crop of what each stylesheet actually changes -- and
+# publishes the images to a `previews` branch, so a README can embed stable raw
+# URLs that refresh themselves whenever the theme changes. Hand-taken
+# screenshots go stale silently; these cannot.
+#
+# Embed them like this (the branch holds the files flat, at the root):
+#
+#   <details>
+#   <summary>Tab close button on the left</summary>
+#
+#   <img src="https://raw.githubusercontent.com/OWNER/REPO/previews/tabs-swapclose-diff.png" width="830">
+#
+#   </details>
+#
+# Prefer the `-diff.png` crop over the full `variant-*.png` window: a whole
+# browser window does not show that a 16px close button moved. The crop is
+# built from the pixels that actually changed, so it needs no per-option
+# configuration and cannot drift when Firefox moves something.
+#
+# These are for looking at, not for testing -- the pass/fail check is
+# pr-preview.yml.
 
 on:
   workflow_dispatch:
   push:
-    branches: [master]
+    branches: [master, main]
     paths:
       - 'chrome/**'
       - 'custom/**'
@@ -23,16 +40,16 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  FXCSS_VERSION: 0.16.1
+  FXCSS_VERSION: 0.16.2
 
 jobs:
   render:
     runs-on: macos-latest
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.12'
 
@@ -55,16 +72,16 @@ jobs:
         run: |
           set -euo pipefail
           fxcss shot --theme . --out shots --variants all
-          # Before/after crops of what each optional stylesheet changes: a full
-          # window does not show that a 16px close button moved.
+          # Also the before/after crops: same captures, cropped to the region
+          # each stylesheet changes, which is what makes an option legible.
           fxcss tweaks --theme . --out crops
 
       - name: Publish to previews branch
         run: |
           set -euo pipefail
           # `shot` writes its captures FLAT into --out. (The full/ subdirectory
-          # in the PR-preview artifacts is made by `compare`, from the head
-          # screenshots it normalises -- a different command, different layout.)
+          # in the PR-preview artifacts is written by `compare`, from the head
+          # captures it normalises -- a different command, different shape.)
           count=$(find shots crops -maxdepth 1 -name '*.png' 2>/dev/null | wc -l | tr -d ' ')
           if [ "$count" -eq 0 ]; then
             echo "::error::no captures in shots/ -- fxcss shot wrote nothing"
@@ -76,20 +93,23 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
 
           # Always a fresh orphan, force-pushed: this branch is a snapshot of
-          # the current theme, never a history. Keeping history here would add
-          # ~1MB of PNG blobs to the repo on every theme change, forever.
+          # the theme as it is now, never a history. Keeping history would add
+          # a megabyte of PNG blobs to the repository on every theme change,
+          # forever, and leave deleted stylesheets behind as stale images.
           git checkout --orphan previews
           git rm -rf --cached . >/dev/null 2>&1 || true
           find . -maxdepth 1 -mindepth 1 \
             ! -name .git ! -name shots -exec rm -rf {} +
           printf '%s\n' \
-            '# README preview images' '' \
-            'Rendered by the README previews workflow, from the theme as it is' \
-            'on master. Safe to delete; regenerated on the next theme change.' \
+            '# Preview images' '' \
+            'Rendered by the README previews workflow from the theme on the' \
+            'default branch. Safe to delete; regenerated on the next change.' \
             '' \
             'This branch carries no history by design -- each run replaces it.' > README.md
           cp shots/*.png .
-          cp crops/*-diff.png . 2>/dev/null || echo "no crops rendered"
+          # Crops alongside the full windows; TWEAKS.md is for committing into
+          # a repo, which is not what this branch is for.
+          cp crops/*-diff.png . 2>/dev/null || echo "no crops (no optional stylesheets?)"
           rm -rf shots crops
           git add -A
           git commit -q -m "previews: ${GITHUB_SHA}"

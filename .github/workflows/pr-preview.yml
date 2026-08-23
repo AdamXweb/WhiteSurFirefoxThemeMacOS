@@ -32,7 +32,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  FXCSS_VERSION: 0.16.1
+  FXCSS_VERSION: 0.16.2
 
 jobs:
   render:
@@ -52,20 +52,20 @@ jobs:
 
     steps:
       - name: Check out base revision
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           ref: ${{ github.event.pull_request.base.sha }}
           path: base
           persist-credentials: false
 
       - name: Check out pull request revision
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           path: head
           persist-credentials: false
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.12'
 
@@ -140,7 +140,7 @@ jobs:
           echo "${{ github.event.pull_request.head.sha }}" > out/head-sha.txt
 
       - name: Upload preview
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: preview-${{ matrix.label }}
           path: out/

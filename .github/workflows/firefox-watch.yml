@@ -28,7 +28,7 @@ permissions:
   issues: write
 
 env:
-  FXCSS_VERSION: 0.16.1
+  FXCSS_VERSION: 0.16.2
 
 jobs:
   check:
@@ -41,9 +41,9 @@ jobs:
         channel: [release, beta, nightly]
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.12'
 
@@ -63,9 +63,13 @@ jobs:
             esr)     product=firefox-esr-latest-ssl ;;
             *) echo "unknown channel"; exit 1 ;;
           esac
-          curl -sSL -o firefox.dmg \
+          # Into $RUNNER_TEMP, not the checkout: the fix step below commits
+          # from this tree, and a 150 MB dmg sitting in it was being swept
+          # into the commit, which GitHub's 100 MB limit then rejected --
+          # silently killing the watch on every channel.
+          curl -sSL -o "$RUNNER_TEMP/firefox.dmg" \
             "https://download.mozilla.org/?product=${product}&os=osx&lang=en-US"
-          hdiutil attach -nobrowse -quiet -mountpoint /Volumes/ffwatch firefox.dmg
+          hdiutil attach -nobrowse -quiet -mountpoint /Volumes/ffwatch "$RUNNER_TEMP/firefox.dmg"
           cp -R /Volumes/ffwatch/*.app "$RUNNER_TEMP/Firefox.app"
           hdiutil detach /Volumes/ffwatch -quiet
           echo "FIREFOX_BIN=$RUNNER_TEMP/Firefox.app/Contents/MacOS/firefox" >> "$GITHUB_ENV"
@@ -103,8 +107,11 @@ jobs:
           git config user.name  'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git checkout -b "$branch"
-          git apply fxcss-fix.patch
-          git add -A ':!audit.txt' ':!fxcss-fix.patch'
+          # --index applies the patch and stages exactly the files it
+          # touches, nothing else. `git add -A` with a couple of exclusions is
+          # how a 150 MB dmg got committed; anything else a step leaves in the
+          # tree would have gone the same way.
+          git apply --index fxcss-fix.patch
           git commit -m "fix(css): update selectors renamed in Firefox ${VERSION}"
           git push origin "$branch"
           {
@@ -169,7 +176,7 @@ jobs:
               --comment "Firefox ${CHANNEL} audits clean again — closing."
           fi
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: audit-${{ matrix.channel }}
