@@ -32,7 +32,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  FXCSS_VERSION: 0.16.2
+  FXCSS_VERSION: 0.17.0
 
 jobs:
   render:
@@ -122,8 +122,57 @@ jobs:
       - name: Environment
         run: fxcss doctor --theme head
 
+      # The base branch renders identically every time -- that determinism is
+      # the contract fxcss's own CI asserts -- so after the first push to a
+      # pull request there is no reason to render it again. The key names
+      # everything that could change the pixels: the base commit, the runner
+      # image, the Firefox that happened to be current, the fxcss release and
+      # this workflow file. A miss on any of them re-renders; there is no
+      # restore-keys fallback, because a near-match is a different render.
+      #
+      # GitHub scopes caches to the branch that made them, so this helps the
+      # second and later pushes of a pull request, not its first.
+      - name: Base render cache key
+        id: basekey
+        shell: bash
+        run: |
+          firefox=$(python - <<'EOF'
+          import configparser, os, pathlib
+          binary = pathlib.Path(os.environ["FIREFOX_BIN"])
+          for ini in (binary.parent / "application.ini",
+                      binary.parent.parent / "Resources" / "application.ini"):
+              if ini.is_file():
+                  cfg = configparser.ConfigParser(); cfg.read(ini, encoding="utf-8")
+                  print(cfg.get("App", "Version", fallback="unknown")); break
+          else:
+              print("unknown")
+          EOF
+          )
+          echo "firefox=$firefox" >> "$GITHUB_OUTPUT"
+          echo "image=${ImageVersion:-unknown}" >> "$GITHUB_OUTPUT"
+          echo "base render key: firefox=$firefox image=${ImageVersion:-unknown}"
+
+      - name: Restore base render
+        id: basecache
+        uses: actions/cache/restore@v5
+        with:
+          path: shots/base
+          key: >-
+            base-render-${{ matrix.label }}-${{ github.event.pull_request.base.sha }}-ff${{ steps.basekey.outputs.firefox }}-img${{ steps.basekey.outputs.image }}-fxcss${{ env.FXCSS_VERSION }}-${{ hashFiles('head/.github/workflows/pr-preview.yml') }}
+
       - name: Render base revision
+        if: steps.basecache.outputs.cache-hit != 'true'
         run: fxcss shot --theme base --out shots/base --variants all
+
+      # Saved the moment the base render succeeds rather than when the job
+      # ends: a push that supersedes this run cancels it, and the base is
+      # usually done by then -- which is exactly the run the next push wants.
+      - name: Save base render
+        if: steps.basecache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v5
+        with:
+          path: shots/base
+          key: ${{ steps.basecache.outputs.cache-primary-key }}
 
       - name: Render pull request revision
         run: fxcss shot --theme head --out shots/head --variants all
