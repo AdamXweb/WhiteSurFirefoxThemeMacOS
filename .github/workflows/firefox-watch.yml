@@ -28,7 +28,7 @@ permissions:
   issues: write
 
 env:
-  FXCSS_VERSION: 0.17.0
+  FXCSS_VERSION: 0.18.0
 
 jobs:
   check:
@@ -90,6 +90,74 @@ jobs:
             | sed -n 's/^version: *\([0-9][^ ]*\).*/\1/p' | head -1)
           echo "version=${version:-unknown}" >> "$GITHUB_OUTPUT"
           if [ -s fxcss-fix.patch ]; then echo "patch=yes" >> "$GITHUB_OUTPUT"; fi
+
+      # The audit sees selectors; it does not see the capture pipeline. When
+      # Firefox 154 moved a module out from under fxcss, every preview render
+      # broke on release day while a (then healthy) audit-only watch would
+      # have stayed green -- beta had the breakage four days early and nothing
+      # could say so. One standard capture per channel is the canary for that:
+      # if this fails on beta, PR previews fail when that Firefox reaches
+      # release, and the usual fix is an fxcss update rather than a theme one.
+      - name: Capture smoke
+        id: smoke
+        if: ${{ github.event.inputs.channel == '' || github.event.inputs.channel == matrix.channel }}
+        run: |
+          set +e
+          fxcss shot --out "$RUNNER_TEMP/smoke" > smoke.txt 2>&1
+          status=$?
+          tail -40 smoke.txt
+          echo "status=$status" >> "$GITHUB_OUTPUT"
+
+      - name: Open or update the capture-pipeline issue
+        if: steps.smoke.outputs.status != '0'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CHANNEL: ${{ matrix.channel }}
+          VERSION: ${{ steps.audit.outputs.version }}
+        run: |
+          set -euo pipefail
+          title="Firefox ${CHANNEL}: the capture pipeline broke"
+          {
+            echo "Rendering this theme against Firefox **${CHANNEL}** (**${VERSION}**) crashed"
+            echo "outright -- not a styling regression, the capture itself. When this"
+            echo "Firefox reaches release, the PR preview and README preview workflows"
+            echo "will fail the same way."
+            echo
+            echo "This is usually Firefox moving something out from under fxcss (as"
+            echo "Firefox 154 did), so the fix is typically a newer fxcss release and a"
+            echo "pin bump here -- check https://github.com/AdamXweb/fxcss/releases and"
+            echo "open an issue there if nothing newer exists."
+            echo
+            echo "The last lines of the failed capture:"
+            echo
+            echo '```'
+            tail -40 smoke.txt
+            echo '```'
+            echo
+            echo "_Updated automatically. This closes itself when the channel is clean._"
+          } > smoke-body.md
+          existing=$(gh issue list --state open --search "$title in:title" \
+            --json number,title --jq "[.[] | select(.title == \"$title\")][0].number")
+          if [ -n "$existing" ] && [ "$existing" != "null" ]; then
+            gh issue edit "$existing" --body-file smoke-body.md
+          else
+            gh issue create --title "$title" --body-file smoke-body.md
+          fi
+
+      - name: Close the capture-pipeline issue if this channel is clean again
+        if: steps.smoke.outputs.status == '0'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CHANNEL: ${{ matrix.channel }}
+        run: |
+          set -euo pipefail
+          title="Firefox ${CHANNEL}: the capture pipeline broke"
+          existing=$(gh issue list --state open --search "$title in:title" \
+            --json number,title --jq "[.[] | select(.title == \"$title\")][0].number")
+          if [ -n "$existing" ] && [ "$existing" != "null" ]; then
+            gh issue close "$existing" \
+              --comment "Firefox ${CHANNEL} captures cleanly again -- closing."
+          fi
 
       - name: Open a pull request with the confident fixes
         if: steps.audit.outputs.status != '0' && steps.audit.outputs.patch == 'yes'
@@ -182,6 +250,7 @@ jobs:
           name: audit-${{ matrix.channel }}
           path: |
             audit.txt
+            smoke.txt
             fxcss-fix.patch
           if-no-files-found: ignore
           retention-days: 30

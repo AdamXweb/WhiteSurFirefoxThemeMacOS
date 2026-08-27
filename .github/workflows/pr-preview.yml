@@ -32,7 +32,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  FXCSS_VERSION: 0.17.0
+  FXCSS_VERSION: 0.18.0
 
 jobs:
   render:
