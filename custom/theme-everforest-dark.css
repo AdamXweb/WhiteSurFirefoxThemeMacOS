@@ -55,7 +55,7 @@
 	--gnome-button-box-shadow: inset 0 1px rgba(255, 255, 255, 0.08);
 	--gnome-button-hover-color: rgba(255, 255, 255, 0.1);
 	--gnome-button-active-color: rgba(255, 255, 255, 0.2);
-	--gnome-button-hover-background: linear-gradient(to top, #53595e 0%, #5f656a 100%);
+	--gnome-button-hover-background: linear-gradient(to top, #53595e 0%, #5e6469 100%);
 	--gnome-button-active-background-alt: #53595e !important;
 	--gnome-button-active-background-alt-border: #5f656a !important;
 	--gnome-button-active-background-alt-hover: #444b50 !important;
@@ -85,7 +85,7 @@
 	--gnome-button-destructive-action-active-background: #c66c6e;
 	--gnome-button-destructive-action-active-border-color: #985354;
 	--gnome-button-destructive-action-active-box-shadow: inset 0 1px rgba(255, 255, 255, 0);
-	--gnome-button-menulist-color: #d3c6aa;
+	--gnome-button-menulist-color: #e7e0d0;
 	--gnome-headerbar-button-hover-background: rgba(255, 255, 255, 0.1);
 	--gnome-headerbar-button-active-background: rgba(255, 255, 255, 0.15);
 
