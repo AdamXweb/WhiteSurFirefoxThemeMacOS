@@ -55,18 +55,34 @@ panel[type="arrow"]:not(.tooltip-xul-wrapper) {
 	--button-text-color-ghost-hover: var(--gnome-toolbar-color) !important;
 	--button-text-color-ghost-active: var(--gnome-toolbar-color) !important;
 
-	/* Solid buttons inside a panel, e.g. "Manage extensions". */
+	/* Solid buttons inside a panel, e.g. "Manage extensions" or the update
+	 * doorhanger's Dismiss/Download pair. The hover and active tiers must be
+	 * restated even though tokens-shared.css derives them from the base
+	 * tokens: those derivations (--button-text-color-hover:
+	 * var(--button-text-color) and friends) are declared on :root, so they
+	 * compute against Firefox's own values there and the finished colour is
+	 * what inherits into the panel -- a panel-level base token never feeds
+	 * them. Without the restatements, hovering a doorhanger button snaps to
+	 * Firefox's default palette (teal in dark). */
 	--button-background-color: var(--gnome-button-active-background-alt) !important;
 	--button-background-color-hover: var(--gnome-button-active-background-alt-hover) !important;
 	--button-background-color-active: var(--gnome-button-active-background) !important;
 	--button-text-color: var(--gnome-button-menulist-color) !important;
+	--button-text-color-hover: var(--gnome-button-menulist-color) !important;
+	--button-text-color-active: var(--gnome-button-menulist-color) !important;
 	--button-border-color: var(--gnome-button-active-background-alt-border) !important;
+	--button-border-color-hover: var(--gnome-button-active-background-alt-border) !important;
+	--button-border-color-active: var(--gnome-button-active-background-alt-border) !important;
 
 	--color-accent-primary: var(--theme-primary-color) !important;
 	--color-accent-primary-hover: var(--theme-primary-color-hover) !important;
 	--color-accent-primary-active: var(--theme-primary-color-hover) !important;
 	--button-background-color-primary: var(--theme-primary-color) !important;
+	--button-background-color-primary-hover: var(--theme-primary-color-hover) !important;
+	--button-background-color-primary-active: var(--theme-primary-color-hover) !important;
 	--button-text-color-primary: var(--theme-alt-color) !important;
+	--button-text-color-primary-hover: var(--theme-alt-color) !important;
+	--button-text-color-primary-active: var(--theme-alt-color) !important;
 	--link-color: var(--theme-primary-color) !important;
 	--link-color-hover: var(--theme-primary-color-hover) !important;
 }

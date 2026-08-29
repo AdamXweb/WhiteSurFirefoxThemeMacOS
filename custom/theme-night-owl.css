@@ -11,7 +11,7 @@
 	--gnome-browser-before-load-background: #011627;
 	--theme-primary-color: #82aaff !important;
 	--theme-primary-color-hover: #a1bfff;
-	--theme-alt-color: #d6deeb;
+	--theme-alt-color: #01111d;
 	--in-content-link-color: var(--theme-primary-color) !important;
 	--in-content-link-color-hover: var(--theme-primary-color-hover) !important;
 
@@ -58,7 +58,7 @@
 	--gnome-button-hover-background: linear-gradient(to top, #2f404e 0%, #3e4e5b 100%);
 	--gnome-button-active-background-alt: #2f404e !important;
 	--gnome-button-active-background-alt-border: #3e4e5b !important;
-	--gnome-button-active-background-alt-hover: #5f7e97 !important;
+	--gnome-button-active-background-alt-hover: #1d2f3f !important;
 	--gnome-button-active-background: #0b1f30;
 	--gnome-button-active-border-color: #01111d;
 	--gnome-button-active-border-accent-color: #01111d;
