@@ -9,7 +9,7 @@
 	/* Browser area before a page starts loading */
 	--gnome-browser-before-load-background: #eff1f5;
 	--theme-primary-color: #8839ef !important;
-	--theme-primary-color-hover: #9553f2;
+	--theme-primary-color-hover: #7a2ee6;
 	--theme-alt-color: #ffffff;
 	--in-content-link-color: var(--theme-primary-color) !important;
 	--in-content-link-color-hover: var(--theme-primary-color-hover) !important;
