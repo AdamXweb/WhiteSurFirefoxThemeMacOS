@@ -244,16 +244,19 @@ toolbarbutton.bookmark-item[open="true"] {
 	border: 1px solid var(--gnome-button-active-background-alt-border);
 	border-color: var(--gnome-button-active-border-color) !important;
   }
-  /* Quit or primary button */
+  /* Quit or primary button. The same accent + on-accent ink pair as every
+   * other primary button (panels.css, in-content.css): the suggested-action
+   * surfaces sit between the palettes' dark chrome and their menulist ink,
+   * so that pairing bottoms out at 1.1-3.5:1 on half the palettes. */
   xul|button[default]{
-	background-color: var(--gnome-button-suggested-action-background) !important;
-	color: var(--gnome-button-menulist-color) !important;
-	border-color: var(--gnome-button-suggested-action-border-color) !important;
+	background-color: var(--theme-primary-color) !important;
+	color: var(--theme-alt-color) !important;
+	border-color: var(--theme-primary-color) !important;
   }
   xul|button[default]:not([disabled="true"]):hover{
-	background-color: var(--gnome-button-suggested-action-hover-background) !important;
-	color: var(--gnome-button-menulist-color) !important;
-	border-color: var(--gnome-button-suggested-action-border-color) !important;
+	background-color: var(--theme-primary-color-hover) !important;
+	color: var(--theme-alt-color) !important;
+	border-color: var(--theme-primary-color-hover) !important;
   }
   button:focus-visible{
 	outline: 2px solid var(--theme-primary-color) !important;
