@@ -237,7 +237,7 @@ toolbarbutton.bookmark-item[open="true"] {
  * title favicon chip inside adjustableTitle's shadow root, reached because
  * custom properties inherit through shadow boundaries. */
 :root[dialogroot], :host(dialog) {
-	--in-content-page-background: var(--gnome-menu-background) !important;
+	--in-content-page-background: var(--gnome-menu-background) !important; /* fxcss-keep: ESR 140 still reads it */
   }
 :root[dialogroot] {
 	background-color: var(--gnome-menu-background) !important;
