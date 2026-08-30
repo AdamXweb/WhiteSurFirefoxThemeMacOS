@@ -38,7 +38,6 @@
  * indicator; hide the built-in pill. Firefox renamed the element, so cover
  * both the old class and the current one. */
 #TabsToolbar .private-browsing-indicator,
-#TabsToolbar .private-browsing-indicator-with-label,
-#TabsToolbar #private-browsing-indicator-with-label {
+#TabsToolbar .private-browsing-indicator-with-label {
 	display: none !important;
 }
