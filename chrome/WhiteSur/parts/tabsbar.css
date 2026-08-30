@@ -213,10 +213,6 @@ tab[selected]:-moz-window-inactive {
 } */
 
 /* Close tab button */
-:root {
-	--gnome-fill-icon: red !important;
-}
-
 .close-icon {
 	height: 16px !important;
 	padding: 0 !important;

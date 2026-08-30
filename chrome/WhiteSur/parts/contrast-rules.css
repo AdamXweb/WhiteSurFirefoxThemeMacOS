@@ -9,11 +9,11 @@
  *
  * It works on top of any palette because it never redefines a variable in
  * terms of itself -- that would be a cycle, and the whole declaration would be
- * dropped. Everything is derived from the two seeds each palette declares,
+ * dropped. Everything is derived from the seed each palette declares,
  * --whitesur-ink (the direction text moves in: white on a dark palette, black
- * on a light one) and --whitesur-paper (the direction surfaces move in). The
- * seeds are computed from the palette's own toolbar colours, so a palette with
- * weak text -- Solarized Dark's #93a1a1, One Dark's #abb2bf -- gains the most.
+ * on a light one). The seed is computed from the palette's own toolbar colour,
+ * so a palette with weak text -- Solarized Dark's #93a1a1, One Dark's #abb2bf
+ * -- gains the most.
  *
  * Content pages need no separate treatment: parts/in-content.css maps the
  * design tokens onto these same variables, so about:preferences follows. */
@@ -40,7 +40,6 @@
 	/* Edges. Every palette draws borders close to its own background, which is
 	 * what makes the flat look; contrast mode wants them visible instead. */
 	--gnome-toolbar-border-color: color-mix(in srgb, var(--whitesur-ink) 45%, transparent) !important;
-	--gnome-headerbar-border-color: color-mix(in srgb, var(--whitesur-ink) 45%, transparent) !important;
 	--gnome-popover-border-color: color-mix(in srgb, var(--whitesur-ink) 50%, transparent) !important;
 	--gnome-menu-border-color: color-mix(in srgb, var(--whitesur-ink) 50%, transparent) !important;
 	--gnome-popover-separator-color: color-mix(in srgb, var(--whitesur-ink) 40%, transparent) !important;

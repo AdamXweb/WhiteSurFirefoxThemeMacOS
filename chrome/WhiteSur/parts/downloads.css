@@ -121,7 +121,7 @@
  * --panel-separator-color from parts/panels.css. */
 #downloadsPanel {
 	--panel-background-color-dimmed: var(--gnome-popover-button-hover-background) !important;
-	--arrowpanel-dimmed: var(--gnome-popover-button-hover-background) !important;
+	--arrowpanel-dimmed: var(--gnome-popover-button-hover-background) !important; /* fxcss-keep: ESR 140 still reads it */
 }
 
 /* Text inside the panel that Firefox colours itself: the private-browsing

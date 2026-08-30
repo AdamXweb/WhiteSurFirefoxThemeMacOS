@@ -11,8 +11,6 @@
 	--theme-primary-color: #cba6f7 !important;
 	--theme-primary-color-hover: #d7b8f9;
 	--theme-alt-color: #11111b;
-	--in-content-link-color: var(--theme-primary-color) !important;
-	--in-content-link-color-hover: var(--theme-primary-color-hover) !important;
 
 	/* Toolbars */
 	--gnome-toolbar-background: #1e1e2e;
@@ -22,12 +20,10 @@
 	--gnome-toolbar-border-color: #11111b;
 	--gnome-inactive-toolbar-color: rgba(205, 214, 244, 0.35);
 	--gnome-inactive-toolbar-background: #181825;
-	--gnome-inactive-toolbar-border-color: #11111b;
 
 	/* Sidebar */
 	--gnome-sidebar-color: #cdd6f4;
 	--gnome-sidebar-background: #181825;
-	--gnome-inactive-sidebar-background: #1b1b29;
 
 	/* Popups */
 	--gnome-menu-background: rgba(30, 30, 46, 0.95);
@@ -41,10 +37,8 @@
 
 	/* Header bar */
 	--gnome-headerbar-background: #1e1e2e;
-	--gnome-headerbar-border-color: #11111b;
 	--gnome-headerbar-box-shadow: inset 0 1px rgba(255, 255, 255, 0.08);
 	--gnome-inactive-headerbar-background: #181825;
-	--gnome-inactive-headerbar-border-color: #11111b;
 	--gnome-inactive-headerbar-box-shadow: inset 0 1px rgba(255, 255, 255, 0.04);
 
 	/* Buttons */
@@ -60,7 +54,6 @@
 	--gnome-button-active-background-alt-hover: #585b70 !important;
 	--gnome-button-active-background: #2a2a3e;
 	--gnome-button-active-border-color: #11111b;
-	--gnome-button-active-border-accent-color: #11111b;
 	--gnome-button-active-box-shadow: inset 0 1px rgba(255, 255, 255, 0.08);
 	--gnome-button-disabled-background: #26263a;
 	--gnome-button-disabled-border-color: #181825;
@@ -96,7 +89,6 @@
 	--gnome-hover-urlbar-border-color: #45475a;
 	--gnome-inactive-urlbar-background: #181825;
 	--gnome-inactive-urlbar-border-color: #11111b;
-	--gnome-inactive-urlbar-box-shadow: none;
 	--gnome-inactive-urlbar-color: #a6adc8;
 	--gnome-focused-urlbar-border-color: #cba6f7;
 	--gnome-focused-urlbar-highlight-color: #b287ee;
@@ -106,7 +98,6 @@
 	--gnome-tabbar-tab-background: #181825;
 	--gnome-tabbar-tab-color: #6c7086;
 	--gnome-tabbar-tab-hover-background: #212132;
-	--gnome-tabbar-tab-hover-border-bottom-color: #11111b;
 	--gnome-tabbar-tab-hover-color: #bac2de;
 	--gnome-tabbar-tab-active-background: #1e1e2e;
 	--gnome-tabbar-tab-active-border-bottom-color: #cba6f7;
@@ -114,11 +105,9 @@
 	--gnome-tabbar-tab-active-hover-background: #232335;
 	--gnome-inactive-tabbar-tab-color: #6c7086;
 	--gnome-inactive-tabbar-tab-active-background: #181825;
-	--gnome-inactive-tabbar-tab-active-border-bottom-color: #a184c6;
 	--gnome-inactive-tabbar-tab-active-color: #6c7086;
 
 	/* Switch */
-	--gnome-switch-background: #181825;
 	--gnome-switch-border-color: #11111b;
 	--gnome-switch-slider-background: linear-gradient(to bottom, #45475a 20%, #38394c 90%);
 	--gnome-switch-slider-border-color: #11111b;
@@ -146,12 +135,10 @@
 	--toolbar-field-focus-background-color: transparent !important;
 	--arrowpanel-border-color: transparent !important;
 
-	/* Increase-contrast seeds, read by parts/contrast-rules.css: the
-	 * two extremes this palette moves text and surfaces toward.
-	 * Derived from --gnome-toolbar-color and
-	 * --gnome-toolbar-background above. */
+	/* Increase-contrast seed, read by parts/contrast-rules.css: the
+	 * extreme this palette moves text toward. Derived from
+	 * --gnome-toolbar-color above. */
 	--whitesur-ink: #e4e8f9;
-	--whitesur-paper: #161622;
 }
 
 /* WhiteSur dims and fully desaturates the idle URL bar

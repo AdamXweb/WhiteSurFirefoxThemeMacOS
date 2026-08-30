@@ -87,12 +87,12 @@
 
 		/* ESR 140 spellings, dropped from current Firefox. */
 		--in-content-page-background: var(--new-tab-background) !important;
-		--in-content-page-color: var(--gnome-toolbar-color) !important;
-		--in-content-box-border-color: var(--gnome-popover-border-color) !important;
-		--in-content-button-background: var(--gnome-button-active-background-alt) !important;
-		--in-content-button-background-hover: var(--gnome-button-active-background-alt-hover) !important;
-		--in-content-button-background-active: var(--gnome-button-active-background) !important;
-		--in-content-button-text-color: var(--gnome-button-menulist-color) !important;
+		--in-content-page-color: var(--gnome-toolbar-color) !important; /* fxcss-keep: ESR 140 still reads it */
+		--in-content-box-border-color: var(--gnome-popover-border-color) !important; /* fxcss-keep: ESR 140 still reads it */
+		--in-content-button-background: var(--gnome-button-active-background-alt) !important; /* fxcss-keep: ESR 140 still reads it */
+		--in-content-button-background-hover: var(--gnome-button-active-background-alt-hover) !important; /* fxcss-keep: ESR 140 still reads it */
+		--in-content-button-background-active: var(--gnome-button-active-background) !important; /* fxcss-keep: ESR 140 still reads it */
+		--in-content-button-text-color: var(--gnome-button-menulist-color) !important; /* fxcss-keep: ESR 140 still reads it */
 	}
 
 	/* The preferences category list. It sits on the page background, so only
