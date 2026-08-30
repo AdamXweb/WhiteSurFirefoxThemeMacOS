@@ -228,9 +228,21 @@ toolbarbutton.bookmark-item[open="true"] {
 	border: 0 !important;
 }
 
-/* Update close button styling */
+/* Window-modal prompts (commonDialog.xhtml in #window-modal-dialog, e.g. the
+ * quit confirmation). Firefox paints the dialog document's root -moz-Dialog /
+ * -moz-DialogText (global-shared.css), which stay light-system colours under a
+ * dark palette; --in-content-page-background has no consumers left on current
+ * Firefox (ESR 140 still reads it, so the override stays). Paint the root
+ * directly with the panel pairing instead. --background-color-canvas backs the
+ * title favicon chip inside adjustableTitle's shadow root, reached because
+ * custom properties inherit through shadow boundaries. */
 :root[dialogroot], :host(dialog) {
 	--in-content-page-background: var(--gnome-menu-background) !important;
+  }
+:root[dialogroot] {
+	background-color: var(--gnome-menu-background) !important;
+	color: var(--gnome-toolbar-color) !important;
+	--background-color-canvas: var(--gnome-menu-background) !important;
   }
   /* Cancel or secondary */
   .dialog-button-box>button{
