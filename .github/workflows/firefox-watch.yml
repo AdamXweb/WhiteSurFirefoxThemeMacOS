@@ -81,7 +81,14 @@ jobs:
           set +e
           # Note the redirect rather than a pipe into tee: after a pipeline $?
           # is tee's status, which is always 0, so findings would never be seen.
-          fxcss audit --no-colour --no-unused --strict --patch fxcss-fix.patch > audit.txt 2>&1
+          #
+          # --strict-vars additionally reports custom properties the theme sets
+          # that nothing reads any more. It is safe here only because the matrix
+          # above is release/beta/nightly: the names carrying an "ESR 140 still
+          # reads it" fxcss-keep pragma are dead on all three, so they stay
+          # suppressed rather than flapping. Adding an ESR job to that matrix
+          # would start reporting the modern spellings as dead instead.
+          fxcss audit --no-colour --no-unused --strict --strict-vars --patch fxcss-fix.patch > audit.txt 2>&1
           status=$?
           cat audit.txt
           echo "status=$status" >> "$GITHUB_OUTPUT"
