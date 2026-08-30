@@ -181,7 +181,7 @@ panel[type="arrow"]:not(.tooltip-xul-wrapper) {
  * the host is enough. */
 .searchmode-switcher-panel-list {
 	--panel-list-background-color: var(--gnome-popover-background) !important;
-	--panel-list-text-color: var(--gnome-toolbar-color) !important;
+	--panel-list-color: var(--gnome-toolbar-color) !important;
 	--panel-list-border-color: var(--gnome-popover-border-color) !important;
 	--panel-separator-color: var(--gnome-popover-separator-color) !important;
 	/* Each engine row is a panel-item, which draws itself from the "menu"

@@ -129,9 +129,9 @@ if [ -n "$COLOURTHEME" ] ; then
 fi
 
 # If increased contrast is wanted (-i). Composes with -t: the sheet reads the
-# palette's own --whitesur-ink / --whitesur-paper seeds, so it works on top of
-# whichever theme is installed, or on the base theme. Without -i the same rules
-# still apply whenever the OS asks for more contrast -- see parts/contrast.css.
+# palette's own --whitesur-ink seed, so it works on top of whichever theme is
+# installed, or on the base theme. Without -i the same rules still apply
+# whenever the OS asks for more contrast -- see parts/contrast.css.
 if [ "$CONTRAST" = true ] ; then
   cd "${REPO_DIR}"
 	echo "Enabling increased contrast"

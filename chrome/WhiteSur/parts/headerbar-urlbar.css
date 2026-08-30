@@ -4,7 +4,6 @@
 
 #urlbar {
 	--urlbar-height: 30.00px !important;
-	--urlbar-toolbar-height: 30.00px !important;
 }
 #urlbar, #searchbar {
 	font-size: 1.2em !important;
@@ -115,8 +114,6 @@ toolbarspring {
 }
 
 .urlbarView-body-outer {
-	--item-padding-start: 0 !important;
-	--item-padding-end: 0 !important;
 	max-height: 40vh !important;
 	overflow-x: auto;
 	padding: 0 8px !important;

@@ -12,8 +12,6 @@
 		--theme-primary-color: #315bef !important;
 		--theme-primary-color-hover: #3863ff;
 		--theme-alt-color: #fff;
-		--in-content-link-color:var(--theme-primary-color) !important;
-		--in-content-link-color-hover:var(--theme-primary-color-hover) !important;
 
 		/* Toolbars */
 		--gnome-toolbar-background: #373737;
@@ -26,11 +24,9 @@
 		 * back to inheriting the full-strength colour. */
 		--gnome-inactive-toolbar-color: rgba(255, 255, 255, 0.35);
 		--gnome-inactive-toolbar-background: #313131;
-		--gnome-inactive-toolbar-border-color: #121212;
 
 		/* Sidebar */
 		--gnome-sidebar-background: #3b3b3b;
-		--gnome-inactive-sidebar-background: #3f3f3f;
 		--gnome-sidebar-color: #ffffff;
 
 		/* Popups */
@@ -38,17 +34,15 @@
 		--gnome-menu-border-color: #070707;
 		--gnome-popover-background: rgba(51, 51, 51, 0.95);
 		--gnome-popover-border-color: #070707;
-		--gnome-popover-shadow: 0 5px 8px rgba(0, 0, 0, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+		--gnome-popover-shadow: 0 5px 8px rgba(0, 0, 0, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.06); /* fxcss-keep: read by the opt-in matching-autocomplete-width.css */
 		--gnome-popover-button-hover-background: rgba(255, 255, 255, 0.1);
 		--gnome-popover-button-active-background: rgba(255, 255, 255, 0.15);
 		--gnome-popover-separator-color: rgba(0, 0, 0, 0.1);
 
 		/* Header bar */
 		--gnome-headerbar-background: #373737;
-		--gnome-headerbar-border-color: #070707;
 		--gnome-headerbar-box-shadow: inset 0 1px rgba(255, 255, 255, 0.15);
 		--gnome-inactive-headerbar-background: #313131;
-		--gnome-inactive-headerbar-border-color: #202020;
 		--gnome-inactive-headerbar-box-shadow: inset 0 1px rgba(255, 255, 255, 0.08);
 
 		/* Buttons */
@@ -64,7 +58,6 @@
 		--gnome-button-active-background-alt-hover: #5b5b5b !important;
 		--gnome-button-active-background: #464646;
 		--gnome-button-active-border-color: #1b1b1b;
-		--gnome-button-active-border-accent-color: #1b1b1b;
 		--gnome-button-active-box-shadow: inset 0 1px rgba(255, 255, 255, 0.1);
 		--gnome-button-disabled-background: #505050;
 		--gnome-button-disabled-border-color: #323232;
@@ -100,7 +93,6 @@
 		--gnome-hover-urlbar-border-color: #585858;
 		--gnome-inactive-urlbar-background: #313131;
 		--gnome-inactive-urlbar-border-color: #282828;
-		--gnome-inactive-urlbar-box-shadow: none;
 		--gnome-inactive-urlbar-color: #d6d6d6;
 		--gnome-focused-urlbar-border-color: #338CBE;
 		--gnome-focused-urlbar-highlight-color: #006EA0;
@@ -110,7 +102,6 @@
 		--gnome-tabbar-tab-background: #262626;
 		--gnome-tabbar-tab-color: rgb(141, 144, 145);
 		--gnome-tabbar-tab-hover-background: #2b2b2b;
-		--gnome-tabbar-tab-hover-border-bottom-color: #1b1b1b;
 		--gnome-tabbar-tab-hover-color: rgb(200, 200, 200);
 		--gnome-tabbar-tab-active-background: #373737;
 		--gnome-tabbar-tab-active-border-bottom-color: #15539e;
@@ -118,11 +109,9 @@
 		--gnome-tabbar-tab-active-hover-background: #313131;
 		--gnome-inactive-tabbar-tab-color: rgb(141, 144, 145);
 		--gnome-inactive-tabbar-tab-active-background: #313131;
-		--gnome-inactive-tabbar-tab-active-border-bottom-color: #15539e;
 		--gnome-inactive-tabbar-tab-active-color: rgb(141, 144, 145);
 
 		/* Switch */
-		--gnome-switch-background: #282828;
 		--gnome-switch-border-color: #1b1b1b;
 		--gnome-switch-slider-background: linear-gradient(to bottom, #3c3c3c 20%, #353535 90%);
 		--gnome-switch-slider-border-color: #111111;
@@ -135,36 +124,34 @@
 	 * /usr/share/icons/<theme>/ and on some systems they need to be
 	 * inverted, on others they don't, adjusts the filters below to your
 	 * needs (you may also adjust icon brightness here). */
-		--gnome-convert-icon-to-symbolic-hack-filter: invert(100%) sepia(100%) grayscale(100%) brightness(200%) brightness(85%);
+		--gnome-convert-icon-to-symbolic-hack-filter: invert(100%) sepia(100%) grayscale(100%) brightness(200%) brightness(85%); /* fxcss-keep: read by the opt-in symbolic-tab-icons.css */
 		--gnome-icons-hack-filter: invert(100%) sepia(100%) grayscale(100%) brightness(200%) brightness(200%);
 		/* without invert: none */
-		--gnome-window-icons-hack-filter: invert(90%);
+		--gnome-window-icons-hack-filter: invert(90%); /* fxcss-keep: read by the opt-in system-icons.css */
 		/* without invert: none */
 
 		/* colors to override with theme*/
 		--new-tab-background: rgb(30,30,30) !important;
-		--urlbar-box-bgcolor: var(--theme-primary-color) !important;
-		--in-content-primary-button-background-hover:var(--theme-primary-color-hover) !important;
+		--urlbar-box-bgcolor: var(--theme-primary-color) !important; /* fxcss-keep: ESR 140 still reads it */
+		--in-content-primary-button-background-hover:var(--theme-primary-color-hover) !important; /* fxcss-keep: ESR 140 still reads it */
 		/* The parentheses that used to wrap this value made it invalid at
 		 * computed-value time, so the dark page background never applied. */
 		--in-content-page-background: var(--new-tab-background) !important;
-		--in-content-primary-button-background: var(--theme-primary-color) !important;
-		--in-content-danger-button-background-active: var(--theme-primary-color-hover) !important;
+		--in-content-primary-button-background: var(--theme-primary-color) !important; /* fxcss-keep: ESR 140 still reads it */
+		--in-content-danger-button-background-active: var(--theme-primary-color-hover) !important; /* fxcss-keep: ESR 140 still reads it */
 		--safari-warning-security: rgb(202,49,66) !important;
 		--safari-safe-color: rgb(1,203,67) !important;
 		--toolbar-field-focus-color: transparent !important;
 		--focus-outline-color: transparent !important;
 		/* fix new styles added in v119 - */
 		--toolbar-field-focus-color: var(--gnome-urlbar-color) !important;
-		--toolbar-field-focus-background-color: transparent !important;
-		--arrowpanel-border-color: transparent !important;
+		--toolbar-field-focus-background-color: transparent !important; /* fxcss-keep: ESR 140 still reads it */
+		--arrowpanel-border-color: transparent !important; /* fxcss-keep: ESR 140 still reads it */
 
 
-		/* Increase-contrast seeds, read by parts/contrast-rules.css: the
-		 * two extremes this palette moves text and surfaces toward.
-		 * Derived from --gnome-toolbar-color and
-		 * --gnome-toolbar-background above. */
+		/* Increase-contrast seed, read by parts/contrast-rules.css: the
+		 * extreme this palette moves text toward. Derived from
+		 * --gnome-toolbar-color above. */
 		--whitesur-ink: #ffffff;
-		--whitesur-paper: #292929;
 	}
 }

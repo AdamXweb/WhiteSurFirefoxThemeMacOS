@@ -201,8 +201,8 @@ menupopup>menu {
 }
 #PlacesToolbar menupopup,
 #PlacesToolbar menu:not([disabled], :active) {
-	--arrowpanel-background: transparent !important;
-	--arrowpanel-border-radius: 0px !important;
+	--arrowpanel-background: transparent !important; /* fxcss-keep: ESR 140 still reads it */
+	--arrowpanel-border-radius: 0px !important; /* fxcss-keep: ESR 140 still reads it */
 }
 #PlacesToolbar menu:[_moz-menuactive],
 #PlacesToolbar menu:active,
