@@ -28,7 +28,7 @@ permissions:
   issues: write
 
 env:
-  FXCSS_VERSION: 0.20.0
+  FXCSS_VERSION: 0.21.0
 
 jobs:
   check:
@@ -193,13 +193,29 @@ jobs:
             echo "Firefox **${CHANNEL}** is now **${VERSION}**, and some selectors this"
             echo "theme uses no longer match anything in it."
             echo
-            echo "The changes here are the ones fxcss is certain about — a name that moved"
-            echo "between an id and a class. Anything it was less sure of is listed below"
-            echo "but **not** changed."
+            echo "### What this pull request changes"
+            echo
+            echo "Only the exact matches — a name that moved between an id and a class."
+            echo
+            echo '```diff'
+            cat fxcss-fix.patch
+            echo '```'
+            echo
+            # The full report goes behind a fold. It also lists names fxcss was
+            # only *close* to matching, and those are guesses: a near-miss
+            # compares spellings, so it can land on a name from an unrelated
+            # document. Rendered inline they read as part of the change, and a
+            # reader applies them. Folded, they read as what they are. This
+            # repo learned that the hard way -- three watch pull requests
+            # advertised #placesToolbar -> #PlacesToolbar, the Library
+            # window's toolbar "corrected" to the browser window's.
+            echo "<details><summary>Full audit output, including suggestions that were <b>not</b> applied</summary>"
             echo
             echo '```'
             cat audit.txt
             echo '```'
+            echo
+            echo "</details>"
             echo
             echo "Worth previewing before merging: the PR preview workflow will render"
             echo "before and after on this pull request."
