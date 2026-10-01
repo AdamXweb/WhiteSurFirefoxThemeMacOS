@@ -1,0 +1,73 @@
+name: Single-tab controls
+
+on:
+  push:
+    branches: [master, 'codex/**']
+    paths:
+      - 'chrome/**'
+      - 'custom/**'
+      - 'tests/single_tab_hidden.py'
+      - '.github/workflows/single-tab-hidden.yml'
+  pull_request:
+    paths:
+      - 'chrome/**'
+      - 'custom/**'
+      - 'tests/single_tab_hidden.py'
+      - '.github/workflows/single-tab-hidden.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  regression:
+    name: Single-tab controls (${{ matrix.label }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            label: windows
+          - os: ubuntu-latest
+            label: linux
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.14'
+      - name: Install fxcss
+        run: python -m pip install --disable-pip-version-check "fxcss==0.22.0"
+      - name: Install Firefox 156.0.1 (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $installer = Join-Path $env:RUNNER_TEMP 'firefox-setup.exe'
+          Invoke-WebRequest -Uri 'https://archive.mozilla.org/pub/firefox/releases/156.0.1/win64/en-US/Firefox%20Setup%20156.0.1.exe' -OutFile $installer
+          Start-Process -FilePath $installer -ArgumentList '/S' -Wait
+          'FIREFOX_BIN=C:\Program Files\Mozilla Firefox\firefox.exe' | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+      - name: Install Firefox 156.0.1 (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq xvfb libdbus-glib-1-2 >/dev/null
+          curl --fail --location --silent --show-error 'https://archive.mozilla.org/pub/firefox/releases/156.0.1/linux-x86_64/en-US/firefox-156.0.1.tar.xz' -o "$RUNNER_TEMP/firefox.tar.xz"
+          tar -xf "$RUNNER_TEMP/firefox.tar.xz" -C "$RUNNER_TEMP"
+          echo "FIREFOX_BIN=$RUNNER_TEMP/firefox/firefox" >> "$GITHUB_ENV"
+          Xvfb :99 -screen 0 1600x1200x24 -nolisten tcp >/dev/null 2>&1 &
+          echo 'DISPLAY=:99' >> "$GITHUB_ENV"
+      - name: Check controls and tab transitions
+        run: python tests/single_tab_hidden.py --out single-tab-results
+      - name: Upload measurements and screenshots
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: single-tab-${{ matrix.label }}
+          path: single-tab-results/
+          retention-days: 14
+          if-no-files-found: warn
