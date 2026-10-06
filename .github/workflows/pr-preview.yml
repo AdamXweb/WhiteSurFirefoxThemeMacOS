@@ -20,8 +20,12 @@ on:
     types: [opened, synchronize, reopened]
     paths:
       - 'chrome/**'
-      - 'custom/**'
       - 'configuration/**'
+      - 'custom/**'
+      - 'optional/**'
+      - 'options/**'
+      - 'extras/**'
+      - 'variants/**'
       - '.github/workflows/pr-preview.yml'
 
 permissions:
@@ -32,7 +36,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  FXCSS_VERSION: 0.21.0
+  FXCSS_VERSION: 0.23.0
 
 jobs:
   render:
@@ -90,7 +94,7 @@ jobs:
         run: |
           set -euo pipefail
           sudo apt-get update -qq
-          sudo apt-get install -y -qq xvfb libdbus-glib-1-2 >/dev/null
+          sudo apt-get install -y -qq xvfb x11-utils libdbus-glib-1-2 >/dev/null
           curl -sSL -o firefox.tar "https://download.mozilla.org/?product=firefox-latest-ssl&os=linux64&lang=en-US"
           mkdir -p "$RUNNER_TEMP/ff"
           tar -xf firefox.tar -C "$RUNNER_TEMP/ff"
@@ -100,12 +104,19 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           set -euo pipefail
-          Xvfb :99 -screen 0 1600x1200x24 -nolisten tcp >/dev/null 2>&1 &
+          command -v xdpyinfo
+          Xvfb :99 -screen 0 1600x1200x24 -nolisten tcp >"$RUNNER_TEMP/xvfb.log" 2>&1 &
           for _ in $(seq 1 20); do
-            if xdpyinfo -display :99 >/dev/null 2>&1; then break; fi
+            if xdpyinfo -display :99 >/dev/null 2>&1; then
+              echo "DISPLAY=:99" >> "$GITHUB_ENV"
+              exit 0
+            fi
             sleep 0.5
           done
-          echo "DISPLAY=:99" >> "$GITHUB_ENV"
+          cat "$RUNNER_TEMP/xvfb.log"
+          xdpyinfo -display :99
+          echo '::error::Xvfb did not become ready'
+          exit 1
 
       - name: Install Firefox (Windows)
         if: runner.os == 'Windows'

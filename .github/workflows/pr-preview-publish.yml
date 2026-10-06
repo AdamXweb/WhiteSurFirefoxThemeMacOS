@@ -110,13 +110,20 @@ jobs:
               return;
             }
 
-            // --- copy only files whose names we recognise ---
-            // Enumerated rather than wildcarded on purpose: this is an allowlist
-            // over an untrusted artifact, so a new view must be added here before
-            // it can be published.
-                        // Enumerated on purpose: this is an allowlist over an untrusted
-            // artifact. `fxcss init` regenerates it from the theme's variants.
-            const NAME = /^(?:(?:light|dark)-(?:01-window|02-urlbar|03-findbar|04-dialog)|extra-(?:04-audio|05-muted|06-containers|07-many-tabs|08-private|09-compact|10-sidebar-bookmarks|11-sidebar-history|12-rtl|13-customize|14-vertical-tabs|15-toolbar)|variant-(?:compact-tabs|enabletabview|hideextension|highlight-tab|increase-contrast|noidentity|singletabhidden|standard-urlbar|tabs-swapclose|theme-ayu-mirage|theme-catppuccin-frappe|theme-catppuccin-latte|theme-catppuccin-macchiato|theme-catppuccin-mocha|theme-dracula|theme-everforest-dark|theme-github-dark|theme-gruvbox-dark|theme-gruvbox-light|theme-material-ocean|theme-material-palenight|theme-monokai-pro|theme-night-owl|theme-nord|theme-one-dark|theme-rose-pine|theme-solarized-dark|theme-solarized-light|theme-tokyonight|windows-swapclose))\.png$/;
+            // Standard views are enumerated; variants use a bounded slug grammar.
+            // No repository code or free-form artifact text is executed or published.
+            const NAME = /^(?:(?:light|dark)-(?:01-window|02-urlbar|03-findbar|04-dialog)|extra-(?:04-audio|05-muted|06-containers|07-many-tabs|08-private|09-compact|10-sidebar-bookmarks|11-sidebar-history|12-rtl|13-customize|14-vertical-tabs|15-toolbar)|variant-[a-z0-9][a-z0-9+-]{0,159})\.png$/;
+            const validPng = file => {
+              const stat = fs.lstatSync(file);
+              if (!stat.isFile() || stat.size < 33 || stat.size > 20 * 1024 * 1024) return false;
+              const header = Buffer.alloc(24);
+              const fd = fs.openSync(file, 'r');
+              try { fs.readSync(fd, header, 0, 24, 0); } finally { fs.closeSync(fd); }
+              return header.subarray(0, 8).equals(Buffer.from([137,80,78,71,13,10,26,10]))
+                && header.readUInt32BE(8) === 13 && header.toString('ascii', 12, 16) === 'IHDR'
+                && header.readUInt32BE(16) > 0 && header.readUInt32BE(16) <= 10000
+                && header.readUInt32BE(20) > 0 && header.readUInt32BE(20) <= 10000;
+            };
             const staged = 'staged';
             fs.mkdirSync(staged, { recursive: true });
 
@@ -130,21 +137,22 @@ jobs:
               const outDir = path.join(staged, label);
               fs.mkdirSync(path.join(outDir, 'full'), { recursive: true });
 
+              const excluded = new Set();
               const changed = [];
               for (const f of fs.readdirSync(dir)) {
-                if (NAME.test(f)) {
+                if (NAME.test(f) && validPng(path.join(dir, f))) {
                   fs.copyFileSync(path.join(dir, f), path.join(outDir, f));
                   changed.push(f);
-                }
+                } else if (f.endsWith('.png')) { excluded.add(f); }
               }
               const fullDir = path.join(dir, 'full');
               const fulls = [];
               if (fs.existsSync(fullDir)) {
                 for (const f of fs.readdirSync(fullDir)) {
-                  if (NAME.test(f)) {
+                  if (NAME.test(f) && validPng(path.join(fullDir, f))) {
                     fs.copyFileSync(path.join(fullDir, f), path.join(outDir, 'full', f));
                     fulls.push(f);
-                  }
+                  } else if (f.endsWith('.png')) { excluded.add(f); }
                 }
               }
 
@@ -153,6 +161,7 @@ jobs:
               // NAME allowlist and required to exist in full/ before use.
               let pct = {};
               const fresh = [];
+              const removed = [];
               try {
                 const s = JSON.parse(fs.readFileSync(path.join(dir, 'summary.json'), 'utf8'));
                 for (const v of (Array.isArray(s.views) ? s.views : [])) {
@@ -169,14 +178,27 @@ jobs:
                   if (typeof n === 'string' && NAME.test(n + '.png')
                       && fulls.includes(n + '.png')) {
                     fresh.push(n + '.png');
-                  }
+                  } else { excluded.add(String(n)); }
                 }
-              } catch (e) { core.warning(`unreadable summary.json for ${label}: ${e}`); }
+                for (const n of (Array.isArray(s.only_in_base) ? s.only_in_base : [])) {
+                  if (typeof n === 'string' && NAME.test(n + '.png')) {
+                    removed.push(n + '.png');
+                  } else { excluded.add(String(n)); }
+                }
+              } catch (e) {
+                core.setFailed(`unreadable summary.json for ${label}: ${e}`);
+                return;
+              }
 
-              report.push({ label, changed: changed.sort(), full: fulls.sort(),
-                            fresh: fresh.sort(), pct });
+              if (!fulls.length) {
+                core.setFailed(`no validated screenshots for ${label}`);
+                return;
+              }
+              report.push({ label, unreviewed: excluded.size, changed: changed.sort(), full: fulls.sort(),
+                            fresh: fresh.sort(), removed: removed.sort(), pct });
             }
 
+            if (!report.length) { core.setFailed('no valid platform reports'); return; }
             core.setOutput('skip', 'false');
             core.setOutput('pr', prNumber);
             core.setOutput('sha', headSha);
@@ -270,23 +292,32 @@ jobs:
             let body = `${MARKER}\n### Theme preview\n\n`;
             body += `Rendered from \`${sha.slice(0, 7)}\` against the base branch.\n\n`;
 
-            const anyChange = report.some(r => r.changed.length || (r.fresh || []).length);
+            const anyChange = report.some(r => r.changed.length || (r.fresh || []).length
+                                          || (r.removed || []).length || r.unreviewed);
 
             for (const r of report) {
               const name = PLATFORM[r.label] || r.label;
               const fresh = r.fresh || [];
+              const removed = r.removed || [];
               const parts = [];
+              if (r.unreviewed) parts.push(`${r.unreviewed} unreviewed screenshot(s)`);
               if (r.changed.length) {
                 parts.push(`${r.changed.length} view${r.changed.length > 1 ? 's' : ''} changed`);
               }
               if (fresh.length) {
                 parts.push(`${fresh.length} new view${fresh.length > 1 ? 's' : ''}`);
               }
+              if (removed.length) {
+                parts.push(`${removed.length} missing view${removed.length > 1 ? 's' : ''}`);
+              }
               body += `<details${parts.length ? ' open' : ''}>`;
               body += `<summary><b>${name}</b> — `;
               body += parts.length ? parts.join(' · ') : 'no visual change';
               body += `</summary>\n\n`;
 
+              if (r.unreviewed) {
+                body += `Some screenshots failed validation. Review the workflow artifacts before approving this PR.\n\n`;
+              }
               for (const f of r.changed) {
                 const p = r.pct[f.replace(/\.png$/, '')];
                 const amount = typeof p === 'number' ? ` (${p.toFixed(2)}% of pixels)` : '';
@@ -301,7 +332,12 @@ jobs:
                 body += `<img src="${base}/${r.label}/full/${f}" width="900">\n\n`;
               }
 
-              if (!r.changed.length && !fresh.length && r.full.length) {
+              for (const f of removed) {
+                body += `**${pretty(f)}** — missing from this PR's captures; ` +
+                        `check whether the view was removed or could not be captured.\n\n`;
+              }
+
+              if (!r.changed.length && !fresh.length && !removed.length && !r.unreviewed && r.full.length) {
                 body += `Nothing rendered differently. Current appearance:\n\n`;
                 body += `<img src="${base}/${r.label}/full/${r.full[0]}" width="900">\n\n`;
               }
