@@ -1,16 +1,27 @@
 /* From user @luan https://github.com/AdamXweb/WhiteSurFirefoxThemeMacOS/issues/52#issuecomment-1120470140 */
 
-/* Collapsing the tab itself only ever emptied the row, it never removed it, so
-   a 36px band was left behind: #TabsToolbar has to be collapsed instead.
-   The old trigger no longer works either -- Firefox dropped the
-   first-visible-tab/last-visible-tab attributes, and it now keeps pinned tabs
-   in a separate #pinned-tabs-container, which made a bare
-   .tabbrowser-tab:only-of-type match a lone pinned tab and blank it out even
-   with several tabs open. So match on the toolbar and require that the strip
-   really does hold one single unpinned tab: none pinned, and no tab group
-   (whose tabs are nested and so do not count as siblings). */
-#TabsToolbar:has(#tabbrowser-arrowscrollbox > .tabbrowser-tab:only-of-type:not([pinned])):not(:has(#pinned-tabs-container > .tabbrowser-tab)):not(:has(tab-group)) {
-    height: 0 !important;
+/* Hide only a single unpinned horizontal tab, with no groups. Pinned tabs live
+   in a separate container, and grouped tabs are not siblings of this tab.
+   Keep the toolbar visible: its absolutely positioned window controls must
+   not inherit visibility: collapse (#227). Let the row shrink naturally so
+   customized buttons still have room; moving New Tab into the navigation
+   toolbar removes the empty row entirely. */
+:root:not([customizing]) #TabsToolbar:has(#tabbrowser-tabs:not([orient="vertical"]) #tabbrowser-arrowscrollbox > .tabbrowser-tab:only-of-type:not([pinned])):not(:has(#pinned-tabs-container > .tabbrowser-tab)):not(:has(tab-group)) {
     min-height: 0 !important;
-    visibility: collapse !important;
+    border: 0 !important;
+    box-shadow: none !important;
+
+    .toolbar-items {
+        margin-bottom: 0 !important;
+    }
+
+    #tabbrowser-tabs {
+        display: none !important;
+    }
+
+    /* Firefox normally hides this standalone button in favour of the copy
+       inside the tab strip. Show it while that strip is hidden. */
+    #new-tab-button:not([hidden]) {
+        display: flex !important;
+    }
 }

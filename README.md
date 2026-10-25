@@ -168,6 +168,8 @@ Rendered by CI with [fxcss](https://github.com/AdamXweb/fxcss) from the current 
 <details>
 <summary><code>-s</code> Single tab hidden</summary>
 
+Hides a single unpinned horizontal tab while keeping window controls and the new-tab button available. Pinned tabs, tab groups and vertical tabs stay visible. To remove the remaining toolbar row, use **Customize Toolbar** to move the new-tab button into the address toolbar, as shown under [Optimal experience](#optimal-experience).
+
 <img src="https://raw.githubusercontent.com/AdamXweb/WhiteSurFirefoxThemeMacOS/previews/singletabhidden-diff.png" alt="Before and after: Tab strip hidden with one tab open" width="830">
 
 <sub><a href="https://raw.githubusercontent.com/AdamXweb/WhiteSurFirefoxThemeMacOS/previews/variant-singletabhidden.png">whole window</a></sub>
