@@ -31,7 +31,7 @@ permissions:
   issues: write
 
 env:
-  FXCSS_VERSION: 0.23.0
+  FXCSS_VERSION: 0.24.0
 
 jobs:
   check:
@@ -91,13 +91,13 @@ jobs:
           # reads it" fxcss-keep pragma are dead on all three, so they stay
           # suppressed rather than flapping. Adding an ESR job to that matrix
           # would start reporting the modern spellings as dead instead.
-          fxcss audit --no-colour --no-unused --strict --strict-vars --patch fxcss-fix.patch > audit.txt 2>&1
+          fxcss audit --no-colour --strict --strict-vars --patch fxcss-fix.patch > audit.txt 2>&1
           status=$?
           cat audit.txt
           echo "status=$status" >> "$GITHUB_OUTPUT"
 
-          version=$(fxcss doctor 2>/dev/null \
-            | sed -n 's/^version: *\([0-9][^ ]*\).*/\1/p' | head -1)
+          # Read the build version without needing a working Marionette session.
+          version=$(python -c 'import os; from fxcss import core; print(core.firefox_version(os.environ["FIREFOX_BIN"]) or "unknown")')
           echo "version=${version:-unknown}" >> "$GITHUB_OUTPUT"
           if [ -s fxcss-fix.patch ]; then echo "patch=yes" >> "$GITHUB_OUTPUT"; fi
 
@@ -170,7 +170,7 @@ jobs:
           fi
 
       - name: Open a pull request with the confident fixes
-        if: steps.audit.outcome == 'success' && steps.audit.outputs.status != '0' && steps.audit.outputs.patch == 'yes'
+        if: steps.audit.outcome == 'success' && steps.audit.outputs.status == '1' && steps.audit.outputs.patch == 'yes'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CHANNEL: ${{ matrix.channel }}
@@ -228,7 +228,7 @@ jobs:
             --body-file body.md
 
       - name: Open or update the heads-up issue
-        if: steps.audit.outcome == 'success' && steps.audit.outputs.status != '0' && steps.audit.outputs.patch != 'yes'
+        if: steps.audit.outcome == 'success' && steps.audit.outputs.status == '1' && steps.audit.outputs.patch != 'yes'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CHANNEL: ${{ matrix.channel }}
@@ -237,9 +237,9 @@ jobs:
           set -euo pipefail
           title="Firefox ${CHANNEL}: selectors need attention"
           {
-            echo "Firefox **${CHANNEL}** is now **${VERSION}**. Some selectors this theme"
-            echo "uses no longer match anything, and fxcss was not confident enough to"
-            echo "propose a replacement automatically."
+            echo "Firefox **${CHANNEL}** is now **${VERSION}**. Some CSS selectors or"
+            echo "custom-property overrides need attention. No safe automatic"
+            echo "replacement was available for these findings."
             echo
             echo '```'
             cat audit.txt
@@ -269,6 +269,12 @@ jobs:
             gh issue close "$existing" \
               --comment "Firefox ${CHANNEL} audits clean again — closing."
           fi
+
+      - name: Fail when Firefox could not be checked
+        if: (steps.audit.outcome == 'success' && steps.audit.outputs.status != '0' && steps.audit.outputs.status != '1') || (steps.smoke.outcome == 'success' && steps.smoke.outputs.status != '0')
+        run: |
+          echo "::error::Firefox could not be audited or captured. See the audit and smoke artifacts."
+          exit 1
 
       - uses: actions/upload-artifact@v7
         if: always()

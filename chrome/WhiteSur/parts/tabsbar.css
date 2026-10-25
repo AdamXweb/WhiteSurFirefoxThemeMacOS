@@ -16,8 +16,10 @@
 }
 
 
-tab>stack {
-	height: 32px !important;
+/* Fill the horizontal row: a fixed 32px stack leaves a 4px band under the
+ * separators in the standard 36px strip. Compact tabs fill their 28px row. */
+#tabbrowser-tabs:not([orient="vertical"]) .tabbrowser-tab > .tab-stack {
+	height: 100% !important;
 }
 
 /* Extra margin for the first and last tabs */
@@ -304,6 +306,9 @@ tab[selected]:-moz-window-inactive {
 }
 /* Active tab */
 .tab-background[selected] {
+	/* Firefox Nova clips its first background layer to the border area.
+	 * WhiteSur removes that border, so its selected-tab fill needs the full box. */
+	background-clip: border-box !important;
 	background-color: var(--gnome-tabbar-tab-active-background) !important;
 	background-image: none !important;
 	border: none !important;
@@ -436,6 +441,9 @@ tab[selected]:-moz-window-inactive {
 /* @media (-moz-proton) { */
 	/* Firefox v89 beta tab fix */
 	.tab-background {
+		/* WhiteSur draws its own inset separators. Nova's transparent border
+		 * would leave space outside those lines; container stripes still win. */
+		border: 0 !important;
 		border-radius: 0 !important;
 		margin-block: 0 !important;
 		box-shadow: inset 0 1px var(--gnome-toolbar-border-color), inset 0 -1px var(--gnome-toolbar-border-color) !important;
