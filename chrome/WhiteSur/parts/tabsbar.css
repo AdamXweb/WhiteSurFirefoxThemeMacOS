@@ -307,10 +307,6 @@ tab[selected]:-moz-window-inactive {
 .tab-background[selected] {
 	background-color: var(--gnome-tabbar-tab-active-background) !important;
 	background-image: none !important;
-	/* Nova's built-in themes clip the first background layer to border-area.
-	 * After removing that layer and the border, reset the clip as well or
-	 * the selected colour is calculated but never painted (#236). */
-	background-clip: padding-box !important;
 	border: none !important;
 	border-image: none !important;
 	margin-left: -1px !important;
