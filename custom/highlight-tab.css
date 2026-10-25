@@ -71,8 +71,8 @@
  * that it is the selected one. */
 
 /* The title at full strength, against the dimmed one every unselected tab
- * gets. parts/tabsbar.css sets --tab-selected-textcolor for this; restating it
- * here keeps the sheet working if it is dropped into an older install. */
+ * gets. parts/tabsbar.css sets the selected-text tokens for this; restating
+ * the colour here keeps the sheet working in an older WhiteSur install. */
 .tabbrowser-tab[selected] .tab-label {
 	color: var(--gnome-tabbar-tab-active-color) !important;
 	font-weight: 600 !important;
