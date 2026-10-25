@@ -1,5 +1,11 @@
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
+/* Position and order only: this sheet re-places the window buttons the Windows
+   way, it does not restore the native Windows glyphs. The buttons keep the
+   theme's WhiteSur icons on purpose -- the MacOS look is the point of the theme
+   -- and on MacOS itself Firefox hides .titlebar-close/-max/-min outright, so
+   there is nothing there for an icon rule to style. See issue #169. */
+
 /* Place the close buttons on the right hand side*/
 :root:not([inFullscreen]) #TabsToolbar .titlebar-buttonbox-container,
 :root:not([inFullscreen]) #TabsToolbar-buttonbox-container {
