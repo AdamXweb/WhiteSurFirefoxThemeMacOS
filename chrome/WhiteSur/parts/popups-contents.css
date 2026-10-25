@@ -10,8 +10,10 @@
 	margin: auto !important;
 }
 #context-navigation menuitem {
-	--toolbarbutton-active-background: transparent !important;
-	--toolbarbutton-hover-background: transparent !important;
+	--toolbarbutton-background-color-active: transparent !important;
+	--toolbarbutton-background-color-hover: transparent !important;
+	--toolbarbutton-active-background: transparent !important; /* fxcss-keep: spelling older Firefox reads */
+	--toolbarbutton-hover-background: transparent !important; /* fxcss-keep: spelling older Firefox reads */
 }
 
 /* Remove icons from the main context menu */

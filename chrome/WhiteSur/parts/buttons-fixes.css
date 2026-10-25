@@ -9,29 +9,34 @@
 :root:not([uidensity=compact]) #back-button>.toolbarbutton-icon {
 	background-color: unset !important;
 	border: unset !important;
-	width: calc(2 * var(--toolbarbutton-inner-padding) + 16px) !important;
-	height: calc(2 * var(--toolbarbutton-inner-padding) + 16px) !important;
-	padding: var(--toolbarbutton-inner-padding) !important;
+	width: calc(2 * var(--toolbarbutton-padding-inner, var(--toolbarbutton-inner-padding)) + 16px) !important;
+	height: calc(2 * var(--toolbarbutton-padding-inner, var(--toolbarbutton-inner-padding)) + 16px) !important;
+	padding: var(--toolbarbutton-padding-inner, var(--toolbarbutton-inner-padding)) !important;
 	border-radius: var(--toolbarbutton-border-radius);
 	box-shadow: none !important;
 }
 
 :root:not([uidensity=compact]) #back-button:not([disabled]):not([open]):hover>.toolbarbutton-icon {
-	background-color: var(--toolbarbutton-hover-background) !important;
+	background-color: var(--toolbarbutton-background-color-hover, var(--toolbarbutton-hover-background)) !important;
 	box-shadow: unset;
 	border-color: unset;
 }
 
 :root:not([uidensity=compact]) #back-button[open]>.toolbarbutton-icon,
 :root:not([uidensity=compact]) #back-button:not([disabled]):hover:active>.toolbarbutton-icon {
-	background-color: var(--toolbarbutton-active-background) !important;
+	background-color: var(--toolbarbutton-background-color-active, var(--toolbarbutton-active-background)) !important;
 	border-color: unset;
 }
 
-/* Remove the header bar buttons' hover styles */
+/* Remove the header bar buttons' hover styles. Firefox renamed these to
+ * --toolbarbutton-background-color-*, so the old spellings alone stopped
+ * working and Firefox's own hover was painted inside WhiteSur's: a second,
+ * darker square, and from Firefox 158's Nova design a violet circle. */
 #nav-bar {
-	--toolbarbutton-active-background: transparent !important;
-	--toolbarbutton-hover-background: transparent !important;
+	--toolbarbutton-background-color-active: transparent !important;
+	--toolbarbutton-background-color-hover: transparent !important;
+	--toolbarbutton-active-background: transparent !important; /* fxcss-keep: spelling older Firefox reads */
+	--toolbarbutton-hover-background: transparent !important; /* fxcss-keep: spelling older Firefox reads */
 }
 
 /* Glitch customizing: Cut / Copy / Paste buttons' icons

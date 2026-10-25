@@ -53,14 +53,18 @@ panel#urlbar-results.search-panel-one-offs-header {
 
 /* Search engines buttons */
 .searchbar-engine-one-off-item:not(.dummy) {
-	--toolbarbutton-active-background: transparent !important;
-	--toolbarbutton-hover-background: transparent !important;
+	--toolbarbutton-background-color-active: transparent !important;
+	--toolbarbutton-background-color-hover: transparent !important;
+	--toolbarbutton-active-background: transparent !important; /* fxcss-keep: spelling older Firefox reads */
+	--toolbarbutton-hover-background: transparent !important; /* fxcss-keep: spelling older Firefox reads */
 }
 
 .searchbar-engine-one-off-item:not(.dummy) {
 	-moz-appearance: none !important;
-	--toolbarbutton-active-background: transparent !important;
-	--toolbarbutton-hover-background: transparent !important;
+	--toolbarbutton-background-color-active: transparent !important;
+	--toolbarbutton-background-color-hover: transparent !important;
+	--toolbarbutton-active-background: transparent !important; /* fxcss-keep: spelling older Firefox reads */
+	--toolbarbutton-hover-background: transparent !important; /* fxcss-keep: spelling older Firefox reads */
 	-moz-appearance: none !important;
 	background: var(--gnome-button-background) !important;
 	box-shadow: var(--gnome-button-box-shadow) !important;
@@ -145,8 +149,10 @@ panel#urlbar-results.search-panel-one-offs-header {
 /* Search engines buttons */
 #PopupAutoCompleteRichResult .searchbar-engine-one-off-item:not(.dummy) {
 	-moz-appearance: none !important;
-	--toolbarbutton-active-background: transparent !important;
-	--toolbarbutton-hover-background: transparent !important;
+	--toolbarbutton-background-color-active: transparent !important;
+	--toolbarbutton-background-color-hover: transparent !important;
+	--toolbarbutton-active-background: transparent !important; /* fxcss-keep: spelling older Firefox reads */
+	--toolbarbutton-hover-background: transparent !important; /* fxcss-keep: spelling older Firefox reads */
 	background: var(--gnome-button-background) !important;
 	box-shadow: var(--gnome-button-box-shadow);
 	border-width: 1px 1px 1px 0;

@@ -153,3 +153,17 @@ toolbarbutton.bookmark-item {
 #reload-button:not([displaystop])>.toolbarbutton-animatable-box>.toolbarbutton-animatable-image {
 	animation-duration: 0s !important;
 }
+
+/* Firefox 158's Nova design separates the web content from the toolbars with
+ * a top border on .browserContainer, in --chrome-content-separator-color (a
+ * violet no palette sets), and with a sidebar open adds a side border and a
+ * rounded corner. With horizontal tabs, WhiteSur's tab strip already ends in
+ * its own border line, so the top border stacked into a double line under the
+ * tabs, and pre-Nova Firefox drew none of these: keep that flat edge. Vertical
+ * tabs keep Firefox's card, which pre-Nova Firefox drew too. Split-view panels
+ * are left alone: their borders mark the active panel. */
+:root:has(#tabbrowser-tabs[orient="horizontal"]) #tabbrowser-tabpanels > :not(.split-view-panel) .browserContainer {
+	border-block-start: none !important;
+	border-inline: none !important;
+	border-radius: 0 !important;
+}
