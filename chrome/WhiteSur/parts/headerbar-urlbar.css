@@ -9,23 +9,24 @@
 	font-size: 1.2em !important;
 	min-height: 28px !important;
 }
-/* Centre URL bar text input*/
+/* Centre URL bar text input.
+ * Only the horizontal shift is ours. The input stays a flex item, so Firefox's
+ * own layout centres it vertically: absolute positioning tied it to whichever
+ * ancestor happened to be positioned, and that has moved between releases --
+ * the text went invisible on 153 (#178) and sat high on others (#233).
+ * max-width, not width: Firefox's `flex: 1` on the input outranks a width
+ * from userChrome. */
 #urlbar-input {
 	transition: transform .1s linear;
-	transform: translateX(50%) translateY(-50%);
-	position: absolute;
-	top: 50%;
-	height: auto;
-	width: 50%;
+	transform: translateX(50%);
+	max-width: 50%;
 	text-align: center !important;
 }
 /* Unless text input is selected like safari*/
 #urlbar[focused] #urlbar-input {
-	position: absolute;
-	top: 50%;
-	transform: translateX(0) translateY(-50%);
+	transform: translateX(0);
 	transition: all .2s ease;
-	width: 100%;
+	max-width: 100%;
 	text-align: left !important;
 }
 
