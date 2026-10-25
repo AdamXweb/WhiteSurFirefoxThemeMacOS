@@ -121,7 +121,15 @@ sidebar-main[expanded] #tabbrowser-tabs[orient="vertical"] .tabbrowser-tab:not([
 }
 
 /* Unselected rows read in the sidebar's text colour; the selected row keeps
- * the active-tab colour against its lifted background */
+ * the active-tab colour against its lifted background. Firefox 157+ reads the
+ * tokens on .tab-content instead of inheriting the tab's colour. Set these on
+ * the strip so its existing colours also win over the root's inactive tokens. */
+#tabbrowser-tabs[orient="vertical"] {
+	--tab-text-color: var(--gnome-sidebar-color) !important;
+	--tab-text-color-hover: var(--gnome-sidebar-color) !important;
+	--tab-text-color-selected: var(--gnome-tabbar-tab-active-color) !important;
+}
+
 #tabbrowser-tabs[orient="vertical"] tab {
 	color: var(--gnome-sidebar-color) !important;
 }
