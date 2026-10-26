@@ -146,8 +146,10 @@ toolbarspring {
 }
 
 .searchbar-engine-one-off-item {
-	--toolbarbutton-active-background: transparent !important;
-	--toolbarbutton-hover-background: transparent !important;
+	--toolbarbutton-background-color-active: transparent !important;
+	--toolbarbutton-background-color-hover: transparent !important;
+	--toolbarbutton-active-background: transparent !important; /* fxcss-keep: spelling older Firefox reads */
+	--toolbarbutton-hover-background: transparent !important; /* fxcss-keep: spelling older Firefox reads */
 	-moz-appearance: none !important;
 	background: var(--gnome-button-background) !important;
 	box-shadow: var(--gnome-button-box-shadow) !important;
