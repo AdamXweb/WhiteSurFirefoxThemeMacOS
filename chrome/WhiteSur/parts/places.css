@@ -48,7 +48,7 @@ sidebar-main {
 }
 
 #sidebar-panel-header,
-#sidebar-search-container > .sidebar-panel-header {
+#sidebar-search-container > #sidebar-panel-header {
 	color: var(--gnome-sidebar-color) !important;
 }
 
