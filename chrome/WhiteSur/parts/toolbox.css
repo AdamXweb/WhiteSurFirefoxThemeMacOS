@@ -31,6 +31,16 @@
 	 * for about: pages; this is the window itself, so all three agree. */
 	--link-color: var(--theme-primary-color) !important;
 	--link-color-hover: var(--theme-primary-color-hover) !important;
+
+	/* Firefox's colour for toolbar icons. parts/icons.css paints
+	 * .toolbarbutton-icon itself, but a few icons read this token instead: the
+	 * account avatar, the Downloads arrow and the sidebar launcher's tools.
+	 * Before 158 it was #5b5b66 / #fbfbfe whatever the palette, so the avatar
+	 * sat grey beside the palette-coloured icons, faint on dark palettes.
+	 * Firefox 158's Nova design makes it violet-grey (#75669f light, #e7e1f8
+	 * dark) and also colours the vertical tabs' "New Tab" label, panel icons
+	 * (--panel-icon-fill) and the launcher's dividers with it. */
+	--toolbarbutton-icon-fill: var(--gnome-toolbar-color) !important;
 }
 
 /* Toolbox colors */
