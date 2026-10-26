@@ -36,8 +36,10 @@
 
 /* The window-level private tint (parts/private-window.css, #148) is the
  * indicator; hide the built-in pill. Firefox renamed the element, so cover
- * both the old class and the current one. */
+ * both the old class and the current one. Firefox 158's Nova design swaps the
+ * pill for an icon-only button at the end of the tab strip; hide that too. */
 #TabsToolbar .private-browsing-indicator,
-#TabsToolbar .private-browsing-indicator-with-label {
+#TabsToolbar .private-browsing-indicator-with-label,
+#TabsToolbar .private-browsing-indicator-button {
 	display: none !important;
 }

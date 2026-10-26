@@ -46,7 +46,7 @@ menupopup menu[disabled="true"]:hover {
 panel[type=arrow]:not(.tooltip-xul-wrapper) {
 	margin-top: 9px !important;
 	max-height: 80vh !important;
-	--panel-background: var(--gnome-popover-background) !important;
+	--panel-background: var(--gnome-popover-background) !important; /* fxcss-keep: ESR 140 still reads it */
 	font:inherit !important;
 }
 
@@ -63,7 +63,7 @@ panelview {
 }
 
 .panel-arrowcontent {
-	--panel-background: var(--gnome-popover-background) !important;
+	--panel-background: var(--gnome-popover-background) !important; /* fxcss-keep: ESR 140 still reads it */
 	font:inherit !important;
 	border-color: var(--gnome-popover-border-color) !important;
 	border-radius: 9px !important;
@@ -243,6 +243,11 @@ toolbarbutton.bookmark-item[open="true"] {
 	background-color: var(--gnome-menu-background) !important;
 	color: var(--gnome-toolbar-color) !important;
 	--background-color-canvas: var(--gnome-menu-background) !important;
+	/* The Cancel button's border comes from --button-border-color, transparent
+	 * before Firefox 158 and Nova's violet accent since, and the border rule
+	 * below loses to Firefox's own. Set the token from the palette instead, as
+	 * panels.css and in-content.css do. Firefox reads it on the root. */
+	--button-border-color: var(--gnome-button-active-background-alt-border) !important;
   }
   /* Cancel or secondary */
   .dialog-button-box>button{

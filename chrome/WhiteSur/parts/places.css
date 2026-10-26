@@ -34,6 +34,25 @@ sidebar-main {
 	--sidebar-box-color: var(--gnome-sidebar-color) !important;
 }
 
+/* The launcher's tool buttons are moz-buttons: "icon ghost" at rest, and plain
+ * "icon" for the open tool. Firefox 158's Nova design fills hover, press and
+ * the open tool with its violet accent and rings the open tool in it too. Use
+ * the headerbar's washes instead, the same grey #sidebar-button shows while
+ * the sidebar is open; the open tool keeps it under the pointer, as checked
+ * headerbar buttons do. Each tier is set here because Firefox derives them on
+ * :root, where a value set on the launcher never reaches them. */
+sidebar-main {
+	--button-background-color-hover: var(--gnome-headerbar-button-active-background) !important;
+	--button-background-color-active: var(--gnome-headerbar-button-active-background) !important;
+	--button-background-color-selected: var(--gnome-headerbar-button-active-background) !important;
+	--button-background-color-ghost-hover: var(--gnome-headerbar-button-hover-background) !important;
+	--button-background-color-ghost-active: var(--gnome-headerbar-button-active-background) !important;
+	--button-border-color: transparent !important;
+	--button-border-color-hover: transparent !important;
+	--button-border-color-active: transparent !important;
+	--button-border-color-selected: transparent !important;
+}
+
 #sidebar-box,
 #sidebar {
 	background-color: var(--gnome-sidebar-background) !important;
