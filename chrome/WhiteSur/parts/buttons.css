@@ -70,6 +70,15 @@
 	text-align: center !important;
 }
 
+/* The app menu's update banner is a text button whose text takes two lines:
+ * before 158 "Update available — restart now" wraps in the menu's width, and
+ * Firefox 158 puts "Your tabs will reopen." under its title. The fixed 28px
+ * height above left the second line hanging out under the button. */
+#appMenu-popup .panel-banner-item {
+	height: auto !important;
+	max-height: none !important;
+}
+
 /* Drop down buttons */
 #sidebar-switcher-target,
 #viewButton {

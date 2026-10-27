@@ -100,13 +100,15 @@ panel[type="arrow"]:not(.tooltip-xul-wrapper) {
 
 	/* The signed-out "Sign in to sync" card at the top of the app menu and the
 	 * account panel. Firefox paints it in its promo violet on every version
-	 * (155: --color-violet-0/-90, 158 Nova: violet-desaturated). Let it sit on
-	 * the panel like the rest of the menu: a filled card would put its "Sign
-	 * in" link on a grey that the link's blue barely shows on in dark palettes
-	 * (1.1:1 on the button grey), where on the panel itself it reads as every
-	 * other panel link does. */
-	--promo-background-color-vibrant: transparent !important;
-	--promo-message-text-color-vibrant: var(--gnome-toolbar-color) !important;
+	 * (155: --color-violet-0/-90, 158 Nova: violet-desaturated). Use the
+	 * palette's sidebar colours instead: a card a shade off the panel, like the
+	 * sidebar is off the toolbar. It has to stay solid: the panel behind it is
+	 * 95% opaque, so wherever the window behind changes colour a faint edge
+	 * runs across the panel, and with no card it ran through the card's text.
+	 * Not the button grey the update banner uses: the blue "Sign in" button
+	 * barely shows on it in dark palettes (1.1:1 on #707070). */
+	--promo-background-color-vibrant: var(--gnome-sidebar-background) !important;
+	--promo-message-text-color-vibrant: var(--gnome-sidebar-color) !important;
 
 	--color-accent-primary: var(--theme-primary-color) !important;
 	--color-accent-primary-hover: var(--theme-primary-color-hover) !important;
