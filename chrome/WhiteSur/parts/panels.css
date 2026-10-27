@@ -91,6 +91,24 @@ panel[type="arrow"]:not(.tooltip-xul-wrapper) {
 	--button-border-color: var(--gnome-button-active-background-alt-border) !important;
 	--button-border-color-hover: var(--gnome-button-active-background-alt-border) !important;
 	--button-border-color-active: var(--gnome-button-active-background-alt-border) !important;
+	/* The same goes for --button-border, the shorthand buttons and moz-buttons
+	 * draw their edge with: it's built on :root from :root's border colour, so
+	 * the panel's one above never reached it. Before 158 that root colour was
+	 * transparent; Firefox 158's Nova design makes it the violet accent, which
+	 * ringed panel buttons such as the app menu's "Sign in". */
+	--button-border: var(--border-width) solid var(--button-border-color) !important;
+
+	/* The signed-out "Sign in to sync" card at the top of the app menu and the
+	 * account panel. Firefox paints it in its promo violet on every version
+	 * (155: --color-violet-0/-90, 158 Nova: violet-desaturated). Use the
+	 * palette's sidebar colours instead: a card a shade off the panel, like the
+	 * sidebar is off the toolbar. It has to stay solid: the panel behind it is
+	 * 95% opaque, so wherever the window behind changes colour a faint edge
+	 * runs across the panel, and with no card it ran through the card's text.
+	 * Not the button grey the update banner uses: the blue "Sign in" button
+	 * barely shows on it in dark palettes (1.1:1 on #707070). */
+	--promo-background-color-vibrant: var(--gnome-sidebar-background) !important;
+	--promo-message-text-color-vibrant: var(--gnome-sidebar-color) !important;
 
 	--color-accent-primary: var(--theme-primary-color) !important;
 	--color-accent-primary-hover: var(--theme-primary-color-hover) !important;
@@ -107,12 +125,27 @@ panel[type="arrow"]:not(.tooltip-xul-wrapper) {
 
 /* App menu (the hamburger "settings" menu) and its subviews. panelview and
  * .panel-subview-body are transparent already (popups.css); the header and
- * footer are the parts that carried their own colour. */
-#appMenu-popup {
+ * footer are the parts that carried their own colour.
+ *
+ * Firefox 158's Nova design sets the banner tokens on the banners themselves
+ * (promo violet, and the warning colour for add-on banners), which beats what
+ * they'd inherit from the panel, so they're restated there. The icon colour
+ * also draws the pulsing ring around the update banner's icon. */
+#appMenu-popup,
+#appMenu-popup :is(.panel-banner-item, .addon-banner-item) {
 	--panel-banner-item-background-color: var(--gnome-button-active-background-alt) !important;
 	--panel-banner-item-hover-bgcolor: var(--gnome-button-active-background-alt-hover) !important;
 	--panel-banner-item-active-bgcolor: var(--gnome-button-active-background) !important;
 	--panel-banner-item-color: var(--gnome-button-menulist-color) !important;
+	--panel-banner-item-icon-color: currentColor !important; /* fxcss-keep: only Nova (158+) reads it */
+}
+
+/* The separator under the account row is Firefox's "zap", a violet-pink-
+ * orange gradient drawn with border-image: --panel-separator-zap-gradient
+ * before 158, Nova's --tab-border-color-accent on 158. Draw it like the
+ * menu's other separators. */
+.PanelUI-subView toolbarseparator.proton-zap::before {
+	border-image: none !important;
 }
 
 #appMenu-popup .panel-header,
