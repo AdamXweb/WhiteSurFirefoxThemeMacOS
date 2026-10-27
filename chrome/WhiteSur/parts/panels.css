@@ -214,7 +214,7 @@ panel[type="arrow"]:not(.tooltip-xul-wrapper) {
  * the host is enough. */
 .searchmode-switcher-panel-list {
 	--panel-list-background-color: var(--gnome-popover-background) !important;
-	--panel-list-color: var(--gnome-toolbar-color) !important;
+	--panel-list-text-color: var(--gnome-toolbar-color) !important;
 	--panel-list-border-color: var(--gnome-popover-border-color) !important;
 	--panel-separator-color: var(--gnome-popover-separator-color) !important;
 	/* Each engine row is a panel-item, which draws itself from the "menu"
@@ -238,8 +238,30 @@ panel[type="arrow"]:not(.tooltip-xul-wrapper) {
 	color: var(--gnome-urlbar-color) !important;
 }
 
+/* Its shape. Firefox 155 draws the button as an 8px rounded rect in the URL
+ * bar's chip colours (--urlbar-box-*, set from the palette in
+ * headerbar-urlbar.css), changing on hover only through the wash below.
+ * Firefox 158 makes it a "muted" moz-button, which Nova draws as a 24px pill
+ * in Firefox's own greys that darken on hover and press. Map the muted tokens
+ * back onto the chip colours, as 155 does, so it looks the same on both. */
+.searchmode-switcher {
+	--button-border-radius: 8px !important;
+	--button-background-color-muted: var(--urlbar-box-background-color) !important;
+	--button-background-color-muted-hover: var(--button-background-color-muted) !important;
+	--button-background-color-muted-active: var(--button-background-color-muted) !important;
+	--button-background-color-muted-selected: var(--button-background-color-muted) !important;
+}
+
+.urlbar[focused] .searchmode-switcher,
+.searchmode-switcher[open] {
+	--button-background-color-muted: var(--urlbar-box-background-color-focus) !important;
+}
+
+/* The hover wash is painted on the host, behind the button's own shape, so it
+ * takes the same radius; square, its corners showed around the button. */
 .searchmode-switcher:hover {
 	background-color: var(--gnome-popover-button-hover-background) !important;
+	border-radius: 8px !important;
 }
 
 .searchmode-switcher-dropmarker,

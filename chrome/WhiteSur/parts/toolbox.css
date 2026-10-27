@@ -177,3 +177,14 @@ toolbarbutton.bookmark-item {
 	border-inline: none !important;
 	border-radius: 0 !important;
 }
+
+/* What Nova keeps of that card is still edged in its violet: the content
+ * area with vertical tabs, and the sidebar panel (#sidebar-box), which Nova
+ * makes a card in both tab layouts. Pre-Nova Firefox edged the card with its
+ * text colour at 10%; use the palette's text colour the same way. Only the
+ * border colour changes: before Nova neither element has a border, and the
+ * variable also feeds the pre-Nova card's hairline outline, which stays. */
+:root:has(#tabbrowser-tabs[orient="vertical"]) #tabbrowser-tabpanels > :not(.split-view-panel) .browserContainer,
+#sidebar-box {
+	border-color: color-mix(in srgb, var(--gnome-toolbar-color) 10%, transparent) !important;
+}
