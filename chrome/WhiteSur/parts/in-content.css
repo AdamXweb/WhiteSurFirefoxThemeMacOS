@@ -102,4 +102,40 @@
 		background-color: var(--gnome-popover-button-hover-background) !important;
 		color: var(--gnome-toolbar-color) !important;
 	}
+
+	/* The sidebar of about:preferences, about:addons, about:policies,
+	 * about:debugging and Firefox View is a moz-page-nav, which the rule above
+	 * does not match. Its rows are buttons in a shadow root, drawn from
+	 * --page-nav-button-* tokens declared on the nav itself, so the tokens are
+	 * the only way in. Firefox 155 draws flat rows: transparent until hovered,
+	 * the selected one tinted in the accent with a bar at its edge. Firefox
+	 * 158's Nova design makes every row a pill, the selected one solid accent
+	 * and the others filled at rest, because Nova derives ghost buttons from
+	 * --button-background-color, which this file sets to the button grey
+	 * above. Put back the values 155 uses, so 158 draws the same rows. The
+	 * radii are in px because Nova also rescales --border-radius-small and
+	 * -medium (to 8px and 12px). Hover and press are left alone: both
+	 * versions already take them from --button-background-color-hover and
+	 * -active. */
+	moz-page-nav {
+		--page-nav-button-background-color: transparent !important;
+		--page-nav-button-background-color-selected: color-mix(in srgb, currentColor 8%, transparent) !important;
+		--page-nav-button-border-radius: 8px !important;
+		--page-nav-button-border-radius-focused: 4px !important;
+		--page-nav-button-indicator-background-color: var(--color-accent-primary) !important;
+		--page-nav-button-indicator-width: 4px !important;
+		--page-nav-button-padding: var(--space-small) var(--space-medium) !important;
+		--page-nav-button-padding-small: var(--space-small) !important;
+		/* Before Nova the row text inherits the page's; Nova's ghost text is
+		 * its own near-black (#020202 in light mode). */
+		--page-nav-button-text-color: currentColor !important;
+		--page-nav-button-text-color-hover: currentColor !important;
+		--page-nav-button-text-color-active: currentColor !important;
+		--page-nav-button-text-color-selected: var(--color-accent-primary) !important;
+		/* The keyboard focus ring, which the palettes switch off and increase
+		 * contrast brings back: inside the row, not 2px outside it. */
+		--page-nav-focus-outline-offset: var(--focus-outline-inset) !important;
+		--page-nav-focus-padding: 0px !important;
+		--page-nav-hr-background-color: var(--border-color) !important;
+	}
 }
