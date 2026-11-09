@@ -138,4 +138,59 @@
 		--page-nav-focus-padding: 0px !important;
 		--page-nav-hr-background-color: var(--border-color) !important;
 	}
+
+	/* The Light / Dark / Device switch at the top of about:addons' themes
+	 * (Firefox 158). It frames itself in --border-color-interactive, which this
+	 * file makes the accent for checkboxes and toggles -- a blue ring round
+	 * the whole control. Use the button edge its segments sit next to. */
+	moz-segmented-control {
+		--segmented-control-border-color: var(--button-border-color) !important;
+	}
+
+	/* The rest of Nova on these pages, put back to what the same tokens are
+	 * with it switched off, behind the pref Firefox uses for it (see
+	 * parts/nova.css for the browser window). Without this, 158's Settings
+	 * filled every moz-box-button and moz-box-link row ("Advanced settings",
+	 * "Sign in") with the button grey -- Nova's ghost button is
+	 * --button-background-color, set above -- drew dropdowns, buttons and
+	 * search fields as 24px pills, and gave ghost buttons Nova's own
+	 * near-black text. */
+	@media -moz-pref("browser.nova.enabled") {
+		:root {
+			--border-radius-xsmall: 2px !important;
+			--border-radius-small: 4px !important;
+			--border-radius-medium: 8px !important;
+			--badge-border-radius: 4px !important;
+			--button-border-radius: 8px !important;
+			--card-border-radius-compact: 8px !important;
+			--card-cover-image-border-radius: 8px !important;
+			--input-search-border-radius: 8px !important;
+			--input-search-icon-size: 12px !important;
+			--input-text-border-radius: 8px !important;
+			--panel-border-radius: 8px !important;
+			--panel-menuitem-border-radius: 4px !important;
+			--popup-border-radius: 8px !important;
+			--toolbarbutton-border-radius: 8px !important;
+
+			--button-background-color-ghost: transparent !important;
+			--button-background-color-ghost-disabled: transparent !important;
+			--button-text-color-ghost: currentColor !important;
+			--button-text-color-ghost-hover: currentColor !important;
+			--button-text-color-ghost-active: currentColor !important;
+			--button-text-color-ghost-selected: currentColor !important;
+			--card-header-background-color: initial !important;
+			--button-background-color-primary-disabled: var(--button-background-color-primary) !important;
+			--background-color-information: light-dark(oklch(97% 0.05 260), oklch(34% 0.14 260)) !important;
+			--icon-color-information: light-dark(oklch(55% 0.24 260), oklch(83% 0.17 260)) !important;
+		}
+
+		/* moz-select declares its tokens on its own host, and Nova draws the
+		 * border in --border-color-interactive, which is the accent here: a blue
+		 * ring round every dropdown. Before Nova it was the button border. */
+		moz-select {
+			--select-border-color: var(--button-border-color) !important;
+			--select-border-color-hover: var(--button-border-color-hover) !important;
+			--select-border-color-disabled: var(--button-border-color-disabled) !important;
+		}
+	}
 }

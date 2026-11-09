@@ -66,8 +66,7 @@ sidebar-main {
 	color: var(--gnome-sidebar-color) !important;
 }
 
-#sidebar-panel-header,
-#sidebar-search-container > .sidebar-panel-header {
+#sidebar-panel-header {
 	color: var(--gnome-sidebar-color) !important;
 }
 

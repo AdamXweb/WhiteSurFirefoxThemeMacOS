@@ -120,7 +120,9 @@
  * same wash the panel gives a hovered row; its top border already follows
  * --panel-separator-color from parts/panels.css. */
 #downloadsPanel {
-	--panel-background-color-dimmed: var(--gnome-popover-button-hover-background) !important;
+	--panel-background-color-dimmed: var(--gnome-popover-button-hover-background) !important; /* fxcss-keep: Firefox 158 reads it */
+	/* Firefox 159 paints the strip with a footer token of its own instead. */
+	--panel-footer-background-color: var(--gnome-popover-button-hover-background) !important; /* fxcss-keep: Firefox 159 reads it */
 	--arrowpanel-dimmed: var(--gnome-popover-button-hover-background) !important; /* fxcss-keep: ESR 140 still reads it */
 }
 

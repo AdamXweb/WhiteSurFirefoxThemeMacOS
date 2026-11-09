@@ -204,7 +204,10 @@ menupopup>menu {
 	--arrowpanel-background: transparent !important; /* fxcss-keep: ESR 140 still reads it */
 	--arrowpanel-border-radius: 0px !important; /* fxcss-keep: ESR 140 still reads it */
 }
-#PlacesToolbar menu:[_moz-menuactive],
+/* An open bookmarks-toolbar folder. This list began with
+ * "#PlacesToolbar menu:[_moz-menuactive]", which is not a valid selector, and
+ * one invalid selector drops the whole rule -- so none of it had applied on
+ * any Firefox, and from 158 an open folder showed Nova's violet wash. */
 #PlacesToolbar menu:active,
 toolbarbutton.bookmark-item[open="true"] {
 	background-color: var(--gnome-button-active-background) !important;
