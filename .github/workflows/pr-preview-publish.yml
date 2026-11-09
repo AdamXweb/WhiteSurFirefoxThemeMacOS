@@ -112,7 +112,18 @@ jobs:
 
             // Standard views are enumerated; variants use a bounded slug grammar.
             // No repository code or free-form artifact text is executed or published.
-            const NAME = /^(?:(?:light|dark)-(?:01-window|02-urlbar|03-findbar|04-dialog)|extra-(?:04-audio|05-muted|06-containers|07-many-tabs|08-private|09-compact|10-sidebar-bookmarks|11-sidebar-history|12-rtl|13-customize|14-vertical-tabs|15-toolbar)|variant-[a-z0-9][a-z0-9+-]{0,159})\.png$/;
+            const NAME = /^(?:(?:light|dark)-(?:01-window|02-urlbar|03-findbar|04-dialog|05-toolbar-hover|06-search-engine|07-search-menu|08-app-menu|09-extensions-panel|10-account-panel|11-settings)|extra-(?:04-audio|05-muted|06-containers|07-many-tabs|08-private|09-compact|10-sidebar-bookmarks|11-sidebar-history|12-rtl|13-customize|14-vertical-tabs|15-toolbar)|variant-[a-z0-9][a-z0-9+-]{0,159})\.png$/;
+            // One picture per distinct change, drawn by `fxcss compare`.
+            const CHANGE = /^change-[0-9]{2,3}\.png$/;
+            const VIEWS = {"scheme:01-window":["Browser window","Window"],"scheme:02-urlbar":["Address bar focused","Address bar"],"scheme:03-findbar":["Find bar","Find bar"],"scheme:04-dialog":["Modal dialog","Dialogs"],"scheme:05-toolbar-hover":["Toolbar buttons hovered","Toolbars"],"scheme:06-search-engine":["Search engine button","Address bar"],"scheme:07-search-menu":["Search engine menu","Address bar"],"scheme:08-app-menu":["App menu","Panels"],"scheme:09-extensions-panel":["Extensions panel","Panels"],"scheme:10-account-panel":["Account panel","Panels"],"scheme:11-settings":["Settings","Settings"],"extra:04-audio":["Tab playing audio","Tabs"],"extra:05-muted":["Tab muted","Tabs"],"extra:06-containers":["Container tabs","Tabs"],"extra:07-many-tabs":["Tab strip overflowing","Tabs"],"extra:08-private":["Private window","Window"],"extra:09-compact":["Compact density","Window"],"extra:10-sidebar-bookmarks":["Bookmarks sidebar","Sidebar"],"extra:11-sidebar-history":["History sidebar","Sidebar"],"extra:12-rtl":["Right-to-left UI","Window"],"extra:13-customize":["Customize mode","Toolbars"],"extra:14-vertical-tabs":["Vertical tabs","Tabs"],"extra:15-toolbar":["Custom toolbar","Toolbars"]};
+            const CATEGORIES = ["Window", "Tabs", "Toolbars", "Address bar", "Find bar", "Sidebar", "Content", "Dialogs", "Panels", "Settings", "Optional stylesheets"];
+            const categoryOf = name => {
+              const [mode, ...rest] = name.replace(/\.png$/, '').split('-');
+              if (mode === 'variant') { return 'Optional stylesheets'; }
+              const view = VIEWS[(mode === 'extra' ? 'extra:' : 'scheme:') + rest.join('-')];
+              return view ? view[1] : 'Window';
+            };
+            const finite = v => typeof v === 'number' && isFinite(v);
             const validPng = file => {
               const stat = fs.lstatSync(file);
               if (!stat.isFile() || stat.size < 33 || stat.size > 20 * 1024 * 1024) return false;
@@ -139,10 +150,14 @@ jobs:
 
               const excluded = new Set();
               const changed = [];
+              const pictures = [];
               for (const f of fs.readdirSync(dir)) {
                 if (NAME.test(f) && validPng(path.join(dir, f))) {
                   fs.copyFileSync(path.join(dir, f), path.join(outDir, f));
                   changed.push(f);
+                } else if (CHANGE.test(f) && validPng(path.join(dir, f))) {
+                  fs.copyFileSync(path.join(dir, f), path.join(outDir, f));
+                  pictures.push(f);
                 } else if (f.endsWith('.png')) { excluded.add(f); }
               }
               const fullDir = path.join(dir, 'full');
@@ -157,11 +172,15 @@ jobs:
               }
 
               // Numbers only -- no strings from the artifact reach the comment.
-              // Exception: only_in_head names, each re-validated against the
-              // NAME allowlist and required to exist in full/ before use.
+              // Exception: view names, each re-validated against the NAME
+              // allowlist (and, for only_in_head, required to exist in full/).
               let pct = {};
               const fresh = [];
               const removed = [];
+              const below = [];
+              const changes = [];
+              const unsupported = [];
+              let minimum = 0, filtered = false;
               try {
                 const s = JSON.parse(fs.readFileSync(path.join(dir, 'summary.json'), 'utf8'));
                 for (const v of (Array.isArray(s.views) ? s.views : [])) {
@@ -185,6 +204,40 @@ jobs:
                     removed.push(n + '.png');
                   } else { excluded.add(String(n)); }
                 }
+                // Changes smaller than pr-preview.yml's FXCSS_MIN_CHANGED_PERCENT
+                // have no comparison image; list them so they are not mistaken
+                // for no change at all.
+                for (const v of (Array.isArray(s.below_threshold) ? s.below_threshold : [])) {
+                  if (v && typeof v.view === 'string' && NAME.test(v.view + '.png')
+                      && typeof pct[v.view] === 'number') {
+                    below.push(v.view + '.png');
+                  } else { excluded.add(String(v && v.view)); }
+                }
+                if (typeof s.min_changed_percent === 'number' && isFinite(s.min_changed_percent)) {
+                  minimum = Math.max(0, Math.min(100, s.min_changed_percent));
+                }
+                filtered = Array.isArray(s.views_filter) && s.views_filter.length > 0;
+                // Distinct changes: a picture, its place in the UI and the views
+                // it shows in. Names are re-validated; geometry is numbers only.
+                for (const c of (Array.isArray(s.changes) ? s.changes : []).slice(0, 200)) {
+                  const views = (Array.isArray(c && c.views) ? c.views : [])
+                    .filter(v => typeof v === 'string' && NAME.test(v + '.png')
+                                 && changed.includes(v + '.png'));
+                  const box = c && Array.isArray(c.box) && c.box.length === 4
+                    && c.box.every(finite) ? c.box : null;
+                  const frame = c && Array.isArray(c.frame) && c.frame.length === 2
+                    && c.frame.every(v => finite(v) && v > 0) ? c.frame : null;
+                  const shift = c && Array.isArray(c.shift) && c.shift.length === 2
+                    && c.shift.every(v => finite(v) && Math.abs(v) <= 100) ? c.shift : null;
+                  if (c && typeof c.image === 'string' && pictures.includes(c.image)
+                      && CATEGORIES.includes(c.category) && views.length && box && frame) {
+                    changes.push({ image: c.image, category: c.category, views, box, frame, shift,
+                                   width: finite(c.width) ? Math.max(1, Math.min(900, c.width)) : 900 });
+                  } else { excluded.add(String(c && c.image)); }
+                }
+                for (const n of (Array.isArray(s.unsupported) ? s.unsupported : []).slice(0, 200)) {
+                  if (typeof n === 'string' && NAME.test(n + '.png')) { unsupported.push(n + '.png'); }
+                }
               } catch (e) {
                 core.setFailed(`unreadable summary.json for ${label}: ${e}`);
                 return;
@@ -194,15 +247,58 @@ jobs:
                 core.setFailed(`no validated screenshots for ${label}`);
                 return;
               }
+              // A view no change accounts for -- an artifact from an older fxcss,
+              // which drew no change pictures -- is its own change.
+              for (const f of changed.sort()) {
+                const view = f.replace(/\.png$/, '');
+                if (!changes.some(c => c.views.includes(view))) {
+                  changes.push({ image: f, category: categoryOf(f), views: [view],
+                                 box: null, frame: null, width: 900 });
+                }
+              }
               report.push({ label, unreviewed: excluded.size, changed: changed.sort(), full: fulls.sort(),
-                            fresh: fresh.sort(), removed: removed.sort(), pct });
+                            fresh: fresh.sort(), removed: removed.sort(), below: below.sort(),
+                            minimum, filtered, pct, changes, unsupported: unsupported.sort() });
             }
 
             if (!report.length) { core.setFailed('no valid platform reports'); return; }
+
+            // Which Firefox releases the change still works on (`fxcss support`,
+            // from the Linux job). Only versions, names re-validated against a
+            // strict grammar, and theme-relative .css paths are kept; anything
+            // malformed reads as a check that did not run.
+            const VER = v => (Number.isInteger(v) && v >= 1 && v <= 999 ? v : null);
+            const SUPPORT_NAME = /^(?:[#.][A-Za-z_][\w-]{0,99}|--[A-Za-z_][\w-]{0,99})$/;
+            const CSS_FILE = /^(?:[A-Za-z0-9_+-][\w.+-]{0,99}\/){0,8}[A-Za-z0-9_+-][\w.+-]{0,99}\.css$/;
+            const findings = list => (Array.isArray(list) ? list : []).slice(0, 50).map(f => ({
+              names: (Array.isArray(f && f.names) ? f.names : [])
+                .filter(n => typeof n === 'string' && SUPPORT_NAME.test(n)).slice(0, 10),
+              file: f && typeof f.file === 'string' && CSS_FILE.test(f.file) ? f.file : null,
+              line: f && Number.isInteger(f.line) && f.line > 0 && f.line < 1e7 ? f.line : null,
+              since: VER(f && f.since), since_low: VER(f && f.since_low), from: VER(f && f.from),
+            })).filter(f => f.since && f.names.length);
+            let support = null;
+            for (const p of platforms) {
+              const f = path.join(root, p, 'support.json');
+              if (!fs.existsSync(f)) continue;
+              support = { status: 'unavailable' };
+              try {
+                const stat = fs.lstatSync(f);
+                const s = stat.isFile() && stat.size < 512 * 1024
+                  ? JSON.parse(fs.readFileSync(f, 'utf8')) : null;
+                if (s && s.format === 1 && s.status === 'checked'
+                    && VER(s.current) && VER(s.oldest)) {
+                  const rel = s.releases && typeof s.releases === 'object' ? s.releases : {};
+                  support = { status: 'checked', current: VER(s.current), oldest: VER(s.oldest),
+                              esr: VER(rel.esr), dropped: findings(s.dropped), added: findings(s.added) };
+                }
+              } catch (e) { core.warning(`unreadable support.json: ${e}`); }
+            }
             core.setOutput('skip', 'false');
             core.setOutput('pr', prNumber);
             core.setOutput('sha', headSha);
             core.setOutput('report', JSON.stringify(report));
+            core.setOutput('support', JSON.stringify(support));
 
       - name: Publish images to ci-previews branch
         if: steps.check.outputs.skip == 'false'
@@ -248,110 +344,297 @@ jobs:
           PR: ${{ steps.check.outputs.pr }}
           SHA: ${{ steps.check.outputs.sha }}
           REPORT: ${{ steps.check.outputs.report }}
+          SUPPORT: ${{ steps.check.outputs.support }}
           RUN_ID: ${{ steps.src.outputs.run_id }}
         with:
           script: |
             const MARKER = '<!-- whitesur-pr-preview -->';
-            const TITLES = {
-              '01-window': 'Browser window',
-              '02-urlbar': 'Address bar focused',
-              '03-findbar': 'Find bar',
-              '04-dialog': 'Modal dialog',
-              '04-audio': 'Tab playing audio',
-              '05-muted': 'Tab muted',
-              '06-containers': 'Container tabs',
-              '07-many-tabs': 'Tab strip overflowing',
-              '08-private': 'Private window',
-              '09-compact': 'Compact density',
-              '10-sidebar-bookmarks': 'Sidebar — bookmarks',
-              '11-sidebar-history': 'Sidebar — history',
-              '12-rtl': 'Right-to-left UI',
-              '13-customize': 'Customize mode',
-              '14-vertical-tabs': 'Vertical tabs',
-              '15-toolbar': 'Customised toolbar',
-            };
+            const VIEWS = {"scheme:01-window":["Browser window","Window"],"scheme:02-urlbar":["Address bar focused","Address bar"],"scheme:03-findbar":["Find bar","Find bar"],"scheme:04-dialog":["Modal dialog","Dialogs"],"scheme:05-toolbar-hover":["Toolbar buttons hovered","Toolbars"],"scheme:06-search-engine":["Search engine button","Address bar"],"scheme:07-search-menu":["Search engine menu","Address bar"],"scheme:08-app-menu":["App menu","Panels"],"scheme:09-extensions-panel":["Extensions panel","Panels"],"scheme:10-account-panel":["Account panel","Panels"],"scheme:11-settings":["Settings","Settings"],"extra:04-audio":["Tab playing audio","Tabs"],"extra:05-muted":["Tab muted","Tabs"],"extra:06-containers":["Container tabs","Tabs"],"extra:07-many-tabs":["Tab strip overflowing","Tabs"],"extra:08-private":["Private window","Window"],"extra:09-compact":["Compact density","Window"],"extra:10-sidebar-bookmarks":["Bookmarks sidebar","Sidebar"],"extra:11-sidebar-history":["History sidebar","Sidebar"],"extra:12-rtl":["Right-to-left UI","Window"],"extra:13-customize":["Customize mode","Toolbars"],"extra:14-vertical-tabs":["Vertical tabs","Tabs"],"extra:15-toolbar":["Custom toolbar","Toolbars"]};
+            const CATEGORIES = ["Window", "Tabs", "Toolbars", "Address bar", "Find bar", "Sidebar", "Content", "Dialogs", "Panels", "Settings", "Optional stylesheets"];
             const PLATFORM = { macos: 'macOS', windows: 'Windows', linux: 'Linux' };
 
             const pr = Number(process.env.PR);
             const sha = process.env.SHA;
-            const report = JSON.parse(process.env.REPORT);
+            // The render matrix's order, so the first picture of a change shared
+            // by several platforms always comes from the same one.
+            const ORDER = Object.keys(PLATFORM);
+            const rank = label => (ORDER.includes(label) ? ORDER.indexOf(label) : ORDER.length);
+            const report = JSON.parse(process.env.REPORT).sort((a, b) => rank(a.label) - rank(b.label));
             const { owner, repo } = context.repo;
             const base = `https://raw.githubusercontent.com/${owner}/${repo}/ci-previews/pr-${pr}/${sha}`;
 
-            const pretty = (f) => {
+            const viewOf = f => {
               const [mode, ...rest] = f.replace(/\.png$/, '').split('-');
               const key = rest.join('-');
-              const title = TITLES[key] || key;
+              return { mode, key, view: mode === 'variant' ? null
+                       : VIEWS[(mode === 'extra' ? 'extra:' : 'scheme:') + key] };
+            };
+            const pretty = (f) => {
+              const { mode, key, view } = viewOf(f);
+              const title = view ? view[0] : key;
               // extra-* and variant-* views are captured once, not per colour
               // scheme, so a mode suffix would be noise.
               if (mode === 'extra') { return title; }
               if (mode === 'variant') { return 'Variant: ' + key; }
               return `${title} — ${mode}`;
             };
+            const nameOf = labels => {
+              const names = labels.map(l => PLATFORM[l] || l);
+              return names.length < 3 ? names.join(' and ')
+                : names.slice(0, -1).join(', ') + ' and ' + names[names.length - 1];
+            };
+            const plural = (n, word) => `${n} ${word}${n === 1 ? '' : 's'}`;
+            const moved = shift => {
+              const words = [];
+              if (shift[1]) words.push(`${shift[1] < 0 ? 'up' : 'down'} ${Math.abs(shift[1])}px`);
+              if (shift[0]) words.push(`${shift[0] < 0 ? 'left' : 'right'} ${Math.abs(shift[0])}px`);
+              return words.length ? ` — moved ${words.join(' and ')}` : '';
+            };
 
             let body = `${MARKER}\n### Theme preview\n\n`;
             body += `Rendered from \`${sha.slice(0, 7)}\` against the base branch.\n\n`;
 
-            const anyChange = report.some(r => r.changed.length || (r.fresh || []).length
-                                          || (r.removed || []).length || r.unreviewed);
-
-            for (const r of report) {
-              const name = PLATFORM[r.label] || r.label;
-              const fresh = r.fresh || [];
-              const removed = r.removed || [];
-              const parts = [];
-              if (r.unreviewed) parts.push(`${r.unreviewed} unreviewed screenshot(s)`);
-              if (r.changed.length) {
-                parts.push(`${r.changed.length} view${r.changed.length > 1 ? 's' : ''} changed`);
+            // First, for reference before anything else: whether merging drops
+            // styling for an older Firefox. The wording matches `fxcss support`.
+            const support = JSON.parse(process.env.SUPPORT || 'null');
+            const listNames = list => {
+              const names = [...new Set(list.flatMap(f => f.names))];
+              const shown = names.slice(0, 6).map(n => `\`${n}\``).join(', ');
+              return shown + (names.length > 6 ? ` and ${names.length - 6} more` : '');
+            };
+            if (support && support.status === 'checked') {
+              const { current, oldest, esr, dropped, added } = support;
+              const span = oldest < current ? `Firefox ${oldest}–${current}` : `Firefox ${current}`;
+              let block = '';
+              if (dropped.length) {
+                const below = Math.max(...dropped.map(f => f.since));
+                const sure = Math.min(...dropped.map(f => f.since_low || f.since)) - 1;
+                const firsts = dropped.map(f => f.from);
+                let who = firsts.includes(null) ? `Firefox ${sure} and earlier`
+                  : `Firefox ${Math.min(...firsts, sure)} to ${sure}`;
+                if (sure !== below - 1) who += `, possibly up to ${below - 1}`;
+                if (esr && dropped.some(f => (f.from || oldest) <= esr
+                                             && esr < (f.since_low || f.since))) {
+                  who += `, ESR ${esr} included`;
+                }
+                block += `> [!WARNING]\n> **Merging this drops styling for ${who}.** ` +
+                         `It removes rules for ${listNames(dropped)}, which still match there ` +
+                         `but no longer match in Firefox ${below}. Keeping the old name next to ` +
+                         `the new one (\`#old, .new\`) keeps both releases styled.\n`;
               }
-              if (fresh.length) {
-                parts.push(`${fresh.length} new view${fresh.length > 1 ? 's' : ''}`);
+              if (added.length) {
+                const from = Math.max(...added.map(f => f.since));
+                const start = Math.min(...added.map(f => f.since_low || f.since));
+                const when = start === from ? `Firefox ${from}`
+                  : `somewhere from Firefox ${start} to ${from}`;
+                block += (block ? '>\n' : '> [!NOTE]\n') +
+                         `> New rules for ${listNames(added)} only match from ${when}; ` +
+                         `older releases do not get them.\n`;
               }
-              if (removed.length) {
-                parts.push(`${removed.length} missing view${removed.length > 1 ? 's' : ''}`);
+              if (!block) {
+                block = `Firefox support is unchanged: nothing this PR removes or adds ` +
+                        `matches differently across ${span}.\n`;
               }
-              body += `<details${parts.length ? ' open' : ''}>`;
-              body += `<summary><b>${name}</b> — `;
-              body += parts.length ? parts.join(' · ') : 'no visual change';
-              body += `</summary>\n\n`;
-
-              if (r.unreviewed) {
-                body += `Some screenshots failed validation. Review the workflow artifacts before approving this PR.\n\n`;
+              body += block + `\n<sub>Checked ${span} from Linux builds' shipped chrome.</sub>\n\n`;
+              const located = [...dropped, ...added].filter(f => f.file && f.line);
+              if (located.length) {
+                body += `<details><summary>Where these rules are</summary>\n\n`;
+                for (const f of located.slice(0, 20)) {
+                  const change = dropped.includes(f) ? 'no longer matches from' : 'matches from';
+                  body += `- \`${f.file}:${f.line}\` ${f.names.map(n => `\`${n}\``).join(' ')}: ` +
+                          `${change} Firefox ${f.since}\n`;
+                }
+                body += `\n</details>\n\n`;
               }
-              for (const f of r.changed) {
-                const p = r.pct[f.replace(/\.png$/, '')];
-                const amount = typeof p === 'number' ? ` (${p.toFixed(2)}% of pixels)` : '';
-                body += `**${pretty(f)}**${amount}\n\n`;
-                body += `<img src="${base}/${r.label}/${f}" width="900">\n\n`;
-              }
-
-              // Views with no counterpart on the base branch (a variant sheet
-              // this PR adds): nothing to diff, so show the capture itself.
-              for (const f of fresh) {
-                body += `**${pretty(f)}** — new in this PR\n\n`;
-                body += `<img src="${base}/${r.label}/full/${f}" width="900">\n\n`;
-              }
-
-              for (const f of removed) {
-                body += `**${pretty(f)}** — missing from this PR's captures; ` +
-                        `check whether the view was removed or could not be captured.\n\n`;
-              }
-
-              if (!r.changed.length && !fresh.length && !removed.length && !r.unreviewed && r.full.length) {
-                body += `Nothing rendered differently. Current appearance:\n\n`;
-                body += `<img src="${base}/${r.label}/full/${r.full[0]}" width="900">\n\n`;
-              }
-              body += `</details>\n\n`;
+            } else if (support) {
+              body += `> [!NOTE]\n> Firefox support could not be checked in this run; ` +
+                      `see the Linux render job's log.\n\n`;
             }
 
-            if (!anyChange) {
+            const anyChange = report.some(r => r.changed.length || (r.fresh || []).length
+                                          || (r.removed || []).length || r.unreviewed);
+            const anyBelow = report.some(r => (r.below || []).length);
+            const percent = (p) => `${Number(p.toFixed(4))}%`;
+
+            // One change usually shows in many views and on every platform. Each
+            // is pictured once -- from the first platform that has it -- and the
+            // same change elsewhere is folded under it: matching views, roughly
+            // the same place in the window, same area of the UI.
+            const overlap = (a, b) => {
+              const x = Math.max(0, Math.min(a[2], b[2]) - Math.max(a[0], b[0]));
+              const y = Math.max(0, Math.min(a[3], b[3]) - Math.max(a[1], b[1]));
+              const area = q => (q[2] - q[0]) * (q[3] - q[1]);
+              const union = area(a) + area(b) - x * y;
+              return union > 0 ? x * y / union : 0;
+            };
+            const relative = c => [c.box[0] / c.frame[0], c.box[1] / c.frame[1],
+                                   c.box[2] / c.frame[0], c.box[3] / c.frame[1]];
+            const similar = (m, c) => {
+              const shared = c.views.filter(v => m.views.includes(v)).length;
+              const views = shared / (new Set([...m.views, ...c.views])).size;
+              if (!m.box || !c.box) { return views === 1; }
+              return views >= 0.5 && overlap(relative(m), relative(c)) >= 0.25;
+            };
+            const merged = [];
+            for (const r of report) {
+              for (const c of r.changes) {
+                const match = merged.find(m => m.category === c.category && !m.per[r.label]
+                                               && similar(m, c));
+                if (match) { match.per[r.label] = c.views; continue; }
+                merged.push({ ...c, label: r.label, per: { [r.label]: c.views } });
+              }
+            }
+            merged.sort((a, b) => CATEGORIES.indexOf(a.category) - CATEGORIES.indexOf(b.category));
+
+            // The changes, then each platform's own notes. Built twice at most:
+            // GitHub refuses a comment over 65,536 characters, so a very large
+            // run lists its views without links rather than failing to post.
+            const changedViews = report.reduce((n, r) => n + r.changed.length, 0);
+            const sections = compact => {
+              let out = '';
+              if (merged.length) {
+                const where = nameOf(report.filter(r => r.changed.length).map(r => r.label));
+                out += `**${plural(merged.length, 'distinct change')}** across ` +
+                        `${plural(changedViews, 'changed view')} on ${where}. Each change is ` +
+                        `pictured once; open it for every view it appears in, each linked to ` +
+                        `its full before-and-after.\n\n`;
+              }
+              let number = 0;
+              for (const category of CATEGORIES) {
+                const group = merged.filter(m => m.category === category);
+                if (!group.length) continue;
+                out += `#### ${category}\n\n`;
+                for (const m of group) {
+                  number += 1;
+                  const labels = report.map(r => r.label).filter(l => m.per[l]);
+                  const first = m.views[0] + '.png';
+                  const others = new Set(Object.values(m.per).flat()).size - 1;
+                  const only = labels.length < report.filter(r => r.changed.length).length
+                    ? ` · only on ${nameOf(labels)}` : ` · ${nameOf(labels)}`;
+                  out += `**${number}. ${pretty(first)}**` +
+                          (others > 0 ? ` and ${plural(others, 'more view')}` : '') +
+                          (m.shift ? moved(m.shift) : '') + `${only}\n\n`;
+                  out += `<img src="${base}/${m.label}/${m.image}" width="${Math.round(m.width)}">\n\n`;
+                  out += `<details><summary>${labels.map(l =>
+                    `${plural(m.per[l].length, 'view')} on ${PLATFORM[l] || l}`).join(' · ')}</summary>\n\n`;
+                  for (const l of labels) {
+                    const r = report.find(x => x.label === l);
+                    out += `- **${PLATFORM[l] || l}**: ` + m.per[l].map(v => {
+                      const p = r.pct[v];
+                      const amount = typeof p === 'number' ? ` (${p.toFixed(2)}%)` : '';
+                      return compact ? `${pretty(v + '.png')}${amount}`
+                        : `[${pretty(v + '.png')}](${base}/${l}/${v}.png)${amount}`;
+                    }).join(' · ') + `\n`;
+                  }
+                  out += `\n</details>\n\n`;
+                }
+              }
+
+              // Views with no counterpart on the base branch (a variant sheet this
+              // PR adds) have nothing to diff, so the capture itself is shown --
+              // once, from the first platform that has it.
+              const freshSeen = new Set();
+              let shown = false;
+              for (const r of report) {
+                const name = PLATFORM[r.label] || r.label;
+                const fresh = r.fresh || [];
+                const removed = r.removed || [];
+                const below = r.below || [];
+                const unsupported = r.unsupported || [];
+                const parts = [];
+                if (r.unreviewed) parts.push(`${r.unreviewed} unreviewed screenshot(s)`);
+                if (r.changed.length) {
+                  parts.push(`${r.changed.length} view${r.changed.length > 1 ? 's' : ''} changed`);
+                }
+                if (fresh.length) {
+                  parts.push(`${fresh.length} new view${fresh.length > 1 ? 's' : ''}`);
+                }
+                if (removed.length) {
+                  parts.push(`${removed.length} missing view${removed.length > 1 ? 's' : ''}`);
+                }
+                const problem = r.unreviewed || removed.length || fresh.some(f => !freshSeen.has(f));
+                out += `<details${problem ? ' open' : ''}>`;
+                out += `<summary><b>${name}</b> — `;
+                out += parts.length ? parts.join(' · ')
+                  : below.length ? `no change of ${percent(r.minimum)} or more` : 'no visual change';
+                if (below.length) {
+                  out += ` · ${below.length} smaller change${below.length > 1 ? 's' : ''}`;
+                }
+                if (unsupported.length) {
+                  out += ` · ${unsupported.length} not captured`;
+                }
+                out += `</summary>\n\n`;
+
+                if (r.unreviewed) {
+                  out += `Some screenshots failed validation. Review the workflow artifacts before approving this PR.\n\n`;
+                }
+                if (r.changed.length) {
+                  const grouped = merged.filter(m => m.per[r.label]).length;
+                  out += `${plural(r.changed.length, 'view')} changed, grouped above into ` +
+                          `${plural(grouped, 'change')}.\n\n`;
+                }
+
+                for (const f of fresh) {
+                  if (freshSeen.has(f)) {
+                    out += `**${pretty(f)}** — new in this PR (pictured above).\n\n`;
+                    continue;
+                  }
+                  freshSeen.add(f);
+                  out += `**${pretty(f)}** — new in this PR\n\n`;
+                  out += `<img src="${base}/${r.label}/full/${f}" width="900">\n\n`;
+                }
+
+                for (const f of removed) {
+                  out += `**${pretty(f)}** — missing from this PR's captures; ` +
+                          `check whether the view was removed or could not be captured.\n\n`;
+                }
+
+                if (below.length) {
+                  out += `Changed by less than ${percent(r.minimum)} of pixels, not pictured: `;
+                  out += below.map(f => {
+                    const p = r.pct[f.replace(/\.png$/, '')];
+                    return `${pretty(f)} (${percent(p)})`;
+                  }).join(', ') + `\n\n`;
+                }
+
+                if (unsupported.length) {
+                  out += `Not captured on this runner, so not compared: ` +
+                          unsupported.map(pretty).join(', ') + `.\n\n`;
+                }
+
+                if (!r.changed.length && !fresh.length && !removed.length && !r.unreviewed
+                    && r.full.length && !shown) {
+                  shown = true;
+                  out += below.length
+                    ? `Nothing changed by ${percent(r.minimum)} or more. Current appearance:\n\n`
+                    : `Nothing rendered differently. Current appearance:\n\n`;
+                  out += `<img src="${base}/${r.label}/full/${r.full[0]}" width="900">\n\n`;
+                }
+                out += `</details>\n\n`;
+              }
+              return out;
+            };
+            let rest = sections(false);
+            if (body.length + rest.length > 60000) {
+              rest = sections(true) + `Views are listed without links to fit GitHub's comment ` +
+                     `size; every comparison is in the workflow run's artifacts.\n\n`;
+            }
+            body += rest;
+
+            if (!anyChange && anyBelow) {
+              body += `No change on any platform reaches the threshold for a picture; ` +
+                      `the smaller changes are listed above.\n\n`;
+            } else if (!anyChange) {
               body += `No pixel differences on any platform — this PR does not change ` +
                       `how the browser chrome renders in these views.\n\n`;
             }
+            if (report.some(r => r.filtered)) {
+              body += `Only the views selected by \`FXCSS_VIEWS\` in pr-preview.yml are compared.\n\n`;
+            }
 
-            body += `<sub>Views: browser window, focused address bar, find bar, modal ` +
-                    `dialog — each in light and dark. Native popups (app menu, context ` +
-                    `menus) are OS-level windows and cannot be captured. ` +
+            body += `<sub>Views cover ${CATEGORIES.slice(0, -1).join(', ').toLowerCase()} ` +
+                    `and optional stylesheets, in light and dark. Context menus are native ` +
+                    `OS menus and are not captured. ` +
                     `[Workflow run](https://github.com/${owner}/${repo}/actions/runs/${process.env.RUN_ID})</sub>`;
 
             const { data: comments } = await github.rest.issues.listComments({

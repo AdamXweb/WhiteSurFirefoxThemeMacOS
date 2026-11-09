@@ -31,7 +31,11 @@ permissions:
   issues: write
 
 env:
-  FXCSS_VERSION: 0.24.0
+  FXCSS_VERSION: 0.25.0
+  # The oldest Firefox this theme supports: 'esr' for the current ESR, a
+  # major version such as '140', or '' to skip the check. A fix pull request
+  # then opens by saying which releases merging it would drop styling for.
+  FXCSS_OLDEST_FIREFOX: 'esr'
 
 jobs:
   check:
@@ -185,6 +189,11 @@ jobs:
           git config user.name  'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git checkout -b "$branch"
+          # The theme as it is before the fix, for the support check below.
+          before="$RUNNER_TEMP/before-fix"
+          rm -rf "$before"
+          mkdir -p "$before"
+          git archive HEAD | tar -x -C "$before"
           # --index applies the patch and stages exactly the files it
           # touches, nothing else. `git add -A` with a couple of exclusions is
           # how a 150 MB dmg got committed; anything else a step leaves in the
@@ -192,7 +201,21 @@ jobs:
           git apply --index fxcss-fix.patch
           git commit -m "fix(css): update selectors renamed in Firefox ${VERSION}"
           git push origin "$branch"
+          # A rename fixes this Firefox and drops the styling on every older
+          # one that still has the old name, so say which before anyone merges.
+          # Written outside the checkout, like everything else this job makes.
+          support="$RUNNER_TEMP/support.md"
+          : > "$support"
+          if [ -n "$FXCSS_OLDEST_FIREFOX" ]; then
+            fxcss support --base "$before" --head . --firefox "$FIREFOX_BIN" \
+              --oldest="$FXCSS_OLDEST_FIREFOX" --channel "$CHANNEL" \
+              --markdown "$support" > /dev/null || true
+          fi
           {
+            if [ -s "$support" ]; then
+              cat "$support"
+              echo
+            fi
             echo "Firefox **${CHANNEL}** is now **${VERSION}**, and some selectors this"
             echo "theme uses no longer match anything in it."
             echo
