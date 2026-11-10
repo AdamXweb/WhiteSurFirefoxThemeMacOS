@@ -461,3 +461,17 @@ menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
 		list-style-image: var(--webextension-menupanel-image-light, inherit) !important;
 	}
 }
+
+/* The new tab and menu glyphs sit on whole pixels, which leaves them half a
+ * pixel below the centre of their 16px box. On a 2x display that is a whole
+ * device pixel, so lift them into line with the other toolbar icons. Not at
+ * 1x, where the same nudge would only blur their 1px strokes. */
+@media (min-resolution: 2dppx) {
+	#nav-bar #new-tab-button .toolbarbutton-icon {
+		padding-top: 7.5px !important;
+		padding-bottom: 8.5px !important;
+	}
+	#nav-bar #PanelUI-menu-button .toolbarbutton-icon {
+		transform: translateY(-0.5px);
+	}
+}

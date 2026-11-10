@@ -46,6 +46,14 @@
 	top: 18px;
 	display: block !important;
 }
+/* macOS centres its traffic lights in this 14px box. 19px lands that centre on
+ * the nav bar's own, in line with the toolbar icons. */
+@media (-moz-platform: macos) {
+	:root:not([inFullscreen]) #TabsToolbar .titlebar-buttonbox-container,
+	:root:not([inFullscreen]) #TabsToolbar-buttonbox-container {
+		top: 19px;
+	}
+}
 :root[inFullscreen] #window-controls {
 	-moz-appearance: none !important;
 	padding: 0 3px 0 4px;

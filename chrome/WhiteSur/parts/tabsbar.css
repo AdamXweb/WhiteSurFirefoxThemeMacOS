@@ -373,6 +373,12 @@ tab[selected]:-moz-window-inactive {
 	display: none !important;
 }
 
+/* Firefox's default layout ends the tab bar in a flexible space, which left a
+ * blank block after the last tab. Kept while customising so it can be removed. */
+:root:not([customizing]) #TabsToolbar toolbarspring {
+	display: none !important;
+}
+
 /* Remove container bottom line indicator */
 .tabbrowser-tab[usercontextid]>.tab-stack>.tab-background>.tab-bottom-line {
 	display: none;
