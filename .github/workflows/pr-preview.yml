@@ -36,7 +36,26 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  FXCSS_VERSION: 0.24.0
+  FXCSS_VERSION: 0.25.0
+  # What the preview captures and shows. Edit these here, or set them with
+  # `fxcss init --variants ... --views ... --min-changed-percent ... --force`.
+  #
+  # Optional stylesheets to capture: 'all', '' for none, or names such as
+  # 'compact,tabs-swapclose' ('a+b' captures two together). Named sheets must
+  # exist in both the base branch and the pull request.
+  FXCSS_VARIANTS: 'all'
+  # Views to compare and show, as comma-separated patterns with * and ?
+  # wildcards, e.g. 'light-*,extra-07-many-tabs,variant-*'. '' shows every
+  # view. Every view is still captured; a pattern that matches none fails.
+  FXCSS_VIEWS: ''
+  # A view where less than this percent of pixels changed is listed in the
+  # comment with its percentage but not pictured. '0' pictures every change.
+  FXCSS_MIN_CHANGED_PERCENT: '0'
+  # The oldest Firefox this theme supports: 'esr' for the current ESR, a
+  # major version such as '140', or '' to skip the check. The comment then
+  # opens by saying whether merging drops styling for any release from there
+  # to the newest one, for example a rename that only works from Firefox 158.
+  FXCSS_OLDEST_FIREFOX: 'esr'
 
 jobs:
   render:
@@ -171,9 +190,12 @@ jobs:
           key: >-
             base-render-${{ matrix.label }}-${{ github.event.pull_request.base.sha }}-ff${{ steps.basekey.outputs.firefox }}-img${{ steps.basekey.outputs.image }}-fxcss${{ env.FXCSS_VERSION }}-${{ hashFiles('head/.github/workflows/pr-preview.yml') }}
 
+      # bash on every runner, Windows included, so the settings above reach
+      # fxcss as quoted shell variables rather than as text pasted into a script.
       - name: Render base revision
         if: steps.basecache.outputs.cache-hit != 'true'
-        run: fxcss shot --theme base --out shots/base --variants all
+        shell: bash
+        run: fxcss shot --theme base --out shots/base --variants="$FXCSS_VARIANTS"
 
       # Saved the moment the base render succeeds rather than when the job
       # ends: a push that supersedes this run cancels it, and the base is
@@ -186,12 +208,44 @@ jobs:
           key: ${{ steps.basecache.outputs.cache-primary-key }}
 
       - name: Render pull request revision
-        run: fxcss shot --theme head --out shots/head --variants all
+        shell: bash
+        run: fxcss shot --theme head --out shots/head --variants="$FXCSS_VARIANTS"
 
       - name: Compare
+        shell: bash
         run: >-
           fxcss compare --base shots/base --head shots/head
           --out out/${{ matrix.label }} --platform ${{ matrix.label }}
+          --views="$FXCSS_VIEWS" --min-changed-percent="$FXCSS_MIN_CHANGED_PERCENT"
+
+      # Which Firefox releases the change still works on, from archived Linux
+      # builds' shipped chrome (no older Firefox is run). One answer is enough,
+      # so only the Linux job asks. It can never fail the preview: without an
+      # answer the comment says the check did not run. Build indexes are
+      # cached, so most runs download one build or none.
+      - name: Restore Firefox build indexes
+        if: runner.os == 'Linux' && env.FXCSS_OLDEST_FIREFOX != ''
+        uses: actions/cache/restore@v5
+        with:
+          path: ~/.cache/fxcss/firefox-builds
+          key: fxcss-firefox-builds-${{ github.run_id }}
+          restore-keys: fxcss-firefox-builds-
+
+      - name: Firefox support
+        if: runner.os == 'Linux' && env.FXCSS_OLDEST_FIREFOX != ''
+        shell: bash
+        run: |
+          mkdir -p ~/.cache/fxcss/firefox-builds
+          fxcss support --base base --head head --firefox "$FIREFOX_BIN" \
+            --oldest="$FXCSS_OLDEST_FIREFOX" --json out/support.json \
+            || echo "::warning::the Firefox support check did not complete; see this step's log"
+
+      - name: Save Firefox build indexes
+        if: runner.os == 'Linux' && env.FXCSS_OLDEST_FIREFOX != ''
+        uses: actions/cache/save@v5
+        with:
+          path: ~/.cache/fxcss/firefox-builds
+          key: fxcss-firefox-builds-${{ github.run_id }}
 
       - name: Record pull request number
         shell: bash
