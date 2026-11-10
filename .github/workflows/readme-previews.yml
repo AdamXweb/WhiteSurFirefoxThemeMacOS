@@ -23,19 +23,12 @@ name: README previews
 # These are for looking at, not for testing -- the pass/fail check is
 # pr-preview.yml.
 
+# Run for all repository changes: imported CSS, images and fonts can live
+# anywhere in the repository. Folder filters can miss dependency-only edits.
 on:
   workflow_dispatch:
   push:
     branches: [master, main]
-    paths:
-      - 'chrome/**'
-      - 'configuration/**'
-      - 'custom/**'
-      - 'optional/**'
-      - 'options/**'
-      - 'extras/**'
-      - 'variants/**'
-      - '.github/workflows/readme-previews.yml'
 
 permissions:
   contents: write
@@ -45,7 +38,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  FXCSS_VERSION: 0.25.0
+  FXCSS_VERSION: 0.26.0
 
 jobs:
   render:

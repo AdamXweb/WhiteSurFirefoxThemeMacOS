@@ -15,18 +15,11 @@ name: PR preview
 # now comes from a pinned release rather than from the pull request, a pull
 # request cannot change how it behaves either.
 
+# Run for all repository changes: imported CSS, images and fonts can live
+# anywhere in the repository. Folder filters can miss dependency-only edits.
 on:
   pull_request:
     types: [opened, synchronize, reopened]
-    paths:
-      - 'chrome/**'
-      - 'configuration/**'
-      - 'custom/**'
-      - 'optional/**'
-      - 'options/**'
-      - 'extras/**'
-      - 'variants/**'
-      - '.github/workflows/pr-preview.yml'
 
 permissions:
   contents: read
@@ -36,7 +29,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  FXCSS_VERSION: 0.25.0
+  FXCSS_VERSION: 0.26.0
   # What the preview captures and shows. Edit these here, or set them with
   # `fxcss init --variants ... --views ... --min-changed-percent ... --force`.
   #
