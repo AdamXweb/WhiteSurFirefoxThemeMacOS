@@ -123,6 +123,34 @@ panel[type="arrow"]:not(.tooltip-xul-wrapper) {
 	--link-color-hover: var(--theme-primary-color-hover) !important;
 }
 
+/* The same card colours for the sync promo in the app menu's History subview,
+ * which stayed violet on every version. It is a <moz-promo> inside
+ * <sync-promo>'s shadow root, with no parts, and moz-promo re-declares the
+ * --promo-* tokens on its own host -- so neither a selector nor the panel's
+ * values above reach it. What does reach it is the palette those tokens are
+ * built from, light-dark() pairs of --color-violet-* steps: background 0 / 90
+ * (Nova: desaturated-10 / -70), text 80 / 0, border 30. Step 0 is the light
+ * background and the dark text, hence the two blocks. */
+#PanelUI-history-sync-promo {
+	--color-violet-30: var(--gnome-popover-border-color) !important;
+}
+
+@media (prefers-color-scheme: light) {
+	#PanelUI-history-sync-promo {
+		--color-violet-0: var(--gnome-sidebar-background) !important;
+		--color-violet-desaturated-10: var(--gnome-sidebar-background) !important;
+		--color-violet-80: var(--gnome-sidebar-color) !important;
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	#PanelUI-history-sync-promo {
+		--color-violet-90: var(--gnome-sidebar-background) !important;
+		--color-violet-desaturated-70: var(--gnome-sidebar-background) !important;
+		--color-violet-0: var(--gnome-sidebar-color) !important;
+	}
+}
+
 /* App menu (the hamburger "settings" menu) and its subviews. panelview and
  * .panel-subview-body are transparent already (popups.css); the header and
  * footer are the parts that carried their own colour.

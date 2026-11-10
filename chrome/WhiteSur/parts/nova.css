@@ -1,0 +1,154 @@
+/* Firefox 158's Nova design, put back to the values Firefox used before it,
+ * for the tokens WhiteSur does not paint over itself.
+ *
+ * Nova re-skins Firefox through its design tokens: a violet accent
+ * (#764edd / #b89cff) that every button border and ghost-button hover is mixed
+ * from, a 24px "pill" radius on buttons, popups and the address bar, and a
+ * violet-tinted text colour. WhiteSur re-maps those tokens inside arrow panels
+ * (parts/panels.css), on the nav bar (parts/buttons-fixes.css), in dialogs
+ * (parts/popups.css) and on about: pages (parts/in-content.css). Everywhere
+ * else Nova showed through: violet-outlined pills in the customise footer, a
+ * violet circle behind the sidebar's close button, a violet wash on an open
+ * bookmarks-toolbar folder, 24px corners on every popup, round hovers in the
+ * address bar and the sidebar launcher, and the toolbox gradient behind the
+ * notification bars.
+ *
+ * Every value below is what the same token resolves to with Nova turned off
+ * (browser.nova.enabled=false on 158, which matches 155), except the accent,
+ * which follows the palette as it already does in panels and about: pages.
+ * The whole block sits behind the pref Firefox itself uses, so 155, ESR and a
+ * 158 with Nova switched off are untouched.
+ *
+ * Imported first, so a value WhiteSur sets for itself later still wins. The
+ * tokens are declared on :root, and every derived token Firefox declares there
+ * (--button-border, --select-border, --urlbar-inner-border-radius...) follows
+ * these. Components that re-declare tokens on their own host are handled
+ * where they are themed. */
+
+@media -moz-pref("browser.nova.enabled") {
+	:root {
+		/* Radii. Nova rescales the named steps (small 4px -> 8px, medium
+		 * 8px -> 12px) and points buttons, popups and the address bar at a new
+		 * 24px step. */
+		--border-radius-xsmall: 2px !important;
+		--border-radius-small: 4px !important;
+		--border-radius-medium: 8px !important;
+		--badge-border-radius: 4px !important;
+		--button-border-radius: 8px !important;
+		--card-border-radius-compact: 8px !important;
+		--card-cover-image-border-radius: 8px !important;
+		--input-search-border-radius: 8px !important;
+		--input-search-icon-size: 12px !important;
+		--input-text-border-radius: 8px !important;
+		--panel-border-radius: 8px !important;
+		--panel-menuitem-border-radius: 4px !important;
+		--popup-border-radius: 8px !important;
+		--tab-border-radius: 8px !important;
+		--toolbarbutton-border-radius: 8px !important;
+		--urlbar-border-radius: 8px !important;
+		--urlbarview-border-radius: calc(var(--button-border-radius) + 2px) !important;
+		/* The address bar's icons and chips. Nova derives this from the results
+		 * popup instead, which comes to 1.75px once the popup is back to 10px. */
+		--urlbar-inner-border-radius: calc(var(--urlbar-border-radius) - 1px) !important;
+
+		/* Buttons. Nova makes the default button transparent with a 1px accent
+		 * border, and mixes every hover, press and selected fill -- ghost
+		 * buttons included -- from the accent. */
+		--button-background-color: light-dark(rgba(207, 207, 216, 0.33), rgba(0, 0, 0, 0.33)) !important;
+		--button-background-color-disabled: light-dark(rgba(207, 207, 216, 0.33), rgba(0, 0, 0, 0.33)) !important;
+		--button-background-color-hover: light-dark(rgba(207, 207, 216, 0.66), rgba(207, 207, 216, 0.2)) !important;
+		--button-background-color-active: light-dark(rgb(207, 207, 216), rgba(207, 207, 216, 0.4)) !important;
+		--button-background-color-selected: light-dark(rgb(207, 207, 216), rgba(207, 207, 216, 0.4)) !important;
+		/* Nova derives the transparent kinds -- ghost and menu buttons, the
+		 * sidebar launcher and close buttons, and moz-card headers -- from
+		 * --button-background-color, which it makes transparent. With that
+		 * back to the grey, they must be made transparent by name. */
+		--button-background-color-ghost: transparent !important;
+		--button-background-color-ghost-disabled: transparent !important;
+		--button-background-color-menu: transparent !important;
+		--button-background-color-menu-disabled: transparent !important;
+		--card-header-background-color: initial !important;
+		--button-background-color-ghost-hover: light-dark(rgba(207, 207, 216, 0.66), rgba(207, 207, 216, 0.2)) !important;
+		--button-background-color-ghost-active: light-dark(rgb(207, 207, 216), rgba(207, 207, 216, 0.4)) !important;
+		--button-background-color-ghost-selected: light-dark(rgb(207, 207, 216), rgba(207, 207, 216, 0.4)) !important;
+		--button-background-color-menu-selected: light-dark(rgb(207, 207, 216), rgba(207, 207, 216, 0.4)) !important;
+		--button-background-color-muted-selected: light-dark(rgb(207, 207, 216), rgba(207, 207, 216, 0.4)) !important;
+		--button-background-color-toolbar-selected: light-dark(rgb(207, 207, 216), rgba(207, 207, 216, 0.4)) !important;
+		--button-border-color: transparent !important;
+		--button-border-color-hover: transparent !important;
+		--button-border-color-active: transparent !important;
+		--button-border-color-disabled: transparent !important;
+		--button-border-color-selected: transparent !important;
+		--button-border-color-toolbar-disabled: transparent !important;
+		--button-border-width-split: 1px !important;
+		--button-text-color: light-dark(rgb(21, 20, 26), rgb(251, 251, 254)) !important;
+		--button-text-color-selected: light-dark(rgb(21, 20, 26), rgb(251, 251, 254)) !important;
+		--button-text-color-muted-selected: light-dark(rgb(21, 20, 26), rgb(251, 251, 254)) !important;
+
+		/* The accent itself, for whatever still draws in it directly. */
+		--color-accent-primary: var(--theme-primary-color) !important;
+		--color-accent-primary-hover: var(--theme-primary-color-hover) !important;
+		--color-accent-primary-active: var(--theme-primary-color-hover) !important;
+		--color-accent-primary-selected: var(--theme-primary-color) !important;
+		/* Nova greys a disabled primary button towards violet (#75669f)
+		 * rather than fading the accent. */
+		--button-background-color-primary-disabled: var(--button-background-color-primary) !important;
+		/* Information message bars and the notification bars' "i" icon: Nova's
+		 * violet in place of the pre-Nova blue. */
+		--background-color-information: light-dark(oklch(97% 0.05 260), oklch(34% 0.14 260)) !important;
+		--icon-color-information: light-dark(oklch(55% 0.24 260), oklch(83% 0.17 260)) !important;
+
+		/* Text and icons: Nova's are violet-black (#180e30 / #161423) rather
+		 * than the inherited colour. */
+		--text-color: currentColor !important;
+		--icon-color: light-dark(#5b5b66, #fbfbfe) !important;
+		--panel-text-color: light-dark(#000000, rgb(251, 251, 254)) !important;
+		--border-color-interactive: color-mix(in srgb, currentColor 15%, #8f8f9d) !important;
+		--input-border-color: color-mix(in srgb, currentColor 15%, #8f8f9d) !important;
+
+		/* Toolbar buttons outside the nav bar -- the bookmarks toolbar's open
+		 * folder is the one that shows -- take a violet wash under Nova. */
+		--toolbarbutton-background-color-hover: color-mix(in srgb, currentColor 17%, transparent) !important;
+		--toolbarbutton-background-color-active: color-mix(in srgb, currentColor 30%, transparent) !important;
+
+		/* The address bar's text and icons, and the results' secondary text,
+		 * are Nova's violet-grey (#3e315f / #e7e1f8). */
+		--toolbar-field-text-color: light-dark(#15141a, #fbfbfe) !important;
+		--toolbar-field-text-color-focus: light-dark(#000000, #fbfbfe) !important;
+		--urlbarview-text-color-secondary: color-mix(in srgb, currentColor 73%, transparent) !important;
+		--urlbarView-result-button-selected-color: light-dark(#000000, #fbfbfe) !important; /* fxcss-keep: Firefox 158 reads it */
+		--urlbarView-result-button-hover-background-color: color-mix(in srgb, light-dark(#000000, #fbfbfe) 60%, transparent) !important; /* fxcss-keep: Firefox 158 reads it */
+		/* Firefox 159 spells these two in lower case. */
+		--urlbarview-result-button-selected-color: light-dark(#000000, #fbfbfe) !important; /* fxcss-keep: Firefox 159 reads it */
+		--urlbarview-result-button-hover-background-color: color-mix(in srgb, light-dark(#000000, #fbfbfe) 60%, transparent) !important; /* fxcss-keep: Firefox 159 reads it */
+
+		/* The window background. Nova paints a violet-to-peach gradient on it,
+		 * which shows wherever a toolbar is translucent: the notification bars
+		 * sit on it at 40% white. */
+		--toolbox-background-color: light-dark(rgb(234, 234, 237), #1c1b22) !important;
+		--toolbox-background-image: none !important;
+		--info-bar-border-color: color-mix(in srgb, currentColor 24%, transparent) !important;
+	}
+
+	/* The address bar's icons are drawn at 72% in light mode and full
+	 * strength in dark. Nova's value, light-dark(0.7, 0.95), is not a valid
+	 * opacity, so they came out at full strength in both. */
+	@media (prefers-color-scheme: light) {
+		:root {
+			--urlbar-icon-fill-opacity: 0.72 !important;
+		}
+	}
+
+	/* The results popup's shadow, which Nova tints violet. Declared on the
+	 * address bar itself, so the :root block above does not reach it. */
+	.urlbar,
+	#searchbar {
+		--chrome-box-shadow: rgba(0, 0, 0, 0.13) !important;
+	}
+
+	/* Nova rounds the tab close button into a circle with
+	 * --border-radius-circle; before it, it followed the tab's radius. */
+	.tab-close-button {
+		border-radius: calc(var(--tab-border-radius) - 3px) !important;
+	}
+}

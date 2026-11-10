@@ -1,3 +1,6 @@
+/* Firefox 158's Nova tokens put back where WhiteSur doesn't set its own.
+ * First, so every value set after it wins. */
+@import "parts/nova.css";
 @import "parts/toolbox.css";
 @import "parts/buttons.css";
 @import "parts/entries.css";
