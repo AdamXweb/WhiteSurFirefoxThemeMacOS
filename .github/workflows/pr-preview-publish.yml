@@ -43,12 +43,26 @@ jobs:
 
       - name: Resolve source run
         id: src
+        # The manual run ID is typed by a person, so it reaches the shell only
+        # through the environment, never spliced into the script, and must be
+        # a plain number before anything downloads from it.
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          DISPATCH_RUN_ID: ${{ inputs.run_id }}
+          WORKFLOW_RUN_ID: ${{ github.event.workflow_run.id }}
         run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "run_id=${{ inputs.run_id }}" >> "$GITHUB_OUTPUT"
+          set -euo pipefail
+          if [ "$EVENT_NAME" = workflow_dispatch ]; then
+            run_id=$DISPATCH_RUN_ID
           else
-            echo "run_id=${{ github.event.workflow_run.id }}" >> "$GITHUB_OUTPUT"
+            run_id=$WORKFLOW_RUN_ID
           fi
+          case "$run_id" in
+            ''|*[!0-9]*)
+              echo "::error::run_id must be the numeric ID of a PR preview run"
+              exit 1 ;;
+          esac
+          echo "run_id=$run_id" >> "$GITHUB_OUTPUT"
 
       - name: Download preview artifacts
         uses: actions/download-artifact@v8
